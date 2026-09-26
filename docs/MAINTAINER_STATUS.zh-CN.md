@@ -20,6 +20,15 @@ AIChat 来源为成功工作流 36241959879 的 artifact 10906530604，SPP 来�
 
 AIChat README 的“当前正式版本 1.16.9”和候选条目没有完全同步到新 Release；SPP 文档也残留旧阶段文字。教程按正式 Release、源代码和最新配对说明判断，没有把这些旧条目继续写给新玩家。
 
+## 本次首页与语音说明补充
+
+- 首页已将付费 OpenAI API、`gpt-6-luna` 推荐、每天 100 轮的假设预算、安装难度、自用项目的稳定性与责任说明、Codex 参与和 AIChat 原作者致谢放在下载教程之前。
+- AIChat 上游为 [qzrs777/AIChat](https://github.com/qzrs777/AIChat)，LICENSE 署名为 Elysia777。本仓库已有随包许可证继续保留。
+- [GPT-6 Luna 官方页](https://developers.openai.com/api/docs/models/gpt-6-luna)与[价格页](https://developers.openai.com/api/docs/pricing)核实 Standard 单价为每百万输入 $0.10、缓存读取 $0.01、缓存写入 $0.125、输出 $0.50。预算假设、公式和本地价格表缺项见 [API_COST](API_COST.zh-CN.md)。
+- 后藤声线：[原作者模型页](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models)、[v2ProPlus/gotoh-v1-3-1 文件夹](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/tree/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1)。所选两个权重的文件名与历史使用记录一致；已查询上游文件元数据，未在本次下载完整权重或测试合成。
+- Mayuri：[参考库](https://huggingface.co/SteinsGateSg/mayuri-voice/tree/main/refs)、[index.csv](https://huggingface.co/SteinsGateSg/mayuri-voice/blob/main/refs/index.csv)。按 SPP 5.8.23 原包的 `profiles_26.csv` 与 `config.example.json` 核对了全部 26 项来源：24 个不同 WAV 均有对应 TXT，索引时长在 3–10 秒，默认 prompt 与索引逐项相同。未在本次逐段试听或将外部音频打入插件包。
+- SPP 的 `resolveVoiceProfile` 按 mapping/profiles 选择文件；`loadPromptForProfile` 先读非空 prompt，再读 WAV 旁边同名 TXT。只改 CSV 不改变运行配置。上述事实已写进玩家语音说明。
+
 ## 关键依据与原文摘录
 
 以下固定提交链接来自私有源库；没有权限的读者可能看不到。玩家教程应保持自足，不能要求普通玩家靠阅读这些源码才能安装。
@@ -90,8 +99,8 @@ SPP 使用明确文件清单复制到 release-stage，未复制 tools/windows �
 | 必须 | 玩家无需私库权限即可取得配对 Mod 包 | 从未登录 GitHub 的浏览器打开下载链接并下载；在下载页标清当前版本 |
 | 已完成（当前两包） | 实际 Release ZIP 内容核查 | 原 ZIP 与源库 SHA256 一致；文件清单未含个人 CFG、运行 config.json、history、memory_profiles、日志或备份；凭据嵌入等二进制语义风险未作完整审计 |
 | 必须 | 已验证的 Fun-ASR 全新环境 | 用干净 Windows 建环境、完整下载模型、成功加载、F8/持续通话测试；保存精确依赖版本，不只写 pip install 成功 |
-| 必须（复现演示声音） | 声线 `.ckpt/.pth` 的准确原链接、版本、许可和参考录音来源 | 列出准确文件名、来源、GPT-SoVITS 版本，能从零取得并生成相同类型的声音 |
-| 必须 | 解决默认 MAY WAV 不存在的初次安装问题 | 提供合法可取得的录音与相应配置，或提供清楚的自有参考音频流程；Neutral 实测通过 |
+| 来源与文件对应已完成；实测待补 | 后藤 v2ProPlus 权重、Mayuri 参考 WAV/TXT 与 26 项命名 | 原链接、文件名、上游许可标注已列明；仍需在干净环境下载并实际试听合成 |
+| 操作说明已完成；实测待补 | 解决默认 MAY WAV 不存在的初次安装问题 | A4 提供 Neutral 原 WAV/TXT，A6 列出 26 项原路径和目标名称；上游音频不打包，使用条件按原发布者说明；仍需 Neutral 实测 |
 | 必须 | 新手从零实测一次 | 只有 Steam 游戏、没有旧 CFG/缓存/模型的环境，按教程完成；将测试边界写实 |
 | 建议 | 实际 GUI 截图 | Steam 定位目录、正确文件层级、F9 配置、服务就绪状态；截图前清除 Key 与私人聊天 |
 | 建议 | 降低手工配置成本 | 之后另行实现干净配置向导/依赖安装器；本次提供原包与教程，未实现自动安装器 |
@@ -99,4 +108,4 @@ SPP 使用明确文件清单复制到 release-stage，未复制 tools/windows �
 | 建议 | 扩大备份范围并复测 | 明确包含 AIChat CFG/history 与 OriginalGameProgress 账本；不得把私人备份当安装包 |
 | 建议 | 密钥与日志保护 | 另行设计 Windows 凭据保护、导出脱敏、日志开关和本地端点鉴权；现状在隐私页明示 |
 
-本次交付包含两份正式原包、统一配对 Release、校验与来源记录，以及对应的玩家使用方法。干净 Windows 全流程实测和声线资源缺项仍保留在待办中。
+本次交付包含两份正式原包、统一配对 Release、校验与来源记录，以及对应的玩家使用方法。声线来源与文件命名说明已补齐；干净 Windows 全流程实测与实际语音效果验证仍保留在待办中。

@@ -29,11 +29,11 @@
 | [GPT-SoVITS 官方项目](https://github.com/RVC-Boss/GPT-SoVITS) | 本地语音合成程序 | 否 |
 | [官方 Windows 整合包列表](https://huggingface.co/lj1995/GPT-SoVITS-windows-package/tree/main) | 本文参考 v2Pro 系列；普通包 `GPT-SoVITS-v2pro-20250604.7z` 约 8.19 GB，`…-nvidia50.7z` 约 8.84 GB，按原发布说明选择兼容 GPU/驱动的包 | 否；不要下载整个 118 GB 仓库 |
 | [GPT-SoVITS 基础模型](https://huggingface.co/lj1995/GPT-SoVITS/tree/main) | 整合包缺模型时，补齐与配置匹配的基础权重和文本模型 | 否；整合包是否齐全需实际检查 |
-| 选定声线的 `.ckpt`、`.pth` 与原发布说明 | 使用第三方训练声线时，需要匹配 GPT-SoVITS 版本 | **当前两库尚未核实开发者声线的准确发布链接，待补** |
-| 参考 `.wav` 与逐字台词 | 自己的录音或有明确使用许可的录音 | **不包含**；模板中的 `MAY_*.wav` 只是文件名 |
+| [后藤一里 gotoh-v1-3-1（v2ProPlus）](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/tree/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1)；[GPT 权重](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/resolve/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1/GPT/gotoh-v1-3-1-e16.ckpt?download=true)；[SoVITS 权重](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/resolve/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1/SoVITS/gotoh-v1-3-1_e8_s368.pth?download=true) | 推荐声线；两个文件分别为 `gotoh-v1-3-1-e16.ckpt` 和 `gotoh-v1-3-1_e8_s368.pth`，不要从 v4 目录取同名文件 | 不包含；已核实上游文件，按 [A2–A3](VOICE_SETUP.zh-CN.md#a2-分清三个文件来源)放置和配置 |
+| [Mayuri 参考音频](https://huggingface.co/SteinsGateSg/mayuri-voice/tree/main/refs)与[选段索引](https://huggingface.co/SteinsGateSg/mayuri-voice/blob/main/refs/index.csv) | 推荐参考 WAV + 同名 TXT；[26 项原文件、命名和调用说明](VOICE_SETUP.zh-CN.md#a6-完整配置-26-种情绪文件究竟应该叫什么) | 不包含；需复制改为 SPP 默认名称或修改 path，不必下载 Mayuri 模型权重 |
 | [7-Zip](https://www.7-zip.org/) | 解压 `.7z`；Windows x64 电脑选择 x64 安装器 | 否 |
 
-声线权重和参考录音是不同资源。安装 GPT-SoVITS 并不会自动得到开发者演示中的同一声音。要复现该声音，还需补齐准确来源、文件名、版本和参考录音，不能根据角色名随便下载同名模型。
+本教程推荐“后藤一里 v2ProPlus 权重 + Mayuri 参考音频”。声线权重与参考录音来自不同项目，已列出准确文件；仍须配置和试听，安装 GPT-SoVITS 本身不会自动采用它们。后藤项目标注 CC BY-NC-SA 4.0，Mayuri 标注 License: other，具体使用条件见各自原发布页。
 
 ## 麦克风识别需要的文件
 
@@ -49,6 +49,8 @@
 GPU、驱动与 Python 依赖组合尚未在本教程中完成全新安装验收。键盘聊天可先跳过麦克风部分。
 
 ## 在线 AI 与可选记忆检索
+
+**开始安装前先确认 API 计费账户。推荐 `gpt-6-luna`；ChatGPT 订阅不包含本 Mod 的 API 消耗。** 购买入口、每天 100 轮的预算示例和价格表填写方式见 [API 与费用估算](API_COST.zh-CN.md)。
 
 | 入口 | 用途 |
 |---|---|
