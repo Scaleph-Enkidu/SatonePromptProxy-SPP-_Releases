@@ -2,9 +2,11 @@
 
 [返回首页](../README.md) · [下载清单](DOWNLOADS.zh-CN.md)
 
-适用：AIChat 1.16.14 + SPP 5.8.23。教程草稿 v2，2026-09-26。
+适用：AIChat 1.16.14 + SPP 5.8.23。教程草稿 v3，2026-09-26。
 
-**先把这两个文件下载好：** [AIChat_v1.16.14.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/AIChat_v1.16.14.zip) 和 [SatonePromptProxy_v5.8.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/SatonePromptProxy_v5.8.23.zip)。也可以打开[配对发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23)，在 Assets 中下载这两个 ZIP；不要选 Source code。校验文件与其他依赖见[下载清单](DOWNLOADS.zh-CN.md)。
+**安装前必读：** 先查看[首页的 API 付费要求与安装难度声明](../README.md)及[费用估算](API_COST.zh-CN.md)，确认自己有可用的 OpenAI API 计费账户，并愿意承担复杂安装与使用成本。推荐模型为 `gpt-6-luna`，ChatGPT 订阅不能替代本 Mod 的 API 用量。
+
+**确认后再下载两个文件：** [AIChat_v1.16.14.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/AIChat_v1.16.14.zip) 和 [SatonePromptProxy_v5.8.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/SatonePromptProxy_v5.8.23.zip)。也可以打开[配对发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23)，在 Assets 中下载这两个 ZIP；不要选 Source code。校验文件与其他依赖见[下载清单](DOWNLOADS.zh-CN.md)。
 
 **当前访问限制：** 安装包已集中到本发布库，但本库仍为 Private，未获得权限的玩家会看到 404；公开本库后即可直接按本文下载，不需访问两个源码仓库。
 
@@ -97,7 +99,7 @@ F9 → 展开设置，填写：
 
 ## 7. 配置朗读
 
-按[语音设置 A 部分](VOICE_SETUP.zh-CN.md)安装 GPT-SoVITS、模型和参考音频，先生成并播放一段测试 WAV。
+按[语音设置 A 部分](VOICE_SETUP.zh-CN.md)安装 GPT-SoVITS，使用推荐的后藤一里 v2ProPlus 权重与 Mayuri 参考 WAV/台词，先生成并播放一段测试 WAV。完整 26 种情绪的原文件、复制命名和配置方法在该页 A6。
 
 **成功标志：** 直接调用 GPT-SoVITS 能发声，经 SPP `/tts` 也能生成 WAV，最后游戏里能听到日文回答并看到中文字幕。“服务已就绪”本身不足以证明权重、参考录音与合成都正常。
 
