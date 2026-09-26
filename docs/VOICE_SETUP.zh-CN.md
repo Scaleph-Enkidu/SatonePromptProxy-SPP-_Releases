@@ -4,13 +4,17 @@
 
 本文将“聪音发声”和“听懂玩家说话”分开设置。前者使用 GPT-SoVITS，后者使用 Fun-ASR；装好一个不会自动装好另一个。
 
+**先选择硬件路线：** 完整 GPU 语音暂建议 8 GB 显存起步、12 GB 或以上更有余量；这不是最低配置测试结果，依据和限制见[运行开销与显卡兼容说明](HARDWARE.zh-CN.md)。CUDA 路线面向兼容 NVIDIA 显卡。非 NVIDIA 玩家可以先用文字聊天；完整语音需要对应的 CPU 环境或另行验证的 GPU 后端，不能照抄 CUDA 安装步骤。CPU 语音的整套 Windows 实时体验尚未验收。
+
+**Fun-ASR 当前不会被 SPP 强制设为 CPU。** 随包脚本没有传入 `device`，不能把 `embedding_device: "cpu"` 当成语音识别设置。需要明确选择 CPU 时，见 [B5](#b5-需要让-fun-asr-使用-cpu-时)。
+
 **验证边界：** 下面根据当前 SPP/AIChat 源码与上游文档编写，尚未在没有开发环境的新 Windows 电脑上走完全部步骤。后藤一里模型链接与 Mayuri 的 26 项文件对应关系已经核实；GPU/驱动/Python 依赖组合和整套安装后的实际声音效果，仍需在干净环境验证。无法验证的部分不会写成“一键安装成功”。
 
 ## A. 让聪音发声
 
 ### A1. 安装 GPT-SoVITS
 
-1. 打开[官方项目](https://github.com/RVC-Boss/GPT-SoVITS)和[官方整合包列表](https://huggingface.co/lj1995/GPT-SoVITS-windows-package/tree/main)。根据显卡与上游说明选择 Windows 包；本教程推荐后藤一里的 **v2ProPlus** 权重，所选整合包必须支持 v2ProPlus，并提供 `api_v2.py`。
+1. 打开[官方项目](https://github.com/RVC-Boss/GPT-SoVITS)和[官方整合包列表](https://huggingface.co/lj1995/GPT-SoVITS-windows-package/tree/main)。根据显卡与上游说明选择 Windows 包；非 NVIDIA 玩家需要上游支持的 CPU 环境，不能默认选择 CUDA 包。上游源码安装也提供 CPU 选项，但 Python 路径不一定是下文的 `runtime\python.exe`。本教程推荐后藤一里的 **v2ProPlus** 权重，所选整合包必须支持 v2ProPlus，并提供 `api_v2.py`。
 2. 用 7-Zip 解压到 `D:\LofiMOD\GPT-SoVITS`。这里应当能直接看到 `api_v2.py`、`runtime` 和 `GPT_SoVITS` 子文件夹。若多套了一层文件夹，以实际包含这些文件的一层作为根目录。
 3. 双击包内 `go-webui.bat`，按终端提示打开本地网页，在 TTS 推理页进行单独测试。
 4. 选择匹配的 GPT 权重和 SoVITS 权重，上传有效参考录音，填写录音原文与语言，再输入要合成的日语，先确认网页能生成可播放声音。
@@ -237,7 +241,7 @@ py -3.12 -m venv .venv
 ### B2. 安装后端依赖
 
 1. 打开 [Fun-ASR 官方仓库](https://github.com/QwenAudio/Fun-ASR)，点击 Code → Download ZIP，解压到 `D:\LofiMOD\AI\Fun-ASR-source`，确保其内部直接有 `requirements.txt`。此处下载源码是为了取上游运行依赖，和不能把 Mod 源码当成 DLL 安装包并不矛盾。
-2. 在 [PyTorch 官方选择器](https://pytorch.org/get-started/locally/)选择 Windows、Pip、Python，以及与你显卡驱动兼容的计算平台。按照页面提供的命令安装 **torch 和 torchaudio**，将其开头 `pip`/`pip3` 改成 `.venv\Scripts\python.exe -m pip`，保证装进刚建的环境。
+2. 在 [PyTorch 官方选择器](https://pytorch.org/get-started/locally/)选择 Windows、Pip、Python。NVIDIA GPU 路线选择兼容驱动的 CUDA 平台；非 NVIDIA 玩家或希望识别使用 CPU 的玩家选择 CPU，不能照抄 CUDA 的安装命令。按照页面提供的命令安装 **torch 和 torchaudio**，将其开头 `pip`/`pip3` 改成 `.venv\Scripts\python.exe -m pip`，保证装进刚建的环境。
 3. 与[上游 requirements.txt](https://github.com/QwenAudio/Fun-ASR/blob/main/requirements.txt)核对：本次读取要求 `torch>=2.9.0`、`torchaudio>=2.9.0`、`transformers>=4.51.3`、`funasr>=1.3.26` 等。若选择器显示更旧的缓存版本，不能把它当成满足要求。torch 与 torchaudio 也应互相匹配。
 4. 在刚才的 CMD 中继续：
 
@@ -247,7 +251,7 @@ py -3.12 -m venv .venv
 .venv\Scripts\python.exe -c "import torch,torchaudio,funasr; print(torch.__version__,torchaudio.__version__); print('CUDA available:',torch.cuda.is_available())"
 ```
 
-**成功标志：** 导入无错误；计划用 NVIDIA GPU 时 CUDA available 应为 True。出现 False 不能算 GPU 环境已安装成功。CPU、AMD 等路线需另外验证性能与兼容性。
+**依赖检查：** 导入无错误；计划使用 NVIDIA GPU 时 `CUDA available` 应为 `True`。明确安装 CPU 环境时返回 `False` 是正常的，不能因此判为安装失败。这个值只说明 CUDA 是否可用，不证明模型已经运行在 GPU／CPU；仍须完成模型加载、实际识别和设备核对。AMD／Intel GPU 路线不在本教程已验证范围内。
 
 上游依赖清单使用范围版本，不是本项目验证过的锁定环境。正式面向零基础玩家发布前，维护者应补上自己实测成功的完整版本清单/安装器；本草稿保留这一缺项，不虚构成功记录。
 
@@ -287,6 +291,27 @@ py -3.12 -m venv .venv
 5. 回到游戏，选好 Windows 麦克风，先 F8、后持续通话，详见[安装页](INSTALL.zh-CN.md)。
 
 加载失败时查看 SPP 日志中的首次 Python 异常。不要把“装好了 pip 包”“创建了模型文件夹”当作模型已经成功加载。上游注册/远程模型代码与本地依赖是否匹配，也属于全新安装必须检查的环节。
+
+### B5. 需要让 Fun-ASR 使用 CPU 时
+
+**这是需要实测的手动适配方法，不是已发布的 CPU 模式开关。** 当前 SPP 5.8.23 没有 `asr.device` 配置字段；向 JSON 中添加这个字段不会改变设备。已有可用环境请先保留原脚本与 `asr.server_script` 值，不要在 GPT-SoVITS 环境中直接改装 ASR 依赖。
+
+1. 按 B1／B2 建立独立环境；如果目标就是 CPU，选择 CPU 版 PyTorch。保留与当前 `Fun-ASR-Nano-2512`、`funasr.AutoModel` 路线相符的依赖，不能直接替换为 HF／GGUF 模型。
+2. 关闭 SPP 与已确认的旧 ASR 服务，将包内 `satone_funasr_server_v1.py` 复制到自己的 ASR 目录，命名为 `satone_funasr_server_cpu_v1.py`，只将模型初始化这一行改为：
+
+   ```python
+   model = AutoModel(model=model_dir, trust_remote_code=True, device="cpu")
+   ```
+
+   原行没有 `device` 参数。保留其余代码和缩进，尤其是热词、UTF-8 和 HTTP 接口逻辑。
+
+3. 将 SPP `config.json` 内的 `asr.server_script` 改为这份副本的完整路径，例如 `D:/LofiMOD/AI/FunASR-Runtime/satone_funasr_server_cpu_v1.py`；`asr.python` 指向对应独立环境。此处是既有字段，不能改错为根级字段。
+4. 重新启动。检查 `/asr/status` 的解析脚本路径确实是副本，确认 9881 没有复用原 GPU 服务；再检查 `/health` 并用 F8 实际识别中日文短句。健康页返回成功不代表设备和性能已验证，当前健康页也没有报告模型设备。
+5. 对比该 ASR 进程及整卡显存的启动前后读数，再测试较长音频和持续通话。记录 CPU、内存、识别延迟与失败情况。CPU 模式可能增加延迟；若依赖报错或超过超时，需要修复后才能列为兼容。
+
+回退时先停服务，再恢复原 `asr.server_script` 和环境路径。后续升级随包脚本时，需将修复同步到自己的副本，不能一直保留旧接口实现。
+
+若 TTS 也要使用 CPU，需在 GPT-SoVITS 的实际 `custom:` 节另设 `device: cpu`、`is_half: false`，保持声线版本和权重正确，并重启它的 API；改变 ASR 不会改变 TTS。先完成 A 部分单独合成，再验证游戏内延迟。上游支持 CPU 配置不等于当前整合包和声线组合已经通过本项目测试。
 
 ## 三个本地端口
 
