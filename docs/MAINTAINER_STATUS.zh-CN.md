@@ -10,9 +10,13 @@
 |---|---|---|---|
 | Scaleph-Enkidu/SatoneAIChat_Remake | private | 两分支均为 `aeaa1b33598d68ead0b3d1353b3793e5df399cc2` | Release `AIChat-v1.16.14`，非草稿、非预发布 |
 | Scaleph-Enkidu/SatonePromptProxy | private | 两分支均为 `916c61a71973f825266be7140d84c45afbd6bcaa` | Release `SPP-v5.8.23`，非草稿、非预发布 |
-| Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases | private | 本次文档更新前 main 为 `262e21f2d69d93bcae9311eec2906503730a8b22` | 核查时无 Release |
+| Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases | private | 搬运前教程提交 `eb87300fd0a36e8301ba4dfef55857ebeb14fb27` | 配对发布 [AIChat-v1.16.14_SPP-v5.8.23](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23) |
 
-本次只把教程写入指定发布库，不改变上述可见性，不向发布库复制私人源码、玩家数据或游戏资产，不创建二进制 Release。未来状态变化后应更新本表及玩家下载清单。
+本次按维护者要求，将两份最新正式安装包、原校验文件及 AIChat 许可证加入本发布库，并更新使用方法的下载入口。文件存于 `packages/AIChat_v1.16.14_SPP_v5.8.23/`，配对 Release 由 `.github/workflows/publish-pair.yml` 校验后发布，原始来源与包内文件清单见[版本清单](../releases/AIChat_v1.16.14_SPP_v5.8.23.json)。两个原 ZIP 未重新编译或重打包。
+
+AIChat 来源为成功工作流 36241959879 的 artifact 10906530604，SPP 来源为成功工作流 36246435335 的 artifact 10907293697。两份 ZIP 的 SHA256 均与源库正式 Release 资产 digest 相同。AIChat 原 BUILD_INFO 仍记录 paired_spp 5.8.22；SPP 5.8.23 明确记录 paired_aichat 1.16.14，所以本配对继续使用原 AIChat 包。
+
+本次没有改变三个仓库的可见性。当前普通玩家仍需要本发布库权限；公开本发布库后，二进制下载不依赖私有源库权限。私人源码、玩家数据和游戏资产未搬入本库。
 
 AIChat README 的“当前正式版本 1.16.9”和候选条目没有完全同步到新 Release；SPP 文档也残留旧阶段文字。教程按正式 Release、源代码和最新配对说明判断，没有把这些旧条目继续写给新玩家。
 
@@ -64,7 +68,7 @@ test ! -e "$STAGE/config.json"
 test ! -e "$STAGE/runtime_paths.json"
 ```
 
-SPP 使用明确文件清单复制到 release-stage，未复制 tools/windows 下的 BAT。两个工作流都没有把玩家的已运行目录直接压缩。本次检查的是工作流、模板和源码，没有对实际发布 ZIP 的所有字节做安全扫描。
+SPP 使用明确文件清单复制到 release-stage，未复制 tools/windows 下的 BAT。两个工作流都没有把玩家的已运行目录直接压缩。本次同时核对实际 ZIP 的哈希、CRC、文件清单及 BUILD_INFO，未发现个人运行配置、聊天记录或日志；这不是完整 DLL/EXE 安全审计。
 
 ### 外部组件
 
@@ -84,15 +88,15 @@ SPP 使用明确文件清单复制到 release-stage，未复制 tools/windows �
 | 优先级 | 缺项 | 验收方式 |
 |---|---|---|
 | 必须 | 玩家无需私库权限即可取得配对 Mod 包 | 从未登录 GitHub 的浏览器打开下载链接并下载；在下载页标清当前版本 |
-| 必须 | 实际 Release ZIP 内容核查 | 检查文件清单与哈希，不含个人 CFG、config.json、history、memory_profiles、日志、备份或凭据 |
+| 已完成（当前两包） | 实际 Release ZIP 内容核查 | 原 ZIP 与源库 SHA256 一致；文件清单未含个人 CFG、运行 config.json、history、memory_profiles、日志或备份；凭据嵌入等二进制语义风险未作完整审计 |
 | 必须 | 已验证的 Fun-ASR 全新环境 | 用干净 Windows 建环境、完整下载模型、成功加载、F8/持续通话测试；保存精确依赖版本，不只写 pip install 成功 |
 | 必须（复现演示声音） | 声线 `.ckpt/.pth` 的准确原链接、版本、许可和参考录音来源 | 列出准确文件名、来源、GPT-SoVITS 版本，能从零取得并生成相同类型的声音 |
 | 必须 | 解决默认 MAY WAV 不存在的初次安装问题 | 提供合法可取得的录音与相应配置，或提供清楚的自有参考音频流程；Neutral 实测通过 |
 | 必须 | 新手从零实测一次 | 只有 Steam 游戏、没有旧 CFG/缓存/模型的环境，按教程完成；将测试边界写实 |
 | 建议 | 实际 GUI 截图 | Steam 定位目录、正确文件层级、F9 配置、服务就绪状态；截图前清除 Key 与私人聊天 |
-| 建议 | 降低手工配置成本 | 之后另行实现干净配置向导/依赖安装器；本次仅写教程，没有伪称已实现 |
+| 建议 | 降低手工配置成本 | 之后另行实现干净配置向导/依赖安装器；本次提供原包与教程，未实现自动安装器 |
 | 建议 | 统一源库 README 版本状态 | 避免正式 Release 与旧候选说明相互矛盾 |
 | 建议 | 扩大备份范围并复测 | 明确包含 AIChat CFG/history 与 OriginalGameProgress 账本；不得把私人备份当安装包 |
 | 建议 | 密钥与日志保护 | 另行设计 Windows 凭据保护、导出脱敏、日志开关和本地端点鉴权；现状在隐私页明示 |
 
-本次任务的完成标准是“形成可审阅、依据明确、缺项可见的教程并写入指定仓库”，不是未经实测就宣布已经实现零基础一键安装。
+本次交付包含两份正式原包、统一配对 Release、校验与来源记录，以及对应的玩家使用方法。干净 Windows 全流程实测和声线资源缺项仍保留在待办中。

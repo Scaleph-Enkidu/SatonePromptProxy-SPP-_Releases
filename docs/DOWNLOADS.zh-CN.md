@@ -2,7 +2,7 @@
 
 [返回首页](../README.md) · [按步骤安装](INSTALL.zh-CN.md)
 
-核查日期：2026-09-26。“已核实”指仓库、发布页或 Release 元数据可查询，不代表已在全新 Windows 电脑上测试每个包。
+核查日期：2026-09-26。两份插件 ZIP 已实际取得并核对 SHA256 与文件清单，哈希与源仓库正式 Release 一致；这不代表已在全新 Windows 电脑上测试全部功能。
 
 ## 游戏与两个 Mod
 
@@ -10,11 +10,15 @@
 |---|---|---|
 | Steam 库中的 Chill with You : Lo-Fi Story | 正常安装并运行一次游戏 | 玩家自行购买 |
 | [BepInEx 5.4.23.5 发布页](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5)；[Windows x64 ZIP](https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.5/BepInEx_win_x64_5.4.23.5.zip) | 解压内容放在游戏 EXE 同一层 | 公开；本项目编译引用此版本。不要选 x86、Patcher 或 BepInEx 6 IL2CPP |
-| [AIChat 1.16.14 发布页](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/releases/tag/AIChat-v1.16.14)；[AIChat_v1.16.14.zip](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/releases/download/AIChat-v1.16.14/AIChat_v1.16.14.zip) | 将其中 AIChat.dll 放进游戏的 BepInEx/plugins | **私库，普通玩家当前不可直接下载**；277,086 字节 |
-| [AIChat SHA256](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/releases/download/AIChat-v1.16.14/AIChat_v1.16.14_SHA256.txt) | 校验对应 ZIP | 同上 |
-| [SPP 5.8.23 发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy/releases/tag/SPP-v5.8.23)；[SatonePromptProxy_v5.8.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy/releases/download/SPP-v5.8.23/SatonePromptProxy_v5.8.23.zip) | 全部解压到固定的 SPP 文件夹 | **私库，普通玩家当前不可直接下载**；8,739,688 字节 |
-| [SPP SHA256](https://github.com/Scaleph-Enkidu/SatonePromptProxy/releases/download/SPP-v5.8.23/SatonePromptProxy_v5.8.23_SHA256.txt) | 校验对应 ZIP | 同上 |
-| [本仓库 Releases](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases) | 计划中的统一下载入口 | 核查时没有 Release，尚不可作为玩家安装包入口 |
+| [AIChat 1.16.14 发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23)；[AIChat_v1.16.14.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/AIChat_v1.16.14.zip) | 将其中 AIChat.dll 放进游戏的 BepInEx/plugins | 本发布库统一提供；本库仍为 Private；277,086 字节 |
+| [AIChat SHA256](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/AIChat_v1.16.14_SHA256.txt) | 校验对应 ZIP | 同上 |
+| [SPP 5.8.23 发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23)；[SatonePromptProxy_v5.8.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/SatonePromptProxy_v5.8.23.zip) | 全部解压到固定的 SPP 文件夹 | 本发布库统一提供；本库仍为 Private；8,739,688 字节 |
+| [SPP SHA256](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/SatonePromptProxy_v5.8.23_SHA256.txt) | 校验对应 ZIP | 同上 |
+| [本仓库 Releases](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases) | 统一下载入口 | 当前配对 [AIChat 1.16.14 + SPP 5.8.23](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23) |
+
+本次已将两个正式原包放入本发布库，玩家无需去两个源码仓库找文件。当前本库仍为 Private，未获权限时会看到 404；转为 Public 后才能供普通玩家直接下载。
+
+备用入口：[仓库内的版本文件夹](../packages/AIChat_v1.16.14_SPP_v5.8.23)。打开对应 ZIP 的文件页，点 **Download raw file（下载原始文件）**；不要复制网页内容另存为 ZIP。该入口同样受本仓库权限限制。
 
 在 GitHub 发布页展开 **Assets**，点击表中的 ZIP 文件。不要下载 `Source code (zip)` 或 `Source code (tar.gz)` 作为 Mod 安装包。源码不会替你生成 DLL/EXE，也无需安装 GitHub Desktop。请按发布说明配对版本，不要把页面最上面的历史条目自动当作推荐版。
 
@@ -64,4 +68,11 @@ Get-FileHash .\AIChat_v1.16.14.zip -Algorithm SHA256
 Get-FileHash .\SatonePromptProxy_v5.8.23.zip -Algorithm SHA256
 ```
 
-与相同版本的 SHA256 文本比较，字母大小写不影响比较。哈希检查文件一致性，不证明软件已经通过安全审计。此次文档核查未重新下载并逐字节检查 Release ZIP。
+与相同版本的 SHA256 文本比较，字母大小写不影响比较。本次分发的原包已实际校验：
+
+```text
+65684dac51fdae292d0e4676dc1a458396c5bb01a63e15472537f5c5b8143cf1  AIChat_v1.16.14.zip
+bcad7805fa8193b8efd9a14e82ef8be16b65d9d9f6c86fad674719cc17150c6e  SatonePromptProxy_v5.8.23.zip
+```
+
+哈希检查文件一致性，不证明软件已经通过安全审计。Release 附有 `AIChat_LICENSE.txt` 和版本来源清单；它们无需放进游戏，保留即可。AIChat 包内 BUILD_INFO 的旧配对 SPP 5.8.22 是原构建记录；本次 SPP 5.8.23 明确继续配对 AIChat 1.16.14，不需寻找另一个 DLL。
