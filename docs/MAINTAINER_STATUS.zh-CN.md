@@ -4,6 +4,20 @@
 
 日期：2026-09-26。本文供维护者更新教程使用，普通玩家可直接读[安装页](INSTALL.zh-CN.md)。
 
+## 运行开销与设备选择核查（2026-09-27）
+
+本次为文档更新。README 将显存与非 NVIDIA 限制提前，新增 HARDWARE.zh-CN.md，并同步安装入口与语音步骤。没有修改 DLL、EXE、ASR 默认设备或正式包版本。没有发布节省显存的性能结论。
+
+- 截图中的两个 python.exe 分别为 2,274,520 K、2,016,496 K 专用 GPU 内存；游戏为 664,188 K。缺少命令行、模型精度、采样阶段与整卡峰值，不能逐一归属模型，也不能推导最低显存。8 GB 起步、12 GB 优先是当前暂定的容量建议。
+- [SPP 随包 ASR 脚本](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/satone_funasr_server_v1.py) 原文为 `AutoModel(model=model_dir, trust_remote_code=True)`，没有传入 device。
+- [SPP main.go](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/main.go) 的 ASRConfig 没有 device；launchOwned 传入模型、地址、端口、热词与 UTF-8 环境变量，没有传入 ASR 设备。因此不能声称已有 `asr.device` 开关。
+- [Embedding worker](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/embedding_worker.py) 原文为 `self.model.to("cpu")`。CPU 记忆检索设置与 ASR 不同。
+- [AIChat ASRClient](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/blob/aeaa1b33598d68ead0b3d1353b3793e5df399cc2/AIChat/Services/ASRClient.cs) 发 WAV 到 HTTP /asr，没有在该客户端加载本地神经网络。
+- 上游 FunASR 的本次读取 blob 为 `c1de533f6cb68ecde8f020f98248ba2b7954f066`；默认设备为 CUDA，有设备可用性判断。这不是用户已经安装的 Python 依赖版本的证明。
+- 上游 GPT-SoVITS 的 tts_infer.yaml 本次读取 blob 为 `f31061cc8bc5d15c61443b895218f73121d4ab89`，有 CPU／关闭半精度配置；Windows install.ps1 有 CPU 安装选项。不能据此宣称 AMD／Intel GPU 原生加速已适配。
+
+下一步验证：记录 Windows／驱动／显卡、精确 Python 依赖和模型版本；映射进程；分别测 GPU 双语音、CPU ASR + GPU TTS、全 CPU 语音的加载与峰值、F8／持续通话延迟、失败和退出。显式设备配置及健康页设备信息可作为后续实现任务；本轮没有完成它们。CPU 副本路线需用户实机验证，不等同于新增受支持的发布模式。
+
 ## 核查到的仓库状态
 
 | 仓库 | 可见性 | main / develop 快照 | 已发布版本 |

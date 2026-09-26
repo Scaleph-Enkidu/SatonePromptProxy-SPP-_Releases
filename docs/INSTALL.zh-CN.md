@@ -6,6 +6,8 @@
 
 **安装前必读：** 先查看[首页的 API 付费要求与安装难度声明](../README.md)及[费用估算](API_COST.zh-CN.md)，确认自己有可用的 OpenAI API 计费账户，并愿意承担复杂安装与使用成本。推荐模型为 `gpt-6-luna`，ChatGPT 订阅不能替代本 Mod 的 API 用量。
 
+**先核对硬件路线：** 完整本地语音暂建议 8 GB 显存起步、12 GB 或以上更有余量；这是建议值，未做最低配置验收。非 NVIDIA 玩家可先使用文字聊天，语音需要 CPU 或其他经过适配的后端，不能照搬 CUDA 安装步骤。当前 Fun-ASR 随包脚本没有强制使用 CPU。请先看[运行开销与显卡兼容说明](HARDWARE.zh-CN.md)，再按自己的设备选择安装路线。
+
 **确认后再下载两个文件：** [AIChat_v1.16.14.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/AIChat_v1.16.14.zip) 和 [SatonePromptProxy_v5.8.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/SatonePromptProxy_v5.8.23.zip)。也可以打开[配对发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23)，在 Assets 中下载这两个 ZIP；不要选 Source code。校验文件与其他依赖见[下载清单](DOWNLOADS.zh-CN.md)。
 
 **当前访问限制：** 安装包已集中到本发布库，但本库仍为 Private，未获得权限的玩家会看到 404；公开本库后即可直接按本文下载，不需访问两个源码仓库。
