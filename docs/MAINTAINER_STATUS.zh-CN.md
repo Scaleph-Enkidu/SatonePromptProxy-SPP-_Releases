@@ -29,6 +29,26 @@ AIChat README 的“当前正式版本 1.16.9”和候选条目没有完全同�
 - Mayuri：[参考库](https://huggingface.co/SteinsGateSg/mayuri-voice/tree/main/refs)、[index.csv](https://huggingface.co/SteinsGateSg/mayuri-voice/blob/main/refs/index.csv)。按 SPP 5.8.23 原包的 `profiles_26.csv` 与 `config.example.json` 核对了全部 26 项来源：24 个不同 WAV 均有对应 TXT，索引时长在 3–10 秒，默认 prompt 与索引逐项相同。未在本次逐段试听或将外部音频打入插件包。
 - SPP 的 `resolveVoiceProfile` 按 mapping/profiles 选择文件；`loadPromptForProfile` 先读非空 prompt，再读 WAV 旁边同名 TXT。只改 CSV 不改变运行配置。上述事实已写进玩家语音说明。
 
+## 首页功能介绍的实现依据
+
+2026-09-27（日本时间）补充：首页现在先介绍模组体验、长期记忆、关系、人格设定及默认存档位置，再说明 API 费用和安装条件。本次核对的源提交仍为 AIChat `aeaa1b33598d68ead0b3d1353b3793e5df399cc2` 与 SPP `916c61a71973f825266be7140d84c45afbd6bcaa`，未将宣传文字写成实机稳定性保证。
+
+- **本地原文与按需检索：** [main.go](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/main.go) 的 `appendArchive` 追加写入原文；`shouldRecall` 检查当前话语中的回忆触发词，`buildRecallInstructions` 要求检索 worker 已启动，并对检索结果执行分数和长度筛选。源码摘录：
+
+```go
+f, err := os.OpenFile(p, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0600)
+if !shouldRecall(userText) || !recallWorker.started {
+    return "", nil, false
+}
+```
+
+以上两段来自不同函数。源库 [README 的长期记忆说明](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/README.md)在自动整理步骤中明确写道：“本地 Archive 完全不删除。”这描述自动整理流程，不覆盖手动重置、删文件、磁盘故障等情况。首页将“近乎无限记忆”限定为本地归档可以持续积累，不承诺模型有无限上下文或保证每次召回成功。
+
+- **档案位置：** `defaultMemoryProfilesConfig` 将根目录设为 `memory_profiles`，`fixedMemoryProfiles` 使用中文文件夹名“记忆1/2/3”；路径组合原文为 `filepath.Join(profileRootPath(), p.Folder, filepath.Base(base))`。因此不能把接口 ID `memory1` 当成默认磁盘文件夹名。关闭档案功能或使用自定义配置时，实际位置可能不同。
+- **好感与关系：** [relationship.go](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/relationship.go)维护 Affection、Trust、Comfort、Openness 及进度字段；综合好感计算原文为 `v := a*0.50 + t*0.20 + c*0.20 + o*0.10`。关系规则随阶段改变配合与亲密交流的倾向；Persona 定义的身份、自主性和核心边界独立于关系数值。首页没有把高好感描述为无条件服从，也没有把模型评分当作真实心理测量。
+- **完整人格文本与重载：** 默认文件由 `defaultPersonaFile = "SatonePersona_v4.5.txt"` 定义。`reloadPersonaNow` 替换 Persona 项目的源码注释为 “Remove all previous developer persona messages, leaving chat history untouched.”；修改人格无需清空聊天。人格全局共用而记忆档案独立，不能把三个档案宣传为三个人格。完整可编辑同样不等于模型行为可以被百分之百控制。
+- **其他功能边界：** 语音、情绪参考与麦克风需要外部服务及资源；原版经历需要有效 Steam 身份。26 项参考配置、24 段不同上游录音及相关下载入口沿用前一节的核查结果。首页的能力描述不代表已完成全新 Windows 全流程或长期稳定性实测。
+
 ## 关键依据与原文摘录
 
 以下固定提交链接来自私有源库；没有权限的读者可能看不到。玩家教程应保持自足，不能要求普通玩家靠阅读这些源码才能安装。
