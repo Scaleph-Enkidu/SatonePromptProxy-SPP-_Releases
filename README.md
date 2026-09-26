@@ -4,9 +4,20 @@
 
 本 Mod 由 **AIChat Remake** 和 **SatonePromptProxy（SPP）** 共同工作。AIChat 在游戏里显示聊天、字幕并播放语音；SPP 管理角色设定、记忆、关系及语音服务连接。玩家不需要学习 Git，也不需要编译代码。
 
-**安装教程草稿 v1 · 核查日期 2026-09-26 · 当前配对：AIChat 1.16.14 + SPP 5.8.23。**
+**安装教程草稿 v2 · 核查日期 2026-09-26 · 当前配对：AIChat 1.16.14 + SPP 5.8.23。**
 
-> **当前还不是已经完成的公开下载站。** 核查时，本仓库与两个源码仓库均为私有，本仓库没有 Release 安装包。下列源仓库下载链接仅供有权限的人使用，普通玩家可能看到 404。公开分发前还需补齐公开安装包、确定的声线资源说明与 Windows 全新安装实测。本文不会将这些缺项写成“已经可用”。
+## 下载这两个插件
+
+统一入口：[AIChat 1.16.14 + SPP 5.8.23 配对发布](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23)。
+
+| 安装包 | 放在哪里 |
+|---|---|
+| [AIChat_v1.16.14.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/AIChat_v1.16.14.zip) | 解压取出 AIChat.dll，放到游戏的 BepInEx/plugins |
+| [SatonePromptProxy_v5.8.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/SatonePromptProxy_v5.8.23.zip) | 全部解压到固定文件夹，运行 SatonePromptProxy.exe |
+
+第一次安装还需要 BepInEx 和自己的 API 配置，请从下方“一步一步安装”开始。不要下载 Source code 作为插件包。
+
+> **访问状态：** 两份正式包已集中到本发布库，并保留原 ZIP、SHA256 校验文件及 AIChat 原许可证。当前本发布库仍是 Private，未获得本库权限的玩家会看到 404；公开本库后，玩家无需访问两个源码仓库。声线准确资源说明与 Windows 全新安装实测仍需补齐。
 
 | 你要做什么 | 阅读哪一页 |
 |---|---|
@@ -25,4 +36,4 @@
 - 更新 DLL 后仍显示旧接口和聊天记录，通常是读取了旧配置。不要向别人发送自己使用过的整个游戏目录或 SPP 目录。
 - SPP 5.8.23 的新记忆整理阈值尚无游戏内长对话验收记录。正式 Release 不代表所有设备与分支都已经实测。
 
-本仓库暂时维护教程，不包含游戏模型、游戏音频、玩家密钥或玩家存档。外部程序、模型与录音的使用条件以原发布页为准。
+本仓库提供教程和两份正式插件包，不包含游戏模型、游戏音频、玩家密钥或玩家存档。外部程序、模型与录音的使用条件以原发布页为准。

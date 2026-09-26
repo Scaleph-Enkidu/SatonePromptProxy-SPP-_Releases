@@ -87,4 +87,6 @@ SPP Dashboard 的 Backup 按钮不等于备份了游戏目录、所有模型和�
 
 源码与 CI 打包脚本显示：AIChat 包使用新构建的 DLL、版本说明和 BUILD_INFO；SPP 在独立 staging 目录复制程序、模板、默认人格等，并检查没有 config.json 与 runtime_paths.json。检查到的 AIChat 默认 Key 是占位符，不是实际用户密钥。
 
-这支持“当前自动打包流程没有主动复制玩家配置和聊天历史”的判断，但**不等于本次已经逐字节扫描历史上所有 ZIP/DLL/EXE，也不能证明用户本机目录从未被其他方式分享**。公开分发仍应检查实际待发布压缩包内容。
+本次分发又实际取得 AIChat 1.16.14 与 SPP 5.8.23 的正式 ZIP，SHA256 与源库 Release 完全一致，并检查了 ZIP 文件清单：没有个人 CFG、运行用 config.json、runtime_paths.json、聊天 history、memory_profiles 或日志文件。原包未修改，示例模板保留。
+
+这支持“本次分发包未夹带上述个人运行文件”的判断，但不等于完整二进制安全审计，也不能证明用户本机目录从未被其他方式分享。更换 DLL 后读取旧配置和历史，仍应按本页前述的本地数据位置解释。

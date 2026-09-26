@@ -2,9 +2,11 @@
 
 [返回首页](../README.md) · [下载清单](DOWNLOADS.zh-CN.md)
 
-适用：AIChat 1.16.14 + SPP 5.8.23。教程草稿 v1，2026-09-26。
+适用：AIChat 1.16.14 + SPP 5.8.23。教程草稿 v2，2026-09-26。
 
-**当前下载限制：** 本仓库与两源仓库仍私有，本仓库没有 Release。没有权限的玩家需要等待公开安装包；下文描述拿到指定文件后的操作。
+**先把这两个文件下载好：** [AIChat_v1.16.14.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/AIChat_v1.16.14.zip) 和 [SatonePromptProxy_v5.8.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/SatonePromptProxy_v5.8.23.zip)。也可以打开[配对发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23)，在 Assets 中下载这两个 ZIP；不要选 Source code。校验文件与其他依赖见[下载清单](DOWNLOADS.zh-CN.md)。
+
+**当前访问限制：** 安装包已集中到本发布库，但本库仍为 Private，未获得权限的玩家会看到 404；公开本库后即可直接按本文下载，不需访问两个源码仓库。
 
 ## 0. 先了解要安装什么
 
@@ -40,7 +42,7 @@
 
 ## 3. 安装 AIChat
 
-1. 解压 `AIChat_v1.16.14.zip`。
+1. 下载并解压 [AIChat_v1.16.14.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/AIChat_v1.16.14.zip)。
 2. 将 `AIChat.dll` 放到 `游戏根目录\BepInEx\plugins\AIChat.dll`。
 3. 检查 plugins 及其子目录，只留一份 AIChat。旧 DLL 即使改名仍可能加载，要移出 plugins。
 4. 如果有旧 `AIChatSatoneUXPatch.dll`，也移出 plugins，其功能已整合。
@@ -50,7 +52,7 @@
 
 ## 4. 安装 SPP
 
-1. 新建 `D:\LofiMOD\SatonePromptProxy`，将 SPP ZIP **全部**解压进去。
+1. 下载 [SatonePromptProxy_v5.8.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/SatonePromptProxy_v5.8.23.zip)，新建 `D:\LofiMOD\SatonePromptProxy`，将 ZIP **全部**解压进去。
 2. 确认 EXE 同层有 `config.example.json`、`SatonePersona_v4.5.txt`、`satone_funasr_server_v1.py`、`SatoneASRHotwords_v1.json`、`embedding_worker.py`、`profiles_26.csv`。
 3. 双击 `SatonePromptProxy.exe`，保持窗口开启。首次运行自动生成 `config.json`。
 4. 打开 [SPP 主页](http://127.0.0.1:11435/) 和 [Dashboard](http://127.0.0.1:11435/dashboard)。
@@ -126,7 +128,7 @@ F9 → 展开设置，填写：
 
 | 现象 | 先检查 |
 |---|---|
-| 下载 404 | 源库仍私有，是否有权限或是否已提供公开包 |
+| 下载 404 | 本发布库是否仍为 Private；是否使用有本库权限的账户；安装包不需要源码仓库权限 |
 | F9 无反应 | BepInEx 日志、DLL 层级、重复旧 DLL |
 | SPP 一闪就关 | 在其文件夹地址栏输入 cmd，再执行 SatonePromptProxy.exe；看 JSON、端口和日志错误 |
 | 11435 页面打不开 | 是否运行 SPP，是否开了重复实例，是否在同一台电脑访问 |
