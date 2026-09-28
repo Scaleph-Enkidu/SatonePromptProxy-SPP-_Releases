@@ -6,8 +6,8 @@
 
 | 文件 | 放置位置 | SHA-256 |
 |---|---|---|
-| [AIChat_v1.16.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.23_SPP-v5.8.26/AIChat_v1.16.23.zip) | 取出 `AIChat.dll` 和配套 PDB，放入游戏 `BepInEx/plugins` | `4673b76e4e3c1aba4e7b57f0054dc53ea65176e08936eeaa7f91da8c00515648` |
-| [SatonePromptProxy_v5.8.26.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.23_SPP-v5.8.26/SatonePromptProxy_v5.8.26.zip) | 完整解压到固定 SPP 目录，保留 `mayuri-voice/refs/` | `88a01fdaba7648f26db80f8ccc5d1937d2a10a98ad868770e9ff8021eecd2119` |
+| [AIChat_v1.16.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.23_SPP-v5.8.26/AIChat_v1.16.23.zip) | 取出 `AIChat.dll` 和配套 PDB，放入游戏 `BepInEx/plugins` | `570db4e02b6fdb216923cc8585fd3c590607061211bfed8da77af652c9684a8f` |
+| [SatonePromptProxy_v5.8.26.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.23_SPP-v5.8.26/SatonePromptProxy_v5.8.26.zip) | 完整解压到固定 SPP 目录，保留 `mayuri-voice/refs/` | `b9c7ed3eba98d428d740cb2f46d2aeb2cb571e3d3274679ca37f876c6716e6da` |
 
 两包包含版本说明和文件校验清单，不含玩家 API Key、配置或记忆。已有安装升级时保留个人数据。下载后可在文件夹地址栏输入 `powershell`，分别执行 `Get-FileHash .\AIChat_v1.16.23.zip -Algorithm SHA256` 与 `Get-FileHash .\SatonePromptProxy_v5.8.26.zip -Algorithm SHA256`，和上表比较。
 

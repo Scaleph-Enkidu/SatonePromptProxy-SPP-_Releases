@@ -5,12 +5,12 @@
   "spp_version": "5.8.26",
   "assets": {
     "AIChat_v1.16.23.zip": {
-      "sha256": "4673b76e4e3c1aba4e7b57f0054dc53ea65176e08936eeaa7f91da8c00515648",
-      "size_bytes": 504207
+      "sha256": "570db4e02b6fdb216923cc8585fd3c590607061211bfed8da77af652c9684a8f",
+      "size_bytes": 504417
     },
     "SatonePromptProxy_v5.8.26.zip": {
-      "sha256": "88a01fdaba7648f26db80f8ccc5d1937d2a10a98ad868770e9ff8021eecd2119",
-      "size_bytes": 9753861
+      "sha256": "b9c7ed3eba98d428d740cb2f46d2aeb2cb571e3d3274679ca37f876c6716e6da",
+      "size_bytes": 9754511
     }
   },
   "included_neutral_wav_sha256": "ad79cf940b28545f2034c841755fb6c5a9479b250e45763d7fecf629bf0a9970",
