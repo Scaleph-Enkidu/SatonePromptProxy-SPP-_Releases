@@ -1,0 +1,71 @@
+name: Publish CP14-9 verified pair
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/AIChat_v1.16.23_SPP_v5.8.26/**'
+      - 'releases/AIChat_v1.16.23_SPP_v5.8.26.*'
+      - 'tools/verify_cp14_release.py'
+      - '.github/workflows/publish-cp14-9.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-cp14-9
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TAG: AIChat-v1.16.23_SPP-v5.8.26
+      PACKAGE_DIR: packages/AIChat_v1.16.23_SPP_v5.8.26
+      MANIFEST: releases/AIChat_v1.16.23_SPP_v5.8.26.json
+      NOTES: releases/AIChat_v1.16.23_SPP_v5.8.26.md
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Reassemble SPP asset and verify both packages
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/cp14-9-assets"
+          cat "$PACKAGE_DIR"/spp.part-* > "$RUNNER_TEMP/cp14-9-assets/SatonePromptProxy_v5.8.26.zip"
+          cp "$PACKAGE_DIR/AIChat_v1.16.23.zip" "$RUNNER_TEMP/cp14-9-assets/"
+          python3 tools/verify_cp14_release.py --assets-dir "$RUNNER_TEMP/cp14-9-assets"
+      - name: Create draft release if absent
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo 'Release already exists; validating its assets.'
+          else
+            gh release create "$TAG" \
+              "$RUNNER_TEMP/cp14-9-assets/AIChat_v1.16.23.zip" \
+              "$PACKAGE_DIR/AIChat_v1.16.23_SHA256.txt" \
+              "$RUNNER_TEMP/cp14-9-assets/SatonePromptProxy_v5.8.26.zip" \
+              "$PACKAGE_DIR/SatonePromptProxy_v5.8.26_SHA256.txt" \
+              "$MANIFEST" \
+              --target "$GITHUB_SHA" \
+              --title 'AIChat 1.16.23 + SatonePromptProxy 5.8.26' \
+              --notes-file "$NOTES" \
+              --draft
+          fi
+      - name: Verify uploaded release assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/cp14-9-download"
+          gh release download "$TAG" --dir "$RUNNER_TEMP/cp14-9-download"
+          python3 tools/verify_cp14_release.py --assets-dir "$RUNNER_TEMP/cp14-9-download"
+          cmp "$MANIFEST" "$RUNNER_TEMP/cp14-9-download/$(basename "$MANIFEST")"
+          (cd "$RUNNER_TEMP/cp14-9-download" && sha256sum -c "$GITHUB_WORKSPACE/$PACKAGE_DIR/AIChat_v1.16.23_SHA256.txt" && sha256sum -c "$GITHUB_WORKSPACE/$PACKAGE_DIR/SatonePromptProxy_v5.8.26_SHA256.txt")
+      - name: Publish verified release
+        run: gh release edit "$TAG" --draft=false --latest

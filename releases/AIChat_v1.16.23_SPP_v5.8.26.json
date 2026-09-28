@@ -1,0 +1,18 @@
+{
+  "pair_id": "CP14-9-RELEASE-20260928",
+  "date": "2026-09-28",
+  "aichat_version": "1.16.23",
+  "spp_version": "5.8.26",
+  "assets": {
+    "AIChat_v1.16.23.zip": {
+      "sha256": "570db4e02b6fdb216923cc8585fd3c590607061211bfed8da77af652c9684a8f",
+      "size_bytes": 504417
+    },
+    "SatonePromptProxy_v5.8.26.zip": {
+      "sha256": "b9c7ed3eba98d428d740cb2f46d2aeb2cb571e3d3274679ca37f876c6716e6da",
+      "size_bytes": 9754511
+    }
+  },
+  "included_neutral_wav_sha256": "ad79cf940b28545f2034c841755fb6c5a9479b250e45763d7fecf629bf0a9970",
+  "verification": "13 local CI checks passed; previous paired build game-tested; 1.16.23 model defaults awaiting final in-game smoke"
+}

@@ -1,80 +1,31 @@
-# 下载清单
+# 下载清单：AIChat 1.16.23 + SPP 5.8.26
 
-[返回首页](../README.md) · [按步骤安装](INSTALL.zh-CN.md)
+[返回首页](../README.md) · [按步骤安装](INSTALL.zh-CN.md) · [语音配置](VOICE_SETUP.zh-CN.md)
 
-核查日期：2026-09-26。两份插件 ZIP 已实际取得并核对 SHA256 与文件清单，哈希与源仓库正式 Release 一致；这不代表已在全新 Windows 电脑上测试全部功能。
+版本和链接核对日期：**2026-09-28**。[配对发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.23_SPP-v5.8.26)的 Assets 提供两份安装包；不要把 GitHub 自动生成的 Source code ZIP 当作插件。
 
-## 游戏与两个 Mod
-
-| 文件或入口 | 用途和放置位置 | 当前状态 |
+| 文件 | 放置位置 | SHA-256 |
 |---|---|---|
-| Steam 库中的 Chill with You : Lo-Fi Story | 正常安装并运行一次游戏 | 玩家自行购买 |
-| [BepInEx 5.4.23.5 发布页](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5)；[Windows x64 ZIP](https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.5/BepInEx_win_x64_5.4.23.5.zip) | 解压内容放在游戏 EXE 同一层 | 公开；本项目编译引用此版本。不要选 x86、Patcher 或 BepInEx 6 IL2CPP |
-| [AIChat 1.16.14 发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23)；[AIChat_v1.16.14.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/AIChat_v1.16.14.zip) | 将其中 AIChat.dll 放进游戏的 BepInEx/plugins | 本发布库统一提供；本库仍为 Private；277,086 字节 |
-| [AIChat SHA256](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/AIChat_v1.16.14_SHA256.txt) | 校验对应 ZIP | 同上 |
-| [SPP 5.8.23 发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23)；[SatonePromptProxy_v5.8.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/SatonePromptProxy_v5.8.23.zip) | 全部解压到固定的 SPP 文件夹 | 本发布库统一提供；本库仍为 Private；8,739,688 字节 |
-| [SPP SHA256](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.14_SPP-v5.8.23/SatonePromptProxy_v5.8.23_SHA256.txt) | 校验对应 ZIP | 同上 |
-| [本仓库 Releases](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases) | 统一下载入口 | 当前配对 [AIChat 1.16.14 + SPP 5.8.23](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23) |
+| [AIChat_v1.16.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.23_SPP-v5.8.26/AIChat_v1.16.23.zip) | 取出 `AIChat.dll` 和配套 PDB，放入游戏 `BepInEx/plugins` | `570db4e02b6fdb216923cc8585fd3c590607061211bfed8da77af652c9684a8f` |
+| [SatonePromptProxy_v5.8.26.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.23_SPP-v5.8.26/SatonePromptProxy_v5.8.26.zip) | 完整解压到固定 SPP 目录，保留 `mayuri-voice/refs/` | `b9c7ed3eba98d428d740cb2f46d2aeb2cb571e3d3274679ca37f876c6716e6da` |
 
-本次已将两个正式原包放入本发布库，玩家无需去两个源码仓库找文件。当前本库仍为 Private，未获权限时会看到 404；转为 Public 后才能供普通玩家直接下载。
+两包包含版本说明和文件校验清单，不含玩家 API Key、配置或记忆。已有安装升级时保留个人数据。下载后可在文件夹地址栏输入 `powershell`，分别执行 `Get-FileHash .\AIChat_v1.16.23.zip -Algorithm SHA256` 与 `Get-FileHash .\SatonePromptProxy_v5.8.26.zip -Algorithm SHA256`，和上表比较。
 
-备用入口：[仓库内的版本文件夹](../packages/AIChat_v1.16.14_SPP_v5.8.23)。打开对应 ZIP 的文件页，点 **Download raw file（下载原始文件）**；不要复制网页内容另存为 ZIP。该入口同样受本仓库权限限制。
+## 游戏与基础加载器
 
-在 GitHub 发布页展开 **Assets**，点击表中的 ZIP 文件。不要下载 `Source code (zip)` 或 `Source code (tar.gz)` 作为 Mod 安装包。源码不会替你生成 DLL/EXE，也无需安装 GitHub Desktop。请按发布说明配对版本，不要把页面最上面的历史条目自动当作推荐版。
+- 在 Steam 安装 **Chill with You : Lo-Fi Story**。
+- 安装 [BepInEx 5.4.23.5 Windows x64](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5) 到游戏 EXE 同层。已有 BepInEx 时先核对版本和现有插件，勿清空其他 Mod。
 
-## 朗读需要的文件
+## 想听到语音时
 
-| 入口 | 用途 | 是否包含在 Mod ZIP 中 |
-|---|---|---|
-| [GPT-SoVITS 官方项目](https://github.com/RVC-Boss/GPT-SoVITS) | 本地语音合成程序 | 否 |
-| [官方 Windows 整合包列表](https://huggingface.co/lj1995/GPT-SoVITS-windows-package/tree/main) | 本文参考 v2Pro 系列；普通包 `GPT-SoVITS-v2pro-20250604.7z` 约 8.19 GB，`…-nvidia50.7z` 约 8.84 GB，按原发布说明选择兼容 GPU/驱动的包 | 否；不要下载整个 118 GB 仓库 |
-| [GPT-SoVITS 基础模型](https://huggingface.co/lj1995/GPT-SoVITS/tree/main) | 整合包缺模型时，补齐与配置匹配的基础权重和文本模型 | 否；整合包是否齐全需实际检查 |
-| [后藤一里 gotoh-v1-3-1（v2ProPlus）](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/tree/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1)；[GPT 权重](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/resolve/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1/GPT/gotoh-v1-3-1-e16.ckpt?download=true)；[SoVITS 权重](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/resolve/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1/SoVITS/gotoh-v1-3-1_e8_s368.pth?download=true) | 推荐声线；两个文件分别为 `gotoh-v1-3-1-e16.ckpt` 和 `gotoh-v1-3-1_e8_s368.pth`，不要从 v4 目录取同名文件 | 不包含；已核实上游文件，按 [A2–A3](VOICE_SETUP.zh-CN.md#a2-分清三个文件来源)放置和配置 |
-| [Mayuri 参考音频](https://huggingface.co/SteinsGateSg/mayuri-voice/tree/main/refs)与[选段索引](https://huggingface.co/SteinsGateSg/mayuri-voice/blob/main/refs/index.csv) | 推荐参考 WAV + 同名 TXT；[26 项原文件、命名和调用说明](VOICE_SETUP.zh-CN.md#a6-完整配置-26-种情绪文件究竟应该叫什么) | 不包含；需复制改为 SPP 默认名称或修改 path，不必下载 Mayuri 模型权重 |
-| [7-Zip](https://www.7-zip.org/) | 解压 `.7z`；Windows x64 电脑选择 x64 安装器 | 否 |
+- 安装 [GPT-SoVITS](https://github.com/RVC-Boss/GPT-SoVITS)及与你设备相容的运行环境。Windows 整合包与版本选择见[上游列表](https://huggingface.co/lj1995/GPT-SoVITS-windows-package/tree/main)。
+- 另下载[“孤独摇滚”后藤一里 v2ProPlus 声线](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/tree/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1)的 **GPT `.ckpt` 与 SoVITS `.pth` 两份权重**，按[语音教程](VOICE_SETUP.zh-CN.md)加载。不要混用 v4 权重。
+- **Neutral 参考音频已经在 SPP ZIP 内**，路径为 `mayuri-voice/refs/MAY_1158_Neutral.wav`；不需要为基本发声再单独下载这段。其他情绪音频未随包提供。旧 `emotion_tts.ref_root` 如指向外部目录，需核对指向。
+- 声线模型的[原作者许可](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models)为 CC BY-NC-SA 4.0；Neutral 音频的[原项目](https://huggingface.co/SteinsGateSg/mayuri-voice)标注 `License: other`。按各来源条件使用，听感需自行试听。
 
-本教程推荐“后藤一里 v2ProPlus 权重 + Mayuri 参考音频”。声线权重与参考录音来自不同项目，已列出准确文件；仍须配置和试听，安装 GPT-SoVITS 本身不会自动采用它们。后藤项目标注 CC BY-NC-SA 4.0，Mayuri 标注 License: other，具体使用条件见各自原发布页。
+## 想用麦克风或检索时
 
-## 麦克风识别需要的文件
+- 麦克风另需 [Fun-ASR 项目](https://github.com/QwenAudio/Fun-ASR)、[Fun-ASR-Nano-2512 模型](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512)、匹配的 Python/Torch 环境。SPP 包内服务脚本不等于已经安装模型。
+- 按意思查找旧对话可选 [multilingual-e5-small](https://huggingface.co/intfloat/multilingual-e5-small) 等本地 Embedding 模型；只打字聊天无需先装它。
 
-| 入口 | 用途和注意事项 |
-|---|---|
-| [Python Windows 下载](https://www.python.org/downloads/windows/) | 为 Fun-ASR 建立独立环境，选择普通 64 位安装方式，不选 embeddable 包 |
-| [PyTorch 安装选择器](https://pytorch.org/get-started/locally/) | 选择与 GPU/驱动相容的 torch 和 torchaudio，同时核对 Fun-ASR 要求 |
-| [Fun-ASR 官方项目](https://github.com/QwenAudio/Fun-ASR)；[依赖清单](https://github.com/QwenAudio/Fun-ASR/blob/main/requirements.txt) | 下载官方源码 ZIP 以取得依赖清单，无需 Git |
-| [Fun-ASR-Nano-2512 模型](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512)；[文件列表](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512/tree/main) | 下载整个模型快照，约 1.99 GB，不含 Python/Torch。适配器使用 funasr.AutoModel，不要替换成 `-hf` 或 GGUF 版 |
-| [同名 ModelScope 模型](https://www.modelscope.cn/models/FunAudioLLM/Fun-ASR-Nano-2512) | 官方模型卡列出的另一下载源；两站快照可能不同，不要混合零散文件。本文命令使用 Hugging Face |
-| SPP 包内 `satone_funasr_server_v1.py`、`SatoneASRHotwords_v1.json` | 专用 ASR 服务脚本和热词，**不等于** Python 环境和模型 |
-
-GPU、驱动与 Python 依赖组合尚未在本教程中完成全新安装验收。键盘聊天可先跳过麦克风部分。
-
-## 在线 AI 与可选记忆检索
-
-**开始安装前先确认 API 计费账户。推荐 `gpt-6-luna`；ChatGPT 订阅不包含本 Mod 的 API 消耗。** 购买入口、每天 100 轮的预算示例和价格表填写方式见 [API 与费用估算](API_COST.zh-CN.md)。
-
-| 入口 | 用途 |
-|---|---|
-| [OpenAI Platform](https://platform.openai.com/)；[API Key](https://platform.openai.com/api-keys) | 创建自己的密钥 |
-| [API 计费](https://platform.openai.com/settings/organization/billing/overview)；[用量](https://platform.openai.com/usage) | 确认额度，查看实际账单 |
-| [模型列表](https://developers.openai.com/api/docs/models)；[GPT-6 Luna](https://developers.openai.com/api/docs/models/gpt-6-luna)；[价格](https://developers.openai.com/api/docs/pricing) | 本文填写示例为 gpt-6-luna，权限以账户实际情况为准 |
-| [multilingual-e5-small](https://huggingface.co/intfloat/multilingual-e5-small) | 可选的本地旧聊天语义检索模型，与主聊天模型不同 |
-
-SPP 内部需要 Responses **及** Conversations/items；不能把任何标有“OpenAI 兼容”的中转服务都视为兼容。服务地区与付费条件以服务商当前规则为准。
-
-## 校验 ZIP
-
-在下载文件夹的地址栏输入 `powershell`，回车后执行：
-
-```powershell
-Get-FileHash .\AIChat_v1.16.14.zip -Algorithm SHA256
-Get-FileHash .\SatonePromptProxy_v5.8.23.zip -Algorithm SHA256
-```
-
-与相同版本的 SHA256 文本比较，字母大小写不影响比较。本次分发的原包已实际校验：
-
-```text
-65684dac51fdae292d0e4676dc1a458396c5bb01a63e15472537f5c5b8143cf1  AIChat_v1.16.14.zip
-bcad7805fa8193b8efd9a14e82ef8be16b65d9d9f6c86fad674719cc17150c6e  SatonePromptProxy_v5.8.23.zip
-```
-
-哈希检查文件一致性，不证明软件已经通过安全审计。Release 附有 `AIChat_LICENSE.txt` 和版本来源清单；它们无需放进游戏，保留即可。AIChat 包内 BUILD_INFO 的旧配对 SPP 5.8.22 是原构建记录；本次 SPP 5.8.23 明确继续配对 AIChat 1.16.14，不需寻找另一个 DLL。
+OpenAI 和 DeepSeek 需要各自账户与 API Key。首次模型默认值分别为 `gpt-6-luna`、`deepseek-flash`（截至 2026-09-28）；请以各家官网当前模型列表和账户权限为准。插件和模型文件不会附送 API 额度。

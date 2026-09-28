@@ -1,14 +1,14 @@
-# OpenAI API、推荐模型与费用估算
+# OpenAI／DeepSeek API 与费用估算
 
 [返回首页](../README.md) · [开始安装](INSTALL.zh-CN.md)
 
 ## 先确认自己愿意支付 API 费用
 
-当前 AIChat + SPP 教程使用 **OpenAI API** 生成回答，推荐模型 ID 为 **`gpt-6-luna`**。玩家需要自己的 API Key、可用的 API 计费账户和联网环境。只有游戏、插件文件或 ChatGPT 网页账号，都不能替代这项配置。本教程目前没有经过验证的纯离线主聊天模型安装路线。
+AIChat 1.16.23 + SPP 5.8.26 可在 **OpenAI** 与 **DeepSeek** 之间切换，另支持按中转站说明填写第三方地址。首次模型名称分别预填 **`gpt-6-luna`** 和 **`deepseek-flash`**（截至 **2026-09-28**）；已有自定义名称保留，模型可能变化，请查询[OpenAI 官方模型页](https://developers.openai.com/api/docs/models/gpt-6-luna)及[DeepSeek 官方接口页](https://api-docs.deepseek.com/api/create-chat-completion/)。每家需要各自的 API Key、可用额度和联网环境；游戏、插件或 ChatGPT 网页账号都不能替代 API 配置。本教程没有经过验证的纯离线主聊天模型安装路线。
 
 API 用量单独计费，购买游戏或 ChatGPT Plus/Pro 订阅不会自动给这个 Mod 提供 API 额度。请在 [OpenAI Platform](https://platform.openai.com/) 查看账户条件，在 [API 计费页](https://platform.openai.com/settings/organization/billing/overview)开通计费或按页面要求购买额度，在 [API Key 页面](https://platform.openai.com/api-keys)创建自己的密钥。支付方式、支持地区、模型权限与账户额度以 OpenAI 页面为准；不要向作者购买或索要共用 Key。
 
-SPP 使用 Responses API 及 Conversations/items 管理对话。不能只看到第三方接口写着“OpenAI 兼容”，就假定其支持本插件所需的全部功能。
+下方数字**只估算 OpenAI GPT-6 Luna**，不能套用到 DeepSeek 或中转站。[DeepSeek 模型与价格](https://api-docs.deepseek.com/quick_start/pricing/)及各站账单请到其官网核对。旧 OpenAI 云会话和新本地连接的会话行为不同；切换服务时 SPP 使用当前档案的本地记忆。
 
 ## 单价依据
 
@@ -37,7 +37,7 @@ SPP 使用 Responses API 及 Conversations/items 管理对话。不能只看到�
 
 一轮可能产生主聊天、好感更新、阶段性关系校准、记忆整理或格式修复等多个 API 请求。当前默认好感更新间隔为每轮一次，关系校准间隔为 20 轮；实际是否执行还取决于队列与对话状态。主聊天输入还包括人格、规则、记忆、近期对话和当前问题。不能只数玩家新发的十几个字，也不能只计算屏幕上显示的回答。
 
-SPP 5.8.23 用主聊天返回的 **总输入达到 32,000 token** 作为记忆整理触发条件，并粗估保留最近约 12,000 token 原文。这不是每轮的固定消耗、价格上限或所有后台请求的合计上限。
+SPP 5.8.26 默认用主聊天返回的 **总输入达到 32,000 token** 作为记忆整理触发条件，并粗估保留最近约 12,000 token 原文。已有配置可保留自己调整过的值。这不是每轮的固定消耗、价格上限或所有后台请求的合计上限。
 
 ## 每天聊 100 轮，大约花多少
 
