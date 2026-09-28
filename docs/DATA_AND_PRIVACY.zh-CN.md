@@ -2,7 +2,9 @@
 
 [返回首页](../README.md) · [安装步骤](INSTALL.zh-CN.md)
 
-基于 2026-09-26 的 AIChat 1.16.14 与 SPP 5.8.23 源码核查。
+当前配对为 AIChat **1.16.23** 与 SPP **5.8.26**（2026-09-28）。以下旧版证据段落保留历史来源；新连接模式的 Key、记忆和服务商行为以本节补充为准。
+
+OpenAI、DeepSeek 与中转站各自使用独立的 Key／模型草稿；点击“保存并应用配置”后才切换。AIChat 的本机 CFG 可保存这些草稿，SPP 还会将已保存连接的凭据写入 SPP 目录的 `connection_credentials.v1.json`。两处都属于敏感个人文件，不应随安装包、日志或截图公开。聊天内容按当前选择的服务发送给对应服务商；切换公司不会自动删除本地档案或旧服务商可能保存的远端数据。
 
 ## 为什么换了 AIChat.dll 还能看到旧接口和聊天？
 
@@ -20,6 +22,7 @@
 | AIChat 窗口聊天历史 | `游戏目录\BepInEx\config\AIChatSatoneUX.history` | 内容使用 Base64 编码，不是加密；是 UI 显示历史，不是全部模型记忆 |
 | AIChat 调试日志 | `游戏目录\BepInEx\LogOutput.log` | 包含识别结果、模型回复和 TTS 请求等敏感内容 |
 | SPP 配置 | `SPP目录\config.json` | 包含上游地址、本机路径、声线设置等；标准模板没有 API Key 字段 |
+| SPP 已保存连接凭据 | `SPP目录\connection_credentials.v1.json` | 含连接的 API Key，应与 AIChat CFG 一起私下备份，不要公开 |
 | SPP 配置备份 | 如 `config.json.before_v5.8.23` | 也是个人配置，不应公开分发 |
 | 角色设定 | config.json 的 `persona_file` 指向的 TXT，当前默认 `SatonePersona_v4.5.txt` | 用户修改后可能含私人设定；与三个记忆档案独立 |
 | 档案数据 | `SPP目录\memory_profiles\记忆1\`、`记忆2\`、`记忆3\` | 含记忆、关系、归档、召回索引、会话状态及恢复文件；默认文件夹是中文“记忆1”，接口 ID 才是 memory1 |
@@ -29,16 +32,16 @@
 | 远端会话关联状态 | 档案内 `conversation_state.json` 与相关事务/恢复文件 | 不是“完整云端数据的离线副本” |
 | 原版共同经历账本 | `SPP目录\OriginalGameProgress.json` 及 `.prev` 等 | 记录原版进度、派生账户标识等；不是可以随意公开的通用模板 |
 | 本机路径缓存 | `SPP目录\runtime_paths.json` | 可能暴露电脑用户名与目录；迁移后可自动重新发现，不是加密凭据库 |
-| 用量记录与程序日志 | `usage_stats.json`、`SatonePromptProxy_v5.8.23.log`、Embedding 日志等 | 可能含费用、模型、对话内容与本机路径 |
+| 用量记录与程序日志 | `usage_stats.json`、`SatonePromptProxy_v5.8.26.log`、Embedding 日志等 | 可能含费用、模型、对话内容与本机路径 |
 | 游戏自身存档 | 由游戏管理 | 不等于上述 Mod 配置或 SPP 记忆；不要误删 |
 
 旧版本或关闭 memory_profiles 的安装还可能在 SPP 根目录保留同名记忆、关系、归档与状态文件。备份与清理时不能只看新档案目录。
 
 ## API Key 会经过哪里
 
-正常配置下，AIChat 从本地 CFG 读取 Key，放进请求的 Authorization 头，先发到本机 SPP。SPP 再用它调用所配置的上游服务。
+旧 OpenAI 云模式下，AIChat 从本地 CFG 读取 Key，经本机 SPP 调用对应上游。新版按服务商保存的连接则由 SPP 使用 `connection_credentials.v1.json` 中的当前凭据；AIChat 本机草稿也可能留有 Key。请同时保护这两处。
 
-SPP 的常规 config.json 没有 Key 字段；源码会在进程内记住最近一次鉴权供后台操作使用，并支持环境变量 `OPENAI_API_KEY` 回退。所核查的关系恢复任务明确不把 API Key 写入任务文件。这不改变 **AIChat 已把 Key 保存在本地 CFG** 的事实。
+SPP 的常规 `config.json` 没有 Key 字段，但这**不代表整个 SPP 目录没有密钥**；新版连接凭据文件另行保存 Key。旧 `OPENAI_API_KEY` 环境变量回退仍只适用于相应旧路径。
 
 界面的“显示 API Key”开关只改变显示方式。用星号遮挡可以减少截图泄漏，**不能加密磁盘上的配置文件**。其他在同一电脑/账户下运行、可以读取该目录的软件，仍可能读到它。
 
@@ -46,7 +49,7 @@ API URL 通常只是地址，本身不等于秘密；但若你自行把密钥放
 
 ## 聊天是否只保存在本地
 
-不是。默认方案调用 OpenAI Responses 与 Conversations，并在远端保存会话项目。本地还有完整归档、摘要、关系和日志。
+不是。选择 OpenAI、DeepSeek 或中转站时，当前对话和所需上下文会发送给该服务。旧 OpenAI 云模式使用远端会话项目；新版 SPP 本地连接以本地档案为主要记录，但服务商仍可能按其政策保存 API 请求。本地另有完整归档、摘要、关系和日志。
 
 OpenAI [数据控制文档](https://developers.openai.com/api/docs/guides/your-data)对 `/v1/conversations` 及其 items 的保留说明原文为：
 
@@ -87,6 +90,6 @@ SPP Dashboard 的 Backup 按钮不等于备份了游戏目录、所有模型和�
 
 源码与 CI 打包脚本显示：AIChat 包使用新构建的 DLL、版本说明和 BUILD_INFO；SPP 在独立 staging 目录复制程序、模板、默认人格等，并检查没有 config.json 与 runtime_paths.json。检查到的 AIChat 默认 Key 是占位符，不是实际用户密钥。
 
-本次分发又实际取得 AIChat 1.16.14 与 SPP 5.8.23 的正式 ZIP，SHA256 与源库 Release 完全一致，并检查了 ZIP 文件清单：没有个人 CFG、运行用 config.json、runtime_paths.json、聊天 history、memory_profiles 或日志文件。原包未修改，示例模板保留。
+本次 CP14-9 分发包为 AIChat 1.16.23 与 SPP 5.8.26。打包检查已核对 ZIP 文件清单和 SHA256：没有个人 CFG、运行用 config.json、runtime_paths.json、聊天 history、memory_profiles 或日志文件。SPP 包额外包含默认参考音频 `mayuri-voice/refs/MAY_1158_Neutral.wav`；示例模板保留。
 
 这支持“本次分发包未夹带上述个人运行文件”的判断，但不等于完整二进制安全审计，也不能证明用户本机目录从未被其他方式分享。更换 DLL 后读取旧配置和历史，仍应按本页前述的本地数据位置解释。
