@@ -4,6 +4,8 @@
 
 本文将“聪音发声”和“听懂玩家说话”分开设置。前者使用 GPT-SoVITS，后者使用 Fun-ASR；装好一个不会自动装好另一个。
 
+**适用配对：AIChat 1.16.23 + SPP 5.8.26（2026-09-28）。** SPP ZIP 已有默认 `mayuri-voice/refs/MAY_1158_Neutral.wav`，基本朗读不必再下载或改名这段参考音频。已具备 GPT-SoVITS 程序与运行环境的玩家，只需另准备“孤独摇滚”声线的 GPT／SoVITS 权重并在服务中加载；麦克风仍需另装 Fun-ASR。以下 A6 表格用于**可选**的多情绪参考音频。
+
 **先选择硬件路线：** 完整 GPU 语音暂建议 8 GB 显存起步、12 GB 或以上更有余量；这不是最低配置测试结果，依据和限制见[运行开销与显卡兼容说明](HARDWARE.zh-CN.md)。CUDA 路线面向兼容 NVIDIA 显卡。非 NVIDIA 玩家可以先用文字聊天；完整语音需要对应的 CPU 环境或另行验证的 GPU 后端，不能照抄 CUDA 安装步骤。CPU 语音的整套 Windows 实时体验尚未验收。
 
 **Fun-ASR 当前不会被 SPP 强制设为 CPU。** 随包脚本没有传入 `device`，不能把 `embedding_device: "cpu"` 当成语音识别设置。需要明确选择 CPU 时，见 [B5](#b5-需要让-fun-asr-使用-cpu-时)。
@@ -40,15 +42,15 @@
 | 后藤一里声线，作者 lpkpaco | [模型主页](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models)；[原作者项目说明](https://github.com/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models)；[gotoh-v1-3-1 的 v2ProPlus 文件夹](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/tree/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1) | 下面两个文件分别放入对应权重目录 |
 | GPT 权重 | [gotoh-v1-3-1-e16.ckpt](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/resolve/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1/GPT/gotoh-v1-3-1-e16.ckpt?download=true)（约 155 MB） | `GPT-SoVITS/GPT_weights_v2ProPlus/gotoh-v1-3-1-e16.ckpt` |
 | SoVITS 权重 | [gotoh-v1-3-1_e8_s368.pth](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/resolve/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1/SoVITS/gotoh-v1-3-1_e8_s368.pth?download=true)（约 173 MB） | `GPT-SoVITS/SoVITS_weights_v2ProPlus/gotoh-v1-3-1_e8_s368.pth` |
-| Mayuri 参考音频，发布者 SteinsGateSg | [项目主页](https://huggingface.co/SteinsGateSg/mayuri-voice)；[refs 文件夹](https://huggingface.co/SteinsGateSg/mayuri-voice/tree/main/refs)；[选段索引](https://huggingface.co/SteinsGateSg/mayuri-voice/blob/main/refs/index.csv) | 将选中的 WAV 和同名 TXT 按 A6 复制到 `D:/LofiMOD/voice/refs` |
+| Mayuri 参考音频，发布者 SteinsGateSg | [项目主页](https://huggingface.co/SteinsGateSg/mayuri-voice)；[refs 文件夹](https://huggingface.co/SteinsGateSg/mayuri-voice/tree/main/refs)；[选段索引](https://huggingface.co/SteinsGateSg/mayuri-voice/blob/main/refs/index.csv) | 默认 Neutral 已随 SPP 包附带；仅在自行补齐其他情绪时下载相应 WAV／TXT |
 
 只需下载表中的两个后藤权重，不能因为文件同名就改去 v4 目录取权重，也无需下载整个多 GB 声线仓库。Mayuri 这里只使用 `refs`，不需要该仓库的 `models/gpt` 与 `models/sovits`。
 
-核查时，后藤模型页标注 `cc-by-nc-sa-4.0`，Mayuri 模型页标注 `License: other`。外部资源按各自发布者说明使用；链接可下载不等于可以任意再分发。本 Mod 包不附带这些权重或参考音频。
+核查时，后藤模型页标注 `cc-by-nc-sa-4.0`，Mayuri 模型页标注 `License: other`。外部资源按各自发布者说明使用；本 Mod 包附带默认 Neutral 参考音频，不附带声线权重或其余情绪音频。
 
 后藤模型页在 “Hitori Gotoh” 下明确列出 “v2ProPlus models” 与 “gotoh-v1-3-1”。Mayuri 原说明写明参考库有 “matching text files”。这里推荐的是本项目采用的组合，不是两位发布者共同认证的配套方案；最终音色与情绪效果需要试听确认。
 
-SPP 默认模板引用的 `MAY_*.wav` **没有随包提供**。从 Mayuri 下载的原文件通常叫 `MAY_1158.wav`，不会自动变成 SPP 默认使用的 `MAY_1158_Neutral.wav`；请按 A6 的表格改名，或在配置中填写真实相对路径。SPP 检查参考音频是否为可读取的标准 RIFF/WAVE、时长是否为 **3–10 秒**、台词是否非空。Mayuri 索引中本表所用片段均标在此时长范围；仍需检查实际下载的文件。
+SPP 包含 `MAY_1158_Neutral.wav`；其他默认 `MAY_*.wav` 未包含。自行补齐其他情绪时可按 A6 表格命名，或在配置中填写真实相对路径。SPP 检查参考音频是否为可读取的标准 RIFF/WAVE、时长是否为 **3–10 秒**、台词是否非空。
 
 ### A3. 让 API 使用正确的模型
 
@@ -92,27 +94,27 @@ pause
 
 ### A4. 先配置一个 Neutral 参考音频
 
-暂时只做一个正常说话参考，其他情绪缺失时由它兜底。不要为第一轮安装准备几十个未经核对的情绪文件。
+先使用包内的正常说话参考，其他情绪缺失时由它兜底。不要为第一轮安装准备几十个未经核对的情绪文件。
 
-1. 新建 `D:\LofiMOD\voice\refs`。使用推荐资源时，下载 [MAY_1158.wav](https://huggingface.co/SteinsGateSg/mayuri-voice/resolve/main/refs/worried/MAY_1158.wav?download=true) 和[对应 TXT](https://huggingface.co/SteinsGateSg/mayuri-voice/resolve/main/refs/worried/MAY_1158.txt?download=true)，复制后分别改名为 `neutral.wav` 与 `neutral.txt`；也可使用自己的录音。
-2. 退出 SPP，用记事本打开 SPP 的 `config.json`。
-3. 找到已有的 `emotion_tts`，修改其中 `ref_root`、`fallback_profile` 和 `profiles.Neutral`。下面是结构示例，**不是整个 config.json**；不要把它覆盖到整份配置上：
+1. 在 SPP 完整包内确认 `mayuri-voice/refs/MAY_1158_Neutral.wav`。整包解压时不要打散目录。
+2. 新安装请保留 `config.example.json` 中 `emotion_tts.ref_root` 的空值、`fallback_profile: "Neutral"` 和 `profiles.Neutral.path: "MAY_1158_Neutral.wav"`；SPP 会查找包内相对目录。不要将示例配置覆盖到已有个人 `config.json`。
+3. 若旧 `config.json` 把 `emotion_tts.ref_root` 指向外部目录，退出 SPP 后将其清空，或改为包内 `mayuri-voice/refs` 的**实际绝对路径**。同时核对 Neutral 的 `path` 和 `prompt` 与包内音频匹配；默认模板已有对应日语台词。
 
 ```json
 {
-  "ref_root": "D:/LofiMOD/voice/refs",
+  "ref_root": "",
   "fallback_profile": "Neutral",
   "profiles": {
     "Neutral": {
-      "path": "neutral.wav",
-      "prompt": "在这里填写这段录音实际说出的全部原文",
+      "path": "MAY_1158_Neutral.wav",
+      "prompt": "嫌がってるのに無理やり着せたりしてねトラウマになっちゃったら良くないもん。",
       "lang": "ja"
     }
   }
 }
 ```
 
-如果参考录音是日语，`lang` 用 `ja`；`prompt` 必须换成那段日语原文，不是要让模型朗读的新句子。若已经放好匹配的 `neutral.txt`，也可把 `prompt` 改为空字符串 `""`，让 SPP 读取它。保留 `emotion_tts.enabled=true` 与 `upstream_url=http://127.0.0.1:9880`，其他配置不变。模型输出仍用 `text_lang=ja`。
+这只是 `emotion_tts` 内相关字段的结构示例，不要覆盖整份配置。自己更换录音时，`prompt` 必须同步改为那段音频实际说出的原文；若使用同名 TXT，也可把 `prompt` 设为 `""`。保留 `emotion_tts.enabled=true` 与 `upstream_url=http://127.0.0.1:9880`，模型输出仍用 `text_lang=ja`。
 
 4. 重新运行 SPP，打开 [TTS 状态](http://127.0.0.1:11435/tts/status)，检查 Neutral 与实际路径。其他默认情绪的 WAV 缺失可以回落到 Neutral，但这不代表已具备完整情绪声线。
 
@@ -151,14 +153,14 @@ Invoke-WebRequest -Uri 'http://127.0.0.1:11435/tts' -Method Post -ContentType 'a
 
 **SPP 根据 `emotion_tts.mapping` 和 `emotion_tts.profiles` 找文件，不会扫描文件名猜测情绪。** 当前默认关系是一对一，例如 `Happy → profiles.Happy → path`。文件名本身可以自定义，但必须与该 `path` 一致。直接把某个文件改成 `开心.wav`，却保留旧 `path`，程序就找不到它。
 
-下面列的是 **SPP 5.8.23 原包 `config.example.json` 与 `profiles_26.csv` 中的准确默认名称**，并已逐项核对 Mayuri 当前参考库的原文件。上游的 `worried`、`teasing` 等分类不等于 SPP 的 26 个标签；表格表示本项目现有的参考选择，不宣称每个片段都能完美表现对应情绪。
+下面列的是 **SPP 5.8.26 的 `config.example.json` 与 `profiles_26.csv` 中的默认名称**。Neutral 已随包提供；其余情绪音频是可选的自行补充。上游的 `worried`、`teasing` 等分类不等于 SPP 的 26 个标签；表格不保证每个片段都能完美表现对应情绪。
 
 #### 按默认命名准备文件
 
-1. 在下面每行打开 WAV 和 TXT 链接，保存真正的音频与文本，不要将网页另存后伪装成 WAV。
-2. 将文件复制到 `D:\LofiMOD\voice\refs`，把 WAV 改成最后一列的名称。TXT 也用相同名字，只把 `.wav` 改为 `.txt`。例如 `MAY_1158_Neutral.wav` 对应 `MAY_1158_Neutral.txt`。
+1. Neutral 已经在包内；需要更多情绪时，再打开对应 WAV／TXT 链接，保存真正的音频与文本，不要将网页另存后伪装成 WAV。
+2. 把新增文件放进 SPP 包内 `mayuri-voice/refs`，按最后一列命名。若使用 TXT，名称与 WAV 相同，仅扩展名改为 `.txt`。
 3. 同一个上游片段被用于两个标签时，需要复制两份再分别命名；不要反复改名导致前一个文件消失。本表使用 24 段不同录音形成 26 个配置项，配置项数量不代表拥有 26 段不同录音。
-4. 退出 SPP，设置 `emotion_tts.ref_root` 为 `D:/LofiMOD/voice/refs`，保留默认的 `mapping`、26 个 `profiles` 和 `fallback_profile: "Neutral"`。如果 A4 曾把 Neutral 改为 `neutral.wav`，现在将 `profiles.Neutral.path` 改为表中的 `MAY_1158_Neutral.wav`。不要用完整默认配置覆盖自己的其他设置。
+4. 保留默认的 `mapping`、26 个 `profiles`、`fallback_profile: "Neutral"` 和空 `ref_root`；如果旧配置已指向外部目录，请改向实际放置音频的目录。不要用完整默认配置覆盖自己的其他设置。
 
 | 标签，按此拼写 | 中文含义 | Mayuri 原文件与下载 | 复制到 refs 后的默认文件名 |
 |---|---|---|---|
@@ -294,7 +296,7 @@ py -3.12 -m venv .venv
 
 ### B5. 需要让 Fun-ASR 使用 CPU 时
 
-**这是需要实测的手动适配方法，不是已发布的 CPU 模式开关。** 当前 SPP 5.8.23 没有 `asr.device` 配置字段；向 JSON 中添加这个字段不会改变设备。已有可用环境请先保留原脚本与 `asr.server_script` 值，不要在 GPT-SoVITS 环境中直接改装 ASR 依赖。
+**这是需要实测的手动适配方法，不是已发布的 CPU 模式开关。** 当前 SPP 5.8.26 没有 `asr.device` 配置字段；向 JSON 中添加这个字段不会改变设备。已有可用环境请先保留原脚本与 `asr.server_script` 值，不要在 GPT-SoVITS 环境中直接改装 ASR 依赖。
 
 1. 按 B1／B2 建立独立环境；如果目标就是 CPU，选择 CPU 版 PyTorch。保留与当前 `Fun-ASR-Nano-2512`、`funasr.AutoModel` 路线相符的依赖，不能直接替换为 HF／GGUF 模型。
 2. 关闭 SPP 与已确认的旧 ASR 服务，将包内 `satone_funasr_server_v1.py` 复制到自己的 ASR 目录，命名为 `satone_funasr_server_cpu_v1.py`，只将模型初始化这一行改为：
