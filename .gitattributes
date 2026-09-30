@@ -1,0 +1,5 @@
+# 发布包与预编译二进制保持原始字节：禁止 Git 做行尾转换。
+# 这些文件的大小与哈希会写进 releases/*.json，并被 tools/verify_release.py 与
+# publish-pair.yml 逐字节校验（此前 AIChat_LICENSE.txt 曾因 CRLF→LF 规范化导致校验失败）。
+packages/** -text
+tools/SatoneStateCatalog/prebuilt/** -text
