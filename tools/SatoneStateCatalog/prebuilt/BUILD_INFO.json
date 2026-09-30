@@ -1,0 +1,16 @@
+{
+  "component": "SatoneStateCatalog",
+  "version": "0.1.0",
+  "built_from": "../source",
+  "build_origin": "local build on 2026-09-30",
+  "build_environment": "dotnet SDK 8.0.400, TargetFramework net472, BepInEx 5 and the game's Unity modules supplied by -p:GameDir",
+  "in_game_tested": false,
+  "notes": [
+    "Reflection-only plugin: reads the currently active window/outfit/prop objects, writes BepInEx/config/SatoneStateCatalog/catalog.json and appearance_catalog.md, keeps one .bak",
+    "No Harmony patches, no save writes, no unlock or achievement changes",
+    "If the game updates and the plugin stops working, delete the DLL from BepInEx/plugins; the game is unaffected"
+  ],
+  "files_sha256": {
+    "SatoneStateCatalog.dll": "e3d1802848997c9a91efd94fe23e2ba5ebe4a4d0d2f4e3684836201834b12c06"
+  }
+}

@@ -143,3 +143,29 @@ SPP 使用明确文件清单复制到 release-stage，未复制 tools/windows �
 | 建议 | 密钥与日志保护 | 另行设计 Windows 凭据保护、导出脱敏、日志开关和本地端点鉴权；现状在隐私页明示 |
 
 本次交付包含两份正式原包、统一配对 Release、校验与来源记录，以及对应的玩家使用方法。声线来源与文件命名说明已补齐；干净 Windows 全流程实测与实际语音效果验证仍保留在待办中。
+
+## 2026-09-30 发布记录：AIChat 1.16.65 + SPP 5.8.42（CP21 配对）
+
+本次把 CP19-1 / CP20 / CP21 三个阶段的开发成果与 Meta 恐怖演出收尾一起发布，并首次把外观采集器放进发布库。
+
+| 仓库 | 本次引用提交 |
+| --- | --- |
+| Scaleph-Enkidu/SatoneAIChat_Remake（private） | `b6b189baa6f7a83e84b1e3061770bcad56432bee`（分支 `feature/cp21-native-lines-history`，版本 1.16.65） |
+| Scaleph-Enkidu/SatonePromptProxy（private） | `9b127c0474cbe434857e9c189980bd4f7074e571`（同分支，版本 5.8.42） |
+| Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases（本库） | 本次提交，tag `AIChat-v1.16.65_SPP-v5.8.42` 由 `publish-pair.yml` 创建 |
+
+资产与来源：
+
+- `packages/AIChat_v1.16.65_SPP_v5.8.42/`：两份 ZIP（AIChat 634,012 字节 / SPP 10,103,882 字节）、各自的 `*_SHA256.txt`、`AIChat_LICENSE.txt`；`releases/AIChat_v1.16.65_SPP_v5.8.42.json` 记录逐资产大小、SHA-256、ZIP 成员清单与源提交。
+- **构建形态**：这是**本地实机构建**（两个源库的 Release workflow 未参与，因此 manifest 不含 `workflow_run`）。`tools/verify_release.py` 已参数化（`--manifest`），`workflow_run` 变为可选；其余检查（大小、SHA-256、CRC、成员清单、无运行数据、BUILD_INFO 与 manifest 的 component/version/source_commit 一致、校验文件格式）保持原样。
+- 包内容包含上一版发布形态的 `SOURCE_MANIFEST.json`（两仓共 341 / 423 个跟踪文件，含 tree_sha256 算法说明）、`SHA256SUMS.json`、`README.md` 指针与中文《安装与实机测试说明》《版本与改动》，SPP 包继续附带 `mayuri-voice/refs/MAY_1158_Neutral.wav`（SHA-256 `ad79cf94…`）。
+
+保留与清理：
+
+- 保留上一稳定配对 `packages/AIChat_v1.16.23_SPP_v5.8.26/` 作为回退下载（其 Release `AIChat-v1.16.23_SPP-v5.8.26` 不变）。
+- 删除 `packages/AIChat_v1.16.14_SPP_v5.8.23/`（只保留最新 + 上一稳定版）；`releases/AIChat_v1.16.14_SPP_v5.8.23.*` 文本记录按历史保留。
+- `publish-pair.yml` 已从 1.16.14/5.8.23 改为本次配对；旧的 1.16.14 校验路径不再由 CI 执行。
+
+新增工具：`tools/SatoneStateCatalog/`（源码 + 预编译 DLL + 中文说明）。DLL 由源码在维护者本机当前游戏版本编译（net472 / BepInEx 5），**尚未游戏内验证**；说明里写明失效时删除 DLL、不改存档、不解锁内容。它是征集"道具与服饰外观描述"的入口，用来支撑之后用语音让聪音换背景／换衣服的功能。
+
+验证范围：AIChat `dotnet build` 0 错误、六个本地测试工程全绿（WindowEvent 39、Integration 188、UI 资源契约 145、CP18 16、Presentation 89 + 纯逻辑）；SPP `go vet` 干净、本地全量测试仅剩 5 条已知环境失败（1 ASR + 4 Recall/Python）；SPP 窗口弧线与 `POST /window-event/reset` 已用玩家真实 470 条提交的存档**只读副本**验证（启动 `ok:true`、重置 +1 条提交、重复调用幂等、重启后仍幂等）。真实 API、Unity 与语音效果仍待玩家确认。

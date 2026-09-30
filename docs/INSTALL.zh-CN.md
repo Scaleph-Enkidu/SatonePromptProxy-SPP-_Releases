@@ -1,8 +1,8 @@
-# 安装 AIChat 1.16.23 + SPP 5.8.26
+# 安装 AIChat 1.16.65 + SPP 5.8.42
 
 [返回首页](../README.md) · [下载清单](DOWNLOADS.zh-CN.md) · [语音设置](VOICE_SETUP.zh-CN.md)
 
-适用 Steam Windows 版《放松时光：与你共享 Lo-Fi 故事》。本文更新于 **2026-09-28**。请从[本次配对发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.23_SPP-v5.8.26)的 Assets 下载 **AIChat 1.16.23** 与 **SPP 5.8.26** 两个 ZIP；GitHub 的 Source code ZIP 不是安装包。外部依赖和来源见[下载清单](DOWNLOADS.zh-CN.md)。在线聊天还需要自己准备 OpenAI 或 DeepSeek 的 API Key 与可用额度。
+适用 Steam Windows 版《放松时光：与你共享 Lo-Fi 故事》。本文更新于 **2026-09-30**。请从[本次配对发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.65_SPP-v5.8.42)的 Assets 下载 **AIChat 1.16.65** 与 **SPP 5.8.42** 两个 ZIP；GitHub 的 Source code ZIP 不是安装包。外部依赖和来源见[下载清单](DOWNLOADS.zh-CN.md)。在线聊天还需要自己准备 OpenAI 或 DeepSeek 的 API Key 与可用额度。只想回退旧版的玩家可以使用仍保留的[上一稳定配对 AIChat 1.16.23 + SPP 5.8.26](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.23_SPP-v5.8.26)。
 
 ## 先选使用方式
 
@@ -20,13 +20,13 @@
 1. 在 Steam 中运行游戏一次，再退出。右击游戏 →“管理”→“浏览本地文件”，找到游戏 EXE 所在目录。
 2. 按[下载清单](DOWNLOADS.zh-CN.md)安装 BepInEx Windows x64 5.4.23.5。解压后，游戏 EXE 同层应有 `BepInEx` 和 `winhttp.dll`。启动游戏一次，确认生成 `BepInEx/LogOutput.log` 与 `BepInEx/plugins`。
 3. 从 AIChat ZIP 取出 `AIChat.dll` 和配套 `AIChat.pdb`，放进 `游戏目录/BepInEx/plugins`。只保留一份可加载的 AIChat DLL；旧 `AIChatSatoneUXPatch.dll` 也移出插件目录。
-4. 启动游戏，进入场景按 **F9**，核对窗口版本 **1.16.23**。
+4. 启动游戏，进入场景按 **F9**，核对窗口版本 **1.16.65**。
 
 ## 2. 安装本地 SPP
 
 1. 把 SPP ZIP **完整解压**到固定目录，例如 `D:\LofiMOD\SatonePromptProxy`。确保 EXE 同层有 `config.example.json`、`SatonePersona_v4.5.txt`、语音／ASR 辅助脚本和 `mayuri-voice/refs/MAY_1158_Neutral.wav`；不要只复制 EXE。
 2. 运行 `SatonePromptProxy.exe`。新目录首次启动会从示例创建 `config.json`，不需要迁移玩家记忆才能启动。
-3. 打开本机 [SPP 首页](http://127.0.0.1:11435/)；核对版本 **5.8.26**。语音或检索尚未安装时的相关提示不等于 SPP 主服务失败。
+3. 打开本机 [SPP 首页](http://127.0.0.1:11435/)；核对版本 **5.8.42**。语音或检索尚未安装时的相关提示不等于 SPP 主服务失败。
 4. 在 AIChat 设置中核对 **SPP 程序路径**指向这个 EXE。安装目录以后不变时，切换模型无须再改此路径或本地聊天地址。
 
 已有安装升级时，请先退出游戏与 SPP，备份原程序和个人数据，再替换 DLL／PDB 与 SPP 程序文件。**保留自己的 `config.json`、API Key、AIChat CFG、记忆档案、人格修改和模型路径**；不要用 `config.example.json` 覆盖。首次使用新版记忆时可选择导入旧记录或跳过；跳过不会删除旧记录。
@@ -48,12 +48,18 @@ SPP 包已附带默认 Neutral 参考音频。已有 GPT-SoVITS 程序及运行�
 
 需要麦克风时，再按[语音教程 B 部分](VOICE_SETUP.zh-CN.md)安装 Fun-ASR。先按住 **F8** 测试识别，再自行开启持续通话；持续通话默认关闭。未使用麦克风可跳过这部分。GPT-SoVITS、Fun-ASR 和声线权重不在两份 Mod ZIP 内。
 
-## 5. 检查、回退和求助
+## 5. 试试「Meta 恐怖演出」和外观采集器
+
+- **Meta 恐怖演出**：聊天时反复追问"看看你的窗外""你窗外有什么"，会从第 1 阶段推进到第 4 阶段。**首次**走完会保持花屏、进入失联状态，这时历史里仍能翻到整段经过；设置 →「Meta 恐怖演出」→「重置恐怖演出进度（本局立即生效）」可以立刻重演。关闭游戏（或强退）后重新登录，上一局的演出记录才会从历史里消失，普通对话不受影响；之后再走完一次四阶段，游戏会正常退出（首次花屏、之后退出）。
+- **SatoneStateCatalog（F10）**：发布库附带的独立小插件，用 F10 读取当前生效的窗景／服装／摆件编号，帮你把"编号"和"看到的样子"记下来，供以后让聪音"真的看见"窗外和衣着。安装方法与源码见[说明](../tools/SatoneStateCatalog/README_中文.md)；它不改存档，不需要时从 `plugins` 里删掉即可。
+
+## 6. 检查、回退和求助
 
 - F9 打开窗口；键盘 Enter 发送、Shift+Enter 换行。发送、按住说话和持续通话在模型思考时显示红色“思考中”，开始朗读／字幕后显示黄色“回复中”。
+- F10 属于外观采集器小插件（见上一节），与 AIChat 的 F9 不冲突。
 - 如果游戏中 F9 无反应，查 `游戏目录/BepInEx/LogOutput.log`、插件层级和重复 DLL。SPP 启动失败时查 SPP 目录里的运行日志和 `config.json` 的 JSON 格式。
 - API 401 通常先查 Key，404 先查模型名或 URL，429 先查额度与频率；以实际日志中的服务商错误为准。分享日志前移除密钥、私人对话与机器路径。
 - 有文字却没声音时，检查 GPT-SoVITS 9880、模型权重、SPP 的 `emotion_tts.ref_root` 和 Neutral WAV。服务显示“就绪”仍需实际生成音频验证。
 - 回退时先退出程序，再成对恢复原 DLL／EXE 和原配置备份。不要删除记忆来切换模型。数据位置和卸载范围见[本地数据与隐私](DATA_AND_PRIVACY.zh-CN.md)。
 
-1.16.22 + 5.8.26 的主要功能已由维护者实机使用；1.16.23 的默认模型和文档变更通过本地 CI，仍请安装后验证所选真实 API 与本机语音效果。
+1.16.65 + 5.8.42 为本地实机构建：AIChat 编译与六个本地测试工程全绿，SPP `go vet` 干净、本地测试除 5 条已知环境失败（1 条 ASR + 4 条 Recall/Python）外全绿，窗口弧线与重置端点已用玩家真实存档副本验证；仍请安装后验证你所选的真实 API、Unity 表现与本机语音效果。
