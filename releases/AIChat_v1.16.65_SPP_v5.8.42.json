@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "release_tag": "AIChat-v1.16.65_SPP-v5.8.42",
+  "verified_at": "2026-09-30",
+  "pair_id": "CP21-REALMACHINE-20260930",
+  "package_directory": "packages/AIChat_v1.16.65_SPP_v5.8.42",
+  "build_origin": "local real-machine build (no CI workflow run for this pair)",
+  "assets": [
+    {
+      "name": "AIChat_LICENSE.txt",
+      "size": 1087,
+      "sha256": "9a62d81b0911f749bb60ebce764b594dc9fb306295eff7d7112a3404a00f0e91"
+    },
+    {
+      "name": "AIChat_v1.16.65.zip",
+      "size": 634012,
+      "sha256": "270923a5ba46796f0f119e82f94fc23d9959bbb65e89fd81b0e0447249819d42",
+      "component": "aichat",
+      "version": "1.16.65",
+      "source_repository": "Scaleph-Enkidu/SatoneAIChat_Remake",
+      "source_branch": "feature/cp21-native-lines-history",
+      "source_commit": "b6b189baa6f7a83e84b1e3061770bcad56432bee",
+      "checksum_file": "AIChat_v1.16.65_SHA256.txt",
+      "zip_members": [
+        "安装与实机测试说明.md",
+        "版本与改动.md",
+        "AIChat.dll",
+        "AIChat.pdb",
+        "BUILD_INFO.json",
+        "LICENSE",
+        "README.md",
+        "SHA256SUMS.json",
+        "SOURCE_MANIFEST.json"
+      ]
+    },
+    {
+      "name": "SatonePromptProxy_v5.8.42.zip",
+      "size": 10103882,
+      "sha256": "e18dabb5253a332d18124f80aa43bae39a467394da415fb67e01b6dfbef61e85",
+      "component": "spp",
+      "version": "5.8.42",
+      "source_repository": "Scaleph-Enkidu/SatonePromptProxy",
+      "source_branch": "feature/cp21-native-lines-history",
+      "source_commit": "9b127c0474cbe434857e9c189980bd4f7074e571",
+      "checksum_file": "SatonePromptProxy_v5.8.42_SHA256.txt",
+      "zip_members": [
+        "安装与实机测试说明.md",
+        "版本与改动.md",
+        "默认语音说明.md",
+        "BUILD_INFO.json",
+        "config.example.json",
+        "docs/CONFIG_REFERENCE.md",
+        "docs/MULTI_PROVIDER_STATUS.md",
+        "docs/PORTABLE_DEPLOYMENT.md",
+        "embedding_worker.py",
+        "examples/SatoneMemory.example.json",
+        "examples/SatoneRelationship.example.json",
+        "examples/service_paths.example.ini",
+        "mayuri-voice/refs/MAY_1158_Neutral.wav",
+        "profiles_26.csv",
+        "README.md",
+        "satone_funasr_server_v1.py",
+        "SatoneASRHotwords_v1.json",
+        "SatonePersona_v4.6.txt",
+        "SatonePromptProxy.exe",
+        "SHA256SUMS.json",
+        "SOURCE_MANIFEST.json"
+      ]
+    }
+  ],
+  "verification": "Local build this round: AIChat dotnet build 0 errors and six local test projects green; SPP go vet clean and local suite green except five known environment failures; SPP window arc replay verified against a read-only copy of the player's real 470-commit store. Unity and real API acceptance pending.",
+  "previous_stable_pair": "packages/AIChat_v1.16.23_SPP_v5.8.26"
+}

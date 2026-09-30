@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'packages/AIChat_v1.16.14_SPP_v5.8.23/**'
-      - 'releases/AIChat_v1.16.14_SPP_v5.8.23.*'
+      - 'packages/AIChat_v1.16.65_SPP_v5.8.42/**'
+      - 'releases/AIChat_v1.16.65_SPP_v5.8.42.*'
       - 'tools/verify_release.py'
       - '.github/workflows/publish-pair.yml'
   workflow_dispatch:
@@ -22,10 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      TAG: AIChat-v1.16.14_SPP-v5.8.23
-      PACKAGE_DIR: packages/AIChat_v1.16.14_SPP_v5.8.23
-      MANIFEST: releases/AIChat_v1.16.14_SPP_v5.8.23.json
-      NOTES: releases/AIChat_v1.16.14_SPP_v5.8.23.md
+      TAG: AIChat-v1.16.65_SPP-v5.8.42
+      PACKAGE_DIR: packages/AIChat_v1.16.65_SPP_v5.8.42
+      MANIFEST: releases/AIChat_v1.16.65_SPP_v5.8.42.json
+      NOTES: releases/AIChat_v1.16.65_SPP_v5.8.42.md
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
@@ -33,7 +33,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Verify original packages and file lists
-        run: python3 tools/verify_release.py
+        run: python3 tools/verify_release.py --manifest "$MANIFEST"
       - name: Upload original files as a draft when the release is absent
         shell: bash
         run: |
@@ -42,14 +42,14 @@ jobs:
             echo "Release already exists; verifying its assets before publishing."
           else
             gh release create "$TAG" \
-              "$PACKAGE_DIR/AIChat_v1.16.14.zip" \
-              "$PACKAGE_DIR/AIChat_v1.16.14_SHA256.txt" \
-              "$PACKAGE_DIR/SatonePromptProxy_v5.8.23.zip" \
-              "$PACKAGE_DIR/SatonePromptProxy_v5.8.23_SHA256.txt" \
+              "$PACKAGE_DIR/AIChat_v1.16.65.zip" \
+              "$PACKAGE_DIR/AIChat_v1.16.65_SHA256.txt" \
+              "$PACKAGE_DIR/SatonePromptProxy_v5.8.42.zip" \
+              "$PACKAGE_DIR/SatonePromptProxy_v5.8.42_SHA256.txt" \
               "$PACKAGE_DIR/AIChat_LICENSE.txt" \
               "$MANIFEST" \
               --target "$GITHUB_SHA" \
-              --title "AIChat 1.16.14 + SatonePromptProxy 5.8.23" \
+              --title "AIChat 1.16.65 + SatonePromptProxy 5.8.42" \
               --notes-file "$NOTES" \
               --draft
           fi
@@ -59,7 +59,7 @@ jobs:
           set -euo pipefail
           check_dir="$(mktemp -d "$RUNNER_TEMP/satone-release.XXXXXX")"
           gh release download "$TAG" --dir "$check_dir"
-          python3 tools/verify_release.py --assets-dir "$check_dir"
+          python3 tools/verify_release.py --manifest "$MANIFEST" --assets-dir "$check_dir"
           cmp "$MANIFEST" "$check_dir/$(basename "$MANIFEST")"
       - name: Publish verified release
         run: gh release edit "$TAG" --draft=false --latest

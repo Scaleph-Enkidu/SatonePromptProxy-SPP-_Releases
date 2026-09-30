@@ -1,15 +1,16 @@
-# 下载清单：AIChat 1.16.23 + SPP 5.8.26
+# 下载清单：AIChat 1.16.65 + SPP 5.8.42
 
 [返回首页](../README.md) · [按步骤安装](INSTALL.zh-CN.md) · [语音配置](VOICE_SETUP.zh-CN.md)
 
-版本和链接核对日期：**2026-09-28**。[配对发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.23_SPP-v5.8.26)的 Assets 提供两份安装包；不要把 GitHub 自动生成的 Source code ZIP 当作插件。
+版本和链接核对日期：**2026-09-30**。[配对发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.65_SPP-v5.8.42)的 Assets 提供两份安装包；不要把 GitHub 自动生成的 Source code ZIP 当作插件。需要回退时用仍保留的[上一稳定配对 AIChat 1.16.23 + SPP 5.8.26](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.23_SPP-v5.8.26)。
 
 | 文件 | 放置位置 | SHA-256 |
 |---|---|---|
-| [AIChat_v1.16.23.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.23_SPP-v5.8.26/AIChat_v1.16.23.zip) | 取出 `AIChat.dll` 和配套 PDB，放入游戏 `BepInEx/plugins` | `570db4e02b6fdb216923cc8585fd3c590607061211bfed8da77af652c9684a8f` |
-| [SatonePromptProxy_v5.8.26.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.23_SPP-v5.8.26/SatonePromptProxy_v5.8.26.zip) | 完整解压到固定 SPP 目录，保留 `mayuri-voice/refs/` | `b9c7ed3eba98d428d740cb2f46d2aeb2cb571e3d3274679ca37f876c6716e6da` |
+| [AIChat_v1.16.65.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.65_SPP-v5.8.42/AIChat_v1.16.65.zip) | 取出 `AIChat.dll` 和配套 PDB，放入游戏 `BepInEx/plugins` | `270923a5ba46796f0f119e82f94fc23d9959bbb65e89fd81b0e0447249819d42` |
+| [SatonePromptProxy_v5.8.42.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.16.65_SPP-v5.8.42/SatonePromptProxy_v5.8.42.zip) | 完整解压到固定 SPP 目录，保留 `mayuri-voice/refs/` | `e18dabb5253a332d18124f80aa43bae39a467394da415fb67e01b6dfbef61e85` |
+| [tools/SatoneStateCatalog](../tools/SatoneStateCatalog/README_中文.md)（可选） | 把 `prebuilt/SatoneStateCatalog.dll` 放进 `BepInEx/plugins`，游戏内按 F10 | `e3d1802848997c9a91efd94fe23e2ba5ebe4a4d0d2f4e3684836201834b12c06`（DLL） |
 
-两包包含版本说明和文件校验清单，不含玩家 API Key、配置或记忆。已有安装升级时保留个人数据。下载后可在文件夹地址栏输入 `powershell`，分别执行 `Get-FileHash .\AIChat_v1.16.23.zip -Algorithm SHA256` 与 `Get-FileHash .\SatonePromptProxy_v5.8.26.zip -Algorithm SHA256`，和上表比较。
+两包包含版本说明和文件校验清单，不含玩家 API Key、配置或记忆。已有安装升级时保留个人数据。下载后可在文件夹地址栏输入 `powershell`，分别执行 `Get-FileHash .\AIChat_v1.16.65.zip -Algorithm SHA256` 与 `Get-FileHash .\SatonePromptProxy_v5.8.42.zip -Algorithm SHA256`，和上表比较。
 
 ## 游戏与基础加载器
 
