@@ -33,7 +33,9 @@
 
 **文字聊天完成后即可独立使用，每阶段都不依赖后续阶段。② 可以跳过；聪音发音和玩家语音识别也可以分别安装。** 主程序配对包包含 AIChat 与 SPP；ONNX 模型另行选装，不默认启用。
 
-### 关于「Meta 恐怖演出」
+---
+
+## 关于「Meta 恐怖演出」
 
 最初做这段演出，是因为聪音不知道游戏里当前的窗景。问她「窗外是什么样的？」，或追问「你明明坐在窗边，为什么不看看窗外？」，她没法根据实际画面来回答。
 
@@ -49,7 +51,9 @@
 
 等说明库补齐后，再继续尝试通过语音更换背景、衣服等功能。如果你愿意帮忙，可以先用记录插件整理几件自己熟悉的物品，一小部分也有用。
 
-### 顺手一起放出来的小工具：SatoneStateCatalog（F10）
+---
+
+## 顺手一起放出来的小工具：SatoneStateCatalog（F10）
 
 就是上面说的那个记录插件：按 **F10** 打开窗口，读取当前生效的窗景、服装、眼镜与摆件的内部编号，让你把"编号"和"你实际看到的样子"一条条记下来；写入 `BepInEx/config/SatoneStateCatalog/`，不改存档、不解锁内容。发布库里直接给了可安装的预编译 DLL，源码同目录：[说明与下载](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/tools/SatoneStateCatalog/README_中文.md)。
 
@@ -78,3 +82,11 @@
 升级时退出游戏与 SPP，备份后覆盖程序与配套工具；**保留自己的 `config.json`、AIChat CFG、连接凭据、记忆、人格、`models` 和 `semantic_recall_v1`**。不要先删除整个 SPP 目录，也不要用示例覆盖个人配置。同一模型组件可以跨兼容的程序更新复用。[安装教程](docs/INSTALL.zh-CN.md#upgrade)写明升级、回退和日志位置。
 
 AIChat 基于 [qzrs777/AIChat](https://github.com/qzrs777/AIChat) 修改，原项目作者 Elysia777 与许可证随包保留。本 Mod 由 AI 辅助开发。**2026-10-01，用户授权合并并正式发布 AIChat 1.17.1 / SPP 5.9.1**；本地验证和已知限制见[维护记录](docs/MAINTAINER_STATUS.zh-CN.md)。这条确认不代表全部显卡、供应商、声线或全新 Windows 环境均已测试。问题请发到[本库 Issues](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/issues)，附版本、复现步骤和脱敏日志，勿公开 API Key 或私人聊天记录。
+
+---
+
+## 未来的开发安排
+
+- 界面与字幕的全日语、英语适配。
+- 聪音中文语音的适配。
+- 通过 AI 交谈插件直接操控、变更游戏中的环境与道具。
