@@ -182,6 +182,8 @@ def verify_manifest(manifest_path, assets_dir=None, expected_tag=None):
     required_files = set()
     for asset in assets:
         require(len(safe_path(asset["name"]).parts) == 1, "Asset must be a flat filename")
+        if schema == 2:
+            require(asset["name"].isascii(), "Release attachment filename must be ASCII: " + asset["name"])
         check_no_player_data(asset["name"])
         path = directory / asset["name"]
         require(path.stat().st_size == asset["size"], "Size mismatch: " + path.name)
@@ -199,6 +201,8 @@ def verify_manifest(manifest_path, assets_dir=None, expected_tag=None):
                 check_semantic(archive)
         checksum_name = asset["checksum_file"]
         require(len(safe_path(checksum_name).parts) == 1, "Unsafe checksum filename")
+        if schema == 2:
+            require(checksum_name.isascii(), "Release checksum filename must be ASCII: " + checksum_name)
         checksum = (directory / checksum_name).read_text(encoding="utf-8-sig").split()
         require(checksum == [asset["sha256"], asset["name"]], "Checksum file mismatch: " + path.name)
         required_files.add(checksum_name)

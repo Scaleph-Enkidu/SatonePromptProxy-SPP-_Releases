@@ -170,6 +170,15 @@ class ReleaseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "unrecorded release attachment"):
             self.verify()
 
+    def test_non_ascii_attachment_and_checksum_names_rejected(self):
+        for field in ("name", "checksum_file"):
+            with self.subTest(field=field):
+                manifest = self.release()
+                manifest["assets"][0][field] = "安装包.zip" if field == "name" else "安装包.zip.sha256"
+                self.save(manifest)
+                with self.assertRaisesRegex(ValueError, "must be ASCII"):
+                    self.verify()
+
     def test_crc_damage_even_with_correct_outer_hash(self):
         manifest = self.release()
         path = self.assets / "pair.zip"
