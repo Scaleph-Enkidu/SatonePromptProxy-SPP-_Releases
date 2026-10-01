@@ -1,0 +1,45 @@
+{
+  "status": "published_and_old_public_downloads_withdrawn",
+  "timestamp": "2026-10-01T09:18:50.985244+00:00",
+  "release_url": "https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1-license-r1",
+  "release_id": 400805454,
+  "release_tag": "AIChat-v1.17.1_SPP-v5.9.1-license-r1",
+  "release_tag_commit": "9723651d8155b4e84d60a5b732dabfbcd9608f82",
+  "runtime_versions": {
+    "AIChat": "1.17.1",
+    "SPP": "5.9.1"
+  },
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "tested_runtime_source_commits": {
+    "AIChat": "6fbdf634edf00548a7197369401386b515a93d34",
+    "SPP": "30787f5bbcb118774fe889ec173ab38ba3ad9bb8"
+  },
+  "local_document_candidate_commits": {
+    "AIChat": "02d736c3095e4ca39dcd7be5ef4dcd44a393311c",
+    "SPP": "8f676bda6c0e6c62803acb0160fdadc785e968fd",
+    "public": "b923bb770c6d4530f97d0fad9dd1b97c62be89f9"
+  },
+  "local_ci_round_1": "PASS",
+  "local_ci_round_2": "not_needed",
+  "local_unit_tests": {
+    "public_release_and_license": 36,
+    "AIChat_repository_management": 25,
+    "SPP_repository_management": 25
+  },
+  "paired_repository_management_checks": "PASS",
+  "unchanged_original_runtime_payload_files": 44,
+  "new_binaries_built": false,
+  "new_game_or_paid_API_tests": false,
+  "remote_ci_run": false,
+  "all_17_assets_downloaded_byte_equal": true,
+  "anonymous_new_program_and_license_files_verified": true,
+  "old_public_release_count_deleted": 6,
+  "old_public_attachment_count_deleted": 46,
+  "old_tracked_main_package_files_deleted": 36,
+  "main_package_cleanup_commit": "9723651d8155b4e84d60a5b732dabfbcd9608f82",
+  "old_public_assets_backed_up": true,
+  "old_tags_deleted": false,
+  "git_history_rewritten": false,
+  "private_original_component_releases_preserved": true,
+  "previous_MIT_rights_revoked": false
+}
