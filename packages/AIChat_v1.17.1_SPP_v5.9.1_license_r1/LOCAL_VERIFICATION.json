@@ -1,0 +1,177 @@
+{
+  "passed": true,
+  "scope": "current stable code candidates, original game references, compiled BepInEx metadata/title, actual packaged EXE/cmd/keyword/ONNX and file preservation; no live game rendering or paid provider API",
+  "source_commits": {
+    "AIChat": "6fbdf634edf00548a7197369401386b515a93d34",
+    "SPP": "30787f5bbcb118774fe889ec173ab38ba3ad9bb8"
+  },
+  "binaries_sha256": {
+    "AIChat/AIChat.dll": "aeef8764eb301291ecb6d49487e643bd06ac5fb1f4e415647c5f9e54ac6e08eb",
+    "SatonePromptProxy/SatonePromptProxy.exe": "837f0d2c3d2925ce27bdb28f3e8620f8dffb56c936498a723491b591d9dd9efe"
+  },
+  "local_ci_rounds": {
+    "first": "failed: Windows Store Python execution alias and PowerShell 5.1 reading UTF-8 Chinese without BOM; all other executed groups passed",
+    "second": "Code and package checks passed; final source-document gate failed because the new verification helper searched UI partial-class literals only in AIMod.cs. Original failure preserved."
+  },
+  "first_round_checks": {
+    "AIChat": [
+      {
+        "name": "AIChat",
+        "exit_code": 0
+      },
+      {
+        "name": "AIChat.Tests",
+        "exit_code": 0
+      },
+      {
+        "name": "AIChat.UI.Tests",
+        "exit_code": 0
+      },
+      {
+        "name": "AIChat.Integration.Tests",
+        "exit_code": 0
+      },
+      {
+        "name": "AIChat.Presentation.Tests",
+        "exit_code": 0
+      },
+      {
+        "name": "AIChat.WindowEvent.Tests",
+        "exit_code": 0
+      },
+      {
+        "name": "AIChat.CP18.Tests",
+        "exit_code": 0
+      },
+      {
+        "name": "check_ui_resources.py",
+        "exit_code": 0
+      },
+      {
+        "name": "check_provider_settings.py",
+        "exit_code": 0
+      },
+      {
+        "name": "check_ui_sync_appearance.py",
+        "exit_code": 0
+      },
+      {
+        "name": "compiled-metadata-title",
+        "exit_code": 1
+      },
+      {
+        "name": "component-validator-unit",
+        "exit_code": 0
+      }
+    ],
+    "SPP": [
+      {
+        "name": "go-format",
+        "exit_code": 0
+      },
+      {
+        "name": "go-test",
+        "exit_code": 1
+      },
+      {
+        "name": "go-vet",
+        "exit_code": 0
+      },
+      {
+        "name": "go-build",
+        "exit_code": 0
+      },
+      {
+        "name": "component-validator-unit",
+        "exit_code": 0
+      },
+      {
+        "name": "windows-semantic-unit",
+        "exit_code": 0
+      }
+    ],
+    "public": [
+      {
+        "name": "release-validator-unit",
+        "exit_code": 0
+      }
+    ]
+  },
+  "second_round_checks": [
+    {
+      "name": "compiled-metadata-title",
+      "exit_code": 0
+    },
+    {
+      "name": "SPP-full-go-test",
+      "exit_code": 0
+    }
+  ],
+  "go_tests": {
+    "top_level_pass": 519,
+    "all_named_pass": 1028,
+    "skipped": [
+      "TestCP11LiveOpenAIConversationContract",
+      "TestCP15LiveOfficialCompatibility",
+      "TestCP23LifecycleBuildFixture",
+      "TestCP23LargeLifecycle",
+      "TestCP14RepairProductionApplyAndHistoryEXE",
+      "TestE5RealGolden",
+      "TestSemanticJobHelper",
+      "TestSemanticRealWorkerEXE"
+    ],
+    "failures": [],
+    "managed_ASR_restart_exercised": true
+  },
+  "client_suites": {
+    "UI": 198,
+    "production_integration": 189,
+    "pure_logic": "PASS",
+    "presentation": "PASS",
+    "window_events": "PASS",
+    "CP18": "PASS"
+  },
+  "package_validator_unit_tests": {
+    "AIChat": 15,
+    "SPP": 15,
+    "public": 24
+  },
+  "semantic_batch_packaging_unit_tests": 3,
+  "compiled_title": "AIChat Remake控制台",
+  "plugin_version": "1.17.1",
+  "display_version": "1.17.1",
+  "text_bat_actual_cases": 4,
+  "semantic_bat_actual_cases": 11,
+  "actual_split_installation_cases": 11,
+  "protected_upgrade_files": 17,
+  "unicode_package_extract_player_sentinels": 6,
+  "latest_tutorial_included": true,
+  "four_bat_sha256": {
+    "Start_Text_Chat.bat": "1962a30ef57284258a09bd70a9417c2624e115538842a2de67f65881843082ae",
+    "Verify_Semantic_Recall.bat": "87ba9341aee2c6d47e5135684d5f3d02c03b277068c328d42e22f156f961bde5",
+    "Enable_Semantic_Recall.bat": "e96e6be1e3a15796c0b5f30a7784ef652298679eefe5709a5c6bf6fafca88f9a",
+    "Disable_Semantic_Recall.bat": "427182fc072530c103006ac7f2a1142f82970e7453db2fb4d3e0d2783c532e11"
+  },
+  "model_zip_bytes_unchanged": true,
+  "model_enabled_by_default": false,
+  "zip_sha256": {
+    "SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip": "4c5483527264c587a5ebd4e06538f102df767d0c7aa302bfef2ef231e96b7475",
+    "Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip": "88c77b40c89df19e316aebf497ff30fc4d5504138955ba92e0f2d4875b639d8d",
+    "AIChat_v1.17.1.zip": "e21318ea6a7484dff1138465f48b1d89450408f1c96a25a02d4d0ac4fa85ec83",
+    "SatonePromptProxy_v5.9.1.zip": "f9092dbd3c151c9011d9fc3ee6155a11c51cb0c96c2b9871801446937c386cd1"
+  },
+  "remote_ci_run": false,
+  "known_limits": [
+    "Large WAL cold start and reported game FPS root cause not fixed"
+  ],
+  "publication_authorized_by_user": true,
+  "publication_state": "assets locally verified; remote draft upload/download checks recorded separately",
+  "authorized_additional_round": {
+    "user_answer": "允许修正校验并继续正式发布",
+    "date": "2026-10-01",
+    "scope": "correct the final documentation checker source location; additional docs/manifests verification and formal publication; frozen ZIP bytes unchanged",
+    "code_suite_rerun": false,
+    "round": 3
+  },
+  "additional_verification_scope": "documentation links/source locations and complete asset manifests; code and installation ZIP bytes unchanged"
+}

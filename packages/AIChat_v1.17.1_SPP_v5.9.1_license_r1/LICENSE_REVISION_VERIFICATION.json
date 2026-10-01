@@ -1,0 +1,12 @@
+{
+  "delivery_revision": "license-r1",
+  "checks": "See fixed candidate and ROUND_1 report; do not infer new runtime testing.",
+  "runtime_source_commits": {
+    "AIChat": "6fbdf634edf00548a7197369401386b515a93d34",
+    "SPP": "30787f5bbcb118774fe889ec173ab38ba3ad9bb8"
+  },
+  "original_verification_file": "LOCAL_VERIFICATION.json",
+  "new_binaries_built": false,
+  "runtime_files_preserved": 44,
+  "original_license_grants_revoked": false
+}
