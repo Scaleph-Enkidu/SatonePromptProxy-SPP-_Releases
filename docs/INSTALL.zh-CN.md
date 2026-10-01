@@ -23,7 +23,7 @@
 ### 1. 下载并安装游戏插件
 
 1. 退出游戏。在 Steam 游戏库中，右击《放松时光：与你共享 Lo-Fi 故事》，依次点击 **管理 → 浏览本地文件**。打开的文件夹就是下面所说的“游戏文件夹”。
-2. 下载 [BepInEx_win_x64_5.4.23.5.zip](https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.5/BepInEx_win_x64_5.4.23.5.zip)。把压缩包里的文件解压到游戏文件夹中，让 `BepInEx` 文件夹、`winhttp.dll` 和游戏的启动程序放在同一层。如果已经安装过这个版本的 BepInEx，可以跳过这一步。
+2. 下载 [BepInEx_win_x64_5.4.23.5.zip](https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.5/BepInEx_win_x64_5.4.23.5.zip)。把压缩包里的文件解压到游戏文件夹中，让 `BepInEx` 文件夹、`winhttp.dll` 和游戏的启动程序放在同一层。安装完成后启动一次游戏随后退出，插件会自动建立配置文件，供下一步安装使用。如果已经安装过这个版本的 BepInEx，可以跳过这一步。
 3. 下载 [SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64_license_r1.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1-license-r1/SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64_license_r1.zip)，并解压。打开里面的 `AIChat` 文件夹，把 `AIChat.dll` 和 `AIChat.pdb` 复制到游戏文件夹中的 `BepInEx\plugins`。如果没有 `plugins` 文件夹，在 `BepInEx` 中新建一个名为 `plugins` 的文件夹。如果安装过旧版 AIChat，替换原来的同名文件。
 4. 你可以把解压出来的整个 `SatonePromptProxy` 文件夹复制到任意位置。如果希望继续安装聪音发音组件与玩家语音识别，推荐单独建立一个文件夹进行统一管理，例如 `D:\LofiMOD`。**不建议路径中包含中文。** 之后可以在游戏的 **AIChat UI** 中配置这个程序的路径，让 SPP 随游戏自动启动，具体操作见下面第 3 节。
 
