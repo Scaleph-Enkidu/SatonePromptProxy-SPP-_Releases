@@ -18,8 +18,8 @@
   "assets": [
     {
       "name": "SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip",
-      "size": 10883405,
-      "sha256": "6377419a8ad59b721bc8b6a08e182e08581e90c9de86244f0e43a88a7b6d39e4",
+      "size": 10883404,
+      "sha256": "8f6e5d41d77994b67f2d0946866fb223b248fae3841db7e881a3509e189b016f",
       "versions": {
         "AIChat": "1.17.0",
         "SPP": "5.9.0"
@@ -148,7 +148,7 @@
     {
       "name": "SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip.sha256",
       "size": 124,
-      "sha256": "3f04495f7784308a785593496e312b968ad9c932ed0370c4ef6eaf2f05feb406"
+      "sha256": "1ce6937efaf832357652d3f73a5a728a40db956abe16a4b06fcbdfb4974e8976"
     },
     {
       "name": "Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip.sha256",
