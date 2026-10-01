@@ -1,0 +1,197 @@
+{
+  "schema_version": 2,
+  "release_tag": "AIChat-v1.17.1_SPP-v5.9.1",
+  "verified_at": "2026-10-01",
+  "package_directory": "packages/AIChat_v1.17.1_SPP_v5.9.1",
+  "paired_release_tag": "AIChat-v1.17.1_SPP-v5.9.1",
+  "assets": [
+    {
+      "name": "AIChat_CHANGELOG_zh-CN.md",
+      "size": 1580,
+      "sha256": "3a2e02f83d48490dfe2a307edb9d3f5e79a5996fb6978ae7a0acd75cbfc1bac9"
+    },
+    {
+      "name": "AIChat_LICENSE.txt",
+      "size": 1087,
+      "sha256": "9a62d81b0911f749bb60ebce764b594dc9fb306295eff7d7112a3404a00f0e91"
+    },
+    {
+      "name": "AIChat_README_zh-CN.md",
+      "size": 9723,
+      "sha256": "455bc7555761f0722aaec2cc51c6de28383018d5c815be422897ff1493aa4afa"
+    },
+    {
+      "name": "INSTALL_zh-CN.md",
+      "size": 44543,
+      "sha256": "ecb335b2d709f25965bef2aa3a839a6e0f0f109a7703606d218219b4139d9a32"
+    },
+    {
+      "name": "LOCAL_VERIFICATION.json",
+      "size": 5572,
+      "sha256": "69e56e344b5c23c2a9773e872175832e862235fb1b5a28b4bf7178dcec24ac7d"
+    },
+    {
+      "name": "RELEASE_NOTES_zh-CN.md",
+      "size": 3003,
+      "sha256": "3296b66cad18f6d203d245e8a26fef96ad8ddf1c228411cc4a5a25be9ec7f3e2"
+    },
+    {
+      "name": "Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip",
+      "size": 93821443,
+      "sha256": "88c77b40c89df19e316aebf497ff30fc4d5504138955ba92e0f2d4875b639d8d",
+      "role": "semantic_component",
+      "checksum_file": "Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip.sha256",
+      "zip_members": [
+        "models/multilingual-e5-small/COMPONENT.json",
+        "models/multilingual-e5-small/licenses/E5_MIT_LICENSE",
+        "models/multilingual-e5-small/licenses/MODEL_CARD.md",
+        "models/multilingual-e5-small/licenses/ORT_LICENSE",
+        "models/multilingual-e5-small/licenses/ORT_ThirdPartyNotices.txt",
+        "models/multilingual-e5-small/licenses/provenance.json",
+        "models/multilingual-e5-small/model.onnx",
+        "models/multilingual-e5-small/onnxruntime.dll",
+        "models/multilingual-e5-small/onnxruntime_providers_shared.dll",
+        "models/multilingual-e5-small/tokenizer.json",
+        "语义组件安装说明.md"
+      ]
+    },
+    {
+      "name": "Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip.sha256",
+      "size": 123,
+      "sha256": "9a00555e21df3725d91a25ed20283cc0319838bdea1ff7754cf2a26f4a75d87f"
+    },
+    {
+      "name": "SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip",
+      "size": 10904784,
+      "sha256": "4c5483527264c587a5ebd4e06538f102df767d0c7aa302bfef2ef231e96b7475",
+      "versions": {
+        "AIChat": "1.17.1",
+        "SPP": "5.9.1"
+      },
+      "source_commits": {
+        "AIChat": "6fbdf634edf00548a7197369401386b515a93d34",
+        "SPP": "30787f5bbcb118774fe889ec173ab38ba3ad9bb8"
+      },
+      "binaries_sha256": {
+        "AIChat/AIChat.dll": "aeef8764eb301291ecb6d49487e643bd06ac5fb1f4e415647c5f9e54ac6e08eb",
+        "SatonePromptProxy/SatonePromptProxy.exe": "837f0d2c3d2925ce27bdb28f3e8620f8dffb56c936498a723491b591d9dd9efe"
+      },
+      "role": "paired_program",
+      "checksum_file": "SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip.sha256",
+      "zip_members": [
+        "AIChat/AIChat.dll",
+        "AIChat/AIChat.pdb",
+        "AIChat/LICENSE",
+        "AIChat/README.md",
+        "AIChat/docs/API_COST.zh-CN.md",
+        "AIChat/docs/DATA_AND_PRIVACY.zh-CN.md",
+        "AIChat/docs/DOWNLOADS.zh-CN.md",
+        "AIChat/docs/HARDWARE.zh-CN.md",
+        "AIChat/docs/INSTALL.zh-CN.md",
+        "AIChat/docs/MAINTAINER_STATUS.zh-CN.md",
+        "AIChat/docs/OFFICIAL_1.17.1_5.9.1_20261001.md",
+        "AIChat/docs/ONNX_SETUP.zh-CN.md",
+        "AIChat/docs/VERSION_1.17.1.md",
+        "AIChat/docs/VOICE_SETUP.zh-CN.md",
+        "AIChat/版本与改动.md",
+        "BUILD_INFO.json",
+        "README.md",
+        "SatonePromptProxy/Backup_Satone.bat",
+        "SatonePromptProxy/Compress_Memory_Now.bat",
+        "SatonePromptProxy/Disable_Semantic_Recall.bat",
+        "SatonePromptProxy/Edit_Config.bat",
+        "SatonePromptProxy/Edit_Memory.bat",
+        "SatonePromptProxy/Enable_Semantic_Recall.bat",
+        "SatonePromptProxy/Export_Archive_JSONL.bat",
+        "SatonePromptProxy/Open_ASR_Status.bat",
+        "SatonePromptProxy/Open_Chat_Log.bat",
+        "SatonePromptProxy/Open_Dashboard.bat",
+        "SatonePromptProxy/Open_Memory_Profiles.bat",
+        "SatonePromptProxy/Open_Relationship_Status.bat",
+        "SatonePromptProxy/Open_TTS_Status.bat",
+        "SatonePromptProxy/Profile_Status.bat",
+        "SatonePromptProxy/README.md",
+        "SatonePromptProxy/Rebuild_Recall_Index.bat",
+        "SatonePromptProxy/Recall_Status.bat",
+        "SatonePromptProxy/Reload_Memory.bat",
+        "SatonePromptProxy/Reload_Persona.bat",
+        "SatonePromptProxy/SatoneASRHotwords_v1.json",
+        "SatonePromptProxy/SatonePersona_v4.6.txt",
+        "SatonePromptProxy/SatonePromptProxy.exe",
+        "SatonePromptProxy/Set_GPTSoVITS_RunApi_Path.bat",
+        "SatonePromptProxy/Set_Mayuri_Refs_Path.bat",
+        "SatonePromptProxy/Show_Usage.bat",
+        "SatonePromptProxy/Start_AIChat_Services.bat",
+        "SatonePromptProxy/Start_Text_Chat.bat",
+        "SatonePromptProxy/Stop_SatonePromptProxy.bat",
+        "SatonePromptProxy/Switch_Memory_1.bat",
+        "SatonePromptProxy/Switch_Memory_2.bat",
+        "SatonePromptProxy/Switch_Memory_3.bat",
+        "SatonePromptProxy/Verify_Semantic_Recall.bat",
+        "SatonePromptProxy/config.example.json",
+        "SatonePromptProxy/docs/API_COST.zh-CN.md",
+        "SatonePromptProxy/docs/DATA_AND_PRIVACY.zh-CN.md",
+        "SatonePromptProxy/docs/DOWNLOADS.zh-CN.md",
+        "SatonePromptProxy/docs/HARDWARE.zh-CN.md",
+        "SatonePromptProxy/docs/INSTALL.zh-CN.md",
+        "SatonePromptProxy/docs/MAINTAINER_STATUS.zh-CN.md",
+        "SatonePromptProxy/docs/OFFICIAL_1.17.1_5.9.1_20261001.md",
+        "SatonePromptProxy/docs/ONNX_SETUP.zh-CN.md",
+        "SatonePromptProxy/docs/PORTABLE_DEPLOYMENT.md",
+        "SatonePromptProxy/docs/VERSION_5.9.1.md",
+        "SatonePromptProxy/docs/VOICE_SETUP.zh-CN.md",
+        "SatonePromptProxy/examples/SatoneMemory.example.json",
+        "SatonePromptProxy/examples/SatoneRelationship.example.json",
+        "SatonePromptProxy/examples/service_paths.example.ini",
+        "SatonePromptProxy/mayuri-voice/refs/MAY_1158_Neutral.wav",
+        "SatonePromptProxy/profiles_26.csv",
+        "SatonePromptProxy/reset_conversation.bat",
+        "SatonePromptProxy/satone_funasr_server_v1.py",
+        "SatonePromptProxy/third_party/NOTICE.md",
+        "SatonePromptProxy/third_party/purego/GO_RUNTIME_LICENSE",
+        "SatonePromptProxy/third_party/purego/LICENSE",
+        "SatonePromptProxy/third_party/uniseg/LICENSE.txt",
+        "SatonePromptProxy/版本与改动.md",
+        "docs/API_COST.zh-CN.md",
+        "docs/DATA_AND_PRIVACY.zh-CN.md",
+        "docs/DOWNLOADS.zh-CN.md",
+        "docs/HARDWARE.zh-CN.md",
+        "docs/INSTALL.zh-CN.md",
+        "docs/MAINTAINER_STATUS.zh-CN.md",
+        "docs/OFFICIAL_1.17.1_5.9.1_20261001.md",
+        "docs/ONNX_SETUP.zh-CN.md",
+        "docs/VOICE_SETUP.zh-CN.md",
+        "releases/AIChat_v1.17.1_SPP_v5.9.1.md",
+        "安装与实机测试说明.md",
+        "版本与改动.md"
+      ]
+    },
+    {
+      "name": "SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip.sha256",
+      "size": 116,
+      "sha256": "d31e7712c57475c9976141febe31cca1dceda2c32cd4fe37064d0b700362cd7e"
+    },
+    {
+      "name": "SPP_CHANGELOG_zh-CN.md",
+      "size": 1395,
+      "sha256": "67331a05fdbb15a9b88bcd9fb44cc00bd4a9e9cbeddb062eef925d4a4c63608a"
+    },
+    {
+      "name": "SPP_README_zh-CN.md",
+      "size": 9438,
+      "sha256": "b0187baedf8e4e9a8cb1039be36a7bc2afa37ace9acb167391680618eca5d33c"
+    }
+  ],
+  "source_commits": {
+    "AIChat": "6fbdf634edf00548a7197369401386b515a93d34",
+    "SPP": "30787f5bbcb118774fe889ec173ab38ba3ad9bb8"
+  },
+  "local_ci_round": 2,
+  "local_verification_file": "LOCAL_VERIFICATION.json",
+  "new_binaries_built": true,
+  "optional_model_in_git": false,
+  "model_zip_bytes_reused": true,
+  "previous_stable_pair": "AIChat-v1.17.0_SPP-v5.9.0-docs-r1",
+  "user_authorized_formal_publication": true,
+  "authorized_additional_doc_gate_round": 3
+}
