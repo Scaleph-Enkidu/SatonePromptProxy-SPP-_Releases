@@ -11,7 +11,7 @@
 
 继续保留原有聊天、原生字幕/动画、三档记忆、关系/情绪、Meta 演出、F8 按住说话及持续通话。升级时退出游戏，备份并覆盖 DLL/PDB，plugins 中只保留一份 AIChat.dll；保留配置、关系、记忆、记录、模型与语音目录。
 
-掉帧根因和 SPP 大档冷启动耗时仍未解决。本地构建/UI/同步回归与封包不等于全部游戏场景已实测。详见 [本包教程](docs/INSTALL.zh-CN.md)和[完整发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1)。
+掉帧根因和 SPP 大档冷启动耗时仍未解决。本地构建/UI/同步回归与封包不等于全部游戏场景已实测。详见 [本包教程](../docs/INSTALL.zh-CN.md)和[完整发布页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1)。
 
 # SatonePromptProxy 5.9.1：版本与改动
 
@@ -24,4 +24,4 @@
 
 SPP 应用标识增加到 5.9.1，重新构建程序；除版本标识外，服务核心源码沿用原受测逻辑。本次没有新增记忆迁移、模型版本、FPS 修复或大 WAL 加速。ONNX 模型继续独立选装，已安装同一组件可以复用。
 
-先退出 SPP 和游戏，备份 EXE/BAT，覆盖程序与工具；保留 config.json、连接/凭据、记忆/关系/聊天、models、缓存和 GPT-SoVITS/Fun-ASR/语音目录。[完整教程](docs/INSTALL.zh-CN.md)和[正式配对发布](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1)。
+先退出 SPP 和游戏，备份 EXE/BAT，覆盖程序与工具；保留 config.json、连接/凭据、记忆/关系/聊天、models、缓存和 GPT-SoVITS/Fun-ASR/语音目录。[完整教程](../docs/INSTALL.zh-CN.md)和[正式配对发布](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1)。
