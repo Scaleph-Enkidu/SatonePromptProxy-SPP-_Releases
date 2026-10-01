@@ -31,6 +31,8 @@
 
 打开刚才放好的 `SatonePromptProxy` 文件夹，双击 **SatonePromptProxy.exe**。保持它运行，然后启动游戏。
 
+打开的黑色窗口是 SPP 的运行日志窗口。底部出现 `Listening: http://127.0.0.1:11435/v1/chat/completions`，表示聊天服务已启动。这个窗口不会出现用于输入命令的目录提示符，属于正常现象；使用聊天功能时保持它运行。
+
 ### 3. 在 AIChat UI 中设置自动启动
 
 1. 进入游戏后，按 **F9** 打开 **AIChat UI**，点击 **展开设置**。
@@ -111,9 +113,11 @@
 
 1. 在 `SatonePromptProxy` 文件夹中，双击 **Verify_Semantic_Recall.bat**。看到 **语义组件文件校验通过。** 后，按任意键关闭窗口。
 2. 双击 **Enable_Semantic_Recall.bat**。看到 **语义回忆已启用。** 的提示后，按任意键关闭窗口。
-3. 双击 **Start_Text_Chat.bat**，重新启动 SPP。
+3. 双击 **SatonePromptProxy.exe**，重新启动 SPP。看到日志窗口底部出现 `Listening:` 后，再继续下一步。
 
 如果校验失败，先重新检查上一步的文件位置，必要时重新解压模型包；不要继续启用。如果提示 SPP 仍在运行，先重新停止 SPP，再执行校验和启用。**只复制模型文件，还没有完成启用。**
+
+如果双击校验或启用脚本后窗口一闪就关闭，没有机会看到结果，请按[脚本闪退时的处理步骤](#semantic-script)在命令窗口中执行，不要把窗口关闭当成操作成功。
 
 ### 4. 查找刚才的聊天
 
@@ -139,7 +143,7 @@
 <details>
 <summary>进阶说明（可跳过）</summary>
 
-- **暂时停用模型：** 退出游戏并停止 SPP，双击 **Disable_Semantic_Recall.bat**，再双击 **Start_Text_Chat.bat**。停用后仍可使用文字聊天和关键词回忆；不会删除模型和聊天记录。
+- **暂时停用模型：** 退出游戏并停止 SPP，双击 **Disable_Semantic_Recall.bat**，再双击 **SatonePromptProxy.exe**。停用后仍可使用文字聊天和关键词回忆；不会删除模型和聊天记录。停用脚本闪退时，按下方[命令窗口操作](#semantic-script)使用停用命令。
 - **其他状态怎么处理：** `disabled` 表示没有启用；`missing` 表示缺少组件文件；`failed` 表示准备失败。对应的处理步骤、更新模型和缓存说明见 [ONNX 进阶说明](ONNX_SETUP.zh-CN.md)。
 - **文件校验与资源开销：** 见[下载校验](DOWNLOADS.zh-CN.md)和[硬件说明](HARDWARE.zh-CN.md)。
 
@@ -272,7 +276,7 @@ custom:
 
    JSON 的字符串要保留两侧英文双引号；true 不加引号。用包内默认录音时保留这句台词，旧配置指向其他目录的玩家也改回表内的 ref_root 和 path。
 
-3. 按 Ctrl+S 保存并关闭记事本，双击 D:\LofiMOD\SatonePromptProxy\Start_Text_Chat.bat。
+3. 按 Ctrl+S 保存并关闭记事本，双击 D:\LofiMOD\SatonePromptProxy\SatonePromptProxy.exe。
 4. 再打开 TTS 状态页，按 F5 刷新，确认 `validation` 中的 `Neutral` 显示 `valid: true`，然后继续 3.5。
 
 ### 3.5 在游戏中保存设置并听到回复
@@ -428,7 +432,7 @@ Qwen3-0.6B 文件夹内也应有实际文件。只下载 model.pt、只创建空
 
    server_script 只填自己路线的一项。没有装第三阶段 TTS 的玩家，也可原样完成这里。两个服务的设备设置互不改变。
 
-3. 按 Ctrl+S 保存并关闭记事本。双击 D:\LofiMOD\SatonePromptProxy\Start_Text_Chat.bat，等它加载模型。SPP 会自动启动配置中的 ASR Python 服务；不用双击 .py 文件。
+3. 按 Ctrl+S 保存并关闭记事本。双击 D:\LofiMOD\SatonePromptProxy\SatonePromptProxy.exe，等它加载模型。SPP 会自动启动配置中的 ASR Python 服务；不用双击 .py 文件。
 4. 用普通浏览器打开 [SPP 的 ASR 状态页](http://127.0.0.1:11435/asr/status)，加载期间按 F5 刷新。成功时应有 ready: true，且 python、model_path、server_script 都显示刚才填写的路径。CPU 路线的 server_script 必须显示 cpu 副本。
 5. 再打开 [ASR 后端健康页](http://127.0.0.1:9881/health)，应看到 ok: true。第一次模型加载较慢；若状态的 last_error 有内容，或健康页一直打不开，查看 D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.9.0.log 中的第一条 Python 错误，再按[ASR 排错](VOICE_SETUP.zh-CN.md#asr-troubleshooting)处理。
 
@@ -471,9 +475,68 @@ Qwen3-0.6B 文件夹内也应有实际文件。只下载 model.pt、只创建空
 |---|---|
 | 按 F9 没有打开 AIChat UI | 检查 `AIChat.dll` 是否放在游戏的 `BepInEx\plugins` 中，BepInEx 是否和游戏启动程序在同一层；已有旧版时不要留下第二份 AIChat DLL。 |
 | 显示 SPP 未检测到 | 回到 SPP 文件夹双击 `SatonePromptProxy.exe`，再核对 UI 中填写的完整启动文件路径。 |
+| 校验、启用或停用 BAT 一闪就关闭 | 按[命令窗口操作](#semantic-script)执行，看到明确结果后再继续。 |
+| 停止 SPP 后游戏掉帧，或启动 BAT 后仍未恢复 | 直接双击同一文件夹中的 `SatonePromptProxy.exe`。安装、校验模型前先退出游戏；日常聊天保持 SPP 运行。详细步骤见[启动窗口与掉帧](#spp-start-window)。 |
 | 发送文字后没有正常回复 | 检查聊天服务是否显示“正在使用”，密钥和模型名称是否属于这个服务，服务商账户是否有可用额度。修改后重新点击“保存并应用配置”。 |
 | ONNX 没有准备完成 | 确认当前档案有聊天记录，再按[阶段二](#stage-2)完成校验、启用和一次检索。进一步排查见 [ONNX 进阶说明](ONNX_SETUP.zh-CN.md)。 |
 | 有文字回复却没有声音 | 按[阶段三](#stage-3)检查 GPT-SoVITS 是否已经启动，TTS 朗读语言和音量是否正确。进一步排查见[语音进阶说明](VOICE_SETUP.zh-CN.md#stage-3)。 |
 | 按 F8 说话没有识别 | 按[阶段四](#stage-4)检查 ASR 启动结果、Windows 麦克风权限和游戏中选择的麦克风。进一步排查见[语音识别进阶说明](VOICE_SETUP.zh-CN.md#stage-4)。 |
+| 提示“有因重启或会话切换而保留的语音输入；未自动转发到新会话。” | 按[保留语音的处理步骤](#preserved-voice)选择恢复文字、保存录音或移除旧输入。 |
+
+<a id="semantic-script"></a>
+### 校验、启用或停用脚本闪退：在命令窗口中操作
+
+1. 等聪音回复结束，退出游戏。打开自己的 `SatonePromptProxy` 文件夹，双击 **Stop_SatonePromptProxy.bat** 停止 SPP。
+2. 点击这个文件夹上方的地址栏，输入 **cmd**，按 **Enter**。命令窗口会在当前文件夹中打开；不要把下面的命令输入 SPP 的运行日志窗口。
+3. 复制下面一行到命令窗口，按 **Enter**：
+
+   ```bat
+   SatonePromptProxy.exe --semantic-component verify
+   ```
+
+   看到 **语义组件文件校验通过。** 才继续。若显示校验失败，按上方原因检查模型文件位置与完整性；若显示 `already active or locked`，说明 SPP 仍在运行，先停止再重试。
+4. 需要启用时，复制下面一行并按 **Enter**：
+
+   ```bat
+   SatonePromptProxy.exe --semantic-component enable
+   ```
+
+   看到 **语义回忆已启用。** 才算启用成功。若这次是要停用模型，执行下面这一行代替启用命令：
+
+   ```bat
+   SatonePromptProxy.exe --semantic-component disable
+   ```
+
+5. 关闭命令窗口，双击 **SatonePromptProxy.exe**，然后按[阶段二的检索检查](#stage-2)查看模型是否准备完成。文件校验通过与模型实际加载完成是两次不同的检查。
+
+<a id="spp-start-window"></a>
+### 启动窗口不同，或停止 SPP 后游戏掉帧
+
+直接双击 **SatonePromptProxy.exe** 即可启动完整 SPP。`Start_Text_Chat.bat` 是启动同一程序的便捷工具；旧安装包中的工具会另开最小化日志窗口，外观可能与直接打开 EXE 不同。安装步骤统一使用 EXE，不要求使用这个工具。
+
+如果使用启动工具后聊天服务没有恢复，或游戏帧数仍然很低：
+
+1. 打开自己的 `SatonePromptProxy` 文件夹，双击 **SatonePromptProxy.exe**。
+2. 查看打开的窗口，底部应出现 `Listening: http://127.0.0.1:11435/v1/chat/completions`。若出现其他错误，保留完整错误文字，不要只根据窗口是否打开判断成功。
+3. 点回游戏，按 F9 打开 **AIChat UI → 展开设置 → SPP 与记忆（人格代理）**，确认 **SPP 状态：运行中**，再尝试聊天。
+
+停止 SPP 后掉帧的具体原因仍在排查；重新启动 SPP 是临时恢复方式。安装模型、调整模型启用状态或更新程序时，先等回复结束并退出游戏，再停止 SPP。使用聊天功能时保持 SPP 运行。
+
+<a id="preserved-voice"></a>
+### 重启后提示有保留的语音输入
+
+这条提示表示之前的一段语音被保留了，尚未自动发送到当前会话。SPP 重启、切换记忆档案或切换会话后可能出现；它不表示 ONNX 安装失败。重新启动 SPP 不会自动清掉这条提示，需要自己决定如何处理旧输入。
+
+1. 先启动 **SatonePromptProxy.exe**。在游戏中按 **F9** 打开 **AIChat UI**，确认 SPP 已运行，并且当前选择的聊天服务显示 **（正在使用）**。
+2. 点击 **展开设置 → 持续通话**。不用开启持续通话模式，在这个栏目中找到 **保留的语音输入：**，查看条数、原档案和文字。
+3. 根据自己是否需要这条旧输入，选择对应操作：
+
+   | 想怎么处理 | 点击哪个按钮，以及接下来做什么 |
+   |---|---|
+   | 还想发送已识别出的这句话 | 点 **复制这条发言到输入框（不发送）**。确认当前记忆档案正确，核对下方输入框中的文字，再手动发送。复制不会清掉原队列；发送后按下一行移除旧输入。 |
+   | 不需要这条旧输入，或聪音已经回复过它 | 点 **从保留队列移除这条输入（不发送）**。它只移除这一条保留输入，不会发送消息，也不会删除已有聊天或记忆。 |
+   | 只有录音，还没识别出文字，需要留一份 | 点 **导出这条保留语音（不发送）**。录音保存到游戏文件夹中的 `BepInEx\config\AIChat.preserved-inputs`；保存后可移除旧输入。这个按钮只导出录音，不会自动重新识别或发送；需要继续聊天时重新说一次，或自己输入文字发送。 |
+
+4. 有多条保留输入时，每次只处理当前显示的这一条，逐条确认，直到条数归零。这些按钮立即处理队列，不需要再点击“保存并应用配置”。清理完成后，旧提示可能还会显示几秒，随后自行消失。
 
 仍不能解决，可以到[项目 Issues](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/issues)描述“在哪一步、做了什么、出现什么提示”，并附版本号和报错截图或日志。分享前隐藏 API Key 和私人聊天内容。
