@@ -8,7 +8,9 @@ import stat
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_MANIFEST = "releases/AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json"
+DEFAULT_MANIFEST = "releases/AIChat_v1.17.1_SPP_v5.9.1_license_r1.json"
+POLYFORM_SHA256 = "ffcca38841adb694b6f380647e15f17c446a4d1656fed51a1e2041d064c94cc8"
+UPSTREAM_MIT_SHA256 = "9a62d81b0911f749bb60ebce764b594dc9fb306295eff7d7112a3404a00f0e91"
 SEMANTIC_PREFIX = "models/multilingual-e5-small/"
 SEMANTIC_FILES = {
     "model.onnx": "dd476dd0c2514e9b9be83aeb3853fac0763e0bdf4a71645407587d77c48a2d88",
@@ -153,6 +155,49 @@ def check_semantic(archive):
             require(item.get("url") == SEMANTIC_SOURCES[item["file"]], "License source URL mismatch")
 
 
+def check_license_revision(archive, manifest):
+    """A delivery-only license revision must preserve attribution and old payload."""
+    revision = manifest.get("license_revision")
+    if revision is None:
+        require(not manifest["release_tag"].endswith("-license-r1"), "Missing license revision proof")
+        return
+    require(manifest["release_tag"] == "AIChat-v1.17.1_SPP-v5.9.1-license-r1",
+            "Unsupported license revision identity")
+    require(manifest.get("new_binaries_built") is False, "License revision cannot claim a new build")
+    require(revision.get("identifier") == "PolyForm-Noncommercial-1.0.0"
+            and revision.get("license_sha256") == POLYFORM_SHA256
+            and revision.get("upstream_mit_sha256") == UPSTREAM_MIT_SHA256,
+            "Changed standard or upstream license")
+    for prefix in ("", "AIChat/", "SatonePromptProxy/"):
+        require(digest(archive.read(prefix + "LICENSE")) == POLYFORM_SHA256, "Changed PolyForm text")
+        notice = archive.read(prefix + "NOTICE")
+        require(digest(notice) == revision["notice_sha256"]
+                and b"Required Notice: Copyright (c) 2026 Scaleph." in notice
+                and b"qzrs777/AIChat by Elysia777" in notice,
+                "Missing author or upstream attribution")
+        require(digest(archive.read(prefix + "licenses/upstream/AIChat-MIT.txt")) == UPSTREAM_MIT_SHA256,
+                "Original AIChat MIT must be preserved")
+        require(digest(archive.read(prefix + "licenses/legacy/Release-Repository-MIT.txt"))
+                == revision["legacy_public_mit_sha256"], "Original public MIT must be preserved")
+        scope = archive.read(prefix + "LICENSE_SCOPE.zh-CN.md")
+        require(scope == archive.read("LICENSE_SCOPE.zh-CN.md")
+                and "不能撤销这些权利".encode() in scope
+                and "License: other".encode() in scope,
+                "Missing prior-rights or third-party scope")
+    baseline = revision.get("unchanged_payload_sha256")
+    require(isinstance(baseline, dict) and set(PAIR_BINARIES.values()) <= set(baseline),
+            "Missing original runtime payload proof")
+    for name, expected in baseline.items():
+        safe_path(name)
+        require(digest(archive.read(name)) == expected, "Changed runtime or third-party payload: " + name)
+    runtime = {n for n in archive.namelist() if n.lower().endswith((".dll", ".pdb", ".exe", ".bat", ".wav", ".py"))}
+    require(runtime <= set(baseline), "Unproven new runtime payload")
+    info = json.loads(archive.read("BUILD_INFO.json"))
+    require(info.get("new_binaries_built") is False
+            and info.get("original_program_zip_sha256") == revision["original_program_zip_sha256"],
+            "Missing original package provenance")
+
+
 def check_legacy(archive, asset):
     info = json.loads(archive.read("BUILD_INFO.json"))
     for key in ("source_commit", "version", "component"):
@@ -223,6 +268,7 @@ def verify_manifest(manifest_path, assets_dir=None, expected_tag=None):
                 check_legacy(archive, asset)
             elif asset["role"] == "paired_program":
                 check_pair(archive, asset)
+                check_license_revision(archive, manifest)
             else:
                 check_semantic(archive)
         checksum_name = asset["checksum_file"]

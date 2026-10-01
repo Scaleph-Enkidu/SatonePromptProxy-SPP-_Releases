@@ -47,7 +47,7 @@
 
 模型目录应完整包含 model.onnx、tokenizer.json、onnxruntime.dll、onnxruntime_providers_shared.dll、COMPONENT.json 和 licenses。不要混用其他模型包里的单个文件。
 
-重新下载[本版本模型包](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1/Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip)，停止 SPP 后替换完整组件目录，再运行 Verify 工具。校验失败时工具不会改写启用配置；解决失败后再 Enable。
+重新下载[本版本模型包](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1-license-r1/Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip)，停止 SPP 后替换完整组件目录，再运行 Verify 工具。校验失败时工具不会改写启用配置；解决失败后再 Enable。
 
 如果 Stop 工具提示“没有运行”，但管理页刷新后仍能访问，可能没有成功停止进程。先检查任务管理器中的 SPP 进程，再进行启停工具操作。
 

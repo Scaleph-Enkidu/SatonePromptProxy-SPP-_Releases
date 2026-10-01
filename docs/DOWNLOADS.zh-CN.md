@@ -1,22 +1,20 @@
-# 下载清单：AIChat 1.17.1 + SPP 5.9.1
+# 当前下载：AIChat 1.17.1 / SPP 5.9.1 授权修订 r1
 
-[返回首页](../README.md) · [四阶段安装教程](INSTALL.zh-CN.md)
+[返回首页](../README.md) · [完整安装教程](INSTALL.zh-CN.md) · [授权范围](../LICENSE_SCOPE.zh-CN.md)
 
-更新日期：2026-10-01。首次安装先下载配对主程序包，包含 AIChat、SPP、最新四个 BAT 与完整教程。语义模型仍为独立选装，同一模型已安装时可以复用。GitHub 自动生成的 Source code ZIP 不是安装包。
+本次只修订许可、署名与下载说明，运行文件保持原正式版字节，程序版本不变。主程序与选装模型分开下载。
 
-| 附件 | 用途 | 安装位置 |
-|---|---|---|
-| [SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1/SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip)（约 11 MB） | AIChat 1.17.1 + SPP 5.9.1 配对主程序 | DLL/PDB 放到游戏 BepInEx/plugins，SPP 整目录放到固定运行位置 |
-| [Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1/Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip)（约 94 MB） | 按意思查找历史对话的可选模型 | models 放在 SPP EXE 旁，按教程 Verify → Enable → 重启 |
+| 下载 | 用途 |
+| --- | --- |
+| [主程序配对包（约 11 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1-license-r1/SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64_license_r1.zip) | AIChat DLL/PDB 与 SPP 全部运行文件、工具和默认 Neutral 音频 |
+| [可选 E5 / ONNX 模型包（约 94 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1-license-r1/Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip) | 按意思检索旧对话，模型和运行库保留原 MIT 等许可 |
 
-主程序包含默认 Neutral 参考音频；GPT-SoVITS、Fun-ASR、声线及识别权重按需另装。ONNX 不是 TTS/ASR 的前置条件。
-
-已安装用户先退出游戏和 SPP，备份程序文件，再覆盖 DLL/PDB、SPP EXE、BAT 和说明。保留 config.json、连接凭据、关系、记忆、聊天记录、models、缓存和语音目录；不要覆盖或删除玩家资料。可分别使用两个私库的 [AIChat 1.17.1](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/releases/tag/AIChat-v1.17.1) / [SPP 5.9.1](https://github.com/Scaleph-Enkidu/SatonePromptProxy/releases/tag/SPP-v5.9.1) 组件包。
-
-[本次正式 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1) · [SHA-256 与包内文件清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.1_SPP-v5.9.1/releases/AIChat_v1.17.1_SPP_v5.9.1.json)。原版本和原模型下载保留。程序更新后游戏掉帧根因仍未确定，不将 BAT 调整描述为 FPS 修复。
+[本次 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1-license-r1) · [SHA-256 与全部包内文件清单](../releases/AIChat_v1.17.1_SPP_v5.9.1_license_r1.json) · [原版本与下架记录](RELEASE_ARCHIVE.zh-CN.md)
 
 ```powershell
-Get-FileHash -LiteralPath '.\SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip' -Algorithm SHA256
+Get-FileHash -LiteralPath '.\SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64_license_r1.zip' -Algorithm SHA256
 ```
 
-四个阶段与旧语音输入恢复见[完整教程](INSTALL.zh-CN.md)。
+升级时退出游戏与 SPP，备份后替换程序及配套文件；保留个人配置、连接凭据、关系、记忆、聊天记录、models、缓存与语音目录。授权修订不新增功能或性能修复，不要求已经安装同版的玩家重新覆盖运行文件。程序更新后游戏掉帧根因仍未确定。
+
+公开库仅提供当前交付下载。两个开发私库原组件 Release、历史交接与验证证据保留，未作为新的授权修订版下载入口。

@@ -1,0 +1,275 @@
+{
+  "status": "planned_after_new_release_verification",
+  "requested_by_user": true,
+  "replacement_tag": "AIChat-v1.17.1_SPP-v5.9.1-license-r1",
+  "old_releases": [
+    {
+      "tag": "AIChat-v1.17.1_SPP-v5.9.1",
+      "release_id": 400688505,
+      "assets": [
+        {
+          "name": "AIChat_CHANGELOG_zh-CN.md",
+          "size": 1580,
+          "sha256": "3a2e02f83d48490dfe2a307edb9d3f5e79a5996fb6978ae7a0acd75cbfc1bac9"
+        },
+        {
+          "name": "AIChat_LICENSE.txt",
+          "size": 1087,
+          "sha256": "9a62d81b0911f749bb60ebce764b594dc9fb306295eff7d7112a3404a00f0e91"
+        },
+        {
+          "name": "AIChat_README_zh-CN.md",
+          "size": 9723,
+          "sha256": "455bc7555761f0722aaec2cc51c6de28383018d5c815be422897ff1493aa4afa"
+        },
+        {
+          "name": "AIChat_v1.17.1_SPP_v5.9.1.json",
+          "size": 8254,
+          "sha256": "76bc012310cabbdaca716bd0fe44ab159c542ac32c1f740443afe8a11c46eeb9"
+        },
+        {
+          "name": "INSTALL_zh-CN.md",
+          "size": 44543,
+          "sha256": "ecb335b2d709f25965bef2aa3a839a6e0f0f109a7703606d218219b4139d9a32"
+        },
+        {
+          "name": "LOCAL_VERIFICATION.json",
+          "size": 5572,
+          "sha256": "69e56e344b5c23c2a9773e872175832e862235fb1b5a28b4bf7178dcec24ac7d"
+        },
+        {
+          "name": "RELEASE_NOTES_zh-CN.md",
+          "size": 3003,
+          "sha256": "3296b66cad18f6d203d245e8a26fef96ad8ddf1c228411cc4a5a25be9ec7f3e2"
+        },
+        {
+          "name": "SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip",
+          "size": 10904784,
+          "sha256": "4c5483527264c587a5ebd4e06538f102df767d0c7aa302bfef2ef231e96b7475"
+        },
+        {
+          "name": "SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip.sha256",
+          "size": 116,
+          "sha256": "d31e7712c57475c9976141febe31cca1dceda2c32cd4fe37064d0b700362cd7e"
+        },
+        {
+          "name": "Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip",
+          "size": 93821443,
+          "sha256": "88c77b40c89df19e316aebf497ff30fc4d5504138955ba92e0f2d4875b639d8d"
+        },
+        {
+          "name": "Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip.sha256",
+          "size": 123,
+          "sha256": "9a00555e21df3725d91a25ed20283cc0319838bdea1ff7754cf2a26f4a75d87f"
+        },
+        {
+          "name": "SPP_CHANGELOG_zh-CN.md",
+          "size": 1395,
+          "sha256": "67331a05fdbb15a9b88bcd9fb44cc00bd4a9e9cbeddb062eef925d4a4c63608a"
+        },
+        {
+          "name": "SPP_README_zh-CN.md",
+          "size": 9438,
+          "sha256": "b0187baedf8e4e9a8cb1039be36a7bc2afa37ace9acb167391680618eca5d33c"
+        }
+      ]
+    },
+    {
+      "tag": "AIChat-v1.17.0_SPP-v5.9.0-docs-r1",
+      "release_id": 400622237,
+      "assets": [
+        {
+          "name": "AIChat_CHANGELOG_zh-CN.md",
+          "size": 4149,
+          "sha256": "c1e879883bcb3068a654d4ea4d39ceff11ca14d4e98e5e0a3f92c9f2a810c92f"
+        },
+        {
+          "name": "AIChat_LICENSE.txt",
+          "size": 1087,
+          "sha256": "9a62d81b0911f749bb60ebce764b594dc9fb306295eff7d7112a3404a00f0e91"
+        },
+        {
+          "name": "AIChat_README_zh-CN.md",
+          "size": 8473,
+          "sha256": "5d49e05039e80d8b8a349483c810ded6651668477daa2dd308092182b7f35133"
+        },
+        {
+          "name": "AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json",
+          "size": 8601,
+          "sha256": "76df17f2eda77e78dfa12bfc46bd34f1e4105fc718813fb5c739d539f6229d0e"
+        },
+        {
+          "name": "SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip",
+          "size": 10883404,
+          "sha256": "8f6e5d41d77994b67f2d0946866fb223b248fae3841db7e881a3509e189b016f"
+        },
+        {
+          "name": "SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip.sha256",
+          "size": 124,
+          "sha256": "1ce6937efaf832357652d3f73a5a728a40db956abe16a4b06fcbdfb4974e8976"
+        },
+        {
+          "name": "Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip",
+          "size": 93821443,
+          "sha256": "88c77b40c89df19e316aebf497ff30fc4d5504138955ba92e0f2d4875b639d8d"
+        },
+        {
+          "name": "Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip.sha256",
+          "size": 124,
+          "sha256": "b1a48e69c9db0bb21ce20aaebc2c430e8b69229533ee2de7eb97113a4f5444ef"
+        }
+      ]
+    },
+    {
+      "tag": "AIChat-v1.17.0_SPP-v5.9.0",
+      "release_id": 400602122,
+      "assets": [
+        {
+          "name": "AIChat_LICENSE.txt",
+          "size": 1087,
+          "sha256": "9a62d81b0911f749bb60ebce764b594dc9fb306295eff7d7112a3404a00f0e91"
+        },
+        {
+          "name": "AIChat_v1.17.0_SPP_v5.9.0.json",
+          "size": 7836,
+          "sha256": "903d67939cd4db206c751e3a0115c842950bb69a3a5c8ed772ce976e8e4734b9"
+        },
+        {
+          "name": "INSTALL_zh-CN.md",
+          "size": 16423,
+          "sha256": "0892ba3a4d9894c8eac63e66677990c1caaff273504818a3ab9b3e2747c64c6a"
+        },
+        {
+          "name": "RELEASE_NOTES_zh-CN.md",
+          "size": 5371,
+          "sha256": "4d852d25998e18728711e1ad43eacff86bf03e4a01657e727b2033a7d81b7ce7"
+        },
+        {
+          "name": "SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip",
+          "size": 10862696,
+          "sha256": "988026cff09c63727bec83bf6bc8769289bceda5a120282296df3c0c825dd22b"
+        },
+        {
+          "name": "SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip.sha256",
+          "size": 117,
+          "sha256": "8354386578c9223a93b5d8ea28b9c6e021a612f5335f4887b9d58e22eeba5977"
+        },
+        {
+          "name": "Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip",
+          "size": 93821443,
+          "sha256": "88c77b40c89df19e316aebf497ff30fc4d5504138955ba92e0f2d4875b639d8d"
+        },
+        {
+          "name": "Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip.sha256",
+          "size": 124,
+          "sha256": "b1a48e69c9db0bb21ce20aaebc2c430e8b69229533ee2de7eb97113a4f5444ef"
+        }
+      ]
+    },
+    {
+      "tag": "AIChat-v1.16.65_SPP-v5.8.42",
+      "release_id": 399931967,
+      "assets": [
+        {
+          "name": "AIChat_LICENSE.txt",
+          "size": 1087,
+          "sha256": "9a62d81b0911f749bb60ebce764b594dc9fb306295eff7d7112a3404a00f0e91"
+        },
+        {
+          "name": "AIChat_v1.16.65.zip",
+          "size": 634012,
+          "sha256": "270923a5ba46796f0f119e82f94fc23d9959bbb65e89fd81b0e0447249819d42"
+        },
+        {
+          "name": "AIChat_v1.16.65_SHA256.txt",
+          "size": 86,
+          "sha256": "f9e7c143de78993a59a7232faf50b130dd9544c98034e39b00b2e7ce354208a5"
+        },
+        {
+          "name": "AIChat_v1.16.65_SPP_v5.8.42.json",
+          "size": 2836,
+          "sha256": "9ec3fd12a5c19f0f9c7ab0c17784d38d559f03658b8eacd92ad148de4f1f9350"
+        },
+        {
+          "name": "SatonePromptProxy_v5.8.42.zip",
+          "size": 10103882,
+          "sha256": "e18dabb5253a332d18124f80aa43bae39a467394da415fb67e01b6dfbef61e85"
+        },
+        {
+          "name": "SatonePromptProxy_v5.8.42_SHA256.txt",
+          "size": 96,
+          "sha256": "e0ef205b40790bd85c0379af6bdd6a67f82dba2e0807379c0f676c478fca2c8c"
+        }
+      ]
+    },
+    {
+      "tag": "AIChat-v1.16.23_SPP-v5.8.26",
+      "release_id": 398131130,
+      "assets": [
+        {
+          "name": "AIChat_v1.16.23.zip",
+          "size": 504417,
+          "sha256": "570db4e02b6fdb216923cc8585fd3c590607061211bfed8da77af652c9684a8f"
+        },
+        {
+          "name": "AIChat_v1.16.23_SHA256.txt",
+          "size": 86,
+          "sha256": "2c4584146f4d038e11649c4d0580b95f8e00fdae05cb9c6d99cf63862945f787"
+        },
+        {
+          "name": "AIChat_v1.16.23_SPP_v5.8.26.json",
+          "size": 684,
+          "sha256": "6a1542bc935320b1f870c1f4371cfadd14a939a398b67a342c21fa38c6a50cae"
+        },
+        {
+          "name": "SatonePromptProxy_v5.8.26.zip",
+          "size": 9754511,
+          "sha256": "b9c7ed3eba98d428d740cb2f46d2aeb2cb571e3d3274679ca37f876c6716e6da"
+        },
+        {
+          "name": "SatonePromptProxy_v5.8.26_SHA256.txt",
+          "size": 96,
+          "sha256": "1d4eca8c4398482e08738c3ed3944c72041751dbf0ea7a1c46fe2ea26e7793ec"
+        }
+      ]
+    },
+    {
+      "tag": "AIChat-v1.16.14_SPP-v5.8.23",
+      "release_id": 397273412,
+      "assets": [
+        {
+          "name": "AIChat_LICENSE.txt",
+          "size": 1066,
+          "sha256": "8c94c8c57b41d02e43145546b3fb7c2a305ee03d3a5a9b58c7a92e54d3005154"
+        },
+        {
+          "name": "AIChat_v1.16.14.zip",
+          "size": 277086,
+          "sha256": "65684dac51fdae292d0e4676dc1a458396c5bb01a63e15472537f5c5b8143cf1"
+        },
+        {
+          "name": "AIChat_v1.16.14_SHA256.txt",
+          "size": 86,
+          "sha256": "f2230fa59586d086159c88a910b0c1097149c691cd5048f984febfdcec6ad073"
+        },
+        {
+          "name": "AIChat_v1.16.14_SPP_v5.8.23.json",
+          "size": 3882,
+          "sha256": "9b3471a2c614daf24ff6628ebba011e653dee88ed1ac5439aac98565a1da1126"
+        },
+        {
+          "name": "SatonePromptProxy_v5.8.23.zip",
+          "size": 8739688,
+          "sha256": "bcad7805fa8193b8efd9a14e82ef8be16b65d9d9f6c86fad674719cc17150c6e"
+        },
+        {
+          "name": "SatonePromptProxy_v5.8.23_SHA256.txt",
+          "size": 96,
+          "sha256": "c777dee02dfabaa72af4cb6086b71e7543a730317dc875b56429150423b30abf"
+        }
+      ]
+    }
+  ],
+  "git_history_rewritten": false,
+  "previous_license_grants_revoked": false
+}
