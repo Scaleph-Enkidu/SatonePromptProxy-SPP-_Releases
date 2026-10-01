@@ -22,7 +22,7 @@
 
 1. 在 Steam 中运行游戏一次并退出。右击游戏 →“管理”→“浏览本地文件”，找到游戏 EXE 所在目录。
 2. 将 [BepInEx 5.4.23.5 Windows x64](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5) 解压到游戏 EXE 同层，那里应有 `BepInEx` 和 `winhttp.dll`。启动游戏一次，确认生成 `BepInEx/LogOutput.log` 与 `BepInEx/plugins`，再退出。
-3. 下载 [SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)（约 11 MB）。它已配对包含 AIChat 与 SPP，**无需再下载私库的单组件包**；不要选 Source code ZIP。
+3. 下载 [SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0-docs-r1/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)（约 11 MB）。它已配对包含 AIChat 与 SPP，**无需再下载私库的单组件包**；不要选 Source code ZIP。
 4. 把包内 `AIChat/AIChat.dll` 与配套 `AIChat.pdb` 放入 `游戏目录/BepInEx/plugins`。只保留一份可加载的 AIChat DLL；旧 `AIChatSatoneUXPatch.dll` 也移出插件目录。
 5. 把包内整个 `SatonePromptProxy` 文件夹放到固定位置，例如 `D:\LofiMOD\SatonePromptProxy`。EXE 旁应有 `config.example.json`、`SatonePersona_v4.6.txt`、BAT 工具、ASR 脚本和 `mayuri-voice/refs/MAY_1158_Neutral.wav`。不要只复制 EXE。
 

@@ -8,7 +8,7 @@
 
 | 文件 | 是否需要 | 放置位置 |
 |---|---|---|
-| [SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)（约 11 MB） | 必需；已同时包含 AIChat 与 SPP | `AIChat/AIChat.dll` 与 PDB 放入游戏 `BepInEx/plugins`；整个 `SatonePromptProxy` 文件夹放到固定运行目录 |
+| [SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0-docs-r1/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)（约 11 MB） | 必需；已同时包含 AIChat 与 SPP | `AIChat/AIChat.dll` 与 PDB 放入游戏 `BepInEx/plugins`；整个 `SatonePromptProxy` 文件夹放到固定运行目录 |
 | [Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip)（约 94 MB） | 可选；需要按意思查找旧对话时再安装 | 把 `models` 文件夹放在 SPP EXE 旁，再 Verify → Enable → 重启 → 发首次查询 |
 
 私有源码库的 AIChat／SPP 单组件包用于组件构建与来源记录，**不是玩家必须额外下载的文件**。TTS 与 ASR 的外部下载列在下方；它们都不依赖这个 ONNX 选装包。
