@@ -1,5 +1,5 @@
 {
-  "status": "planned_after_new_release_verification",
+  "status": "withdrawn",
   "requested_by_user": true,
   "replacement_tag": "AIChat-v1.17.1_SPP-v5.9.1-license-r1",
   "old_releases": [
@@ -271,5 +271,193 @@
     }
   ],
   "git_history_rewritten": false,
-  "previous_license_grants_revoked": false
+  "previous_license_grants_revoked": false,
+  "withdrawn_at": "2026-10-01T09:18:50.985244+00:00",
+  "replacement_release_id": 400805454,
+  "old_public_release_count_deleted": 6,
+  "old_public_asset_count_deleted": 46,
+  "removed_current_main_files": [
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/AIChat_v1.16.23.zip",
+      "bytes": 504417,
+      "sha256": "570db4e02b6fdb216923cc8585fd3c590607061211bfed8da77af652c9684a8f"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/AIChat_v1.16.23_SHA256.txt",
+      "bytes": 86,
+      "sha256": "2c4584146f4d038e11649c4d0580b95f8e00fdae05cb9c6d99cf63862945f787"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/SatonePromptProxy_v5.8.26_SHA256.txt",
+      "bytes": 96,
+      "sha256": "1d4eca8c4398482e08738c3ed3944c72041751dbf0ea7a1c46fe2ea26e7793ec"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-000",
+      "bytes": 400000,
+      "sha256": "c8cdfd250a948400dd4b0c17f6117f73eba1a3bd903595d07d7c0e3e13608a0e"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-001",
+      "bytes": 400000,
+      "sha256": "cf9cc616e3358475aeff2f680cc7155eaad6d62a1375338f96646d07179de864"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-002",
+      "bytes": 400000,
+      "sha256": "bbf5a985117e264cbceb2ca5281c9de8d02adb4064b6773f61d37ce60ebb89fc"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-003",
+      "bytes": 400000,
+      "sha256": "9b24fc6defd68ff04cde4ee91159725d3dbf6fc36698b4ed160d7eeb94ddb554"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-004",
+      "bytes": 400000,
+      "sha256": "228409ac87a4f0585b27e64dd08692757612f88aeba244572d2f8eb9763bbd3b"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-005",
+      "bytes": 400000,
+      "sha256": "f54aaf3a318d3203c72169ee082c2f790ecb20ebe92f469333c731461d7fcc24"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-006",
+      "bytes": 400000,
+      "sha256": "939ed43c662479955ce51006e1465e17f7df4fb0126e379eca75ca34ac00d1fd"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-007",
+      "bytes": 400000,
+      "sha256": "48127b626b679bc91c9b0c8441796e26e69f843041211de6da9265ff3d1cbe4d"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-008",
+      "bytes": 400000,
+      "sha256": "6dc085873a13a8ae65eb8a28015ce25fcd7060e0aebc59d06b8d836a4c563bc5"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-009",
+      "bytes": 400000,
+      "sha256": "3d274415289ee1bc9f85598b920b0c057c0ec27cbc658d5eb567684deeceb83b"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-010",
+      "bytes": 400000,
+      "sha256": "7ff4f7931b318dcaba4a1d77892357ff88d03fafd6008a1ed90d3cb0e7243b31"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-011",
+      "bytes": 400000,
+      "sha256": "7db662026bf4cab36913c5c0db67427bceb2812de307a31835d61e2a12862057"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-012",
+      "bytes": 400000,
+      "sha256": "c3b4e567988337a552a69f4cdba295f9fcd32dac143ae33793dd79a172d484f7"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-013",
+      "bytes": 400000,
+      "sha256": "009fb6495e35067c3497778838db30916b5b707bfe64355b85a82a5cf2246263"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-014",
+      "bytes": 400000,
+      "sha256": "8dc33d6af36b02d5519dc71c149f61ca80ffa3a61f4d00f17448b7e23996b615"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-015",
+      "bytes": 400000,
+      "sha256": "78544e262f3a6221f364b9d9202b2f26dc73c7842bdedc50f2df17a451faad28"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-016",
+      "bytes": 400000,
+      "sha256": "b1103e58fcaada54c9edc433eeb25b41dfd2ad287ea7b82ca8e190aaf0e2413a"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-017",
+      "bytes": 400000,
+      "sha256": "af485d47f6deb2bc49b5230c0bbc5f510d27060ba6d2eda7e857462560f40a38"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-018",
+      "bytes": 400000,
+      "sha256": "683798c94be604aac9ce3f101e65ae390fdb0a698333539d03a8e649f563ffe0"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-019",
+      "bytes": 400000,
+      "sha256": "82e9c85f9c5242738f82183e007ce902d2940020d0908d7522714ba610f694c8"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-020",
+      "bytes": 400000,
+      "sha256": "f035a6f7a123e1a46099b1ccdd04c5e861264e49fc5c5152e5c8439d41c03551"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-021",
+      "bytes": 400000,
+      "sha256": "3ebdbdd4911ead04bc486590546c3795342eee32b8182a64483619348d52aa4c"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-022",
+      "bytes": 400000,
+      "sha256": "d8a86a4c397f66126a1484d84e246d4657773b26a820ce472b838ab1539826ce"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-023",
+      "bytes": 400000,
+      "sha256": "45bf18361eda3a64e510e36a2b35011b480f7523937337ca7ef6ce18b2d24ea7"
+    },
+    {
+      "path": "packages/AIChat_v1.16.23_SPP_v5.8.26/spp.part-024",
+      "bytes": 154511,
+      "sha256": "b094eb4ed2f52fcc4a7c538d1d7483240d786376198c1fee375ff5b8910ac626"
+    },
+    {
+      "path": "packages/AIChat_v1.16.65_SPP_v5.8.42/AIChat_v1.16.65.zip",
+      "bytes": 634012,
+      "sha256": "270923a5ba46796f0f119e82f94fc23d9959bbb65e89fd81b0e0447249819d42"
+    },
+    {
+      "path": "packages/AIChat_v1.16.65_SPP_v5.8.42/AIChat_v1.16.65_SHA256.txt",
+      "bytes": 86,
+      "sha256": "f9e7c143de78993a59a7232faf50b130dd9544c98034e39b00b2e7ce354208a5"
+    },
+    {
+      "path": "packages/AIChat_v1.16.65_SPP_v5.8.42/SatonePromptProxy_v5.8.42.zip",
+      "bytes": 10103882,
+      "sha256": "e18dabb5253a332d18124f80aa43bae39a467394da415fb67e01b6dfbef61e85"
+    },
+    {
+      "path": "packages/AIChat_v1.16.65_SPP_v5.8.42/SatonePromptProxy_v5.8.42_SHA256.txt",
+      "bytes": 96,
+      "sha256": "e0ef205b40790bd85c0379af6bdd6a67f82dba2e0807379c0f676c478fca2c8c"
+    },
+    {
+      "path": "packages/AIChat_v1.17.0_SPP_v5.9.0/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip",
+      "bytes": 10862696,
+      "sha256": "988026cff09c63727bec83bf6bc8769289bceda5a120282296df3c0c825dd22b"
+    },
+    {
+      "path": "packages/AIChat_v1.17.0_SPP_v5.9.0/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip.sha256",
+      "bytes": 117,
+      "sha256": "8354386578c9223a93b5d8ea28b9c6e021a612f5335f4887b9d58e22eeba5977"
+    },
+    {
+      "path": "packages/AIChat_v1.17.0_SPP_v5.9.0_docs_r1/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip",
+      "bytes": 10883404,
+      "sha256": "8f6e5d41d77994b67f2d0946866fb223b248fae3841db7e881a3509e189b016f"
+    },
+    {
+      "path": "packages/AIChat_v1.17.0_SPP_v5.9.0_docs_r1/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip.sha256",
+      "bytes": 124,
+      "sha256": "1ce6937efaf832357652d3f73a5a728a40db956abe16a4b06fcbdfb4974e8976"
+    }
+  ],
+  "old_assets_backed_up_and_hash_verified": true,
+  "old_tags_retained": true
 }
