@@ -1,65 +1,62 @@
 name: Publish verified plugin pair
 
+# Release assets must be uploaded to a draft first. This workflow never builds,
+# creates tags/releases, replaces assets, or changes an existing public release.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'packages/AIChat_v1.16.65_SPP_v5.8.42/**'
-      - 'releases/AIChat_v1.16.65_SPP_v5.8.42.*'
-      - 'tools/verify_release.py'
-      - '.github/workflows/publish-pair.yml'
   workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing draft or published release tag
+        required: true
+        default: AIChat-v1.17.0_SPP-v5.9.0
+        type: string
+      manifest:
+        description: Committed manifest to compare against uploaded assets
+        required: true
+        default: releases/AIChat_v1.17.0_SPP_v5.9.0.json
+        type: string
 
 permissions:
   contents: write
 
 concurrency:
-  group: publish-plugin-pair
+  group: verified-plugin-pair-${{ inputs.tag }}
   cancel-in-progress: false
 
 jobs:
-  publish:
+  verify-and-publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
-      TAG: AIChat-v1.16.65_SPP-v5.8.42
-      PACKAGE_DIR: packages/AIChat_v1.16.65_SPP_v5.8.42
-      MANIFEST: releases/AIChat_v1.16.65_SPP_v5.8.42.json
-      NOTES: releases/AIChat_v1.16.65_SPP_v5.8.42.md
+      TAG: ${{ inputs.tag }}
+      MANIFEST: ${{ inputs.manifest }}
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - name: Verify original packages and file lists
-        run: python3 tools/verify_release.py --manifest "$MANIFEST"
-      - name: Upload original files as a draft when the release is absent
+      - name: Test release verifier
+        run: python3 -m unittest discover -s tools -p 'test_verify_release.py'
+      - name: Download existing release and verify every original byte
         shell: bash
         run: |
           set -euo pipefail
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release already exists; verifying its assets before publishing."
-          else
-            gh release create "$TAG" \
-              "$PACKAGE_DIR/AIChat_v1.16.65.zip" \
-              "$PACKAGE_DIR/AIChat_v1.16.65_SHA256.txt" \
-              "$PACKAGE_DIR/SatonePromptProxy_v5.8.42.zip" \
-              "$PACKAGE_DIR/SatonePromptProxy_v5.8.42_SHA256.txt" \
-              "$PACKAGE_DIR/AIChat_LICENSE.txt" \
-              "$MANIFEST" \
-              --target "$GITHUB_SHA" \
-              --title "AIChat 1.16.65 + SatonePromptProxy 5.8.42" \
-              --notes-file "$NOTES" \
-              --draft
-          fi
-      - name: Download and verify every published asset
-        shell: bash
-        run: |
-          set -euo pipefail
-          check_dir="$(mktemp -d "$RUNNER_TEMP/satone-release.XXXXXX")"
+          test -f "$MANIFEST"
+          # A missing draft/release is an error; do not create a replacement.
+          gh release view "$TAG" --json isDraft --jq '.isDraft' > "$RUNNER_TEMP/release-was-draft"
+          check_dir="$(mktemp -d "$RUNNER_TEMP/satone-verified.XXXXXX")"
           gh release download "$TAG" --dir "$check_dir"
-          python3 tools/verify_release.py --manifest "$MANIFEST" --assets-dir "$check_dir"
+          python3 tools/verify_release.py --manifest "$MANIFEST" --assets-dir "$check_dir" --tag "$TAG"
           cmp "$MANIFEST" "$check_dir/$(basename "$MANIFEST")"
-      - name: Publish verified release
-        run: gh release edit "$TAG" --draft=false --latest
+      - name: Publish only the verified draft
+        shell: bash
+        run: |
+          set -euo pipefail
+          was_draft="$(cat "$RUNNER_TEMP/release-was-draft")"
+          is_draft="$(gh release view "$TAG" --json isDraft --jq '.isDraft')"
+          if [[ "$was_draft" == true && "$is_draft" == true ]]; then
+            gh release edit "$TAG" --draft=false --latest
+          else
+            echo "Existing published release verified; its assets, notes and latest designation remain unchanged."
+          fi
