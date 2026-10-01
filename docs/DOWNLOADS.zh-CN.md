@@ -2,23 +2,25 @@
 
 [返回首页](../README.md) · **[打开四阶段安装教程](INSTALL.zh-CN.md)** · [语音配置](VOICE_SETUP.zh-CN.md)
 
-更新日期：**2026-10-01**。[本次配对 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.0_SPP-v5.9.0) 的主下载只有下列两类 ZIP。**新玩家先下约 11 MB 的主程序配对包即可**；模型可跳过，不默认启用。GitHub 自动生成的 Source code ZIP 不是安装包。
+更新日期：**2026-10-01**。[本次配对 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.0_SPP-v5.9.0) 的推荐下载仍为下列两类 ZIP。**新玩家先下约 11 MB 的文档修订 1 主程序配对包即可**；模型可跳过，不默认启用。GitHub 自动生成的 Source code ZIP 不是安装包。
+
+**文档修订 1** 仅补齐包内可独立阅读的 README、安装与版本改动正文，程序版本仍为 AIChat 1.17.0 + SPP 5.9.0，程序和模型不变。原正式 ZIP 保留，已安装用户无需升级；选装模型继续使用原文件、原 URL 与原 SHA-256，不需重下。原 `INSTALL_zh-CN.md` 附件保持原发布字节，新指南以[当前安装页](INSTALL.zh-CN.md)与 `docs_r1` ZIP 为准。
 
 | 文件 | 是否需要 | 放置位置 |
 |---|---|---|
-| [SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip)（约 11 MB） | 必需；已同时包含 AIChat 与 SPP | `AIChat/AIChat.dll` 与 PDB 放入游戏 `BepInEx/plugins`；整个 `SatonePromptProxy` 文件夹放到固定运行目录 |
+| [SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)（约 11 MB） | 必需；已同时包含 AIChat 与 SPP | `AIChat/AIChat.dll` 与 PDB 放入游戏 `BepInEx/plugins`；整个 `SatonePromptProxy` 文件夹放到固定运行目录 |
 | [Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip)（约 94 MB） | 可选；需要按意思查找旧对话时再安装 | 把 `models` 文件夹放在 SPP EXE 旁，再 Verify → Enable → 重启 → 发首次查询 |
 
 私有源码库的 AIChat／SPP 单组件包用于组件构建与来源记录，**不是玩家必须额外下载的文件**。TTS 与 ASR 的外部下载列在下方；它们都不依赖这个 ONNX 选装包。
 
 ## 大小、SHA-256 与来源
 
-精确字节数、SHA-256、包内成员和来源见[本次配对校验清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.0_SPP-v5.9.0/releases/AIChat_v1.17.0_SPP_v5.9.0.json)。包内的 `BUILD_INFO.json`／`COMPONENT.json` 记录各自文件清单和组件身份；ZIP 自身校验以包外发布清单为准。约 11／94 MB 是下载量提示，不是运行内存或显存。
+文档修订 1 的精确字节数、SHA-256、包内成员和来源见[修订校验清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/releases/AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json)；原资产身份继续保留在[原配对清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.0_SPP-v5.9.0/releases/AIChat_v1.17.0_SPP_v5.9.0.json)。包内的 `BUILD_INFO.json`／`COMPONENT.json` 记录各自文件清单和组件身份；ZIP 自身校验以包外发布清单为准。约 11／94 MB 是下载量提示，不是运行内存或显存。
 
 下载后，在文件所在文件夹打开 PowerShell，执行：
 
 ```powershell
-Get-FileHash -LiteralPath '.\SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip' -Algorithm SHA256
+Get-FileHash -LiteralPath '.\SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip' -Algorithm SHA256
 Get-FileHash -LiteralPath '.\Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip' -Algorithm SHA256
 ```
 

@@ -17,7 +17,11 @@
 
 # 🚀 从这里开始安装：AIChat 1.17.0 + SPP 5.9.0
 
-**[点击打开四阶段安装教程](docs/INSTALL.zh-CN.md)** · **[下载主程序配对包（约 11 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip)** · [全部下载与校验清单](docs/DOWNLOADS.zh-CN.md)
+**[点击打开四阶段安装教程](docs/INSTALL.zh-CN.md)** · **[下载主程序配对包（文档修订 1，约 11 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)** · [全部下载与校验清单](docs/DOWNLOADS.zh-CN.md)
+
+**文档修订 1** 补齐包内 README、安装与版本改动正文，解压后可独立阅读；程序版本仍为 **AIChat 1.17.0 + SPP 5.9.0**，程序和模型不变。原正式包保留，已安装用户可以继续使用原程序，**无需为这次文档修订升级**；新玩家推荐上述 `docs_r1` 包，安装步骤相同。
+
+已安装用户可单独阅读或保存这两份正文：[AIChat 包内 README 完整正文](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/AIChat_README_zh-CN.md) / [AIChat 版本与改动完整正文](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/AIChat_CHANGELOG_zh-CN.md)，无需替换程序。
 
 | 阶段 | 安装后能做什么 | 入口 |
 |---|---|---|
@@ -54,7 +58,7 @@
 
 ## 当前版本、聊天服务与费用
 
-当前正式配对为 **AIChat 1.17.0 + SPP 5.9.0**（2026-10-01）。[本次 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.0_SPP-v5.9.0) · [本次改动](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.0_SPP-v5.9.0/releases/AIChat_v1.17.0_SPP_v5.9.0.md) · [语音与麦克风](docs/VOICE_SETUP.zh-CN.md) · [本地数据与隐私](docs/DATA_AND_PRIVACY.zh-CN.md)。GitHub 自动生成的 Source code ZIP 不是安装包。[上一配对 AIChat 1.16.65 + SPP 5.8.42](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.65_SPP-v5.8.42) 保留供回退。
+当前正式配对为 **AIChat 1.17.0 + SPP 5.9.0**（2026-10-01）。[本次 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.0_SPP-v5.9.0) · [本次改动](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/releases/AIChat_v1.17.0_SPP_v5.9.0.md) · [语音与麦克风](docs/VOICE_SETUP.zh-CN.md) · [本地数据与隐私](docs/DATA_AND_PRIVACY.zh-CN.md)。GitHub 自动生成的 Source code ZIP 不是安装包。[上一配对 AIChat 1.16.65 + SPP 5.8.42](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.65_SPP-v5.8.42) 保留供回退。
 
 在游戏的 LLM 设置中选择服务、填写对应 API Key 与该账户可用的模型名称，再点击 **“保存并应用配置”**。任一时刻只使用一个已应用的连接，切换服务不要求删除本地记忆。界面中的默认模型名称是可修改的示例，以服务商当前模型列表和账户权限为准；中转站按它提供的地址、Key 和模型名称填写。
 

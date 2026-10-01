@@ -4,6 +4,8 @@
 
 适用于 Steam Windows 版《放松时光：与你共享 Lo-Fi 故事》，更新于 **2026-10-01**。
 
+当前新玩家推荐 **文档修订 1（`docs_r1`）** 主程序包：补齐包内可独立阅读的 README、安装与版本改动正文，程序与模型保持不变，版本仍为 AIChat 1.17.0 + SPP 5.9.0。首次安装步骤与原包相同；原正式包保留，已安装用户无需为文档修订更新程序。原发布附件 `INSTALL_zh-CN.md` 保持原字节，新指南以本页和新 ZIP 内正文为准。
+
 **先完成阶段一，文字聊天就能独立使用。** 后续按需增加：② ONNX 模型选装 → ③ 聪音发音 → ④ 玩家语音识别。各阶段不依赖后续阶段；② 可跳过，GPT-SoVITS 和 Fun-ASR 都不依赖 ONNX。云端聊天需要自己的 API Key 与额度；[费用说明](API_COST.zh-CN.md)以供应商实时价格和账单为准。
 
 | 阶段 | 必需的下载 | 成功标志 |
@@ -20,7 +22,7 @@
 
 1. 在 Steam 中运行游戏一次并退出。右击游戏 →“管理”→“浏览本地文件”，找到游戏 EXE 所在目录。
 2. 将 [BepInEx 5.4.23.5 Windows x64](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5) 解压到游戏 EXE 同层，那里应有 `BepInEx` 和 `winhttp.dll`。启动游戏一次，确认生成 `BepInEx/LogOutput.log` 与 `BepInEx/plugins`，再退出。
-3. 下载 [SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip)（约 11 MB）。它已配对包含 AIChat 与 SPP，**无需再下载私库的单组件包**；不要选 Source code ZIP。
+3. 下载 [SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)（约 11 MB）。它已配对包含 AIChat 与 SPP，**无需再下载私库的单组件包**；不要选 Source code ZIP。
 4. 把包内 `AIChat/AIChat.dll` 与配套 `AIChat.pdb` 放入 `游戏目录/BepInEx/plugins`。只保留一份可加载的 AIChat DLL；旧 `AIChatSatoneUXPatch.dll` 也移出插件目录。
 5. 把包内整个 `SatonePromptProxy` 文件夹放到固定位置，例如 `D:\LofiMOD\SatonePromptProxy`。EXE 旁应有 `config.example.json`、`SatonePersona_v4.6.txt`、BAT 工具、ASR 脚本和 `mayuri-voice/refs/MAY_1158_Neutral.wav`。不要只复制 EXE。
 
@@ -29,7 +31,7 @@
 1. 运行 `Start_Text_Chat.bat` 或 `SatonePromptProxy.exe`。新目录首次启动会创建 `config.json`；打开本机 [SPP 管理页](http://127.0.0.1:11435/)，核对 **5.9.0**。默认端口是 **11435**。
 2. 启动游戏，进入场景按 **F9**，核对 **AIChat 1.17.0**。在设置中让 **SPP 程序路径**指向刚才的 EXE，本地聊天地址使用 `http://127.0.0.1:11435/v1/chat/completions`。
 3. 在 **LLM（聊天模型与连接）** 中选择所用服务，例如 OpenAI、DeepSeek 或中转站，填写该服务的 Key、可用模型名称和要求的 API 地址。输入框预填名称只是可修改的示例；以服务商当前列表和自己的权限为准。
-4. 点击 **“保存并应用配置”**，等待界面显示当前使用的连接后再发新消息。勾选或编辑尚未保存的草稿不会立即切换正在使用的服务。
+4. 点击 **“保存并应用配置”**；若弹出档案准备或旧记忆选择，先备份并完成选择，再等待界面显示当前使用的连接后发新消息。连接激活可能正在等待该选择。勾选或编辑尚未保存的草稿不会立即切换正在使用的服务。
 5. 这一阶段不使用语音时，暂不设置 TTS 启动脚本、不勾选“启动游戏时自动运行 TTS 服务”、不开持续通话；尚未安装 Fun-ASR 的提示不妨碍文字聊天。**保留 `embedding_enabled=false`、`embedding_auto_start=false`，模型默认不启用。**
 
 ### 启动与验收

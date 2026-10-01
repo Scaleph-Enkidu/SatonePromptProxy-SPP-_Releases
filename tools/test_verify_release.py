@@ -88,6 +88,26 @@ class ReleaseTests(unittest.TestCase):
         self.manifest.write_text(text)
         (self.assets / self.manifest.name).write_text(text)
 
+    def add_superseded(self, manifest, payload=None, include_members=True):
+        payload = payload or {"historical.txt": b"preserved original bytes"}
+        archive_path = self.assets / "old_program.zip"
+        with zipfile.ZipFile(archive_path, "w", zipfile.ZIP_STORED) as archive:
+            for name, data in payload.items():
+                archive.writestr(name, data)
+        checksum_path = self.assets / "old_program.zip.sha256"
+        checksum_path.write_text(v.sha256_file(archive_path) + "  old_program.zip\n")
+        old_manifest = self.assets / "old_manifest.json"
+        old_manifest.write_text('{"original_release_manifest":true}')
+        records = [{"name": path.name, "size": path.stat().st_size, "sha256": v.sha256_file(path)}
+                   for path in (archive_path, checksum_path, old_manifest)]
+        if include_members:
+            records[0]["zip_members"] = list(payload)
+        # An old role must not enter current program/model role counts.
+        records[0]["role"] = "paired_program"
+        manifest["superseded_assets"] = records
+        self.save(manifest)
+        return records
+
     def verify(self):
         return v.verify_manifest(self.manifest, self.assets, "AIChat-v1.17.0_SPP-v5.9.0")
 
@@ -197,6 +217,80 @@ class ReleaseTests(unittest.TestCase):
                                              "config.example.json": b"{}"}, info)
         self.save({"schema_version": 1, "release_tag": "legacy", "assets": [asset]})
         v.verify_manifest(self.manifest, self.assets, "legacy")
+
+    def test_complete_superseded_history_allowed(self):
+        manifest = self.release()
+        self.add_superseded(manifest)
+        self.verify()
+
+    def test_superseded_archive_without_member_list_still_scanned(self):
+        manifest = self.release()
+        self.add_superseded(manifest, include_members=False)
+        self.verify()
+
+    def test_superseded_hash_damage_rejected(self):
+        manifest = self.release()
+        records = self.add_superseded(manifest)
+        records[0]["sha256"] = "0" * 64
+        self.save(manifest)
+        with self.assertRaisesRegex(ValueError, "Superseded SHA256 mismatch"):
+            self.verify()
+
+    def test_unrecorded_extra_beside_superseded_assets_rejected(self):
+        manifest = self.release()
+        self.add_superseded(manifest)
+        (self.assets / "unrecorded.txt").write_text("unexpected attachment")
+        with self.assertRaisesRegex(ValueError, "unrecorded release attachment"):
+            self.verify()
+
+    def test_superseded_name_collisions_rejected(self):
+        for target in ("CURRENT_ZIP", "CURRENT_CHECKSUM", "CURRENT_MANIFEST", "DUPLICATE_HISTORY"):
+            with self.subTest(target=target):
+                manifest = self.release()
+                records = self.add_superseded(manifest)
+                if target == "CURRENT_ZIP":
+                    records[0]["name"] = manifest["assets"][0]["name"].upper()
+                elif target == "CURRENT_CHECKSUM":
+                    records[0]["name"] = manifest["assets"][0]["checksum_file"]
+                elif target == "CURRENT_MANIFEST":
+                    records[0]["name"] = self.manifest.name
+                else:
+                    records.append(dict(records[0]))
+                self.save(manifest)
+                with self.assertRaisesRegex(ValueError, "name collision"):
+                    self.verify()
+
+    def test_current_asset_cannot_collide_with_manifest(self):
+        manifest = self.release()
+        manifest["assets"].append({"name": self.manifest.name, "size": 0, "sha256": "0" * 64})
+        self.save(manifest)
+        with self.assertRaisesRegex(ValueError, "collides with current manifest"):
+            self.verify()
+
+    def test_superseded_zip_private_files_and_unsafe_paths_rejected(self):
+        for name in ("../escape.txt", "config.json"):
+            with self.subTest(name=name):
+                manifest = self.release()
+                self.add_superseded(manifest, payload={name: b"untrusted"})
+                with self.assertRaisesRegex(ValueError, "Unsafe path|Player data"):
+                    self.verify()
+
+    def test_superseded_zip_crc_and_members_checked(self):
+        manifest = self.release()
+        records = self.add_superseded(manifest)
+        records[0]["zip_members"] = ["wrong.txt"]
+        self.save(manifest)
+        with self.assertRaisesRegex(ValueError, "Unexpected ZIP contents"):
+            self.verify()
+        records = self.add_superseded(manifest)
+        path = self.assets / records[0]["name"]
+        data = bytearray(path.read_bytes())
+        data[data.index(b"preserved original bytes")] ^= 1
+        path.write_bytes(data)
+        records[0]["sha256"] = v.sha256_file(path)
+        self.save(manifest)
+        with self.assertRaisesRegex(ValueError, "Corrupt ZIP"):
+            self.verify()
 
     def test_windows_case_collision(self):
         self.release(pair=self.pair(extra={"docs/readme.md": b"a", "docs/README.md": b"b"}))
