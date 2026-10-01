@@ -154,12 +154,12 @@
       "sha256": "b1a48e69c9db0bb21ce20aaebc2c430e8b69229533ee2de7eb97113a4f5444ef"
     },
     {
-      "name": "安装说明.md",
+      "name": "INSTALL_zh-CN.md",
       "size": 16423,
       "sha256": "0892ba3a4d9894c8eac63e66677990c1caaff273504818a3ab9b3e2747c64c6a"
     },
     {
-      "name": "版本与改动.md",
+      "name": "RELEASE_NOTES_zh-CN.md",
       "size": 5371,
       "sha256": "4d852d25998e18728711e1ad43eacff86bf03e4a01657e727b2033a7d81b7ce7"
     },
