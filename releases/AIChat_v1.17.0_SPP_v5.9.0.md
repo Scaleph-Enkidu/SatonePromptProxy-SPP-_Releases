@@ -2,7 +2,7 @@
 
 # 🚀 从这里开始安装：四阶段教程
 
-**[打开安装教程](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/INSTALL.zh-CN.md)** · **[下载主程序配对包（文档修订 1，约 11 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)** · [全部下载与校验清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/DOWNLOADS.zh-CN.md)
+**[打开安装教程](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/INSTALL.zh-CN.md)** · **[下载主程序配对包（文档修订 1，约 11 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0-docs-r1/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)** · [全部下载与校验清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/DOWNLOADS.zh-CN.md)
 
 **① 文字聊天 → ② ONNX 模型选装 → ③ 聪音发音（GPT-SoVITS） → ④ 玩家语音识别（Fun-ASR）。** 文字聊天完成后即可独立运行；各阶段不依赖后续阶段。② 可跳过，③／④ 都不依赖 ONNX。每阶段必需步骤在教程正文，进阶配置可折叠跳过。
 
@@ -14,7 +14,7 @@
 
 原发布附件 `INSTALL_zh-CN.md` 保持原发布字节；新指南以顶部当前安装页与新 ZIP 内正文为准。文档修订资产身份见[修订清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/releases/AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json)，原正式资产仍按原清单保留。
 
-已安装用户可单独阅读或保存这两份正文：[AIChat 包内 README 完整正文](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/AIChat_README_zh-CN.md) / [AIChat 版本与改动完整正文](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/AIChat_CHANGELOG_zh-CN.md)，无需替换程序。
+已安装用户可单独阅读或保存这两份正文：[AIChat 包内 README 完整正文](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0-docs-r1/AIChat_README_zh-CN.md) / [AIChat 版本与改动完整正文](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0-docs-r1/AIChat_CHANGELOG_zh-CN.md)，无需替换程序。
 
 ## 本次更新
 
