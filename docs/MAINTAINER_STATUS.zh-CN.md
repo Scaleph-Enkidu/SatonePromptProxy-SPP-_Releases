@@ -1,171 +1,57 @@
-# 教程核查记录与公开发布前待办
+# AIChat 1.17.0 + SPP 5.9.0 发布与验证记录
 
-[返回首页](../README.md)
+[返回首页](../README.md) · [玩家四阶段安装](INSTALL.zh-CN.md) · [下载清单](DOWNLOADS.zh-CN.md)
 
-日期：2026-09-26。本文供维护者更新教程使用，普通玩家可直接读[安装页](INSTALL.zh-CN.md)。
+记录日期：**2026-10-01**。**用户已于当天确认本机测试完成，并批准文档、封包和正式发布。** 此确认按用户原意记录，不虚构逐项硬件型号、供应商、声线、ASR／TTS 环境或全新 Windows 测试清单。
 
-## 运行开销与设备选择核查（2026-09-27）
+## 当前公开分发形态
 
-本次为文档更新。README 将显存与非 NVIDIA 限制提前，新增 HARDWARE.zh-CN.md，并同步安装入口与语音步骤。没有修改 DLL、EXE、ASR 默认设备或正式包版本。没有发布节省显存的性能结论。
+公开主下载为两类 ZIP：
 
-- 截图中的两个 python.exe 分别为 2,274,520 K、2,016,496 K 专用 GPU 内存；游戏为 664,188 K。缺少命令行、模型精度、采样阶段与整卡峰值，不能逐一归属模型，也不能推导最低显存。8 GB 起步、12 GB 优先是当前暂定的容量建议。
-- [SPP 随包 ASR 脚本](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/satone_funasr_server_v1.py) 原文为 `AutoModel(model=model_dir, trust_remote_code=True)`，没有传入 device。
-- [SPP main.go](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/main.go) 的 ASRConfig 没有 device；launchOwned 传入模型、地址、端口、热词与 UTF-8 环境变量，没有传入 ASR 设备。因此不能声称已有 `asr.device` 开关。
-- [Embedding worker](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/embedding_worker.py) 原文为 `self.model.to("cpu")`。CPU 记忆检索设置与 ASR 不同。
-- [AIChat ASRClient](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/blob/aeaa1b33598d68ead0b3d1353b3793e5df399cc2/AIChat/Services/ASRClient.cs) 发 WAV 到 HTTP /asr，没有在该客户端加载本地神经网络。
-- 上游 FunASR 的本次读取 blob 为 `c1de533f6cb68ecde8f020f98248ba2b7954f066`；默认设备为 CUDA，有设备可用性判断。这不是用户已经安装的 Python 依赖版本的证明。
-- 上游 GPT-SoVITS 的 tts_infer.yaml 本次读取 blob 为 `f31061cc8bc5d15c61443b895218f73121d4ab89`，有 CPU／关闭半精度配置；Windows install.ps1 有 CPU 安装选项。不能据此宣称 AMD／Intel GPU 原生加速已适配。
+- `SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip`：约 11 MB 的 AIChat＋SPP 配对程序、说明与工具，带默认 Neutral 参考音频，不含 ONNX 模型。
+- `Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip`：约 94 MB 的可选 E5 int8／tokenizer／Windows x64 ORT CPU 1.30.0 与许可。
 
-下一步验证：记录 Windows／驱动／显卡、精确 Python 依赖和模型版本；映射进程；分别测 GPU 双语音、CPU ASR + GPU TTS、全 CPU 语音的加载与峰值、F8／持续通话延迟、失败和退出。显式设备配置及健康页设备信息可作为后续实现任务；本轮没有完成它们。CPU 副本路线需用户实机验证，不等同于新增受支持的发布模式。
+模型不默认启用，文字聊天与内置关键词回忆可单独使用，不需要 Python。模型不是 GPT-SoVITS／Fun-ASR 前置依赖。语音运行环境、声线权重及 ASR 模型外装；私库单组件包只用于来源与组件构建，不是玩家必需额外下载。
 
-## 核查到的仓库状态
+[配对 manifest](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.0_SPP-v5.9.0/releases/AIChat_v1.17.0_SPP_v5.9.0.json)记录最终字节数、SHA-256、ZIP 成员、源提交及封包来源；包内 `BUILD_INFO.json`／`COMPONENT.json` 记录文件身份。这里不猜测发布 ZIP 的 hash，也不把文档提交当作重新运行全部源码测试的证据。
 
-| 仓库 | 可见性 | main / develop 快照 | 已发布版本 |
-|---|---|---|---|
-| Scaleph-Enkidu/SatoneAIChat_Remake | private | 两分支均为 `aeaa1b33598d68ead0b3d1353b3793e5df399cc2` | Release `AIChat-v1.16.14`，非草稿、非预发布 |
-| Scaleph-Enkidu/SatonePromptProxy | private | 两分支均为 `916c61a71973f825266be7140d84c45afbd6bcaa` | Release `SPP-v5.8.23`，非草稿、非预发布 |
-| Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases | private | 搬运前教程提交 `eb87300fd0a36e8301ba4dfef55857ebeb14fb27` | 配对发布 [AIChat-v1.16.14_SPP-v5.8.23](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.16.14_SPP-v5.8.23) |
+## 固定受测代码与自动化
 
-本次按维护者要求，将两份最新正式安装包、原校验文件及 AIChat 许可证加入本发布库，并更新使用方法的下载入口。文件存于 `packages/AIChat_v1.16.14_SPP_v5.8.23/`，配对 Release 由 `.github/workflows/publish-pair.yml` 校验后发布，原始来源与包内文件清单见[版本清单](../releases/AIChat_v1.16.14_SPP_v5.8.23.json)。两个原 ZIP 未重新编译或重打包。
+CP23 D 的受测运行代码为：
 
-AIChat 来源为成功工作流 36241959879 的 artifact 10906530604，SPP 来源为成功工作流 36246435335 的 artifact 10907293697。两份 ZIP 的 SHA256 均与源库正式 Release 资产 digest 相同。AIChat 原 BUILD_INFO 仍记录 paired_spp 5.8.22；SPP 5.8.23 明确记录 paired_aichat 1.16.14，所以本配对继续使用原 AIChat 包。
-
-本次没有改变三个仓库的可见性。当前普通玩家仍需要本发布库权限；公开本发布库后，二进制下载不依赖私有源库权限。私人源码、玩家数据和游戏资产未搬入本库。
-
-AIChat README 的“当前正式版本 1.16.9”和候选条目没有完全同步到新 Release；SPP 文档也残留旧阶段文字。教程按正式 Release、源代码和最新配对说明判断，没有把这些旧条目继续写给新玩家。
-
-## 本次首页与语音说明补充
-
-- 首页已将付费 OpenAI API、`gpt-6-luna` 推荐、每天 100 轮的假设预算、安装难度、自用项目的稳定性与责任说明、Codex 参与和 AIChat 原作者致谢放在下载教程之前。
-- AIChat 上游为 [qzrs777/AIChat](https://github.com/qzrs777/AIChat)，LICENSE 署名为 Elysia777。本仓库已有随包许可证继续保留。
-- [GPT-6 Luna 官方页](https://developers.openai.com/api/docs/models/gpt-6-luna)与[价格页](https://developers.openai.com/api/docs/pricing)核实 Standard 单价为每百万输入 $0.10、缓存读取 $0.01、缓存写入 $0.125、输出 $0.50。预算假设、公式和本地价格表缺项见 [API_COST](API_COST.zh-CN.md)。
-- 后藤声线：[原作者模型页](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models)、[v2ProPlus/gotoh-v1-3-1 文件夹](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/tree/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1)。所选两个权重的文件名与历史使用记录一致；已查询上游文件元数据，未在本次下载完整权重或测试合成。
-- Mayuri：[参考库](https://huggingface.co/SteinsGateSg/mayuri-voice/tree/main/refs)、[index.csv](https://huggingface.co/SteinsGateSg/mayuri-voice/blob/main/refs/index.csv)。按 SPP 5.8.23 原包的 `profiles_26.csv` 与 `config.example.json` 核对了全部 26 项来源：24 个不同 WAV 均有对应 TXT，索引时长在 3–10 秒，默认 prompt 与索引逐项相同。未在本次逐段试听或将外部音频打入插件包。
-- SPP 的 `resolveVoiceProfile` 按 mapping/profiles 选择文件；`loadPromptForProfile` 先读非空 prompt，再读 WAV 旁边同名 TXT。只改 CSV 不改变运行配置。上述事实已写进玩家语音说明。
-
-## 首页功能介绍的实现依据
-
-2026-09-27（日本时间）补充：首页现在先介绍模组体验、长期记忆、关系、人格设定及默认存档位置，再说明 API 费用和安装条件。本次核对的源提交仍为 AIChat `aeaa1b33598d68ead0b3d1353b3793e5df399cc2` 与 SPP `916c61a71973f825266be7140d84c45afbd6bcaa`，未将宣传文字写成实机稳定性保证。
-
-- **本地原文与按需检索：** [main.go](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/main.go) 的 `appendArchive` 追加写入原文；`shouldRecall` 检查当前话语中的回忆触发词，`buildRecallInstructions` 要求检索 worker 已启动，并对检索结果执行分数和长度筛选。源码摘录：
-
-```go
-f, err := os.OpenFile(p, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0600)
-if !shouldRecall(userText) || !recallWorker.started {
-    return "", nil, false
-}
-```
-
-以上两段来自不同函数。源库 [README 的长期记忆说明](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/README.md)在自动整理步骤中明确写道：“本地 Archive 完全不删除。”这描述自动整理流程，不覆盖手动重置、删文件、磁盘故障等情况。首页将“近乎无限记忆”限定为本地归档可以持续积累，不承诺模型有无限上下文或保证每次召回成功。
-
-- **档案位置：** `defaultMemoryProfilesConfig` 将根目录设为 `memory_profiles`，`fixedMemoryProfiles` 使用中文文件夹名“记忆1/2/3”；路径组合原文为 `filepath.Join(profileRootPath(), p.Folder, filepath.Base(base))`。因此不能把接口 ID `memory1` 当成默认磁盘文件夹名。关闭档案功能或使用自定义配置时，实际位置可能不同。
-- **好感与关系：** [relationship.go](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/relationship.go)维护 Affection、Trust、Comfort、Openness 及进度字段；综合好感计算原文为 `v := a*0.50 + t*0.20 + c*0.20 + o*0.10`。关系规则随阶段改变配合与亲密交流的倾向；Persona 定义的身份、自主性和核心边界独立于关系数值。首页没有把高好感描述为无条件服从，也没有把模型评分当作真实心理测量。
-- **完整人格文本与重载：** 默认文件由 `defaultPersonaFile = "SatonePersona_v4.5.txt"` 定义。`reloadPersonaNow` 替换 Persona 项目的源码注释为 “Remove all previous developer persona messages, leaving chat history untouched.”；修改人格无需清空聊天。人格全局共用而记忆档案独立，不能把三个档案宣传为三个人格。完整可编辑同样不等于模型行为可以被百分之百控制。
-- **其他功能边界：** 语音、情绪参考与麦克风需要外部服务及资源；原版经历需要有效 Steam 身份。26 项参考配置、24 段不同上游录音及相关下载入口沿用前一节的核查结果。首页的能力描述不代表已完成全新 Windows 全流程或长期稳定性实测。
-
-## 关键依据与原文摘录
-
-以下固定提交链接来自私有源库；没有权限的读者可能看不到。玩家教程应保持自足，不能要求普通玩家靠阅读这些源码才能安装。
-
-### AIChat 配置与历史
-
-来源：[AIMod.cs](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/blob/aeaa1b33598d68ead0b3d1353b3793e5df399cc2/AIChat/AIMod.cs)、[SatoneConversation.cs](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/blob/aeaa1b33598d68ead0b3d1353b3793e5df399cc2/AIChat/Satone/SatoneConversation.cs)。
-
-```csharp
-_apiKeyConfig = Config.Bind("1. LLM", "API_Key", "sk-or-v1-PasteYourKeyHere", "API Key");
-Config.Save();
-_satoneHistoryPath = Path.Combine(Paths.ConfigPath, "AIChatSatoneUX.history");
-string encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(e.Text ?? string.Empty));
-```
-
-这些是不同位置的原文摘录，省略了周围代码。配置经 BepInEx 持久化，历史另存且采用可逆编码。换 DLL 后保留旧配置是预期行为。当前界面用 PasswordField 遮挡密钥，不是磁盘加密。
-
-### SPP 鉴权、监听、档案与备份
-
-来源：[main.go](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/main.go)、[relationship_queue.go](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/relationship_queue.go)。
-
-```go
-auth := strings.TrimSpace(r.Header.Get("Authorization"))
-lastAuth = auth
-if ip == nil || !ip.IsLoopback() {
-    log.Fatalf("For safety, listen must be loopback only, got %q", cfg.Listen)
-}
-```
-
-关系恢复任务的源码注释：
-
-> “The API key is supplied by the next authenticated request and is never written to disk.”
-
-该注释针对 SPP 恢复任务，不应扩大为“整个 Mod 不在磁盘保存 Key”。AIChat 的 CFG 仍保存 Key。
-
-`fixedMemoryProfiles()` 定义接口 ID `memory1` 与目录名 `记忆1`；教程按真实目录描述。`createBackupZip()` 明确列出人格、usage、config 和 memory_profiles，未包括游戏内 AIChat 配置，也未列出根目录 OriginalGameProgress.json。
-
-### Release 打包范围
-
-来源：[AIChat 工作流](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/blob/aeaa1b33598d68ead0b3d1353b3793e5df399cc2/.github/workflows/build-v1.16.0.yml)、[SPP 工作流](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/916c61a71973f825266be7140d84c45afbd6bcaa/.github/workflows/release.yml)。
-
-SPP 的原文检查：
-
-```sh
-test ! -e "$STAGE/config.json"
-test ! -e "$STAGE/runtime_paths.json"
-```
-
-SPP 使用明确文件清单复制到 release-stage，未复制 tools/windows 下的 BAT。两个工作流都没有把玩家的已运行目录直接压缩。本次同时核对实际 ZIP 的哈希、CRC、文件清单及 BUILD_INFO，未发现个人运行配置、聊天记录或日志；这不是完整 DLL/EXE 安全审计。
-
-### 外部组件
-
-| 内容 | 一手资料 |
+| 组件 | 固定受测提交 |
 |---|---|
-| BepInEx 安装方法和已存在的 x64 附件 | [官方安装文档](https://docs.bepinex.dev/articles/user_guide/installation/index.html)、[5.4.23.5 Release](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5) |
-| GPT-SoVITS Windows 包、模型与 API | [官方 README](https://github.com/RVC-Boss/GPT-SoVITS)、[api_v2.py](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/api_v2.py)、[tts_infer.yaml](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/GPT_SoVITS/configs/tts_infer.yaml)、[官方整合包列表](https://huggingface.co/lj1995/GPT-SoVITS-windows-package/tree/main) |
-| Fun-ASR 的模型加载方式与依赖 | [官方仓库](https://github.com/QwenAudio/Fun-ASR)、[requirements.txt](https://github.com/QwenAudio/Fun-ASR/blob/main/requirements.txt)、[原版模型卡](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512) |
-| 模型整包下载方法 | [Hugging Face 官方指南](https://huggingface.co/docs/huggingface_hub/guides/download) |
-| API Key、模型与账单 | [OpenAI Quickstart](https://developers.openai.com/api/docs/quickstart)、[GPT-6 Luna](https://developers.openai.com/api/docs/models/gpt-6-luna)、[生产使用建议](https://developers.openai.com/api/docs/guides/production-best-practices) |
-| 云端会话保留 | [OpenAI 数据控制](https://developers.openai.com/api/docs/guides/your-data)，Conversations 表格的原文为 “Until deleted” |
+| AIChat 1.17.0 | `c5da60b686766189c30ed7d69b71dab41098f6d2` |
+| SPP 5.9.0 | `5232d58882668fc1cf446db923fc8822fec2a810` |
 
-上游会更新，因此以上动态链接不是依赖锁定文件。正式发布前应固定实际验证过的包版本和哈希，记录 Windows、驱动、Python、Torch、FunASR、Transformers 版本。
+来源为源库的 `docs/CP23_STAGE_D_VALIDATION_20261001.md`、`docs/CP23_SPLIT_DISTRIBUTION_20261001.md` 与交付的 `VALIDATION.json`／`PACKAGE_ACCEPTANCE.json`。运行受测 SHA、封包文档 HEAD 与最终文档 HEAD 分开记录；玩家不需要私库权限才能安装，公开下载和教程保持自足。
 
-## 公开面向普通玩家前需要补齐什么
+- D 第二轮：14 项后端检查、9 项客户端检查 PASS；Go 全量 520 顶层／1029 含子项 PASS，7 项 SKIP，适用的 EXE／资源／进程 owner 路径另行检查。两个真实厂商 API 没有在该自动化轮次调用。
+- 真实 int8 ONNX worker：**12/12 合成正例 Top1、10/12 正例通过保守注入筛选、0/3 合成负例通过筛选**。真实模型不等于真实玩家语料；结果不保证每次换词检索正确。
+- 分包实际解压与覆盖升级：**11 分支 PASS**。覆盖未装模型、纯关键词启停、追加组件、实际 worker 查询、缓存重启、配置／组件／旧 DB／玩家哨兵保留、覆盖后重启、缺／坏组件回退。隔离目录有中文和空格，子进程 PATH 为空，不依赖 Python 运行 Recall；开发检查脚本本身使用 Python。
+- 包校验覆盖 CRC、安全路径、成员清单与逐文件 hash，程序／参考 WAV、组件固定支持文件与完整许可，以及个人运行数据排除。发布包的最终名称与身份以本次 manifest 为准，不沿用旧候选 ZIP 的 hash。
 
-| 优先级 | 缺项 | 验收方式 |
-|---|---|---|
-| 必须 | 玩家无需私库权限即可取得配对 Mod 包 | 从未登录 GitHub 的浏览器打开下载链接并下载；在下载页标清当前版本 |
-| 已完成（当前两包） | 实际 Release ZIP 内容核查 | 原 ZIP 与源库 SHA256 一致；文件清单未含个人 CFG、运行 config.json、history、memory_profiles、日志或备份；凭据嵌入等二进制语义风险未作完整审计 |
-| 必须 | 已验证的 Fun-ASR 全新环境 | 用干净 Windows 建环境、完整下载模型、成功加载、F8/持续通话测试；保存精确依赖版本，不只写 pip install 成功 |
-| 来源与文件对应已完成；实测待补 | 后藤 v2ProPlus 权重、Mayuri 参考 WAV/TXT 与 26 项命名 | 原链接、文件名、上游许可标注已列明；仍需在干净环境下载并实际试听合成 |
-| 操作说明已完成；实测待补 | 解决默认 MAY WAV 不存在的初次安装问题 | A4 提供 Neutral 原 WAV/TXT，A6 列出 26 项原路径和目标名称；上游音频不打包，使用条件按原发布者说明；仍需 Neutral 实测 |
-| 必须 | 新手从零实测一次 | 只有 Steam 游戏、没有旧 CFG/缓存/模型的环境，按教程完成；将测试边界写实 |
-| 建议 | 实际 GUI 截图 | Steam 定位目录、正确文件层级、F9 配置、服务就绪状态；截图前清除 Key 与私人聊天 |
-| 建议 | 降低手工配置成本 | 之后另行实现干净配置向导/依赖安装器；本次提供原包与教程，未实现自动安装器 |
-| 建议 | 统一源库 README 版本状态 | 避免正式 Release 与旧候选说明相互矛盾 |
-| 建议 | 扩大备份范围并复测 | 明确包含 AIChat CFG/history 与 OriginalGameProgress 账本；不得把私人备份当安装包 |
-| 建议 | 密钥与日志保护 | 另行设计 Windows 凭据保护、导出脱敏、日志开关和本地端点鉴权；现状在隐私页明示 |
+首轮失败与诊断产物按历史保留，没有覆盖失败记录。文档与分包整理没有重新运行大 WAL 测量；资源数值继续绑定原 D 受测代码与输入。
 
-本次交付包含两份正式原包、统一配对 Release、校验与来源记录，以及对应的玩家使用方法。声线来源与文件命名说明已补齐；干净 Windows 全流程实测与实际语音效果验证仍保留在待办中。
+## 资源边界
 
-## 2026-09-30 发布记录：AIChat 1.16.65 + SPP 5.8.42（CP21 配对）
+原 **350 MB 门禁只包含真实 worker＋5 万向量**，第二轮最大 **332,283,904 B**，不含存档、关键词、WAL 或启动。
 
-本次把 CP19-1 / CP20 / CP21 三个阶段的开发成果与 Meta 恐怖演出收尾一起发布，并首次把外观采集器放进发布库。
+全新进程整管线采用 20 ms working-set 采样；5 万条合成真实格式 WAL 的启动重放与档案投影 **495.12 秒**，观察峰值 **943,693,824 B**。大 WAL 冷启动仍慢，整套 SPP 不能称为“350 MB”。较短输入、已加载缓存与冷启动不是同一个指标；详细表格见[硬件页](HARDWARE.zh-CN.md)。
 
-| 仓库 | 本次引用提交 |
-| --- | --- |
-| Scaleph-Enkidu/SatoneAIChat_Remake（private） | `b6b189baa6f7a83e84b1e3061770bcad56432bee`（分支 `feature/cp21-native-lines-history`，版本 1.16.65） |
-| Scaleph-Enkidu/SatonePromptProxy（private） | `9b127c0474cbe434857e9c189980bd4f7074e571`（同分支，版本 5.8.42） |
-| Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases（本库） | 本次提交，tag `AIChat-v1.16.65_SPP-v5.8.42` 由 `publish-pair.yml` 创建 |
+合成 WAL 按真实格式／hash 链生成并经过生产恢复，不冒称每轮都执行真实云端生成或 live commit／fsync；生命周期向量缓存为合成向量，不冒称所有记录都由 E5 推理。真实玩家文本、设备与存档规模会改变结果。
 
-资产与来源：
+## 安装说明与来源保留
 
-- `packages/AIChat_v1.16.65_SPP_v5.8.42/`：两份 ZIP（AIChat 634,012 字节 / SPP 10,103,882 字节）、各自的 `*_SHA256.txt`、`AIChat_LICENSE.txt`；`releases/AIChat_v1.16.65_SPP_v5.8.42.json` 记录逐资产大小、SHA-256、ZIP 成员清单与源提交。
-- **构建形态**：这是**本地实机构建**（两个源库的 Release workflow 未参与，因此 manifest 不含 `workflow_run`）。`tools/verify_release.py` 已参数化（`--manifest`），`workflow_run` 变为可选；其余检查（大小、SHA-256、CRC、成员清单、无运行数据、BUILD_INFO 与 manifest 的 component/version/source_commit 一致、校验文件格式）保持原样。
-- 包内容包含上一版发布形态的 `SOURCE_MANIFEST.json`（两仓共 341 / 423 个跟踪文件，含 tree_sha256 算法说明）、`SHA256SUMS.json`、`README.md` 指针与中文《安装与实机测试说明》《版本与改动》，SPP 包继续附带 `mayuri-voice/refs/MAY_1158_Neutral.wav`（SHA-256 `ad79cf94…`）。
+- 首页功能介绍后立即提供大标题安装入口；Release 顶部提供同一入口。
+- 四阶段为文字 → ONNX 选装 → GPT-SoVITS → Fun-ASR，每阶段先写文件位置、设置、启动和验收，再折叠进阶配置。关键配置不藏进折叠。
+- Recall 同时支持本地管理页 UI 与 `/recall/test?q=...`／`/recall/status`。旧 Dashboard／截图没有查询区时直接用端点；首次查询触发后台暖机，不能只看“文件存在”。
+- 语义验收检查 `engine=native_keyword+onnx`、`worker.model_loaded`、`worker.semantic_state`、`worker.embedded_exchanges` 和当前档案作用域。
+- E5 revision 固定为 `614241f622f53c4eeff9890bdc4f31cfecc418b3`，组件保留模型说明、E5 项目 MIT 许可、ORT 许可与第三方声明。声线作者、Mayuri 参考音频与其原始许可标注继续见[语音页](VOICE_SETUP.zh-CN.md)。
+- AIChat 基于 [qzrs777/AIChat](https://github.com/qzrs777/AIChat)，原作者 Elysia777 与许可证保留。项目特色与 Meta 叙述保留在首页；旧发布文档继续作为历史记录。
 
-保留与清理：
+## 后续仍需按事实扩充的证据
 
-- 保留上一稳定配对 `packages/AIChat_v1.16.23_SPP_v5.8.26/` 作为回退下载（其 Release `AIChat-v1.16.23_SPP-v5.8.26` 不变）。
-- 删除 `packages/AIChat_v1.16.14_SPP_v5.8.23/`（只保留最新 + 上一稳定版）；`releases/AIChat_v1.16.14_SPP_v5.8.23.*` 文本记录按历史保留。
-- `publish-pair.yml` 已从 1.16.14/5.8.23 改为本次配对；旧的 1.16.14 校验路径不再由 CI 执行。
+用户本机测试确认已完成；本次没有新增全部显卡／驱动／供应商／声线的逐项矩阵，也没有虚构干净 Windows 全流程、真实玩家召回质量或独立第三方审查。之后遇到问题，应记录实际环境、组合、档案、时间、复现与脱敏日志，再补对应证据。
 
-新增工具：`tools/SatoneStateCatalog/`（源码 + 预编译 DLL + 中文说明）。DLL 由源码在维护者本机当前游戏版本编译（net472 / BepInEx 5），**尚未游戏内验证**；说明里写明失效时删除 DLL、不改存档、不解锁内容。它是征集"道具与服饰外观描述"的入口，用来支撑之后用语音让聪音换背景／换衣服的功能。
-
-验证范围：AIChat `dotnet build` 0 错误、六个本地测试工程全绿（WindowEvent 39、Integration 188、UI 资源契约 145、CP18 16、Presentation 89 + 纯逻辑）；SPP `go vet` 干净、本地全量测试仅剩 5 条已知环境失败（1 ASR + 4 Recall/Python）；SPP 窗口弧线与 `POST /window-event/reset` 已用玩家真实 470 条提交的存档**只读副本**验证（启动 `ok:true`、重置 +1 条提交、重复调用幂等、重启后仍幂等）。真实 API、Unity 与语音效果仍待玩家确认。
+主程序更新默认复用兼容的同一模型组件；仅当模型／tokenizer／ORT 或兼容条件改变时，才更新组件身份与下载。保护 `local_v1`、全部档案、连接凭据、模型、缓存与声线资源；任何冷启动优化仍需保持权威恢复校验。
