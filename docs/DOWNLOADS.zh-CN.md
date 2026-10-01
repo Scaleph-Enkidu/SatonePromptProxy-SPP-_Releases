@@ -1,17 +1,17 @@
 # 下载清单：AIChat 1.17.0 + SPP 5.9.0
 
-[返回首页](../README.md) · **[打开四阶段安装教程](INSTALL.zh-CN.md)** · [语音配置](VOICE_SETUP.zh-CN.md)
+[返回首页](../README.md) · **[打开四阶段安装教程](INSTALL.zh-CN.md)** · [语音进阶说明](VOICE_SETUP.zh-CN.md)
 
 更新日期：**2026-10-01**。[本次配对 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.0_SPP-v5.9.0) 的推荐下载仍为下列两类 ZIP。**新玩家先下约 11 MB 的文档修订 1 主程序配对包即可**；模型可跳过，不默认启用。GitHub 自动生成的 Source code ZIP 不是安装包。
 
-**文档修订 1** 仅补齐包内可独立阅读的 README、安装与版本改动正文，程序版本仍为 AIChat 1.17.0 + SPP 5.9.0，程序和模型不变。原正式 ZIP 保留，已安装用户无需升级；选装模型继续使用原文件、原 URL 与原 SHA-256，不需重下。原 `INSTALL_zh-CN.md` 附件保持原发布字节，新指南以[当前安装页](INSTALL.zh-CN.md)与 `docs_r1` ZIP 为准。
+**文档修订 1** 补齐了包内 README、安装与版本改动正文，程序版本仍为 AIChat 1.17.0 + SPP 5.9.0。已安装用户无需为文档升级程序；同一模型也不需重下。已发布 ZIP 和附件保留发布时的文档，最新操作步骤请看[当前四阶段安装教程](INSTALL.zh-CN.md)。
 
 | 文件 | 是否需要 | 放置位置 |
 |---|---|---|
 | [SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0-docs-r1/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)（约 11 MB） | 必需；已同时包含 AIChat 与 SPP | `AIChat/AIChat.dll` 与 PDB 放入游戏 `BepInEx/plugins`；整个 `SatonePromptProxy` 文件夹放到固定运行目录 |
 | [Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip)（约 94 MB） | 可选；需要按意思查找旧对话时再安装 | 把 `models` 文件夹放在 SPP EXE 旁，再 Verify → Enable → 重启 → 发首次查询 |
 
-私有源码库的 AIChat／SPP 单组件包用于组件构建与来源记录，**不是玩家必须额外下载的文件**。TTS 与 ASR 的外部下载列在下方；它们都不依赖这个 ONNX 选装包。
+聪音发音与玩家语音识别的额外下载列在下方；它们都不依赖这个 ONNX 选装包。第一次安装请按照[四阶段教程](INSTALL.zh-CN.md)操作。
 
 ## 大小、SHA-256 与来源
 
@@ -30,7 +30,7 @@ Get-FileHash -LiteralPath '.\Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x6
 
 - 在 Steam 安装 **Chill with You : Lo-Fi Story**。
 - 将 [BepInEx 5.4.23.5 Windows x64](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5) 安装到游戏 EXE 同层。已有 BepInEx 时核对版本和其他插件，不要清空现有 Mod。
-- 配对主程序包已包含默认人格、程序工具与 `mayuri-voice/refs/MAY_1158_Neutral.wav`。文字聊天和关键词回忆无需 Python。
+- 配对主程序包已包含默认人格、程序工具和 Neutral 参考音频。
 
 **下一阶段：** [② ONNX 模型选装](INSTALL.zh-CN.md#stage-2)，或跳到 [③ 聪音发音](INSTALL.zh-CN.md#stage-3)。
 
@@ -48,13 +48,13 @@ Get-FileHash -LiteralPath '.\Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x6
 - 本项目现有示例使用[后藤一里 gotoh-v1-3-1 的 v2ProPlus 声线](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models/tree/main/models/Hitori_Gotoh/v2ProPlus/gotoh-v1-3-1)的 GPT `.ckpt` 与 SoVITS `.pth` 两份权重；不要混用 v4 权重。
 - **Neutral 参考音频已经在主程序包内**；其余情绪录音是可选补充。声线模型的[原作者页面](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models)标注 CC BY-NC-SA 4.0，Neutral 音频的[原项目](https://huggingface.co/SteinsGateSg/mayuri-voice)标注 `License: other`。按各来源条件使用。
 
-主程序包不附带 GPT-SoVITS 环境或声线权重。文件名、配置、启动和试听见[语音页阶段三](VOICE_SETUP.zh-CN.md#stage-3)。
+主程序包不附带 GPT-SoVITS 环境或声线权重。下载、配置、启动和试听的完整步骤见[安装教程阶段三](INSTALL.zh-CN.md#stage-3)；进一步调整见[语音进阶说明](VOICE_SETUP.zh-CN.md#stage-3)。
 
 **下一阶段：** [④ 玩家语音识别](INSTALL.zh-CN.md#stage-4)，不需要麦克风可停在本阶段。
 
 ## 阶段四：外装 Fun-ASR
 
-麦克风需要 [Fun-ASR 项目](https://github.com/QwenAudio/Fun-ASR)、[Fun-ASR-Nano-2512 模型](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512)和匹配的独立 Python／Torch 环境。包内 `satone_funasr_server_v1.py` 只是服务脚本，不等于环境与模型已经安装。[语音页阶段四](VOICE_SETUP.zh-CN.md#stage-4)提供放置、设置、启动与 F8 验收步骤。
+麦克风需要 [Fun-ASR 项目](https://github.com/QwenAudio/Fun-ASR)、[Fun-ASR-Nano-2512 模型](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512)和匹配的独立运行环境。包内 `satone_funasr_server_v1.py` 是服务脚本，运行环境和模型需要另外下载。[安装教程阶段四](INSTALL.zh-CN.md#stage-4)提供完整操作步骤；进一步调整见[语音识别进阶说明](VOICE_SETUP.zh-CN.md#stage-4)。
 
 ## 其他工具与回退
 
