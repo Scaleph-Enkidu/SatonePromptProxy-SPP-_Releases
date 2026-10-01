@@ -8,7 +8,7 @@ import stat
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_MANIFEST = "releases/AIChat_v1.17.0_SPP_v5.9.0.json"
+DEFAULT_MANIFEST = "releases/AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json"
 SEMANTIC_PREFIX = "models/multilingual-e5-small/"
 SEMANTIC_FILES = {
     "model.onnx": "dd476dd0c2514e9b9be83aeb3853fac0763e0bdf4a71645407587d77c48a2d88",
@@ -161,6 +161,32 @@ def check_legacy(archive, asset):
         require(str(info.get("workflow_run")) == str(asset["workflow_run"]), "Workflow run mismatch")
 
 
+def check_superseded_assets(directory, manifest, manifest_name):
+    """Check preserved historical bytes without treating them as current roles."""
+    records = manifest.get("superseded_assets", [])
+    require(isinstance(records, list), "Invalid superseded asset list")
+    names = [asset["name"] for asset in manifest["assets"]]
+    checksums = [asset["checksum_file"] for asset in manifest["assets"] if asset["name"].endswith(".zip")]
+    reserved = {name.casefold() for name in names + checksums}
+    require(manifest_name.casefold() not in reserved, "Release asset collides with current manifest")
+    reserved.add(manifest_name.casefold())
+    verified = set()
+    for asset in records:
+        name = asset["name"]
+        require(len(safe_path(name).parts) == 1, "Superseded asset must be a flat filename")
+        require(name.isascii(), "Superseded attachment filename must be ASCII: " + name)
+        check_no_player_data(name)
+        require(name.casefold() not in reserved, "Superseded asset name collision: " + name)
+        reserved.add(name.casefold())
+        path = directory / name
+        require(path.stat().st_size == asset["size"], "Superseded size mismatch: " + name)
+        require(sha256_file(path) == asset["sha256"], "Superseded SHA256 mismatch: " + name)
+        if path.suffix.lower() == ".zip":
+            with zipfile.ZipFile(path) as archive:
+                check_archive(archive, asset.get("zip_members", archive.namelist()))
+        verified.add(name)
+    return verified
+
 def verify_manifest(manifest_path, assets_dir=None, expected_tag=None):
     manifest_path = Path(manifest_path)
     manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
@@ -179,7 +205,7 @@ def verify_manifest(manifest_path, assets_dir=None, expected_tag=None):
         roles = [a.get("role") for a in assets if a["name"].endswith(".zip")]
         require(set(roles) == {"paired_program", "semantic_component"} and len(roles) == 2,
                 "Expected one program pair and one semantic component")
-    required_files = set()
+    required_files = check_superseded_assets(directory, manifest, manifest_path.name) if schema == 2 else set()
     for asset in assets:
         require(len(safe_path(asset["name"]).parts) == 1, "Asset must be a flat filename")
         if schema == 2:

@@ -4,13 +4,19 @@
 
 记录日期：**2026-10-01**。**用户已于当天确认本机测试完成，并批准文档、封包和正式发布。** 此确认按用户原意记录，不虚构逐项硬件型号、供应商、声线、ASR／TTS 环境或全新 Windows 测试清单。
 
+## 文档修订 1
+
+针对 AIChat 包内 README／版本改动原先主要是链接的问题，修订采用在现有三个 Release 追加 `docs_r1` 程序 ZIP、sidecar 与修订 JSON，保留原正式资产。公开推荐首装包为 `SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip`；仅补齐包内可独立阅读的 README、安装与版本改动正文，程序仍为 AIChat 1.17.0 + SPP 5.9.0，程序及模型不变，已安装用户无需升级。
+
+模型 ZIP 的文件名、URL、字节和 SHA-256 保持原样，无需重下。原发布附件 `INSTALL_zh-CN.md` 保持原字节，新指南以当前 main 安装文档与新 ZIP 正文为准。[修订 manifest](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/releases/AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json)记录修订资产；包内说明用于离线阅读；追加上传和下载回查的完成状态以在线维护记录为准。下方正式发布记录与 hash 表是原正式资产的证据。
+
 ## 2026-10-01 正式发布完成
 
 **AIChat 1.17.0 + SPP 5.9.0 已正式发布并设为 Latest**：[公开配对 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.0_SPP-v5.9.0)。[安装入口](INSTALL.zh-CN.md)按文字、ONNX 选装、聪音发音、玩家语音识别四阶段排列；必需步骤在正文，进阶配置可跳过。两私库的自身程序 Release 同步发布，模型只在公开 Release 作为独立附件，不入源码 Git。
 
 | 正式 ZIP | 字节数 | SHA-256 |
 |---|---:|---|
-| 主程序配对包 | 10,862,696 | `988026cff09c63727bec83bf6bc8769289bceda5a120282296df3c0c825dd22b` |
+| 主程序配对包（原正式资产） | 10,862,696 | `988026cff09c63727bec83bf6bc8769289bceda5a120282296df3c0c825dd22b` |
 | 可选 ONNX 组件 | 93,821,443 | `88c77b40c89df19e316aebf497ff30fc4d5504138955ba92e0f2d4875b639d8d` |
 
 第一轮本地发布检查通过：27 项校验器测试、清单与四份 ZIP 核验、11 个隔离实际解压分支。草稿上传发现 GitHub 将中文包外附件名归一为 `default.md`，造成名称碰撞；尚未正式发布时修订为 ASCII 附件名，并补防回归。第二轮 **30 项校验器测试、文档／工作流和全部资产校验通过**；四份 ZIP 字节未变，实际启动、追加模型、缓存重启、覆盖升级保留 17 个测试文件和坏／缺模型回退引用第一轮同一 ZIP 的验收。未重编受测 EXE／DLL，未触发第三轮或补跑远端 CI。
@@ -23,12 +29,12 @@
 
 公开主下载为两类 ZIP：
 
-- `SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64.zip`：约 11 MB 的 AIChat＋SPP 配对程序、说明与工具，带默认 Neutral 参考音频，不含 ONNX 模型。
+- `SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip`：约 11 MB 的 AIChat＋SPP 配对程序、说明与工具，带默认 Neutral 参考音频，不含 ONNX 模型。
 - `Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip`：约 94 MB 的可选 E5 int8／tokenizer／Windows x64 ORT CPU 1.30.0 与许可。
 
 模型不默认启用，文字聊天与内置关键词回忆可单独使用，不需要 Python。模型不是 GPT-SoVITS／Fun-ASR 前置依赖。语音运行环境、声线权重及 ASR 模型外装；私库单组件包只用于来源与组件构建，不是玩家必需额外下载。
 
-[配对 manifest](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.0_SPP-v5.9.0/releases/AIChat_v1.17.0_SPP_v5.9.0.json)记录最终字节数、SHA-256、ZIP 成员、源提交及封包来源；包内 `BUILD_INFO.json`／`COMPONENT.json` 记录文件身份。这里不猜测发布 ZIP 的 hash，也不把文档提交当作重新运行全部源码测试的证据。
+[文档修订 1 manifest](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/releases/AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json)记录修订 ZIP 的字节数、SHA-256、成员及来源；[原配对 manifest](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.0_SPP-v5.9.0/releases/AIChat_v1.17.0_SPP_v5.9.0.json)保留原正式资产身份。包内 `BUILD_INFO.json`／`COMPONENT.json` 记录文件身份；文档修订不代表重新运行全部源码测试。
 
 ## 固定受测代码与自动化
 
