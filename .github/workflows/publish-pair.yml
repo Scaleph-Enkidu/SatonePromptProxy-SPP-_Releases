@@ -8,12 +8,12 @@ on:
       tag:
         description: Existing draft or published release tag
         required: true
-        default: AIChat-v1.17.0_SPP-v5.9.0-docs-r1
+        default: AIChat-v1.17.1_SPP-v5.9.1
         type: string
       manifest:
         description: Committed manifest to compare against uploaded assets
         required: true
-        default: releases/AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json
+        default: releases/AIChat_v1.17.1_SPP_v5.9.1.json
         type: string
 
 permissions:

@@ -2,7 +2,7 @@
 
 [返回首页](../README.md) · [四阶段安装](INSTALL.zh-CN.md)
 
-适用配对：**AIChat 1.17.0 + SPP 5.9.0**，更新于 **2026-10-01**。程序文件与个人运行数据分开保存；替换 DLL／EXE 后继续看到旧接口、Key 或聊天，通常是读取了原配置和存档，不代表它们被打入新程序包。
+适用配对：**AIChat 1.17.1 + SPP 5.9.1**，更新于 **2026-10-01**。程序文件与个人运行数据分开保存；替换 DLL／EXE 后继续看到旧接口、Key 或聊天，通常是读取了原配置和存档，不代表它们被打入新程序包。
 
 ## 数据保存在哪里
 
@@ -60,4 +60,4 @@ Key 如果已经公开，去供应商平台撤销并重新创建；只删除当�
 
 本次主程序配对包与选装模型包从独立封包目录生成，检查成员、CRC、逐文件 hash 与个人运行文件排除。程序包不应包含玩家 CFG、运行用 `config.json`、连接凭据、聊天 history、`local_v1`、`memory_profiles`、日志或私人备份；默认 Neutral 是发布资源。模型包为通用模型与运行库、来源清单和许可。
 
-本次精确包身份与最终检查以[发布清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.0_SPP-v5.9.0/releases/AIChat_v1.17.0_SPP_v5.9.0.json)和[维护记录](MAINTAINER_STATUS.zh-CN.md)为准。文件清单排除个人数据不等于完整二进制安全审计。2026-10-01 用户确认本机测试完成，不扩展为所有机器、供应商或语音组合已验收。
+本次精确包身份与最终检查以[发布清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.1_SPP-v5.9.1/releases/AIChat_v1.17.1_SPP_v5.9.1.json)和[维护记录](MAINTAINER_STATUS.zh-CN.md)为准。文件清单排除个人数据不等于完整二进制安全审计。本版本地验证的具体范围见维护记录，不扩展为所有机器、供应商或语音组合已验收。
