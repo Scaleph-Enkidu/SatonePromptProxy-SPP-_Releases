@@ -25,7 +25,7 @@
 1. 退出游戏。在 Steam 游戏库中，右击《放松时光：与你共享 Lo-Fi 故事》，依次点击 **管理 → 浏览本地文件**。打开的文件夹就是下面所说的“游戏文件夹”。
 2. 下载 [BepInEx_win_x64_5.4.23.5.zip](https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.5/BepInEx_win_x64_5.4.23.5.zip)。把压缩包里的文件解压到游戏文件夹中，让 `BepInEx` 文件夹、`winhttp.dll` 和游戏的启动程序放在同一层。如果已经安装过这个版本的 BepInEx，可以跳过这一步。
 3. 下载 [SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0-docs-r1/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)，并解压。打开里面的 `AIChat` 文件夹，把 `AIChat.dll` 和 `AIChat.pdb` 复制到游戏文件夹中的 `BepInEx\plugins`。如果没有 `plugins` 文件夹，在 `BepInEx` 中新建一个名为 `plugins` 的文件夹。如果安装过旧版 AIChat，替换原来的同名文件。
-4. 把解压出来的 `SatonePromptProxy` 文件夹复制到你方便管理的位置。以后想安装聪音发音、玩家语音识别，推荐先新建一个文件夹统一放这些程序，例如 `D:\LofiMOD`，再把 `SatonePromptProxy` 放进去。**不建议路径中包含中文。** 下面以 `D:\LofiMOD\SatonePromptProxy` 为例；你使用其他位置时，填写自己的路径即可。
+4. 你可以把解压出来的整个 `SatonePromptProxy` 文件夹复制到任意位置。如果希望继续安装聪音发音组件与玩家语音识别，推荐单独建立一个文件夹进行统一管理，例如 `D:\LofiMOD`。**不建议路径中包含中文。** 之后可以在游戏的 **AIChat UI** 中配置这个程序的路径，让 SPP 随游戏自动启动，具体操作见下面第 3 节。
 
 ### 2. 第一次启动 SPP
 
@@ -35,13 +35,12 @@
 
 1. 进入游戏后，按 **F9** 打开 **AIChat UI**，点击 **展开设置**。
 2. 展开 **SPP 与记忆（人格代理）**。
-3. 找到 **SPP 启动文件路径：** 输入框，填入自己电脑上 `SatonePromptProxy.exe` 的完整路径。使用本教程示例位置时，填写：
+3. 打开自己电脑上的 `SatonePromptProxy` 文件夹，点击资源管理器上方的地址栏，按 **Ctrl+C** 复制文件夹路径。回到 AIChat UI，将路径粘贴进 **SPP 启动文件路径：** 输入框，再在末尾加上 `\SatonePromptProxy.exe`。例如：
 
    ```text
    D:\LofiMOD\SatonePromptProxy\SatonePromptProxy.exe
    ```
 
-   注意最后包含 `SatonePromptProxy.exe`，不能只填文件夹名称。
 4. 勾选 **启动游戏时自动运行 SPP**。稍后点击“保存并应用配置”后，以后启动游戏就会自动启动 SPP。
 5. 确认这个栏目显示 **SPP 状态：运行中**。如果显示“未检测到”，先回到文件夹双击 `SatonePromptProxy.exe`，等显示运行中后再继续。
 
@@ -58,7 +57,7 @@
    | DeepSeek | 展开 **DeepSeek**，勾选 **选择 DeepSeek（保存后生效）**。将密钥粘贴到 **API Key（接口密钥）**，将账户可用的模型名称填入 **模型名称（可修改）**。 |
    | 中转站 | 展开 **中转站（第三方 API）**，勾选 **选择 中转站（第三方 API）（保存后生效）**。填写该中转站给你的 **API Key（接口密钥）**、**模型名称（可修改）** 和 **中转站 API 地址**。地址也使用中转站提供的地址。 |
 
-   输入框中已有的模型名称可以修改；请使用自己账户实际能调用的名称。OpenAI 和 DeepSeek 的连接地址已经设置好，无需另填。
+   输入框中已有的模型名称可以修改；请使用自己账户实际能调用的名称。
 3. 点击 AIChat UI 下方的 **保存并应用配置**。**修改设置后，需要点击这个按钮才会生效。**
 4. 如果出现旧记忆选择：想继续以前的聊天，就点击 **带入旧版记忆并继续**；想从新记忆开始，就点击 **跳过旧版记忆，继续使用**。跳过不会删除旧文件。首次安装没有旧记录时，会自动准备新档案。
 5. 等待所选聊天服务旁显示 **（正在使用）**，再开始发送消息。如果仍显示“待应用”，说明这次设置还没有完成应用，先处理界面中的提示。
