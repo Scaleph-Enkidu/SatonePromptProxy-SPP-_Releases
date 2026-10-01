@@ -6,13 +6,13 @@
 
 ## 文档修订 1
 
-针对 AIChat 包内 README／版本改动原先主要是链接的问题，修订采用在现有三个 Release 追加 `docs_r1` 程序 ZIP、sidecar 与修订 JSON，保留原正式资产。公开推荐首装包为 `SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip`；仅补齐包内可独立阅读的 README、安装与版本改动正文，程序仍为 AIChat 1.17.0 + SPP 5.9.0，程序及模型不变，已安装用户无需升级。
+针对 AIChat 包内 README／版本改动原先主要是链接的问题，已发布[独立公开文档修订1](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.0_SPP-v5.9.0-docs-r1)（Latest）；两私库当前推荐docs_r2组件包，保留原正式及R1资产。公开推荐首装包为 `SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip`；仅补齐包内可独立阅读的 README、安装与版本改动正文，程序仍为 AIChat 1.17.0 + SPP 5.9.0，程序及模型不变，已安装用户无需升级。
 
-模型 ZIP 的文件名、URL、字节和 SHA-256 保持原样，无需重下。原发布附件 `INSTALL_zh-CN.md` 保持原字节，新指南以当前 main 安装文档与新 ZIP 正文为准。[修订 manifest](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/releases/AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json)记录修订资产；包内说明用于离线阅读；追加上传和下载回查的完成状态以在线维护记录为准。下方正式发布记录与 hash 表是原正式资产的证据。
+模型 ZIP 的文件名、URL、字节和 SHA-256 保持原样，无需重下。原发布附件 `INSTALL_zh-CN.md` 保持原字节，新指南以当前 main 安装文档与新 ZIP 正文为准。[修订 manifest](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/releases/AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json)记录修订资产；包内说明用于离线阅读；公开8与私库各10附件下载回查通过，详细两轮与发布结果见[正文修订完成记录](CP23_DOCUMENTATION_REVISION_20261001.md)。下方正式发布记录与 hash 表是原正式资产的证据。
 
-## 2026-10-01 正式发布完成
+## 原2026-10-01正式发布完成（历史记录）
 
-**AIChat 1.17.0 + SPP 5.9.0 已正式发布并设为 Latest**：[公开配对 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.0_SPP-v5.9.0)。[安装入口](INSTALL.zh-CN.md)按文字、ONNX 选装、聪音发音、玩家语音识别四阶段排列；必需步骤在正文，进阶配置可跳过。两私库的自身程序 Release 同步发布，模型只在公开 Release 作为独立附件，不入源码 Git。
+**原AIChat 1.17.0 + SPP 5.9.0 当时正式发布并设为Latest**：[公开配对 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.0_SPP-v5.9.0)。[安装入口](INSTALL.zh-CN.md)按文字、ONNX 选装、聪音发音、玩家语音识别四阶段排列；必需步骤在正文，进阶配置可跳过。两私库的自身程序 Release 同步发布，模型只在公开 Release 作为独立附件，不入源码 Git。
 
 | 正式 ZIP | 字节数 | SHA-256 |
 |---|---:|---|
@@ -79,4 +79,4 @@ CP23 D 的受测运行代码为：
 
 ## 不可变发布的追加方式
 
-公开原Release启用不可变发布，GitHub拒绝追加资产（HTTP 422）。公开修订使用独立 `AIChat-v1.17.0_SPP-v5.9.0-docs-r1` 发布，原正式Tag与资产保留。模型在新发布中复用同一原ZIP字节，版本和原下载地址不变。私库最初追加的docs_r1保留，当前docs_r2仅更正公开修订下载链接；运行文件相同。上传回查完成状态另据实记录。
+公开原Release启用不可变发布，GitHub拒绝追加资产（HTTP 422）。公开修订使用独立 `AIChat-v1.17.0_SPP-v5.9.0-docs-r1` 发布，原正式Tag与资产保留。模型在新发布中复用同一原ZIP字节，版本和原下载地址不变。私库最初追加的docs_r1保留，当前docs_r2仅更正公开修订下载链接；运行文件相同。当前28附件上传及下载逐字节回查完成；公开修订已正式发布并确认Latest，原公开8资产另外回查恒等。
