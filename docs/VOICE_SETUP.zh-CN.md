@@ -1,31 +1,37 @@
-# 语音与麦克风设置
+# 语音进阶与排错
 
-[返回安装步骤](INSTALL.zh-CN.md) · [下载清单](DOWNLOADS.zh-CN.md)
+[返回四阶段安装](INSTALL.zh-CN.md) · [下载清单](DOWNLOADS.zh-CN.md) · [硬件参考](HARDWARE.zh-CN.md)
 
-本文将“聪音发声”和“听懂玩家说话”分开设置。前者使用 GPT-SoVITS，后者使用 Fun-ASR；装好一个不会自动装好另一个。
-
-**适用配对：AIChat 1.17.0 + SPP 5.9.0（2026-10-01）。** 主程序配对 ZIP 已有默认 `SatonePromptProxy/mayuri-voice/refs/MAY_1158_Neutral.wav`，基本朗读不必再下载或改名这段参考音频。GPT-SoVITS 环境与声线 GPT／SoVITS 权重、Fun-ASR 环境与模型仍需外装。以下 A6 表格用于**可选**的多情绪参考音频。
-
-先完成[阶段一文字聊天](INSTALL.zh-CN.md#stage-1)。[阶段二 ONNX](INSTALL.zh-CN.md#stage-2)可跳过，下面两个语音阶段都不依赖它；Fun-ASR 也不要求先装 GPT-SoVITS。各阶段完成后即可使用对应功能，不依赖后续阶段。
-
-**先选择硬件路线：** 沿用此前容量参考，完整 GPU 语音可从 8 GB 显存评估，12 GB 或以上更有余量；这不是最低配置测试结果，依据和限制见[运行开销与显卡兼容说明](HARDWARE.zh-CN.md)。CUDA 路线面向兼容 NVIDIA 显卡。非 NVIDIA 玩家可以先用文字聊天；完整语音需要对应的 CPU 环境或另行验证的 GPU 后端，不能照抄 CUDA 安装步骤。CPU 语音的 Windows 实时性能需按所选组合测试。
-
-**Fun-ASR 当前不会被 SPP 强制设为 CPU。** 随包脚本没有传入 `device`，ONNX 的 CPU 路线不改变语音识别设备。需要明确选择 CPU 时，见[进阶配置](#asr-cpu)。
-
-**验证记录：2026-10-01 用户确认本机测试完成。** 这条确认不包含逐项显卡／驱动／Python 环境、声线与供应商矩阵，也不作为全部干净 Windows 环境已通过的依据。后藤一里与 Mayuri 的原始来源及文件对应关系继续保留；安装后仍应实际播放 WAV 和用 F8 识别，确认所选组合。
+**适用配对：AIChat 1.17.0 + SPP 5.9.0。** 第一次安装请按主教程逐步完成：
 
 <a id="stage-3"></a>
-## 阶段三：让聪音发声（GPT-SoVITS）
 
-下方 A1–A5 是必需步骤：文件放置 → API 与参考音频设置 → 启动 → 试听／游戏验收。A6 在之后的进阶折叠中，可跳过。
+[③ 让聪音读出回复：GPT-SoVITS 完整安装](INSTALL.zh-CN.md#stage-3)
 
-### A1. 安装 GPT-SoVITS
+<a id="stage-4"></a>
 
-1. 打开[官方项目](https://github.com/RVC-Boss/GPT-SoVITS)和[官方整合包列表](https://huggingface.co/lj1995/GPT-SoVITS-windows-package/tree/main)。根据显卡与上游说明选择 Windows 包；非 NVIDIA 玩家需要上游支持的 CPU 环境，不能默认选择 CUDA 包。上游源码安装也提供 CPU 选项，但 Python 路径不一定是下文的 `runtime\python.exe`。本项目现有示例使用后藤一里的 **v2ProPlus** 权重，所选整合包必须支持 v2ProPlus，并提供 `api_v2.py`。
-2. 用 7-Zip 解压到 `D:\LofiMOD\GPT-SoVITS`。这里应当能直接看到 `api_v2.py`、`runtime` 和 `GPT_SoVITS` 子文件夹。若多套了一层文件夹，以实际包含这些文件的一层作为根目录。
-3. 继续 A2 准备对应权重与包内 Neutral 参考录音，再按 A3 启动 **API 服务**、A4 配置参考与 A5 试听。包内 `go-webui.bat` 可用于独立网页推理；网页能打开不等于游戏使用的 API 已启动。
+[④ 让聪音听懂你的话：Fun-ASR 完整安装](INSTALL.zh-CN.md#stage-4)
 
-### A2. 分清三个文件来源
+下面用于基本功能完成后的扩展和排错。GPT-SoVITS（文字变语音）与 Fun-ASR（语音变文字）分别安装，互不依赖；ONNX 也不是它们的前置条件。主程序包已有默认 Neutral 参考录音，GPT-SoVITS 环境、声线权重以及 ASR 环境／模型仍需外装。
+
+**设备设置的位置：** TTS 在 GPT-SoVITS 的 tts_infer.yaml 里选择 device 与 is_half；Fun-ASR 的 CPU 路线使用带 device="cpu" 的脚本副本，并由 SPP 的 asr.server_script 指向它。CPU 的必需步骤已放在[主教程阶段四](INSTALL.zh-CN.md#asr-cpu)，无需在本页另找安装步骤，也不要向 SPP 添加不存在的 asr.device 字段。
+
+2026-10-01 用户确认本机测试完成。这是已有测试的确认记录；本轮文档列出的完整新装依赖组合仍须以实际模型加载、朗读和 F8 识别确认，不扩展为全部硬件／声线／供应商组合已验收。
+
+## 三个本地端口
+
+| 端口 | 服务 | 用途 |
+|---|---|---|
+| 11435 | SPP | AIChat 共用语音地址；/tts、/asr 与状态页 |
+| 9880 | GPT-SoVITS API | SPP 的 TTS 转发目标 |
+| 9881 | Fun-ASR | SPP 的 ASR 转发目标；/health 健康页 |
+
+游戏里的**语音服务地址（默认连接 SPP 的 TTS 与 ASR 代理）：**保持 http://127.0.0.1:11435。服务绑定本机地址，无需路由器端口转发。
+
+<a id="voice-sources"></a>
+## 声线、参考音频与原作者来源
+
+### 三种资源各负责什么
 
 | 内容 | 作用 | 如何取得 |
 |---|---|---|
@@ -48,81 +54,20 @@
 
 后藤模型页在 “Hitori Gotoh” 下明确列出 “v2ProPlus models” 与 “gotoh-v1-3-1”。Mayuri 原说明写明参考库有 “matching text files”。这里列出的是本项目采用的组合，不是两位发布者共同认证的配套方案；最终音色与情绪效果需要试听确认。
 
-SPP 包含 `MAY_1158_Neutral.wav`；其他默认 `MAY_*.wav` 未包含。自行补齐其他情绪时可按 A6 表格命名，或在配置中填写真实相对路径。SPP 检查参考音频是否为可读取的标准 RIFF/WAVE、时长是否为 **3–10 秒**、台词是否非空。
+SPP 包含 `MAY_1158_Neutral.wav`；其他默认 `MAY_*.wav` 未包含。自行补齐其他情绪时可按下方 26 情绪表格命名，或在配置中填写真实相对路径。SPP 检查参考音频是否为可读取的标准 RIFF/WAVE、时长是否为 **3–10 秒**、台词是否非空。
 
-### A3. 让 API 使用正确的模型
 
-WebUI 中切换了模型，不代表另一个 API 进程也自动切换了模型。
+<a id="tts-test"></a>
+## 单独试听，区分 TTS 两层服务
 
-1. 用记事本打开 `GPT_SoVITS\configs\tts_infer.yaml`，先保留一份自己的备份。
-2. 在实际启用的 `custom:` 配置中核对下面的键，不要破坏其他节、缩进或文本模型路径：
+完成[阶段三](INSTALL.zh-CN.md#stage-3)后，可以用下面方法定位“API 启动了但游戏没有声音”的原因。两项测试使用本地语音服务，不请求主聊天模型。
 
-| 键 | 填写规则 |
-|---|---|
-| `version` | 与所选 SoVITS 权重一致，例如 `v2`、`v2Pro` 或 `v2ProPlus`，区分大小写 |
-| `t2s_weights_path` | 实际的 GPT `.ckpt` 路径 |
-| `vits_weights_path` | 实际的 SoVITS `.pth` 路径 |
-| `bert_base_path` / `cnhuhbert_base_path` | 必须指向已存在的基础模型目录 |
-| `device` / `is_half` | 兼容 NVIDIA GPU 的常见组合是 `cuda` / `true`；CPU 尝试使用 `cpu` / `false`，本项目不保证其实时性能 |
+### 先测试 GPT-SoVITS 本身
 
-YAML 使用空格缩进，不用 Tab。Windows 路径可写成 `D:/LofiMOD/...`，避免反斜杠转义问题。v2Pro 系列还依赖对应的基础权重和说话人编码模型，缺文件时按[上游 v2Pro 说明](https://github.com/RVC-Boss/GPT-SoVITS#v2pro-release-notes)补齐。
+1. 保持 run_api.bat 的窗口运行，用浏览器打开 [GPT-SoVITS API 文档](http://127.0.0.1:9880/docs)。
+2. 展开 **POST /tts**，点 **Try it out**。将请求框原有内容全选，替换为：
 
-使用上面列出的两个后藤文件时，在已有 `custom:` 节内将这三项改为：
-
-```yaml
-version: v2ProPlus
-t2s_weights_path: GPT_weights_v2ProPlus/gotoh-v1-3-1-e16.ckpt
-vits_weights_path: SoVITS_weights_v2ProPlus/gotoh-v1-3-1_e8_s368.pth
-```
-
-这只是三个键的示例；请保持它们在 `custom:` 下原有的缩进，并保留基础模型等其他键。此处连接的是 GPT-SoVITS 自带 `api_v2.py`，无需运行声线作者仓库里的另一套 WebUI 或 API。
-
-3. 在 GPT-SoVITS 根目录创建 `run_api.bat`；记事本保存类型选“所有文件”，内容为：
-
-```bat
-@echo off
-cd /d "%~dp0"
-"runtime\python.exe" -s api_v2.py -a 127.0.0.1 -p 9880 -c "GPT_SoVITS/configs/tts_infer.yaml"
-pause
-```
-
-这是本文给出的启动脚本示例，不是主程序或模型 ZIP 内自带的文件。若所选整合包没有 `runtime\python.exe`，不能照抄这个路径，需使用该整合包的实际 Python 路径。
-
-4. 关闭先前不需要的 WebUI 推理进程，避免重复占用显存，再运行 `run_api.bat`。终端应该监听 `127.0.0.1:9880`，不是报错后退出。
-
-### A4. 先配置一个 Neutral 参考音频
-
-先使用包内的正常说话参考，其他情绪缺失时由它兜底。不要为第一轮安装准备几十个未经核对的情绪文件。
-
-1. 在 SPP 完整包内确认 `mayuri-voice/refs/MAY_1158_Neutral.wav`。整包解压时不要打散目录。
-2. 新安装请保留 `config.example.json` 中 `emotion_tts.ref_root` 的空值、`fallback_profile: "Neutral"` 和 `profiles.Neutral.path: "MAY_1158_Neutral.wav"`；SPP 会查找包内相对目录。不要将示例配置覆盖到已有个人 `config.json`。
-3. 若旧 `config.json` 把 `emotion_tts.ref_root` 指向外部目录，退出 SPP 后将其清空，或改为包内 `mayuri-voice/refs` 的**实际绝对路径**。同时核对 Neutral 的 `path` 和 `prompt` 与包内音频匹配；默认模板已有对应日语台词。
-
-```json
-{
-  "ref_root": "",
-  "fallback_profile": "Neutral",
-  "profiles": {
-    "Neutral": {
-      "path": "MAY_1158_Neutral.wav",
-      "prompt": "嫌がってるのに無理やり着せたりしてねトラウマになっちゃったら良くないもん。",
-      "lang": "ja"
-    }
-  }
-}
-```
-
-这只是 `emotion_tts` 内相关字段的结构示例，不要覆盖整份配置。自己更换录音时，`prompt` 必须同步改为那段音频实际说出的原文；若使用同名 TXT，也可把 `prompt` 设为 `""`。保留 `emotion_tts.enabled=true` 与 `upstream_url=http://127.0.0.1:9880`，模型输出仍用 `text_lang=ja`。
-
-4. 重新运行 SPP，打开 [TTS 状态](http://127.0.0.1:11435/tts/status)，检查 Neutral 与实际路径。其他默认情绪的 WAV 缺失可以回落到 Neutral，但这不代表已具备完整情绪声线。
-
-SPP 源码会合并默认 profiles，因此删掉其他情绪的 JSON 项不等于关闭所有默认检查。安装排查时，以自己的 Neutral 是否有效、实际合成是否成功为准。
-
-### A5. 实际合成测试
-
-浏览器打开 [GPT-SoVITS API 文档](http://127.0.0.1:9880/docs)。若该整合包提供此页，在 `POST /tts` 中点“Try it out”，填：
-
-```json
+~~~json
 {
   "text": "こんにちは。",
   "text_lang": "ja",
@@ -132,25 +77,27 @@ SPP 源码会合并默认 profiles，因此删掉其他情绪的 JSON 项不等�
   "media_type": "wav",
   "streaming_mode": false
 }
-```
+~~~
 
-执行后应得到能播放的 WAV。若返回 JSON 错误，先修复其指出的模型、音频或语言问题。
+3. 点 **Execute**，等待完成。应返回 200 和音频响应；点响应中的 **Download file** 下载后，用播放器播放 WAV。若返回 JSON 错误，先看 message／Exception，修复其指出的模型、路径或语言问题。
+4. 9880/docs 打不开时，先检查 API 窗口是否报错退出，以及是否显示监听 127.0.0.1:9880。go-webui.bat 打开的推理网页是另一进程，不能代替 API 就绪。
 
-再检查 SPP 转发。在任意文件夹的地址栏输入 `powershell`，回车，执行下面的本地请求（会在当前文件夹创建 `spp-test.wav`）：
+### 再测试 SPP 转发
 
-```powershell
+1. 启动 SPP。在资源管理器中打开 D:\LofiMOD\SatonePromptProxy，在地址栏输入 powershell，按回车。本小节使用 **PowerShell**，与安装 ASR 时的 CMD 不同。
+2. 逐行执行：
+
+~~~powershell
 $satoneBody = @{ text = '[Neutral] こんにちは。'; text_lang = 'ja'; media_type = 'wav'; streaming_mode = $false } | ConvertTo-Json
-Invoke-WebRequest -Uri 'http://127.0.0.1:11435/tts' -Method Post -ContentType 'application/json; charset=utf-8' -Body ([System.Text.Encoding]::UTF8.GetBytes($satoneBody)) -OutFile '.\spp-test.wav'
-```
+Invoke-WebRequest -Uri 'http://127.0.0.1:11435/tts' -Method Post -ContentType 'application/json; charset=utf-8' -Body ([System.Text.Encoding]::UTF8.GetBytes($satoneBody)) -OutFile 'D:\LofiMOD\SatonePromptProxy\spp-test.wav'
+~~~
 
-播放这个 WAV。两层均成功后，再回到游戏，在 TTS 设置中核对“语音服务地址”为 `http://127.0.0.1:11435`、朗读语言 `ja`、音量大于 0，点击“保存并应用配置”，发一句文字确认游戏能发声。这个语音地址也用于 ASR 代理；不要改为 9880 直连后又期待 SPP 管理麦克风。
+3. 双击生成的 spp-test.wav，确认能播放。之后把上面的 [Neutral] 换成已补齐的 [Happy]／[Sad] 等，可逐项试听。保留文字中的英文方括号和标签拼写。
+4. 两层均成功后再回游戏：F9 → **展开设置 → TTS（文字转语音）**，核对朗读语言 ja、音量大于 0，点**保存并应用配置**，发一句文字并听朗读。默认共用语音地址保持 11435。
 
-这些 TTS 测试使用本地语音服务，不请求主聊天模型。首次加载较慢；仍要以实际成功或错误为准，不把一直等待描述为已安装成功。
-
-<details>
-<summary>进阶配置（可跳过）</summary>
-
-### A6. 完整配置 26 种情绪：文件究竟应该叫什么
+<a id="emotions-26"></a>
+## 可选：补齐 26 种情绪参考音频
+### 文件名和配置如何对应
 
 **SPP 根据 `emotion_tts.mapping` 和 `emotion_tts.profiles` 找文件，不会扫描文件名猜测情绪。** 当前默认关系是一对一，例如 `Happy → profiles.Happy → path`。文件名本身可以自定义，但必须与该 `path` 一致。直接把某个文件改成 `开心.wav`，却保留旧 `path`，程序就找不到它。
 
@@ -198,7 +145,7 @@ Invoke-WebRequest -Uri 'http://127.0.0.1:11435/tts' -Method Post -ContentType 'a
 
 当前原包内的 26 条默认 `prompt` 与本次核对的 Mayuri 索引台词相同。使用表中同一段音频时可以保留这些默认台词；如果换了录音，必须同步修改，不能只改文件名。
 
-读取优先顺序是：**先读配置中非空的 `prompt`；只有 `prompt` 为空时，才读 WAV 旁边同名的 `.txt`。** [SPP 5.9.0 受测源码](https://github.com/Scaleph-Enkidu/SatonePromptProxy/blob/5232d58882668fc1cf446db923fc8822fec2a810/main.go)原文如下（源码仓库需要访问权限；操作步骤已在本页写全）：
+读取优先顺序是：**先读配置中非空的 `prompt`；只有 `prompt` 为空时，才读 WAV 旁边同名的 `.txt`。** 读取逻辑如下：
 
 ```go
 if strings.TrimSpace(profile.Prompt) != "" {
@@ -221,122 +168,84 @@ txt := strings.TrimSuffix(absWav, filepath.Ext(absWav)) + ".txt"
 
 #### 如何确认已被调用
 
-重新启动 SPP，检查 [TTS 状态](http://127.0.0.1:11435/tts/status)中的 `mapping`、`profiles` 与 `validation`，以及启动日志的 Voice Profile 自检。26 个默认项都配置正确时，应显示正常 26、异常 0。再用 A5 的 SPP 请求将 `[Neutral]` 改为 `[Happy]`、`[Sad]` 等分别试听；这些本地 TTS 测试不调用主聊天 API。
+重新启动 SPP，检查 [TTS 状态](http://127.0.0.1:11435/tts/status)中的 `mapping`、`profiles` 与 `validation`，以及启动日志的 Voice Profile 自检。26 个默认项都配置正确时，应显示正常 26、异常 0。再用 上方“单独试听”中的 SPP 请求将 `[Neutral]` 改为 `[Happy]`、`[Sad]` 等分别试听；这些本地 TTS 测试不调用主聊天 API。
 
 某个现有配置的 WAV 缺失、时长不符或台词为空时，SPP 会尝试回退到可用的 Neutral；因此“能发声”不证明那个情绪文件已被使用。Neutral 本身也坏了，就无法靠回退解决。文件自检通过也不保证 26 种听感都有明显区别。
 
-</details>
 
-**下一阶段：** [④ 玩家语音识别](#stage-4)。只想打字并听回复，可以停在这里。
+<a id="tts-troubleshooting"></a>
+## TTS 常见问题
 
-<a id="stage-4"></a>
-## 阶段四：让聪音听懂麦克风（Fun-ASR）
+| 现象 | 先做什么 |
+|---|---|
+| run_api.bat 双击后显示错误并停在“请按任意键继续” | 保留窗口，读最先出现的 Traceback；按阶段三核对 runtime\python.exe、两份后藤权重与基础模型的实际位置 |
+| 显示 fall back to default t2s_weights_path／vits_weights_path | 配置路径没有找到文件；修正 tts_infer.yaml 和对应文件位置，重启 API，确认启动输出采用后藤权重 |
+| GPU 配置出现 CUDA is not available | 更新对应 NVIDIA 驱动，检查是否选了正确整合包；需要 CPU 时用阶段三完整 CPU YAML |
+| SPP 找不到 Neutral，或者没有可回退的录音 | 打开 /tts/status，核对 validation.Neutral.valid 为 true、resolved_path 指向包内 WAV；再按阶段三的旧配置纠正步骤处理 |
+| 只听见一种情绪 | 主包只附带 Neutral；其他文件缺失时会回落到 Neutral。按本页表格补充后逐项试听 |
+| WAV 能播放，游戏却无声 | 核对游戏 TTS 朗读音量、Windows 音量混合器中游戏音量，以及是否点了保存并应用配置 |
+| API 显示地址已被占用 | 关闭自己先前启动的 9880 API 窗口，再运行一份；不要同时启动多套 API |
+| WebUI 已换声线，游戏仍读旧声线 | 编辑真正由 run_api.bat 读取的 tts_infer.yaml，重启 API；WebUI 模型选择不会改另一个进程 |
+| CPU 合成很慢 | 先用短句完成一次实际合成，再评估游戏等待时间；降低音量或修改 ONNX 设置不会加速 TTS |
 
-下方 B1–B4 是必需步骤：独立环境与模型放置 → SPP 设置 → 启动 → 健康状态与 F8 验收。CPU 适配在之后的进阶折叠中；本阶段不依赖 ONNX 或 GPT-SoVITS。
+SPP 日志在 D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.9.0.log。GPT-SoVITS 的模型和合成异常则先看 run_api.bat 窗口。排错时保留**第一条错误及完整文件路径**，比只截最后一行更有用。
 
-### B1. 准备独立 Python 环境
+### 可选：用包内脚本联动启动
 
-下面是独立环境的手动安装路线。不会使用 Git 命令，也不建议为了安装 ASR 去升级 GPT-SoVITS 自带的 Python 依赖。上游依赖范围不等于本项目锁定环境，保留自己实际成功的版本与模型记录。
+D:\LofiMOD\SatonePromptProxy 中的 Set_GPTSoVITS_RunApi_Path.bat 可记录 TTS 启动位置：
 
-1. 从 [Python 官网](https://www.python.org/downloads/windows/)安装 **Python 3.12 的 64 位运行环境**，包含 Python 启动器。本文用 `py -3.12` 指定它；若提示找不到该版本，先完成 Python 安装，不要继续。
-2. 新建 `D:\LofiMOD\AI\FunASR-Runtime`。在此文件夹地址栏输入 `cmd`，回车。以下命令使用 **命令提示符 CMD**，一行一行执行：
+1. 双击它，输入 D:\LofiMOD\GPT-SoVITS\run_api.bat 的完整路径，回车，确认出现 [OK] Saved。
+2. 在游戏 F9 → **展开设置 → TTS（文字转语音） → TTS 启动脚本路径：**填 D:\LofiMOD\SatonePromptProxy\Start_AIChat_Services.bat。
+3. 勾选**启动游戏时自动运行 TTS 服务**，点**保存并应用配置**，下次启动游戏验证。
 
-```bat
-py -3.12 -m venv .venv
-.venv\Scripts\python.exe -m pip install --upgrade pip
-```
-
-应出现 `.venv\Scripts\python.exe`。
-
-### B2. 安装后端依赖
-
-1. 打开 [Fun-ASR 官方仓库](https://github.com/QwenAudio/Fun-ASR)，点击 Code → Download ZIP，解压到 `D:\LofiMOD\AI\Fun-ASR-source`，确保其内部直接有 `requirements.txt`。此处下载源码是为了取上游运行依赖，和不能把 Mod 源码当成 DLL 安装包并不矛盾。
-2. 在 [PyTorch 官方选择器](https://pytorch.org/get-started/locally/)选择 Windows、Pip、Python。NVIDIA GPU 路线选择兼容驱动的 CUDA 平台；非 NVIDIA 玩家或希望识别使用 CPU 的玩家选择 CPU，不能照抄 CUDA 的安装命令。按照页面提供的命令安装 **torch 和 torchaudio**，将其开头 `pip`/`pip3` 改成 `.venv\Scripts\python.exe -m pip`，保证装进刚建的环境。
-3. 与[上游 requirements.txt](https://github.com/QwenAudio/Fun-ASR/blob/main/requirements.txt)核对：本次读取要求 `torch>=2.9.0`、`torchaudio>=2.9.0`、`transformers>=4.51.3`、`funasr>=1.3.26` 等。若选择器显示更旧的缓存版本，不能把它当成满足要求。torch 与 torchaudio 也应互相匹配。
-4. 在刚才的 CMD 中继续：
-
-```bat
-.venv\Scripts\python.exe -m pip install -r "D:\LofiMOD\AI\Fun-ASR-source\requirements.txt"
-.venv\Scripts\python.exe -m pip install huggingface_hub
-.venv\Scripts\python.exe -c "import torch,torchaudio,funasr; print(torch.__version__,torchaudio.__version__); print('CUDA available:',torch.cuda.is_available())"
-```
-
-**依赖检查：** 导入无错误；计划使用 NVIDIA GPU 时 `CUDA available` 应为 `True`。明确安装 CPU 环境时返回 `False` 是正常的，不能因此判为安装失败。这个值只说明 CUDA 是否可用，不证明模型已经运行在 GPU／CPU；仍须完成模型加载、实际识别和设备核对。AMD／Intel GPU 路线不在本教程已验证范围内。
-
-上游依赖清单使用范围版本，不是本项目提供的锁定环境。用户本机测试确认不扩展为所有依赖组合均成功；实际环境的精确版本、设备和模型应随问题记录保存。
-
-### B3. 下载完整模型
-
-在同一个 CMD 窗口执行：
-
-```bat
-.venv\Scripts\python.exe -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='FunAudioLLM/Fun-ASR-Nano-2512', local_dir='D:/LofiMOD/AI/Fun-ASR-Nano-2512')"
-```
-
-这是把官方模型仓库完整下载到指定目录，使用 Hugging Face 官方 `snapshot_download` 方法。等下载完成，不要只手动保存一个 `model.pt`。模型根目录中应有 `config.yaml`、`configuration.json`、`model.pt`、`Qwen3-0.6B` 等内容。
-
-当前 SPP 脚本使用 `from funasr import AutoModel`。`Fun-ASR-Nano-2512-hf`、GGUF、Faster Whisper 都不能只改文件夹名称就作为此脚本的替代品。
-
-### B4. 交给 SPP 启动
-
-1. 关闭 SPP，在 config.json 的 `asr` 中填写实际路径。标准布局也可留空让 SPP 自动发现，但第一次安装显式填写更便于核对：
-
-```json
-{
-  "python": "D:/LofiMOD/AI/FunASR-Runtime/.venv/Scripts/python.exe",
-  "model_path": "D:/LofiMOD/AI/Fun-ASR-Nano-2512",
-  "server_script": "",
-  "enabled": true,
-  "auto_start": true,
-  "upstream_url": "http://127.0.0.1:9881",
-  "language": "auto"
-}
-```
-
-此处仍是 **asr 内部字段示例**，不是整个配置。保留已有其他字段。`server_script` 留空时，当前 SPP 优先使用包内 `satone_funasr_server_v1.py`，不需要从旧教程另外找同名旧脚本。
-
-2. 启动 SPP，等待模型加载，打开 [ASR 状态](http://127.0.0.1:11435/asr/status) 和 [后端健康页](http://127.0.0.1:9881/health)。
-3. 核对 Python、model_path、server_script 都指向刚才配置的位置；后端应返回 `ok: true`。若看到热词信息，继续核对 `hotwords_supported` 或 SPP 状态中的 `hotwords_backend_supported`。
-4. 如果 9881 已有旧服务，SPP 可能复用它；先关闭明确属于旧 ASR 的进程，再重试。不要为了腾端口结束不认识的系统进程。
-5. 回到游戏，核对 TTS 设置内共用的“语音服务地址”为 `http://127.0.0.1:11435`，点击“保存并应用配置”；即使不使用 TTS，也通过这个 SPP 地址代理 ASR。选择可用的 Windows 麦克风并允许录音，先按住 F8 说短句、松开，确认识别文字进入聊天并收到回复；成功后再自行开启默认关闭的持续通话，详见[安装页阶段四](INSTALL.zh-CN.md#stage-4)。
-
-加载失败时查看 SPP 日志中的首次 Python 异常。不要把“装好了 pip 包”“创建了模型文件夹”当作模型已经成功加载。上游注册/远程模型代码与本地依赖是否匹配，也属于全新安装必须检查的环节。
+它读取 service_paths.ini，启动 SPP 与已配置的 GPT-SoVITS API。脚本不会安装环境或权重；这些需先按主教程完成。直接使用阶段三的 run_api.bat 路径也可以。
 
 <a id="asr-cpu"></a>
-<details>
-<summary>进阶配置（可跳过）</summary>
+<a id="asr-troubleshooting"></a>
+## ASR 常见问题与诊断
 
-### B5. 需要让 Fun-ASR 使用 CPU 时
+CPU 的首次安装步骤见[主教程 CPU 分支](INSTALL.zh-CN.md#asr-cpu)。这里只处理功能完成后的排错和调整。
 
-**这是需要单独验收的手动适配方法，不是已发布的 CPU 模式开关。** 当前 SPP 5.9.0 没有 `asr.device` 配置字段；向 JSON 中添加这个字段不会改变设备。已有可用环境请先保留原脚本与 `asr.server_script` 值，不要在 GPT-SoVITS 环境中直接改装 ASR 依赖。
+| 现象 | 先做什么 |
+|---|---|
+| Python／py 找不到 | 按阶段四安装完整 Python 3.12 x64 与启动器；安装后关闭旧 CMD，重新在 FunASR-Runtime 地址栏打开 CMD |
+| pip 或导入报错 | 使用独立环境的 .venv\Scripts\python.exe 执行阶段四原命令，先让 pip check 与 import 检查通过 |
+| model.pt 存在但模型加载失败 | 核对完整模型目录，尤其 configuration.json、config.yaml、multilingual.tiktoken 与 Qwen3-0.6B 内实际文件；重新执行完整 snapshot_download |
+| CPU 路线仍连着旧服务 | 停止自己先前手动启动的 9881 服务，再重启 SPP；检查 /asr/status 的 server_script 确实指向 CPU 副本 |
+| /asr/status 的 ready 一直为 false | 查看 last_error 与 SPP 日志的第一条 Python 错误；目录存在或 pip 安装成功不能替代模型加载 |
+| /health 返回 ok，但 F8 没文字 | 核对 Windows 麦克风权限，在游戏持续通话设置中选择实际麦克风并保存；先说一条短句 |
+| F8 识别正常，持续通话容易漏头／截断 | 用下面的本地录音测试检查输入，再逐项调整 VAD；VAD 是“何时开始／结束录音”的判断 |
+| 服务显示就绪，但识别延迟较长 | 先比较同一短句在当前 CPU／GPU 上的等待；记录设备、句长与耗时，再评估持续通话 |
+| 没装 TTS，找不到 ASR 地址设置 | 共用地址在游戏 TTS（文字转语音）设置中，默认 11435；选麦克风在持续通话设置中 |
 
-1. 按 B1／B2 建立独立环境；如果目标就是 CPU，选择 CPU 版 PyTorch。保留与当前 `Fun-ASR-Nano-2512`、`funasr.AutoModel` 路线相符的依赖，不能直接替换为 HF／GGUF 模型。
-2. 关闭 SPP 与已确认的旧 ASR 服务，将包内 `satone_funasr_server_v1.py` 复制到自己的 ASR 目录，命名为 `satone_funasr_server_cpu_v1.py`，只将模型初始化这一行改为：
+### 麦克风与说话检测
 
-   ```python
-   model = AutoModel(model=model_dir, trust_remote_code=True, device="cpu")
-   ```
+F9 → **展开设置 → 持续通话**中已有下列诊断功能：
 
-   原行没有 `device` 参数。保留其余代码和缩进，尤其是热词、UTF-8 和 HTTP 接口逻辑。
+- **选择麦克风（按住说话与持续通话共用）**：点击实际设备，再点保存并应用配置。
+- **麦克风测试：安静录音 10 秒／说话录音 10 秒**：两次测试分别保留背景噪声和说话样本，仅保存本机，不送入 ASR；完成后停止监听。
+- **保存下一次按住说话的原始录音（仍正常识别）**：用于区分原录音漏字和识别误差。
+- **临时试用阈值 0.0005（保存后生效，停止通话后恢复）**：作为可回退的检测尝试；先保存再试听／观察，不要一次改动多个参数。
 
-3. 将 SPP `config.json` 内的 `asr.server_script` 改为这份副本的完整路径，例如 `D:/LofiMOD/AI/FunASR-Runtime/satone_funasr_server_cpu_v1.py`；`asr.python` 指向对应独立环境。此处是既有字段，不能改错为根级字段。
-4. 重新启动。检查 `/asr/status` 的解析脚本路径确实是副本，确认 9881 没有复用原 GPU 服务；再检查 `/health` 并用 F8 实际识别中日文短句。健康页返回成功不代表设备和性能已验证，当前健康页也没有报告模型设备。
-5. 对比该 ASR 进程及整卡显存的启动前后读数，再测试较长音频和持续通话。记录 CPU、内存、识别延迟与失败情况。CPU 模式可能增加延迟；若依赖报错或超过超时，需要修复后才能列为兼容。
+先让 F8 短句识别正常，再调整持续通话。起声阈值太高会漏掉轻声，太低会把背景噪声当说话；说完后的停顿决定何时送去识别。修改参数后点**保存并应用配置**，等当前发言结束后再测试。
 
-回退时先停服务，再恢复原 `asr.server_script` 和环境路径。后续升级随包脚本时，需将修复同步到自己的副本，不能一直保留旧接口实现。
+### 热词、服务状态与升级
 
-若 TTS 也要使用 CPU，需在 GPT-SoVITS 的实际 `custom:` 节另设 `device: cpu`、`is_half: false`，保持声线版本和权重正确，并重启它的 API；改变 ASR 不会改变 TTS。先完成 A 部分单独合成，再验证游戏内延迟。上游支持 CPU 配置不等于当前整合包和声线组合已经通过本项目测试。
+打开 [SPP ASR 状态](http://127.0.0.1:11435/asr/status)与[后端健康页](http://127.0.0.1:9881/health)，分别查看 ready、python、server_script、model_path，以及 hotwords_backend_supported／hotwords_supported。热词支持信息是接口能力，不保证每个词都识别正确；实际仍要用 F8 说出相关词核对。
 
-</details>
+健康页不报告模型设备。CPU 用户以明确的 device="cpu" 脚本副本、SPP 解析到的 server_script 和实际识别来核对自己的路线。更新 SPP 后，把新随包脚本的修复同步到 CPU 副本，再保留这一项设备参数；不要长期保留旧接口代码。
 
-**下一步：** 使用已经完成的文字／回忆／语音组合；需要更新时看[升级与回退](INSTALL.zh-CN.md#upgrade)，需要搬迁时看[数据备份](DATA_AND_PRIVACY.zh-CN.md)。
+在 D:\LofiMOD\FunASR-Runtime 地址栏打开 CMD，下面命令可把实际环境版本保存为 asr-environment.txt，供自己回退或排错：
 
-## 三个本地端口
+~~~bat
+.venv\Scripts\python.exe -m pip freeze > asr-environment.txt
+~~~
 
-| 端口 | 服务 | 玩家要用的地址 |
-|---|---|---|
-| 11435 | SPP | 聊天 `/v1/chat/completions`；TTS 根地址；Dashboard/状态页 |
-| 9880 | GPT-SoVITS | SPP 转发目标；API `/tts` |
-| 9881 | Fun-ASR | SPP 转发目标；`/asr` 与 `/health` |
+### 官方运行依据
 
-本教程都绑定本机地址，不需要设置路由器端口转发或把服务暴露到互联网。
+- [Fun-ASR 运行依赖](https://github.com/QwenAudio/Fun-ASR/blob/main/requirements.txt)列出 torch／torchaudio ≥ 2.9.0、transformers ≥ 4.51.3 与 funasr ≥ 1.3.26。
+- [PyTorch 历史版本页](https://pytorch.org/get-started/previous-versions/)提供 2.9.1 的 CPU／CUDA 12.8 对应安装命令。
+- [官方 Fun-ASR-Nano-2512](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512)说明 AutoModel 的本地模型路径及 cuda:0／cpu 设备值。
+- [FunASR 1.3.26 发行页](https://pypi.org/project/funasr/1.3.26/)提供本教程使用的工具包；模型实现与旧版本可能不同。
+
+需要升级程序看[升级与回退](INSTALL.zh-CN.md#upgrade)，备份模型以外的个人数据看[数据与隐私](DATA_AND_PRIVACY.zh-CN.md)。

@@ -25,12 +25,12 @@
 
 | 阶段 | 安装后能做什么 | 入口 |
 |---|---|---|
-| ① 文字聊天 | AIChat + SPP、云端聊天、内置关键词回忆；不需要 Python | [先完成这一阶段](docs/INSTALL.zh-CN.md#stage-1) |
+| ① 文字聊天 | 输入文字，收到聪音回复，保存聊天和记忆 | [先完成这一阶段](docs/INSTALL.zh-CN.md#stage-1) |
 | ② ONNX 模型选装 | 本地 CPU 按意思检索旧对话；另下载约 94 MB 模型包并主动启用 | [需要语义回忆再装](docs/INSTALL.zh-CN.md#stage-2) |
 | ③ 聪音发音 | 外装 GPT-SoVITS 环境与声线权重，使用程序包内 Neutral 参考音频 | [朗读设置](docs/INSTALL.zh-CN.md#stage-3) |
 | ④ 玩家语音识别 | 外装 Fun-ASR 环境与模型，使用 F8 或持续通话 | [麦克风设置](docs/INSTALL.zh-CN.md#stage-4) |
 
-**文字聊天完成后即可独立使用，每阶段都不依赖后续阶段。② 可以跳过；③ GPT-SoVITS 和④ Fun-ASR 都不依赖 ONNX。** 默认下载只有主程序配对 ZIP 和可选模型 ZIP 两类；主程序已同时包含 AIChat 与 SPP，私有源码库的单组件包不是玩家必须额外下载的文件。模型不在主程序包内，也不默认启用。
+**文字聊天完成后即可独立使用，每阶段都不依赖后续阶段。② 可以跳过；聪音发音和玩家语音识别也可以分别安装。** 主程序配对包包含 AIChat 与 SPP；ONNX 模型另行选装，不默认启用。
 
 ### 关于「Meta 恐怖演出」
 
@@ -66,7 +66,7 @@
 
 ## 默认语音与需要另下的文件
 
-主程序配对包已经包含默认参考音频 `SatonePromptProxy/mayuri-voice/refs/MAY_1158_Neutral.wav`。完整解压并保留目录结构后，**无需再单独下载 Neutral 参考音频**。若已有 GPT-SoVITS 程序和可用运行环境，可另下载“孤独摇滚”GPT-SoVITS 声线模型的 GPT 与 SoVITS 权重，按[语音教程](docs/VOICE_SETUP.zh-CN.md#stage-3)加载并试听。主程序包未附带 GPT-SoVITS 环境、声线权重或 Fun-ASR 环境／模型；语音输入还需另装 Fun-ASR。其余情绪参考录音未随包提供，缺失时使用 Neutral 回退。旧配置若将 `emotion_tts.ref_root` 指向外部目录，需核对并改向包内目录或清空。
+主程序配对包已经包含默认参考音频 `SatonePromptProxy/mayuri-voice/refs/MAY_1158_Neutral.wav`，**无需再单独下载 Neutral 参考音频**。聪音发音需要另外安装 GPT-SoVITS 和声线权重，操作步骤见[阶段三：聪音发音](docs/INSTALL.zh-CN.md#stage-3)。麦克风输入需要另外安装 Fun-ASR，见[阶段四：玩家语音识别](docs/INSTALL.zh-CN.md#stage-4)。其余情绪参考录音属于可选补充，缺失时使用 Neutral；进一步调整见[语音进阶说明](docs/VOICE_SETUP.zh-CN.md)。
 
 声音效果与所选权重、参考录音及本机环境有关，不能仅凭服务显示就绪判断；请实际生成并播放一段测试语音。默认 Neutral 音频的[原始项目](https://huggingface.co/SteinsGateSg/mayuri-voice)标注 `License: other`；“孤独摇滚”[模型项目](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models)标注 CC BY-NC-SA 4.0。请按各来源的条件使用外部资源。
 
