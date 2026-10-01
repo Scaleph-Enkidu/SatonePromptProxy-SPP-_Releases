@@ -1,4 +1,4 @@
-# 从零安装：AIChat 1.17.0 + SPP 5.9.0
+# 从零安装：AIChat 1.17.1 + SPP 5.9.1
 
 [返回首页](../README.md) · [下载清单](DOWNLOADS.zh-CN.md)
 
@@ -24,7 +24,7 @@
 
 1. 退出游戏。在 Steam 游戏库中，右击《放松时光：与你共享 Lo-Fi 故事》，依次点击 **管理 → 浏览本地文件**。打开的文件夹就是下面所说的“游戏文件夹”。
 2. 下载 [BepInEx_win_x64_5.4.23.5.zip](https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.5/BepInEx_win_x64_5.4.23.5.zip)。把压缩包里的文件解压到游戏文件夹中，让 `BepInEx` 文件夹、`winhttp.dll` 和游戏的启动程序放在同一层。如果已经安装过这个版本的 BepInEx，可以跳过这一步。
-3. 下载 [SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0-docs-r1/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)，并解压。打开里面的 `AIChat` 文件夹，把 `AIChat.dll` 和 `AIChat.pdb` 复制到游戏文件夹中的 `BepInEx\plugins`。如果没有 `plugins` 文件夹，在 `BepInEx` 中新建一个名为 `plugins` 的文件夹。如果安装过旧版 AIChat，替换原来的同名文件。
+3. 下载 [SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1/SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip)，并解压。打开里面的 `AIChat` 文件夹，把 `AIChat.dll` 和 `AIChat.pdb` 复制到游戏文件夹中的 `BepInEx\plugins`。如果没有 `plugins` 文件夹，在 `BepInEx` 中新建一个名为 `plugins` 的文件夹。如果安装过旧版 AIChat，替换原来的同名文件。
 4. 你可以把解压出来的整个 `SatonePromptProxy` 文件夹复制到任意位置。如果希望继续安装聪音发音组件与玩家语音识别，推荐单独建立一个文件夹进行统一管理，例如 `D:\LofiMOD`。**不建议路径中包含中文。** 之后可以在游戏的 **AIChat UI** 中配置这个程序的路径，让 SPP 随游戏自动启动，具体操作见下面第 3 节。
 
 ### 2. 第一次启动 SPP
@@ -99,7 +99,7 @@
 ### 2. 停止 SPP，放好模型
 
 1. 打开自己的 `SatonePromptProxy` 文件夹，双击 **Stop_SatonePromptProxy.bat**。看到 `SatonePromptProxy stopped.` 或提示没有运行后，按任意键关闭窗口。这个工具会停止正在运行的 SPP，所以请在上一轮回复结束、退出游戏后使用。
-2. 下载 [Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0/Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip)，约 94 MB，然后解压。
+2. 下载 [Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1/Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip)，约 94 MB，然后解压。
 3. 把解压出来的整个 **models** 文件夹复制到自己的 `SatonePromptProxy` 文件夹中。使用示例位置时，放好后应是：
 
    ```text
@@ -410,7 +410,7 @@ Qwen3-0.6B 文件夹内也应有实际文件。只下载 model.pt、只创建空
    model = AutoModel(model=model_dir, trust_remote_code=True, device="cpu")
    ~~~
 
-   [官方模型说明](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512)明确提供 cpu 设备值。SPP 5.9.0 通过已有 server_script 字段使用这份副本；它没有 asr.device 设置。
+   [官方模型说明](https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512)明确提供 cpu 设备值。SPP 5.9.1 通过已有 server_script 字段使用这份副本；它没有 asr.device 设置。
 
 ### 4.5 编辑实际 config.json，交给 SPP 启动
 
@@ -434,7 +434,7 @@ Qwen3-0.6B 文件夹内也应有实际文件。只下载 model.pt、只创建空
 
 3. 按 Ctrl+S 保存并关闭记事本。双击 D:\LofiMOD\SatonePromptProxy\SatonePromptProxy.exe，等它加载模型。SPP 会自动启动配置中的 ASR Python 服务；不用双击 .py 文件。
 4. 用普通浏览器打开 [SPP 的 ASR 状态页](http://127.0.0.1:11435/asr/status)，加载期间按 F5 刷新。成功时应有 ready: true，且 python、model_path、server_script 都显示刚才填写的路径。CPU 路线的 server_script 必须显示 cpu 副本。
-5. 再打开 [ASR 后端健康页](http://127.0.0.1:9881/health)，应看到 ok: true。第一次模型加载较慢；若状态的 last_error 有内容，或健康页一直打不开，查看 D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.9.0.log 中的第一条 Python 错误，再按[ASR 排错](VOICE_SETUP.zh-CN.md#asr-troubleshooting)处理。
+5. 再打开 [ASR 后端健康页](http://127.0.0.1:9881/health)，应看到 ok: true。第一次模型加载较慢；若状态的 last_error 有内容，或健康页一直打不开，查看 D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.9.1.log 中的第一条 Python 错误，再按[ASR 排错](VOICE_SETUP.zh-CN.md#asr-troubleshooting)处理。
 
 如果 9881 已有之前手动运行的 ASR，SPP 可能直接使用它。关闭自己之前启动的那份 ASR 窗口，再停止／重新启动 SPP，避免 CPU 分支实际连着旧 GPU 服务。
 

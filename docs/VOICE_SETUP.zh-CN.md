@@ -2,7 +2,7 @@
 
 [返回四阶段安装](INSTALL.zh-CN.md) · [下载清单](DOWNLOADS.zh-CN.md) · [硬件参考](HARDWARE.zh-CN.md)
 
-**适用配对：AIChat 1.17.0 + SPP 5.9.0。** 第一次安装请按主教程逐步完成：
+**适用配对：AIChat 1.17.1 + SPP 5.9.1。** 第一次安装请按主教程逐步完成：
 
 <a id="stage-3"></a>
 
@@ -101,7 +101,7 @@ Invoke-WebRequest -Uri 'http://127.0.0.1:11435/tts' -Method Post -ContentType 'a
 
 **SPP 根据 `emotion_tts.mapping` 和 `emotion_tts.profiles` 找文件，不会扫描文件名猜测情绪。** 当前默认关系是一对一，例如 `Happy → profiles.Happy → path`。文件名本身可以自定义，但必须与该 `path` 一致。直接把某个文件改成 `开心.wav`，却保留旧 `path`，程序就找不到它。
 
-下面列的是 **SPP 5.9.0 的 `config.example.json` 与 `profiles_26.csv` 中的默认名称**。Neutral 已随包提供；其余情绪音频是可选的自行补充。上游的 `worried`、`teasing` 等分类不等于 SPP 的 26 个标签；表格不保证每个片段都能完美表现对应情绪。
+下面列的是 **SPP 5.9.1 的 `config.example.json` 与 `profiles_26.csv` 中的默认名称**。Neutral 已随包提供；其余情绪音频是可选的自行补充。上游的 `worried`、`teasing` 等分类不等于 SPP 的 26 个标签；表格不保证每个片段都能完美表现对应情绪。
 
 #### 按默认命名准备文件
 
@@ -188,7 +188,7 @@ txt := strings.TrimSuffix(absWav, filepath.Ext(absWav)) + ".txt"
 | WebUI 已换声线，游戏仍读旧声线 | 编辑真正由 run_api.bat 读取的 tts_infer.yaml，重启 API；WebUI 模型选择不会改另一个进程 |
 | CPU 合成很慢 | 先用短句完成一次实际合成，再评估游戏等待时间；降低音量或修改 ONNX 设置不会加速 TTS |
 
-SPP 日志在 D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.9.0.log。GPT-SoVITS 的模型和合成异常则先看 run_api.bat 窗口。排错时保留**第一条错误及完整文件路径**，比只截最后一行更有用。
+SPP 日志在 D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.9.1.log。GPT-SoVITS 的模型和合成异常则先看 run_api.bat 窗口。排错时保留**第一条错误及完整文件路径**，比只截最后一行更有用。
 
 ### 可选：用包内脚本联动启动
 
