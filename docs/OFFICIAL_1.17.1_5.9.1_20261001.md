@@ -11,3 +11,26 @@
 程序与语义模型独立分发，原模型 ZIP 字节复用，不发布新模型版本。所有测试服务在隔离目录/临时端口运行，只停止本次创建的进程；不调用真实收费模型、不改变玩家存档。大 WAL 冷启动和掉帧根因未修复，正式说明保留限制。
 
 阶段原新增建议：沿用当前 6.1-Sol / 极高，合并与三仓发布复杂度中高；同一设置便于保持来源与验证范围。下一阶段是正式版本下载/安装与玩家实机反馈，进入条件为本地门禁、草稿附件回查与三处正式状态确认。
+
+
+## 本地门禁完成，待草稿附件回查
+
+实际代码受测/构建候选：AIChat `6fbdf634edf00548a7197369401386b515a93d34` / SPP `30787f5bbcb118774fe889ec173ab38ba3ad9bb8`。后续版本说明相对链接和发布 manifest 属文档变化，生产代码字节未变，未把新文档 HEAD 冒称成新代码套件受测 SHA。
+
+第 1 轮：AIChat 11/12、SPP 5/6、公开校验器 1/1；两项失败来自 Windows PowerShell 5.1 读取无 BOM 中文验证脚本和 Windows Python Store 执行别名。其余 6 套客户端测试、Release DLL/EXE、3 项资源/设置检查、Go 格式/vet、54 项发布工具测试及 3 项 BAT 打包测试通过。第一轮完整日志与结果保留。
+
+第 2 轮：验证脚本写 UTF-8 BOM，测试进程 PATH 选随附真实 Python；实际编译标题/BepInEx 数值版本通过，Go 全量 519 顶层 / 1028 带子项 PASS，8 项需独立环境的用例 SKIP（含真实云 API），没有失败。生产源码不变；同候选的第一轮通过项目引用原日志，无第三轮代码 CI。第二轮准备时辅助模块路径拼写导致任何包检查开始前导入阻塞，依工作流允许的可恢复工具准备处理；原 stderr 与 SETUP_CORRECTION.md 保留，没有覆盖失败或重跑生产套件。
+
+第二轮新增正式包检查通过：四 ZIP 哈希/CRC/成员/许可/无玩家资料，教程完整正文及本地链接、四 BAT 源哈希/ASCII/CRLF、三程序包相同受测运行字节；中文空格路径实际解压保留六个合成玩家文件；四 BAT 实际 cmd 共 15 分支；新 5.9.1 EXE 在空 PATH 的原生关键词/ONNX 实际安装共 11 分支，覆盖缓存重启、缺坏模型回退、独立模型安装、运行中禁改启用配置及程序覆盖保留 17 文件。未调用真实收费 API，未执行 Unity 画面或真实语音推理。
+
+DLL SHA-256：`aeef8764eb301291ecb6d49487e643bd06ac5fb1f4e415647c5f9e54ac6e08eb`；EXE：`837f0d2c3d2925ce27bdb28f3e8620f8dffb56c936498a723491b591d9dd9efe`。模型 ZIP 复用原 `88c77b40c89df19e316aebf497ff30fc4d5504138955ba92e0f2d4875b639d8d`。
+
+本地交付：`D:/SatoneDev/deliverables/AIChat-1.17.1-SPP-5.9.1-Official-20261001`。原始日志在 `Evidence/round1` / `Evidence/round2`，准确 JSON 为 `Evidence/LOCAL_VERIFICATION.json`；各正式 Release 均附同一 `LOCAL_VERIFICATION.json`。公开配对 / 模型与两个自身程序分别使用新 schema 2 manifest，上传草稿后再下载全部附件逐字节回查，确认正式状态才记录发布完成。所有旧 tag/Release/附件保留。
+
+
+## 用户授权追加文档 / 清单门禁
+
+第二轮最后的源码文档检查误把两条 UI partial class 字面量都限定在 AIMod.cs，实际位置分别为 `AIChat/Satone/SatoneChatAppearance.cs:77` 与 `AIChat/Satone/SatoneConversation.cs:788`。按两轮规则冻结后，用户明确回复「允许修正校验并继续正式发布」。第 3 轮只修正验证工具定位并追加文档 / 完整 manifest 验证，不修改或重编生产代码、不重跑代码套件，四份 ZIP 字节保持第二轮原值。原检查器、stderr 和冻结报告位于 Evidence/round2；授权与追加结果位于 Evidence/round3。正式发布仍须草稿附件逐字节回查。
+
+
+追加第 3 轮完成：修正后的文档定位/本地链接/实际 UI 字面量与三仓运行源码一致性通过；三个最终 manifest 全部附件/成员/哈希/许可/程序身份通过。用户授权范围内四份 ZIP 未变，代码套件沿用准确原 SHA；未运行第三轮全代码测试或远端 CI。下一步按授权上传草稿并逐字节下载回查。

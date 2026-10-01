@@ -13,7 +13,7 @@
 
 已安装用户先退出游戏和 SPP，备份程序文件，再覆盖 DLL/PDB、SPP EXE、BAT 和说明。保留 config.json、连接凭据、关系、记忆、聊天记录、models、缓存和语音目录；不要覆盖或删除玩家资料。可分别使用两个私库的 [AIChat 1.17.1](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/releases/tag/AIChat-v1.17.1) / [SPP 5.9.1](https://github.com/Scaleph-Enkidu/SatonePromptProxy/releases/tag/SPP-v5.9.1) 组件包。
 
-[本次正式 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1) · [SHA-256 与包内文件清单](../releases/AIChat_v1.17.1_SPP_v5.9.1.json)。原版本和原模型下载保留。程序更新后游戏掉帧根因仍未确定，不将 BAT 调整描述为 FPS 修复。
+[本次正式 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1) · [SHA-256 与包内文件清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.1_SPP-v5.9.1/releases/AIChat_v1.17.1_SPP_v5.9.1.json)。原版本和原模型下载保留。程序更新后游戏掉帧根因仍未确定，不将 BAT 调整描述为 FPS 修复。
 
 ```powershell
 Get-FileHash -LiteralPath '.\SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64.zip' -Algorithm SHA256
