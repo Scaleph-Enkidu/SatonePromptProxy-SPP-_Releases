@@ -1,5 +1,25 @@
 # 正式合并发布：AIChat 1.17.1 / SPP 5.9.1（2026-10-01）
 
+## 正式发布完成（2026-10-01）
+
+AIChat 1.17.1 + SPP 5.9.1 已正式发布，三处均确认非草稿、非预发布与 Latest；全部 30 个附件下载逐字节及 manifest 验证通过。代码/包受测结果、两轮失败和用户授权的第 3 轮文档门禁在下方保留，未补跑远端 CI。
+
+- [公开配对版](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1)（13 附件）
+- [AIChat 私库](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/releases/tag/AIChat-v1.17.1)（9 附件）
+- [SPP 私库](https://github.com/Scaleph-Enkidu/SatonePromptProxy/releases/tag/SPP-v5.9.1)（8 附件）
+- [安装教程](INSTALL.zh-CN.md) · [准确发布回执](AIChat_1.17.1_SPP_5.9.1_PUBLICATION_20261001.json)
+
+标签提交：AIChat `d58a5155defeba5b26a54f15a9e8f886594a4897` / SPP `de77e9873ab0e3c2fd2d3cd967b1c4e227bb4ec6` / public `0d20f387c1799c69b5719f0fdde4974e5f6dff91`。运行受测/构建 SHA 仍是 AIChat `6fbdf634edf00548a7197369401386b515a93d34` / SPP `30787f5bbcb118774fe889ec173ab38ba3ad9bb8`；发布后的收尾只改文档，已发布标签、30 附件及安装 ZIP 均保持原样。
+
+当前阶段：正式合并、构建、验证与三仓发布完成；自审完成；本地 CI 第 1 轮失败、第 2 轮代码/包通过但最后文档门禁失败，冻结后用户明确授权第 3 轮文档/清单验证通过；门禁通过。真实 Unity 画面与玩家环境的安装反馈单独记录，未假称已覆盖全部场景。
+
+下一阶段：正式版安装与实机反馈；进入条件（本地门禁、草稿下载回查、三处正式状态）已满足。阶段原新增建议按本档案 2026-10-01 版本沿用 6.1-Sol / 极高，复杂度/风险没有扩大到新增运行功能；建议模型 gpt-6.1-sol、推理 xhigh，保持合并来源与问题复现上下文，最终按用户设置执行。大 WAL 冷启动或掉帧优化需另定开发范围，本次未修复其根因。
+
+以下准备与本地检查记录为当时状态：
+
+---
+
+
 授权：用户要求找到其他 Codex 对话完成的四个 BAT 与最新安装教程，与本对话 UI/同步/标题修改一起打包，正式上传两个私库和发布库。该授权允许本次统一 Git 推送与三处正式 Release，覆盖其他对话此前合并前暂缓上传的停点；保留所有原版本资产与标签。
 
 合并来源：SPP 四 BAT 来自 08555409 / 15a8bd5e 及对应已验证补丁，教程来自三仓最新 INSTALL（SPP 02d92304 / AIChat b0502ffb / public 80f3dfcd）；AIChat 最新标题候选 4942a32c，布局完整受测 1f13f6d8。远端 main 只多一份相同教程提交，安全合并保留双方历史。
