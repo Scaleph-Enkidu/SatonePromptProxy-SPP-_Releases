@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "release_tag": "AIChat-v1.18.27_SPP-v5.10.8",
+  "verified_at": "2026-10-05",
+  "package_directory": "packages/AIChat_v1.18.27_SPP_v5.10.8",
+  "package_file": "SatoneMod_N14_AIChat-1.18.27_SPP-5.10.8_Windows_x64.zip",
+  "package_sha256": "c7c804b277d47d01f4064fced365e458d8c3ff5c4829580a1553603046fe35a6",
+  "package_bytes": 39170807,
+  "source_commits": {
+    "AIChat": "593117297f0e03cf18f9ef7638a8039ecb23af57",
+    "SPP": "a95c0db1181ffeeb5fa6f751e40e35f9eda2f2b4"
+  },
+  "aichat_feature_commit": "d146dc395c692d6b4cb45b0aa374012324846415",
+  "aichat_tested_head": "250f34fc2a85503193006f89ba4cb2879e98204f",
+  "verification": {
+    "review": "N14 approve",
+    "suites": "900/16/262/39/95/196",
+    "sealed": "attempt-18",
+    "dll_sha256": "29841cfa2fac188c8b6da11d28a089776ca82c0a7a5f243a9e2153d54790abd0",
+    "pdb_sha256": "3248c2ce0c3fe7729e1d9b15f4d0442cfb96d9ddf9127ddcd05deb267f69bb33"
+  }
+}
