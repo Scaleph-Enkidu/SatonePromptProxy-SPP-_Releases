@@ -7,11 +7,11 @@
   "package_sha256": "c7c804b277d47d01f4064fced365e458d8c3ff5c4829580a1553603046fe35a6",
   "package_bytes": 39170807,
   "source_commits": {
-    "AIChat": "593117297f0e03cf18f9ef7638a8039ecb23af57",
+    "AIChat": "247ca301f587f95d398ae479a85a5419e75e0b99",
     "SPP": "a95c0db1181ffeeb5fa6f751e40e35f9eda2f2b4"
   },
-  "aichat_feature_commit": "d146dc395c692d6b4cb45b0aa374012324846415",
-  "aichat_tested_head": "250f34fc2a85503193006f89ba4cb2879e98204f",
+  "aichat_feature_commit": "e7d21c316a50faf23f3b711537449392342ca85f",
+  "aichat_tested_head": "25becef5893406efa796f29fc1b8eafd35fe5822",
   "verification": {
     "review": "N14 approve",
     "suites": "900/16/262/39/95/196",

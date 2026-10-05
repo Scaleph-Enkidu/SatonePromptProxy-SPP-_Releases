@@ -7,11 +7,11 @@
   "package_sha256": "5c13266e6ec9d1f7e775bb305d1734099b845acc91ecb27902c5290b9bb2f45e",
   "package_bytes": 39168413,
   "source_commits": {
-    "AIChat": "e0241db3924a81b866759b774eb65b7757837db2",
+    "AIChat": "66cb827ce638fe74ecd7d1f2d4793c73dee26bb0",
     "SPP": "a95c0db1181ffeeb5fa6f751e40e35f9eda2f2b4"
   },
-  "aichat_feature_commit": "9f2aef88f993c18fef3258495128f7cc4f8cb309",
-  "aichat_tested_head": "45b4ef6fafb558148466a2b31dd0a60a12414563",
+  "aichat_feature_commit": "530d06a69492e83631f93aa796965cfb359d5bae",
+  "aichat_tested_head": "c31dcc12b42ab78a5891b86b20516dcc4004e4eb",
   "verification": {
     "review": "N15 independent review round 1: fix approved; P1 (rebuild/seal) and P2 (release-doc gate) resolved",
     "suites": "900/16/262/39/95/196",

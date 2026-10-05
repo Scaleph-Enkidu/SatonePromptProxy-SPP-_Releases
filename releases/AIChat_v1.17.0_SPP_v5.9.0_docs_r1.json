@@ -7,8 +7,8 @@
   "build_origin": "accepted D binary bytes, updated four-stage documentation; no runtime rebuild",
   "documentation_commits": {
     "public": "f7f690afd6e1246d03db00634f8b736b9d310f9b",
-    "SPP": "18c600accca46d32a288fcd2a00d4628e04c4e35",
-    "AIChat": "f6c332b80e7812790f7888e0365ea98ca606529e"
+    "SPP": "9f01d0a1109a428d32552cb5533dd47fa1eb299d",
+    "AIChat": "acb446090d6ac37f7bfcad4b2b6e39e5daa38403"
   },
   "user_acceptance": {
     "confirmed": true,
@@ -25,8 +25,8 @@
         "SPP": "5.9.0"
       },
       "source_commits": {
-        "SPP": "5232d58882668fc1cf446db923fc8822fec2a810",
-        "AIChat": "c5da60b686766189c30ed7d69b71dab41098f6d2"
+        "SPP": "f0f2257b72a1f388bd7bf0cc5aec148ef00805d1",
+        "AIChat": "ef2e302af1575a6fcbe50720f87f3b88b5d8e076"
       },
       "binaries_sha256": {
         "SatonePromptProxy/SatonePromptProxy.exe": "a05d6cdbd157152165a45b13046f95118d568f09bf1d6ea2a19c3761d56c421c",

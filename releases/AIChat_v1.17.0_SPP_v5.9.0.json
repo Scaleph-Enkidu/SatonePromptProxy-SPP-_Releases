@@ -6,8 +6,8 @@
   "package_directory": "packages/AIChat_v1.17.0_SPP_v5.9.0",
   "build_origin": "accepted D binary bytes, updated four-stage documentation; no runtime rebuild",
   "documentation_commits": {
-    "SPP": "b99b746086811dcc2e485ce308ce838c151c32c4",
-    "AIChat": "e0432adaa8e39fd9b783dc03e52d11f050abb18f"
+    "SPP": "859ba3ecd30212a51e92e92747803e5459642278",
+    "AIChat": "c5bf8458083c3c2583eab677b8fff220ac0f4c54"
   },
   "user_acceptance": {
     "confirmed": true,
@@ -24,8 +24,8 @@
         "SPP": "5.9.0"
       },
       "source_commits": {
-        "SPP": "5232d58882668fc1cf446db923fc8822fec2a810",
-        "AIChat": "c5da60b686766189c30ed7d69b71dab41098f6d2"
+        "SPP": "f0f2257b72a1f388bd7bf0cc5aec148ef00805d1",
+        "AIChat": "ef2e302af1575a6fcbe50720f87f3b88b5d8e076"
       },
       "binaries_sha256": {
         "SatonePromptProxy/SatonePromptProxy.exe": "a05d6cdbd157152165a45b13046f95118d568f09bf1d6ea2a19c3761d56c421c",

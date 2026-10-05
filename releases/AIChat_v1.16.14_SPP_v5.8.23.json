@@ -17,7 +17,7 @@
       "version": "1.16.14",
       "source_repository": "Scaleph-Enkidu/SatoneAIChat_Remake",
       "source_tag": "AIChat-v1.16.14",
-      "source_commit": "aeaa1b33598d68ead0b3d1353b3793e5df399cc2",
+      "source_commit": "0e3aadeec171fa07b798baf517650f42ff441c95",
       "source_asset_id": 590622069,
       "workflow_run": 36241959879,
       "workflow_artifact_id": 10906530604,
@@ -32,7 +32,7 @@
       "original_build_info": {
         "component": "AIChat",
         "version": "1.16.14",
-        "source_commit": "aeaa1b33598d68ead0b3d1353b3793e5df399cc2",
+        "source_commit": "0e3aadeec171fa07b798baf517650f42ff441c95",
         "paired_spp": "5.8.22",
         "workflow_run": "36241959879"
       }
@@ -50,7 +50,7 @@
       "version": "5.8.23",
       "source_repository": "Scaleph-Enkidu/SatonePromptProxy",
       "source_tag": "SPP-v5.8.23",
-      "source_commit": "916c61a71973f825266be7140d84c45afbd6bcaa",
+      "source_commit": "bc6e22e184ad98fde472374abcae65ca72364831",
       "source_asset_id": 590756169,
       "workflow_run": 36246435335,
       "workflow_artifact_id": 10907293697,
@@ -76,7 +76,7 @@
       "original_build_info": {
         "component": "SatonePromptProxy",
         "version": "5.8.23",
-        "source_commit": "916c61a71973f825266be7140d84c45afbd6bcaa",
+        "source_commit": "bc6e22e184ad98fde472374abcae65ca72364831",
         "paired_aichat": "1.16.14",
         "workflow_run": "36246435335"
       }

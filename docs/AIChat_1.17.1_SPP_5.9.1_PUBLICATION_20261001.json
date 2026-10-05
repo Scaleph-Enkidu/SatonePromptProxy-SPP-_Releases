@@ -27,13 +27,13 @@
     }
   ],
   "tag_commits": {
-    "SPP": "de77e9873ab0e3c2fd2d3cd967b1c4e227bb4ec6",
-    "AIChat": "d58a5155defeba5b26a54f15a9e8f886594a4897",
+    "SPP": "11ceaa5b84ec92a42e48ac80b0cc9ae28c9c06b1",
+    "AIChat": "4c7387d43e26a1112135a939122ea86b71ba634a",
     "public": "0d20f387c1799c69b5719f0fdde4974e5f6dff91"
   },
   "tested_source_commits": {
-    "AIChat": "6fbdf634edf00548a7197369401386b515a93d34",
-    "SPP": "30787f5bbcb118774fe889ec173ab38ba3ad9bb8"
+    "AIChat": "32a0aa7a4ea98664c700e1bb7d0919acca77a5f6",
+    "SPP": "4ff7e3a27afd2ac0879ae8c6db695b3b5e44009a"
   },
   "local_ci_rounds": 2,
   "additional_doc_gate_round": 3,

@@ -9,7 +9,7 @@ AIChat 1.17.1 + SPP 5.9.1 已正式发布，三处均确认非草稿、非预发
 - [SPP 私库](https://github.com/Scaleph-Enkidu/SatonePromptProxy/releases/tag/SPP-v5.9.1)（8 附件）
 - [安装教程](INSTALL.zh-CN.md) · [准确发布回执](AIChat_1.17.1_SPP_5.9.1_PUBLICATION_20261001.json)
 
-标签提交：AIChat `d58a5155defeba5b26a54f15a9e8f886594a4897` / SPP `de77e9873ab0e3c2fd2d3cd967b1c4e227bb4ec6` / public `0d20f387c1799c69b5719f0fdde4974e5f6dff91`。运行受测/构建 SHA 仍是 AIChat `6fbdf634edf00548a7197369401386b515a93d34` / SPP `30787f5bbcb118774fe889ec173ab38ba3ad9bb8`；发布后的收尾只改文档，已发布标签、30 附件及安装 ZIP 均保持原样。
+标签提交：AIChat `4c7387d43e26a1112135a939122ea86b71ba634a` / SPP `11ceaa5b84ec92a42e48ac80b0cc9ae28c9c06b1` / public `0d20f387c1799c69b5719f0fdde4974e5f6dff91`。运行受测/构建 SHA 仍是 AIChat `32a0aa7a4ea98664c700e1bb7d0919acca77a5f6` / SPP `4ff7e3a27afd2ac0879ae8c6db695b3b5e44009a`；发布后的收尾只改文档，已发布标签、30 附件及安装 ZIP 均保持原样。
 
 当前阶段：正式合并、构建、验证与三仓发布完成；自审完成；本地 CI 第 1 轮失败、第 2 轮代码/包通过但最后文档门禁失败，冻结后用户明确授权第 3 轮文档/清单验证通过；门禁通过。真实 Unity 画面与玩家环境的安装反馈单独记录，未假称已覆盖全部场景。
 
@@ -22,7 +22,7 @@ AIChat 1.17.1 + SPP 5.9.1 已正式发布，三处均确认非草稿、非预发
 
 授权：用户要求找到其他 Codex 对话完成的四个 BAT 与最新安装教程，与本对话 UI/同步/标题修改一起打包，正式上传两个私库和发布库。该授权允许本次统一 Git 推送与三处正式 Release，覆盖其他对话此前合并前暂缓上传的停点；保留所有原版本资产与标签。
 
-合并来源：SPP 四 BAT 来自 08555409 / 15a8bd5e 及对应已验证补丁，教程来自三仓最新 INSTALL（SPP 02d92304 / AIChat b0502ffb / public 80f3dfcd）；AIChat 最新标题候选 4942a32c，布局完整受测 1f13f6d8。远端 main 只多一份相同教程提交，安全合并保留双方历史。
+合并来源：SPP 四 BAT 来自 09485720 / 6b2dd19e 及对应已验证补丁，教程来自三仓最新 INSTALL（SPP 07063f66 / AIChat 9b43f63c / public 80f3dfcd）；AIChat 最新标题候选 58569c38，布局完整受测 3b0d4694。远端 main 只多一份相同教程提交，安全合并保留双方历史。
 
 完成条件：稳定版本标识、三仓教程与包内 README/版本改动正确；重新构建 EXE/DLL；本地 Go/客户端测试、已编译元数据/标题、四 BAT 字节/CRLF与实际 cmd 隔离验收、ZIP/hash/无玩家资料/资料保留通过；三份程序包和独立模型附件有固定 manifest。先上传草稿，下载每个附件逐字节回查后再转为正式、非预发布、Latest；源码与 manifest 同步到三个仓库。
 
@@ -35,7 +35,7 @@ AIChat 1.17.1 + SPP 5.9.1 已正式发布，三处均确认非草稿、非预发
 
 ## 本地门禁完成，待草稿附件回查
 
-实际代码受测/构建候选：AIChat `6fbdf634edf00548a7197369401386b515a93d34` / SPP `30787f5bbcb118774fe889ec173ab38ba3ad9bb8`。后续版本说明相对链接和发布 manifest 属文档变化，生产代码字节未变，未把新文档 HEAD 冒称成新代码套件受测 SHA。
+实际代码受测/构建候选：AIChat `32a0aa7a4ea98664c700e1bb7d0919acca77a5f6` / SPP `4ff7e3a27afd2ac0879ae8c6db695b3b5e44009a`。后续版本说明相对链接和发布 manifest 属文档变化，生产代码字节未变，未把新文档 HEAD 冒称成新代码套件受测 SHA。
 
 第 1 轮：AIChat 11/12、SPP 5/6、公开校验器 1/1；两项失败来自 Windows PowerShell 5.1 读取无 BOM 中文验证脚本和 Windows Python Store 执行别名。其余 6 套客户端测试、Release DLL/EXE、3 项资源/设置检查、Go 格式/vet、54 项发布工具测试及 3 项 BAT 打包测试通过。第一轮完整日志与结果保留。
 

@@ -11,12 +11,12 @@
   },
   "license": "PolyForm-Noncommercial-1.0.0",
   "tested_runtime_source_commits": {
-    "AIChat": "6fbdf634edf00548a7197369401386b515a93d34",
-    "SPP": "30787f5bbcb118774fe889ec173ab38ba3ad9bb8"
+    "AIChat": "32a0aa7a4ea98664c700e1bb7d0919acca77a5f6",
+    "SPP": "4ff7e3a27afd2ac0879ae8c6db695b3b5e44009a"
   },
   "local_document_candidate_commits": {
-    "AIChat": "02d736c3095e4ca39dcd7be5ef4dcd44a393311c",
-    "SPP": "8f676bda6c0e6c62803acb0160fdadc785e968fd",
+    "AIChat": "f6c69e6822dd0a36e1c7c532d82ba74ea96b9210",
+    "SPP": "2c71d4461854564d80b7343eece1c3a82a7a81c5",
     "public": "b923bb770c6d4530f97d0fad9dd1b97c62be89f9"
   },
   "local_ci_round_1": "PASS",

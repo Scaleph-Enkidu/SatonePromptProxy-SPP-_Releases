@@ -19,7 +19,7 @@
       "version": "1.16.65",
       "source_repository": "Scaleph-Enkidu/SatoneAIChat_Remake",
       "source_branch": "feature/cp21-native-lines-history",
-      "source_commit": "b6b189baa6f7a83e84b1e3061770bcad56432bee",
+      "source_commit": "0710690f637c380766b707389081a72f907de2a2",
       "checksum_file": "AIChat_v1.16.65_SHA256.txt",
       "zip_members": [
         "安装与实机测试说明.md",
@@ -41,7 +41,7 @@
       "version": "5.8.42",
       "source_repository": "Scaleph-Enkidu/SatonePromptProxy",
       "source_branch": "feature/cp21-native-lines-history",
-      "source_commit": "9b127c0474cbe434857e9c189980bd4f7074e571",
+      "source_commit": "91f80352572e01873fb945be6a407444f875ee9f",
       "checksum_file": "SatonePromptProxy_v5.8.42_SHA256.txt",
       "zip_members": [
         "安装与实机测试说明.md",

@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "source_commits": {
-    "AIChat": "6fbdf634edf00548a7197369401386b515a93d34",
-    "SPP": "30787f5bbcb118774fe889ec173ab38ba3ad9bb8"
+    "AIChat": "32a0aa7a4ea98664c700e1bb7d0919acca77a5f6",
+    "SPP": "4ff7e3a27afd2ac0879ae8c6db695b3b5e44009a"
   },
   "release_tag": "AIChat-v1.17.1_SPP-v5.9.1-license-r1",
   "paired_release_tag": "AIChat-v1.17.1_SPP-v5.9.1-license-r1",
@@ -150,8 +150,8 @@
         "SPP": "5.9.1"
       },
       "source_commits": {
-        "AIChat": "6fbdf634edf00548a7197369401386b515a93d34",
-        "SPP": "30787f5bbcb118774fe889ec173ab38ba3ad9bb8"
+        "AIChat": "32a0aa7a4ea98664c700e1bb7d0919acca77a5f6",
+        "SPP": "4ff7e3a27afd2ac0879ae8c6db695b3b5e44009a"
       },
       "binaries_sha256": {
         "AIChat/AIChat.dll": "aeef8764eb301291ecb6d49487e643bd06ac5fb1f4e415647c5f9e54ac6e08eb",
