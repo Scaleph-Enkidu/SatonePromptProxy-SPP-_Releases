@@ -4,7 +4,7 @@
 
 | 下载 | 用途 |
 | --- | --- |
-| [主程序配对包（约 39 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.18.27_SPP-v5.10.8/SatoneMod_AIChat_1.18.27_SPP_5.10.8_Windows_x64.zip) | AIChat DLL/PDB 与 SPP 全部运行文件、工具和默认 Neutral 音频 |
+| [主程序配对包（约 39 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.18.27_SPP-v5.10.8-r1/SatoneMod_AIChat_1.18.27_SPP_5.10.8_Windows_x64.zip) | AIChat DLL/PDB 与 SPP 全部运行文件、工具和默认 Neutral 音频 |
 
 升级提示：这是开发库已验证基线（N14）的公开交付；如需继承旧版本记忆，请按首页「更新版本后的记忆继承问题」操作；更新玩家请先阅读[《升级与更新指南》](UPGRADE.zh-CN.md)（含必须刷新的 BepInEx 旧配置；指南中的水杯修复条款自 AIChat 1.18.28 起生效）。
 
