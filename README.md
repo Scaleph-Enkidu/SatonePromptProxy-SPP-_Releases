@@ -54,13 +54,13 @@
 
 ---
 
-# 🚀 从这里开始安装：AIChat 1.18.27 + SPP 5.10.8
+# 🚀 从这里开始安装：AIChat 1.18.28 + SPP 5.10.8
 
-**[点击打开四阶段安装教程](docs/INSTALL.zh-CN.md)** · **[下载正式主程序配对包（约 39 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.18.27_SPP-v5.10.8-r1/SatoneMod_AIChat_1.18.27_SPP_5.10.8_Windows_x64.zip)** · [全部下载与校验清单](docs/DOWNLOADS.zh-CN.md)
+**[点击打开四阶段安装教程](docs/INSTALL.zh-CN.md)** · **[下载正式主程序配对包（约 39 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.18.28_SPP-v5.10.8/SatoneMod_AIChat_1.18.28_SPP_5.10.8_Windows_x64.zip)** · [全部下载与校验清单](docs/DOWNLOADS.zh-CN.md)
 
-> **本次公开下载为 N14：AIChat 1.18.27 + SPP 5.10.8（2026-10-05）。** 此前的 AIChat 1.17.1 / SPP 5.9.1 授权修订可在 Release 历史中查看；升级与记忆继承方式见下方「更新版本后的记忆继承问题」。
+> **本次公开下载为 N15：AIChat 1.18.28 + SPP 5.10.8（2026-10-05）。** 本次修复「水杯卡手」，并包含此前 N14 的 SPP 参考策略刷新等修复；更早版本可在 Release 历史中查看。升级、记忆继承与**必须刷新的旧配置**见下方说明。
 
-本次正式版合入 AIChat 界面/同步修改、四个 BAT 修复和最新教程；已安装用户升级时保留个人配置、记忆、关系、模型和语音目录。本次以 license-r1 重新交付，程序版本及运行文件不变；旧公开下载包下架，模型组件仍按原许可提供。
+本次正式版合入 N15「水杯卡手」修复（Relaxed 动画池与默认姿势白名单移除端杯/喝茶动作）与 N14 的 SPP 参考策略刷新；已安装用户升级时保留记忆、关系、模型和语音目录，但需要按[《升级与更新指南》](docs/UPGRADE.zh-CN.md)刷新一次 `BepInEx` 旧配置，修复才会生效。
 
 已安装用户可单独阅读或保存这两份正文：[AIChat 包内 README 完整正文](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1-license-r1/AIChat_README_zh-CN.md) / [AIChat 版本与改动完整正文](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1-license-r1/AIChat_CHANGELOG_zh-CN.md)，升级时按教程备份并替换程序。
 
@@ -88,7 +88,7 @@
 
 迁移只读取旧目录、不修改旧目录；导入前会自动备份新 SPP 文件夹中的当前记录。
 
-> **更新玩家注意：** 新版本改动了默认动画姿势池。旧版本生成的 `BepInEx\config\com.username.chillaimod.cfg` 会保留旧默认值，需要按[《升级与更新指南》](docs/UPGRADE.zh-CN.md)刷新配置，否则「水杯卡手」修复不会生效。（该修复自 AIChat 1.18.28 起提供。）
+> **更新玩家注意：** 本次更新（1.18.28）改动了默认动画姿势池。旧版本生成的 `BepInEx\config\com.username.chillaimod.cfg` 会保留旧默认值，需要按[《升级与更新指南》](docs/UPGRADE.zh-CN.md)刷新配置，否则「水杯卡手」修复不会生效。
 
 ## 关于「Meta 恐怖演出」
 

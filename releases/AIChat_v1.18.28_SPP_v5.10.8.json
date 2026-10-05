@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "release_tag": "AIChat-v1.18.28_SPP-v5.10.8",
+  "verified_at": "2026-10-05",
+  "package_directory": "packages/AIChat_v1.18.28_SPP_v5.10.8",
+  "package_file": "SatoneMod_AIChat_1.18.28_SPP_5.10.8_Windows_x64.zip",
+  "package_sha256": "5c13266e6ec9d1f7e775bb305d1734099b845acc91ecb27902c5290b9bb2f45e",
+  "package_bytes": 39168413,
+  "source_commits": {
+    "AIChat": "e0241db3924a81b866759b774eb65b7757837db2",
+    "SPP": "a95c0db1181ffeeb5fa6f751e40e35f9eda2f2b4"
+  },
+  "aichat_feature_commit": "9f2aef88f993c18fef3258495128f7cc4f8cb309",
+  "aichat_tested_head": "45b4ef6fafb558148466a2b31dd0a60a12414563",
+  "verification": {
+    "review": "N15 independent review round 1: fix approved; P1 (rebuild/seal) and P2 (release-doc gate) resolved",
+    "suites": "900/16/262/39/95/196",
+    "sealed": "attempt-19",
+    "dll_sha256": "78c418ce77e13edec1826452b1649ebe4caf1cb941fd4277a4ffc16d6c8c0f44",
+    "pdb_sha256": "9ed7977780dbfb3f70fd8055fa86741a1fb8777e78d1bd1342814786c50203b4",
+    "field_test": "pass (whitelist path; standard pool path statically verified only)"
+  }
+}
