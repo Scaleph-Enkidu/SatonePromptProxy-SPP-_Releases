@@ -88,7 +88,7 @@
 
 迁移只读取旧目录、不修改旧目录；导入前会自动备份新 SPP 文件夹中的当前记录。
 
-> **更新玩家注意：** 新版本改动了默认动画姿势池。旧版本生成的 `BepInEx\config\com.username.chillaimod.cfg` 会保留旧默认值，需要按[《升级与更新指南》](docs/UPGRADE.zh-CN.md)刷新配置，否则「水杯卡手」修复不会生效。
+> **更新玩家注意：** 新版本改动了默认动画姿势池。旧版本生成的 `BepInEx\config\com.username.chillaimod.cfg` 会保留旧默认值，需要按[《升级与更新指南》](docs/UPGRADE.zh-CN.md)刷新配置，否则「水杯卡手」修复不会生效。（该修复自 AIChat 1.18.28 起提供。）
 
 ## 关于「Meta 恐怖演出」
 
