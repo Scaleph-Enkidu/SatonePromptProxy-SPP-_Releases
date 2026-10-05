@@ -54,9 +54,11 @@
 
 ---
 
-# 🚀 从这里开始安装：AIChat 1.17.1 + SPP 5.9.1
+# 🚀 从这里开始安装：AIChat 1.18.27 + SPP 5.10.8
 
-**[点击打开四阶段安装教程](docs/INSTALL.zh-CN.md)** · **[下载正式主程序配对包（约 11 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1-license-r1/SatoneMod_AIChat_1.17.1_SPP_5.9.1_Windows_x64_license_r1.zip)** · [全部下载与校验清单](docs/DOWNLOADS.zh-CN.md)
+**[点击打开四阶段安装教程](docs/INSTALL.zh-CN.md)** · **[下载正式主程序配对包（约 11 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.18.27_SPP-v5.10.8/SatoneMod_AIChat_1.18.27_SPP_5.10.8_Windows_x64.zip)** · [全部下载与校验清单](docs/DOWNLOADS.zh-CN.md)
+
+> **本次公开下载为 N14：AIChat 1.18.27 + SPP 5.10.8（2026-10-05）。** 此前的 AIChat 1.17.1 / SPP 5.9.1 授权修订可在 Release 历史中查看；升级与记忆继承方式见下方「更新版本后的记忆继承问题」。
 
 本次正式版合入 AIChat 界面/同步修改、四个 BAT 修复和最新教程；已安装用户升级时保留个人配置、记忆、关系、模型和语音目录。本次以 license-r1 重新交付，程序版本及运行文件不变；旧公开下载包下架，模型组件仍按原许可提供。
 

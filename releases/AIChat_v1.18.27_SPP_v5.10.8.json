@@ -3,7 +3,7 @@
   "release_tag": "AIChat-v1.18.27_SPP-v5.10.8",
   "verified_at": "2026-10-05",
   "package_directory": "packages/AIChat_v1.18.27_SPP_v5.10.8",
-  "package_file": "SatoneMod_N14_AIChat-1.18.27_SPP-5.10.8_Windows_x64.zip",
+  "package_file": "SatoneMod_AIChat_1.18.27_SPP_5.10.8_Windows_x64.zip",
   "package_sha256": "c7c804b277d47d01f4064fced365e458d8c3ff5c4829580a1553603046fe35a6",
   "package_bytes": 39170807,
   "source_commits": {

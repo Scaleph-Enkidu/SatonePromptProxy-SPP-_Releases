@@ -1,4 +1,16 @@
-# 当前下载：AIChat 1.17.1 / SPP 5.9.1 授权修订 r1
+# 当前下载：AIChat 1.18.27 / SPP 5.10.8（N14）
+
+[返回首页](../README.md) · [完整安装教程](INSTALL.zh-CN.md) · [发布记录](../releases/AIChat_v1.18.27_SPP_v5.10.8.md)
+
+| 下载 | 用途 |
+| --- | --- |
+| [主程序配对包（约 39 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.18.27_SPP-v5.10.8/SatoneMod_AIChat_1.18.27_SPP_5.10.8_Windows_x64.zip) | AIChat DLL/PDB 与 SPP 全部运行文件、工具和默认 Neutral 音频 |
+
+升级提示：这是开发库已验证基线（N14）的公开交付；如需继承旧版本记忆，请按首页「更新版本后的记忆继承问题」操作。
+
+---
+
+# 历史下载：AIChat 1.17.1 / SPP 5.9.1 授权修订 r1
 
 [返回首页](../README.md) · [完整安装教程](INSTALL.zh-CN.md) · [授权范围](../LICENSE_SCOPE.zh-CN.md)
 
