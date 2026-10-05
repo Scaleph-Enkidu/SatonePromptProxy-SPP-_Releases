@@ -8,7 +8,7 @@
   "package_bytes": 39170807,
   "source_commits": {
     "AIChat": "247ca301f587f95d398ae479a85a5419e75e0b99",
-    "SPP": "a95c0db1181ffeeb5fa6f751e40e35f9eda2f2b4"
+    "SPP": "40f4370225e3fd7ca17c8eedc7fc9f4853649d8b"
   },
   "aichat_feature_commit": "e7d21c316a50faf23f3b711537449392342ca85f",
   "aichat_tested_head": "25becef5893406efa796f29fc1b8eafd35fe5822",
