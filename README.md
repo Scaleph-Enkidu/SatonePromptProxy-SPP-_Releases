@@ -139,7 +139,7 @@ AIChat 基于 [qzrs777/AIChat](https://github.com/qzrs777/AIChat) 修改，原�
 
 ## 授权与署名
 
-Scaleph 有权许可的自有内容采用 **[PolyForm Noncommercial 1.0.0](LICENSE)**：允许符合条款的非商业使用、修改与再分发，保留署名及项目来源；商业用途需另行授权。必需声明见 [NOTICE](NOTICE)，原项目、模型、语音资源和旧 MIT 权利的边界见[授权范围说明](LICENSE_SCOPE.zh-CN.md)。本次只换交付授权，不能撤销此前已经授予的 MIT 权利。
+许可的自有内容采用 **[PolyForm Noncommercial 1.0.0](LICENSE)**：允许符合条款的非商业使用、修改与再分发，保留署名及项目来源；商业用途需另行授权。必需声明见 [NOTICE](NOTICE)，原项目、模型、语音资源和旧 MIT 权利的边界见[授权范围说明](LICENSE_SCOPE.zh-CN.md)。
 
 ---
 
