@@ -14,7 +14,7 @@ Scaleph 有权许可的原创代码、修改及配套文档，随本次新交付
 
 - AIChat 基于 qzrs777/AIChat，原作者 Elysia777 的 MIT 原文见 licenses/upstream/AIChat-MIT.txt。原项目代码及其他权利人依法保留的权利不因本文件改为非商业限制。
 - SPP 的 third_party 中 purego、Go runtime 与 uniseg 等继续使用各自 Apache-2.0、BSD、MIT 等许可；原许可证和 NOTICE 原文保留。可选 E5 模型、tokenizer、ONNX Runtime 模型包继续使用原许可，未改为 PolyForm。
-- 游戏本体、角色、画面、台词及其他游戏资源的权利归各自权利人；本许可不授予其额外使用权。默认 Neutral 参考音频来源项目标注 License: other；外部声线、GPT-SoVITS、Fun-ASR、模型和录音按各自来源的条件使用，未获本项目重新授权。来源说明仍见 docs/VOICE_SETUP.zh-CN.md 和包内原始构建来源记录。
+- 游戏本体、角色、画面、台词及其他游戏资源的权利归各自权利人；本许可不授予其额外使用权。默认 Neutral 参考音频来源项目标注 License: other；外部声线、GPT-SoVITS、Fun-ASR、模型和录音按各自来源的条件使用，未获本项目重新授权。来源说明仍见 docs/zh-CN/VOICE_SETUP.md 和包内原始构建来源记录。
 - 历史版本的许可证、交接、清单和验证证据按当时授权与日期理解。公开仓此前的 MIT 原文保留在 licenses/legacy/Release-Repository-MIT.txt；此前按 MIT 发布的内容不因新根 LICENSE 被追溯收回。
 
 ## 此前已授予的权利

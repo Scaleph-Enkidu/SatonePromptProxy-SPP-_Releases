@@ -12,7 +12,7 @@ CP14-9 配对正式安装包，2026-09-28。
 
 ## 安装与回退
 
-请同时下载 `AIChat_v1.16.23.zip` 和 `SatonePromptProxy_v5.8.26.zip`，不要下载 GitHub 自动生成的 Source code ZIP。退出游戏与 SPP，替换 AIChat DLL／PDB，并把 SPP 包完整解压到独立目录；保留自己的 `config.json`、API Key、人格和记忆。旧 `emotion_tts.ref_root` 指向外部目录时，请核对并改向包内 `mayuri-voice/refs` 或清空。详细步骤见[安装教程](../docs/INSTALL.zh-CN.md)与[下载清单](../docs/DOWNLOADS.zh-CN.md)。回退时成对恢复原程序和备份，切换模型不要求迁移存档。
+请同时下载 `AIChat_v1.16.23.zip` 和 `SatonePromptProxy_v5.8.26.zip`，不要下载 GitHub 自动生成的 Source code ZIP。退出游戏与 SPP，替换 AIChat DLL／PDB，并把 SPP 包完整解压到独立目录；保留自己的 `config.json`、API Key、人格和记忆。旧 `emotion_tts.ref_root` 指向外部目录时，请核对并改向包内 `mayuri-voice/refs` 或清空。详细步骤见[安装教程](../docs/zh-CN/INSTALL.md)与[下载清单](../docs/zh-CN/DOWNLOADS.md)。回退时成对恢复原程序和备份，切换模型不要求迁移存档。
 
 ## 校验与范围
 

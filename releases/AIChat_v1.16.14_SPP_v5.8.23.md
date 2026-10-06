@@ -12,7 +12,7 @@
 | `AIChat_LICENSE.txt` | AIChat 原 MIT 许可证与作者署名，随文件保留 |
 | `AIChat_v1.16.14_SPP_v5.8.23.json` | 版本、来源、文件清单和校验记录；无需安装 |
 
-第一次安装先阅读[完整使用方法](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/INSTALL.zh-CN.md)。还需要安装 BepInEx、配置自己的 API Key；语音和麦克风需要额外程序、模型及参考音频，见[下载清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/DOWNLOADS.zh-CN.md)和[语音设置](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/VOICE_SETUP.zh-CN.md)。不要把 `Source code (zip)` 当成安装包，也不需要 Git。
+第一次安装先阅读[完整使用方法](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/zh-CN/INSTALL.md)。还需要安装 BepInEx、配置自己的 API Key；语音和麦克风需要额外程序、模型及参考音频，见[下载清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/zh-CN/DOWNLOADS.md)和[语音设置](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/zh-CN/VOICE_SETUP.md)。不要把 `Source code (zip)` 当成安装包，也不需要 Git。
 
 ## 版本与更新
 
@@ -31,6 +31,6 @@ bcad7805fa8193b8efd9a14e82ef8be16b65d9d9f6c86fad674719cc17150c6e  SatonePromptPr
 
 已核对实际 ZIP 文件清单，没有发现个人 CFG、运行用 config.json、runtime_paths.json、聊天 history、memory_profiles 或日志文件；保留包内官方模板和说明。哈希与文件清单检查不等于完整二进制安全审计。
 
-更新 DLL 后仍显示旧 Key 或聊天记录，是读取本机独立保存的配置和历史；详见[本地数据与隐私](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/DATA_AND_PRIVACY.zh-CN.md)。
+更新 DLL 后仍显示旧 Key 或聊天记录，是读取本机独立保存的配置和历史；详见[本地数据与隐私](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/zh-CN/DATA_AND_PRIVACY.md)。
 
 本次发布时仓库仍为 Private，下载者需要本发布库的访问权限。将本发布库设为 Public 后，这里的安装包不依赖两个源码仓库的访问权限。本文未宣称已完成干净 Windows 全流程安装实测。

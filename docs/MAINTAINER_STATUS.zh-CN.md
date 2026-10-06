@@ -14,7 +14,7 @@ AIChat 包含好感度同步、中文模型切换、TTS 异常折叠、独立透
 
 # AIChat 1.17.0 + SPP 5.9.0 发布与验证记录
 
-[返回首页](../README.md) · [玩家四阶段安装](INSTALL.zh-CN.md) · [下载清单](DOWNLOADS.zh-CN.md)
+[返回首页](../README.md) · [玩家四阶段安装](zh-CN/INSTALL.md) · [下载清单](zh-CN/DOWNLOADS.md)
 
 记录日期：**2026-10-01**。**用户已于当天确认本机测试完成，并批准文档、封包和正式发布。** 此确认按用户原意记录，不虚构逐项硬件型号、供应商、声线、ASR／TTS 环境或全新 Windows 测试清单。
 
@@ -26,7 +26,7 @@ AIChat 包含好感度同步、中文模型切换、TTS 异常折叠、独立透
 
 ## 原2026-10-01正式发布完成（历史记录）
 
-**原AIChat 1.17.0 + SPP 5.9.0 当时正式发布并设为Latest**：[公开配对 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.0_SPP-v5.9.0)。[安装入口](INSTALL.zh-CN.md)按文字、ONNX 选装、聪音发音、玩家语音识别四阶段排列；必需步骤在正文，进阶配置可跳过。两私库的自身程序 Release 同步发布，模型只在公开 Release 作为独立附件，不入源码 Git。
+**原AIChat 1.17.0 + SPP 5.9.0 当时正式发布并设为Latest**：[公开配对 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.0_SPP-v5.9.0)。[安装入口](zh-CN/INSTALL.md)按文字、ONNX 选装、聪音发音、玩家语音识别四阶段排列；必需步骤在正文，进阶配置可跳过。两私库的自身程序 Release 同步发布，模型只在公开 Release 作为独立附件，不入源码 Git。
 
 | 正式 ZIP | 字节数 | SHA-256 |
 |---|---:|---|
@@ -72,7 +72,7 @@ CP23 D 的受测运行代码为：
 
 原 **350 MB 门禁只包含真实 worker＋5 万向量**，第二轮最大 **332,283,904 B**，不含存档、关键词、WAL 或启动。
 
-全新进程整管线采用 20 ms working-set 采样；5 万条合成真实格式 WAL 的启动重放与档案投影 **495.12 秒**，观察峰值 **943,693,824 B**。大 WAL 冷启动仍慢，整套 SPP 不能称为“350 MB”。较短输入、已加载缓存与冷启动不是同一个指标；详细表格见[硬件页](HARDWARE.zh-CN.md)。
+全新进程整管线采用 20 ms working-set 采样；5 万条合成真实格式 WAL 的启动重放与档案投影 **495.12 秒**，观察峰值 **943,693,824 B**。大 WAL 冷启动仍慢，整套 SPP 不能称为“350 MB”。较短输入、已加载缓存与冷启动不是同一个指标；详细表格见[硬件页](zh-CN/HARDWARE.md)。
 
 合成 WAL 按真实格式／hash 链生成并经过生产恢复，不冒称每轮都执行真实云端生成或 live commit／fsync；生命周期向量缓存为合成向量，不冒称所有记录都由 E5 推理。真实玩家文本、设备与存档规模会改变结果。
 
@@ -82,7 +82,7 @@ CP23 D 的受测运行代码为：
 - 四阶段为文字 → ONNX 选装 → GPT-SoVITS → Fun-ASR，每阶段先写文件位置、设置、启动和验收，再折叠进阶配置。关键配置不藏进折叠。
 - Recall 同时支持本地管理页 UI 与 `/recall/test?q=...`／`/recall/status`。旧 Dashboard／截图没有查询区时直接用端点；首次查询触发后台暖机，不能只看“文件存在”。
 - 语义验收检查 `engine=native_keyword+onnx`、`worker.model_loaded`、`worker.semantic_state`、`worker.embedded_exchanges` 和当前档案作用域。
-- E5 revision 固定为 `614241f622f53c4eeff9890bdc4f31cfecc418b3`，组件保留模型说明、E5 项目 MIT 许可、ORT 许可与第三方声明。声线作者、Mayuri 参考音频与其原始许可标注继续见[语音页](VOICE_SETUP.zh-CN.md)。
+- E5 revision 固定为 `614241f622f53c4eeff9890bdc4f31cfecc418b3`，组件保留模型说明、E5 项目 MIT 许可、ORT 许可与第三方声明。声线作者、Mayuri 参考音频与其原始许可标注继续见[语音页](zh-CN/VOICE_SETUP.md)。
 - AIChat 基于 [qzrs777/AIChat](https://github.com/qzrs777/AIChat)，原作者 Elysia777 与许可证保留。项目特色与 Meta 叙述保留在首页；旧发布文档继续作为历史记录。
 
 ## 后续仍需按事实扩充的证据

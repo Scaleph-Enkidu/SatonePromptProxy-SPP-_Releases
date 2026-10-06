@@ -1,197 +1,28 @@
-# 聪音 Mod：让对话延续，让关系慢慢成长
+# Satone Mod · 聪音 Mod · 聡音 Mod
 
-**适用于 Steam Windows 版《放松时光：与你共享 Lo-Fi 故事》**的非官方 AI 互动模组。AIChat Remake 负责游戏内聊天、字幕和操作；SatonePromptProxy（SPP）负责人格、记忆、好感度、模型连接和语音转发。玩家可打字、按住 F8 说话或自行开启持续通话。对话和记忆按档案保存在本机；调用云端模型时，相关内容会发给选用的 API 服务商。
+## [简体中文](docs/zh-CN/README.md) · [English](docs/en/README.md) · [日本語](docs/ja/README.md)
 
-**安装成功后的界面展示**
+**AIChat 1.18.28 + SatonePromptProxy 5.10.8 · Windows / Steam · Chill with You: Lo-Fi Story**
 
-![安装成功后的界面展示](docs/images/install-success.png)
+非官方 AI 对话模组，支持中英日界面与字幕。请选择上方语言，查看安装、升级、语音、系统说明和版本记录。`docs_r1` 文档修订包内也提供相同的三语入口。
 
-## 让聪音带着性格、记忆和共同经历与你交谈
+Unofficial AI conversation mod with Chinese, English and Japanese UI/subtitles. Choose a language above for installation, upgrades, voice, system guides and release notes. The `docs_r1` package includes the same three-language entry point.
 
-聪音现在有了更完整的人设、记忆、关系和剧情机制，也能在一定程度上模拟真人交流中的反应。她会带着自己的性格回应你，之前聊过的事、你们的关系和共同经历，都能影响之后的交谈。
+中国語・英語・日本語の UI／字幕に対応する非公式 AI 会話 Mod です。上の言語から導入、更新、音声、機能説明、更新履歴へ進めます。`docs_r1` パッケージ内にも同じ三言語の入口があります。
 
-- **尽可能还原聪音原本的性格与人设**：为了较好地还原聪音，我分析了原版游戏的 **1700 余句对话**，把她的用词、语气，以及面对不同话题时的反应整理进人设。日常闲聊、谈心，或是意见不同时，她都会尽可能展现贴近原版聪音的一面。
-- **她会在意你如何对待她**：在这个模组里，聪音需要你像对待真人一样给予她尊重。如果她察觉到冒犯、反复命令或越界试探，会表现出拒绝、抗拒、责备，甚至更进一步的反应。好感度与关系的变化也会影响之后的交流。
-- **记住之前的对话，让相处可以延续**：三套独立档案各自保存记忆与关系，聊天记录和长期记忆都保存在本机。之后的聊天会按需检索之前的内容，帮助聪音记住你们谈过的话题和重要的事。
-- **原版剧情也是你们的共同经历**：插件会根据当前存档同步剧情进度，让聪音知道她曾在剧情中与你聊过的重要话题。原版剧情、自语和点击台词会加入聊天上下文，剧情知识也以当前进度为准。失联、剧情锁、道别等特殊阶段都做了相应适配，包括第 **31 章**的失联演出。
-- **带着情绪发声，也能听你说话**：配好语音后，聪音可以用日语发声并显示中文字幕，支持 **26 种情绪**。你可以打字，也可以按住 **F8** 说话或开启持续通话；语音识别和生成由 Fun-ASR 与 GPT-SoVITS 提供。
+### 运行负担 / Resource usage / 動作負荷
 
----
+**中文：**完整本地语音需要额外 CPU、内存和数 GB 显存；8 GB 显存是评估起点，12 GB 以上更有余量，并非已验证最低配置。6 GB 可尝试 GPU TTS＋CPU ASR，4 GB 以下或集显先用文字。大存档启动慢、游戏掉帧原因仍未解决，尚无统一验证通过的低显存模式。历史合成测试中 SPP＋ONNX 的 1 万／5 万记录约占 441／944 MB RAM，启动 11.65／495.12 秒，不含游戏和语音。下载容量不是内存需求。[完整硬件说明](docs/zh-CN/HARDWARE.md)
 
-<!-- 用户要求：显存和性能开销警告必须保留在主 README 的安装入口之前；不能在精简首页时删除正文、仅留下硬件页链接。更新数值时须保留来源、单位和测量范围。 -->
-## 安装前必读：显存与性能开销
+**English:** Full local voice adds CPU/RAM demand and several GB of VRAM. 8 GB is an evaluation starting point; 12 GB+ gives headroom, not a validated minimum. At 6 GB try GPU TTS + CPU ASR; at 4 GB/integrated graphics start with text. Large-history startup and reported game frame-rate drops remain unresolved; no universal low-VRAM mode is fully validated. Historical synthetic SPP+ONNX tests at 10,000/50,000 records observed about 441/944 MB RAM and 11.65/495.12 s startup, excluding game/voice. Download sizes are not memory requirements. [Hardware details](docs/en/HARDWARE.md)
 
-**同时运行游戏、GPT-SoVITS 发音和 Fun-ASR 识别，会增加 CPU、系统内存负担，并为本地语音额外占用数 GB 显存。** 沿用此前的工程参考，完整 GPU 语音方案以 **8 GB 显存**作为评估起点，**12 GB 或以上**更有余量；这些是容量参考，尚未测出适用于所有声线和电脑的最低配置。
+**日本語：**ローカル音声一式には追加の CPU・RAM と数 GB の VRAM が必要です。8 GB は検討開始点、12 GB 以上は余裕の目安で、検証済み最低要件ではありません。6 GB は GPU TTS＋CPU ASR、4 GB 以下・内蔵 GPU は文字から始めてください。大規模履歴の起動遅延とゲームのフレーム低下は未解決で、統一低 VRAM モードも検証未完了です。過去の SPP＋ONNX 合成試験では 1 万／5 万件が約 441／944 MB RAM、起動 11.65／495.12 秒で、ゲーム・音声を含みません。ダウンロード容量はメモリ要件ではありません。[詳細](docs/ja/HARDWARE.md)
 
-已有的 **2026-09-27 运行截图**记录了以下专用 GPU 内存读数：
+| 简体中文 | English | 日本語 |
+| --- | --- | --- |
+| [安装](docs/zh-CN/INSTALL.md) | [Install](docs/en/INSTALL.md) | [導入](docs/ja/INSTALL.md) |
+| [下载与校验](docs/zh-CN/DOWNLOADS.md) | [Downloads / checksums](docs/en/DOWNLOADS.md) | [ダウンロード・検証](docs/ja/DOWNLOADS.md) |
+| [升级与记忆继承](docs/zh-CN/UPGRADE.md) | [Upgrade / memory import](docs/en/UPGRADE.md) | [更新・記憶取り込み](docs/ja/UPGRADE.md) |
+| [系统说明](docs/zh-CN/README.md#systems) | [System guides](docs/en/README.md#systems) | [システムの説明](docs/ja/README.md#systems) |
 
-| 截图中的进程 | 显存读数 |
-| --- | ---: |
-| Python 进程一 | **约 2.17 GiB** |
-| Python 进程二 | **约 1.92 GiB** |
-| 游戏进程 | **约 0.63 GiB** |
-
-这是一次运行中的读数，尚未确认两个 Python 分别对应哪个服务，也没有记录完整模型、精度与峰值，不能当作固定的 TTS／ASR 占用或显存上限。进程之间可能共享 GPU 资源，**不能把表中数字相加当作整卡总占用**；整卡读数应查看任务管理器“性能 → GPU → 专用 GPU 内存”。
-
-| 显存规格／使用方式 | 安装时的容量参考 |
-| --- | --- |
-| 12 GB 或以上 | 为完整 GPU 语音、桌面和推理峰值预留更多余量；仍需核对所选模型 |
-| 8 GB | 完整 GPU 语音的评估起点，需实测峰值并关闭重复推理服务 |
-| 6 GB | 可尝试 TTS 使用 GPU、ASR 使用 CPU；识别延迟与稳定性需验证 |
-| 4 GB 或以下／集成显卡 | 优先文字聊天，语音另行验证 CPU 路线；仍需满足游戏本身的要求 |
-| 只用文字聊天与云端 API | 聊天模型运行在服务端，无需在本机显存加载该模型；TTS／ASR 可不安装 |
-
-**SPP 的系统内存和大存档启动耗时也要考虑。** 当前 CP23 D 验证中，SPP 主进程加 ONNX worker 的结果如下；这是 **RAM，不是显存**，不包含游戏、TTS 或 ASR：
-
-| 合成存档规模 | 系统内存观察峰值 | 启动重放与档案投影 |
-| --- | ---: | ---: |
-| 1 万条记录 | **约 441 MB** | **11.65 秒** |
-| 5 万条记录 | **约 944 MB** | **495.12 秒，约 8 分 15 秒** |
-
-这些是指定合成存档的测量结果，不是每台电脑的固定占用或上限。**大存档冷启动仍慢，游戏掉帧的根因仍未确定；当前没有完成验证的统一低显存模式。** 350 MB 门禁只覆盖语义 worker 与向量持续查询，不能当作整套 SPP 的内存上限。约 11 MB／94 MB 的压缩包大小也不代表运行内存。
-
-**AMD、Intel 与集成显卡玩家可以先使用文字聊天和 ONNX CPU 回忆；语音不能照搬 NVIDIA CUDA 安装包。** CPU 语音会增加 CPU／内存负担和等待时间，需要分别测试发音与识别。显存读数来源、设备路线和测量范围见[运行开销与硬件边界](docs/HARDWARE.zh-CN.md)。
-
----
-
-# 🚀 从这里开始安装：AIChat 1.18.28 + SPP 5.10.8
-
-**[点击打开四阶段安装教程](docs/INSTALL.zh-CN.md)** · **[下载正式主程序配对包（约 39 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.18.28_SPP-v5.10.8/SatoneMod_AIChat_1.18.28_SPP_5.10.8_Windows_x64.zip)** · [全部下载与校验清单](docs/DOWNLOADS.zh-CN.md)
-
-> **本次公开下载为 N15：AIChat 1.18.28 + SPP 5.10.8（2026-10-05）。** 本次修复「水杯卡手」，并包含此前 N14 的 SPP 参考策略刷新等修复；更早版本可在 Release 历史中查看。升级、记忆继承与**必须刷新的旧配置**见下方说明。
-
-本次正式版合入 N15「水杯卡手」修复（Relaxed 动画池与默认姿势白名单移除端杯/喝茶动作）与 N14 的 SPP 参考策略刷新；已安装用户升级时保留记忆、关系、模型和语音目录，但需要按[《升级与更新指南》](docs/UPGRADE.zh-CN.md)刷新一次 `BepInEx` 旧配置，修复才会生效。
-
-已安装用户可单独阅读或保存这两份正文：[AIChat 包内 README 完整正文](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1-license-r1/AIChat_README_zh-CN.md) / [AIChat 版本与改动完整正文](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.1_SPP-v5.9.1-license-r1/AIChat_CHANGELOG_zh-CN.md)，升级时按教程备份并替换程序。
-
-| 阶段 | 安装后能做什么 | 入口 |
-|---|---|---|
-| ① 文字聊天 | 输入文字，收到聪音回复，保存聊天和记忆 | [先完成这一阶段](docs/INSTALL.zh-CN.md#stage-1) |
-| ② ONNX 模型选装 | 本地 CPU 按意思检索旧对话；另下载约 94 MB 模型包并主动启用 | [需要语义回忆再装](docs/INSTALL.zh-CN.md#stage-2) |
-| ③ 聪音发音 | 外装 GPT-SoVITS 环境与声线权重，使用程序包内 Neutral 参考音频 | [朗读设置](docs/INSTALL.zh-CN.md#stage-3) |
-| ④ 玩家语音识别 | 外装 Fun-ASR 环境与模型，使用 F8 或持续通话 | [麦克风设置](docs/INSTALL.zh-CN.md#stage-4) |
-
-**文字聊天完成后即可独立使用，每阶段都不依赖后续阶段。② 可以跳过；聪音发音和玩家语音识别也可以分别安装。** 主程序配对包包含 AIChat 与 SPP；ONNX 模型另行选装，不默认启用。
-
----
-
-## 🧠 更新版本后的记忆继承问题
-
-**正常的记忆配置文件包括**：旧 SPP 安装目录下的 `memory_profiles/`（各档案的记忆文件、档案索引与归档记录），以及 AIChat 在 `BepInEx` 配置目录下保存的聊天历史与日志文件。请把整个旧 SPP 目录视作一份完整的记忆来源，不要只单独拷贝其中一两个文件。
-
-**当前最新版本如果想要继承之前的记忆，请按以下方式操作：**
-
-1. 把新版本解压到**独立的新目录**，不要覆盖更新旧目录；
-2. 解压完成后进入游戏，启动新版 SPP；
-3. 在 SPP「人格代理」配置菜单中可以看到「继承旧版本记忆」折叠项，展开后有旧存档路径输入栏；
-4. 将旧 SPP 目录的绝对路径填入，点击「确认导入」，即可一键把旧存档中聪音的记忆迁移到新 SPP 文件夹内。
-
-迁移只读取旧目录、不修改旧目录；导入前会自动备份新 SPP 文件夹中的当前记录。
-
-> **更新玩家注意：** 本次更新（1.18.28）改动了默认动画姿势池。旧版本生成的 `BepInEx\config\com.username.chillaimod.cfg` 会保留旧默认值，需要按[《升级与更新指南》](docs/UPGRADE.zh-CN.md)刷新配置，否则「水杯卡手」修复不会生效。
-
-## 关于「Meta 恐怖演出」
-
-最初做这段演出，是因为聪音不知道游戏里当前的窗景。问她「窗外是什么样的？」，或追问「你明明坐在窗边，为什么不看看窗外？」，她没法根据实际画面来回答。
-
-于是就做了这段 Meta 演出：一直追问下去，她会先回避这个话题，随后出现失联和花屏。
-
-明明只是纯文字的演出，却比我预想中的要恐怖。
-
-每次启动游戏，演出都会从第 1 阶段重新开始。设置 →「Meta 恐怖演出」中的「重置恐怖演出进度（本局立即生效）」也可以在同一局里重置。首次完整演出结束后会保持花屏，之后再走完则会正常退出游戏。演出记录会保留到本局结束，重新启动游戏后清除；普通聊天记录继续保留。
-
-后续我想让聪音能了解当前的窗景、穿着和房间摆设。相关游戏接口已经做过可行性验证，F10 的记录插件也能读取内部编号，用来对照实际画面。
-
-目前还缺少的是这些外观的文字说明：每件衣服、每个摆件是什么样子，不同搭配又有什么变化。这部分需要逐项整理，工作量比较大，我目前能投入的时间也有限。
-
-等说明库补齐后，再继续尝试通过语音更换背景、衣服等功能。如果你愿意帮忙，可以先用记录插件整理几件自己熟悉的物品，一小部分也有用。
-
----
-
-## 顺手一起放出来的小工具：SatoneStateCatalog（F10）
-
-就是上面说的那个记录插件：按 **F10** 打开窗口，读取当前生效的窗景、服装、眼镜与摆件的内部编号，让你把"编号"和"你实际看到的样子"一条条记下来；写入 `BepInEx/config/SatoneStateCatalog/`，不改存档、不解锁内容。发布库里直接给了可安装的预编译 DLL，源码同目录：[说明与下载](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/tools/SatoneStateCatalog/README_中文.md)。
-
-## 当前版本、聊天服务与费用
-
-当前正式配对为 **AIChat 1.17.1 + SPP 5.9.1**（2026-10-01）。[本次 Release](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1-license-r1) · [本次改动](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/releases/AIChat_v1.17.1_SPP_v5.9.1_license_r1.md) · [语音与麦克风](docs/VOICE_SETUP.zh-CN.md) · [本地数据与隐私](docs/DATA_AND_PRIVACY.zh-CN.md)。GitHub 自动生成的 Source code ZIP 不是安装包。当前下载为授权修订 r1；旧公开安装包已下架，历史记录见[版本与下架说明](docs/RELEASE_ARCHIVE.zh-CN.md)。
-
-在游戏的 LLM 设置中选择服务、填写对应 API Key 与该账户可用的模型名称，再点击 **“保存并应用配置”**。任一时刻只使用一个已应用的连接，切换服务不要求删除本地记忆。界面中的默认模型名称是可修改的示例，以服务商当前模型列表和账户权限为准；中转站按它提供的地址、Key 和模型名称填写。
-
-**云端 API 用量由服务商计费。** 游戏、ChatGPT 订阅和本 Mod 下载均不包含 OpenAI／DeepSeek API 额度。请准备自己的 Key，并在服务商网站确认权限、价格和余额。[费用说明](docs/API_COST.zh-CN.md)介绍计算方法，实际费用以所选供应商账单为准。
-
-## 默认语音与需要另下的文件
-
-主程序配对包已经包含默认参考音频 `SatonePromptProxy/mayuri-voice/refs/MAY_1158_Neutral.wav`，**无需再单独下载 Neutral 参考音频**。聪音发音需要另外安装 GPT-SoVITS 和声线权重，操作步骤见[阶段三：聪音发音](docs/INSTALL.zh-CN.md#stage-3)。麦克风输入需要另外安装 Fun-ASR，见[阶段四：玩家语音识别](docs/INSTALL.zh-CN.md#stage-4)。其余情绪参考录音属于可选补充，缺失时使用 Neutral；进一步调整见[语音进阶说明](docs/VOICE_SETUP.zh-CN.md)。
-
-声音效果与所选权重、参考录音及本机环境有关，不能仅凭服务显示就绪判断；请实际生成并播放一段测试语音。默认 Neutral 音频的[原始项目](https://huggingface.co/SteinsGateSg/mayuri-voice)标注 `License: other`；“孤独摇滚”[模型项目](https://huggingface.co/lpkpaco/Bocchi-The-Rock-GPT-SoVITS-Models)标注 CC BY-NC-SA 4.0。请按各来源的条件使用外部资源。
-
-## 功能和安装范围
-
-- 三套独立记忆档案保存对话、长期记忆与 AI 关系；同一档案可在 OpenAI 与 DeepSeek 之间延续话题。模型每轮只接收当前所需的上下文，完整旧记录保存在本地供检索，记忆不是无限上下文。
-- 聪音用日语发声并显示中文字幕。GPT-SoVITS 负责生成声音，Fun-ASR 负责识别麦克风；只用键盘聊天可暂不安装 ASR。
-- 默认人格保存在 `SatonePersona_v4.6.txt`，可自行编辑；更改会影响三个档案。原版游戏经历的同步需要可验证的 Steam 身份，取不到身份时 AI 对话仍可使用。
-- 完整本地语音会占用显存与内存。硬件建议、CPU 路线和未验证的边界见[运行开销说明](docs/HARDWARE.zh-CN.md)。
-- 关键词回忆已内置；可选 ONNX 语义回忆在本机 CPU 运行，模型缺失、校验失败或忙碌时可以回退关键词。只索引最新 50,000 条已交流的语义记录，关键词仍覆盖完整历史，存档不因此删减；语义相似度不等于命中保证。
-
-升级时退出游戏与 SPP，备份后覆盖程序与配套工具；**保留自己的 `config.json`、AIChat CFG、连接凭据、记忆、人格、`models` 和 `semantic_recall_v1`**。不要先删除整个 SPP 目录，也不要用示例覆盖个人配置。同一模型组件可以跨兼容的程序更新复用。[安装教程](docs/INSTALL.zh-CN.md#upgrade)写明升级、回退和日志位置。
-
-AIChat 基于 [qzrs777/AIChat](https://github.com/qzrs777/AIChat) 修改，原项目作者 Elysia777 与许可证随包保留。本 Mod 由 AI 辅助开发。**2026-10-01，用户授权合并并正式发布 AIChat 1.17.1 / SPP 5.9.1**；本地验证和已知限制见[维护记录](docs/MAINTAINER_STATUS.zh-CN.md)。这条确认不代表全部显卡、供应商、声线或全新 Windows 环境均已测试。问题请发到[本库 Issues](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/issues)，附版本、复现步骤和脱敏日志，勿公开 API Key 或私人聊天记录。
-
----
-
-## 授权与署名
-
-许可的自有内容采用 **[PolyForm Noncommercial 1.0.0](LICENSE)**：允许符合条款的非商业使用、修改与再分发，保留署名及项目来源；商业用途需另行授权。必需声明见 [NOTICE](NOTICE)，原项目、模型、语音资源和旧 MIT 权利的边界见[授权范围说明](LICENSE_SCOPE.zh-CN.md)。
-
----
-
-## 系统设计与使用说明
-
-想了解好感度怎样计算、聪音如何记忆和回应，以及剧情、语音与界面如何配合，可以从下面的 **18 项说明**进入。正文按当前正式版 **AIChat 1.17.1 + SPP 5.9.1** 整理；未来功能另列在文末。
-
-### 人格与关系
-
-| 说明 | 可以了解什么 |
-| --- | --- |
-| [好感度系统说明](docs/systems/好感度系统说明.md) | 四维权重、小数累积、初始值、剧情加值及关系阶段 |
-| [人格系统说明](docs/systems/人格系统说明.md) | 人设依据、自主判断、表达习惯与人格修改 |
-| [边界与关系修复说明](docs/systems/边界与关系修复说明.md) | 拒绝、反复施压、持续冲突与和解条件 |
-| [情绪系统说明](docs/systems/情绪系统说明.md) | 26 种情绪、界面颜色及情绪与好感度的区别 |
-
-### 记忆、剧情与演出
-
-| 说明 | 可以了解什么 |
-| --- | --- |
-| [记忆与档案系统说明](docs/systems/记忆与档案系统说明.md) | 三套档案、近期上下文、长期记忆与自动整理 |
-| [历史回忆与检索说明](docs/systems/历史回忆与检索说明.md) | 关键词与语义回忆、50,000 条语义范围与回退 |
-| [剧情知识与共同经历说明](docs/systems/剧情知识与共同经历说明.md) | 已发生剧情、原版台词与避免提前透露剧情 |
-| [原版剧情与 AI 对话协同说明](docs/systems/原版剧情与AI对话协同说明.md) | 剧情优先级、失联状态、特殊章节与输入限制 |
-| [Meta 演出系统说明](docs/systems/Meta演出系统说明.md) | 演出开关、重置与结局；剧透内容折叠显示 |
-
-### 语音、交互与恢复
-
-| 说明 | 可以了解什么 |
-| --- | --- |
-| [语音与字幕系统说明](docs/systems/语音与字幕系统说明.md) | 日语朗读、中文字幕、情绪参考音频与异常检查 |
-| [语音输入与持续通话说明](docs/systems/语音输入与持续通话说明.md) | F8、麦克风检测、句首缓冲与保留输入处理 |
-| [模型连接与切换说明](docs/systems/模型连接与切换说明.md) | 服务、模型、API Key、思考强度与档案延续 |
-| [回复校验与失败恢复说明](docs/systems/回复校验与失败恢复说明.md) | 格式校验、部分播放、实际交流记录与断线恢复 |
-| [聊天界面与历史记录说明](docs/systems/聊天界面与历史记录说明.md) | 窗口分区、最近 50 句、透明度、RGB 与明度 |
-
-### 运行与工具
-
-| 说明 | 可以了解什么 |
-| --- | --- |
-| [数据保存、备份与隐私](docs/DATA_AND_PRIVACY.zh-CN.md) | 存档位置、升级备份、凭据保护与 API 数据流 |
-| [服务启动与进程管理说明](docs/systems/服务启动与进程管理说明.md) | SPP、发音和识别服务的启动、就绪、重启与退出 |
-| [运行开销与硬件边界](docs/HARDWARE.zh-CN.md) | 显存、系统内存、启动耗时、测量条件与设备路线 |
-| [F10 外观采集工具说明](tools/SatoneStateCatalog/README_中文.md) | 当前外观编号采集、描述保存与工具作用范围 |
-
----
-
-## 未来的开发安排
-
-- 界面与字幕的全日语、英语适配。
-- 聪音中文语音的适配。
-- 通过 AI 交谈插件直接操控、变更游戏中的环境与道具。
+AIChat is based on [qzrs777/AIChat](https://github.com/qzrs777/AIChat) by Elysia777. Maintained by Scaleph. [LICENSE](LICENSE) · [NOTICE](NOTICE) · [授权范围](docs/zh-CN/LICENSE_SCOPE.md) / [License scope](docs/en/LICENSE_SCOPE.md) / [ライセンスの範囲](docs/ja/LICENSE_SCOPE.md)

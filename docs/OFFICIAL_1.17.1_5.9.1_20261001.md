@@ -7,7 +7,7 @@ AIChat 1.17.1 + SPP 5.9.1 已正式发布，三处均确认非草稿、非预发
 - [公开配对版](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/tag/AIChat-v1.17.1_SPP-v5.9.1)（13 附件）
 - [AIChat 私库](https://github.com/Scaleph-Enkidu/SatoneAIChat_Remake/releases/tag/AIChat-v1.17.1)（9 附件）
 - [SPP 私库](https://github.com/Scaleph-Enkidu/SatonePromptProxy/releases/tag/SPP-v5.9.1)（8 附件）
-- [安装教程](INSTALL.zh-CN.md) · [准确发布回执](AIChat_1.17.1_SPP_5.9.1_PUBLICATION_20261001.json)
+- [安装教程](zh-CN/INSTALL.md) · [准确发布回执](AIChat_1.17.1_SPP_5.9.1_PUBLICATION_20261001.json)
 
 标签提交：AIChat `4c7387d43e26a1112135a939122ea86b71ba634a` / SPP `11ceaa5b84ec92a42e48ac80b0cc9ae28c9c06b1` / public `0d20f387c1799c69b5719f0fdde4974e5f6dff91`。运行受测/构建 SHA 仍是 AIChat `32a0aa7a4ea98664c700e1bb7d0919acca77a5f6` / SPP `4ff7e3a27afd2ac0879ae8c6db695b3b5e44009a`；发布后的收尾只改文档，已发布标签、30 附件及安装 ZIP 均保持原样。
 

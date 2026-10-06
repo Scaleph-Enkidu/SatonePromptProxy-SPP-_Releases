@@ -12,13 +12,13 @@ CP21 配对安装包，2026-09-30。大版本跨度：从上一正式配对（AI
 
 ## 安装与回退
 
-请同时下载 `AIChat_v1.16.65.zip` 与 `SatonePromptProxy_v5.8.42.zip`，不要下载 GitHub 自动生成的 Source code ZIP。退出游戏与 SPP，把 `AIChat.dll`／`AIChat.pdb` 放进 `BepInEx/plugins`；SPP 包完整解压到固定目录（已在用的只替换 EXE 即可），保留自己的 `config.json`、API Key、人设与记忆。详细步骤见[安装教程](../docs/INSTALL.zh-CN.md)与[下载清单](../docs/DOWNLOADS.zh-CN.md)。回退时成对恢复原程序与备份，不要删除记忆来切换版本。
+请同时下载 `AIChat_v1.16.65.zip` 与 `SatonePromptProxy_v5.8.42.zip`，不要下载 GitHub 自动生成的 Source code ZIP。退出游戏与 SPP，把 `AIChat.dll`／`AIChat.pdb` 放进 `BepInEx/plugins`；SPP 包完整解压到固定目录（已在用的只替换 EXE 即可），保留自己的 `config.json`、API Key、人设与记忆。详细步骤见[安装教程](../docs/zh-CN/INSTALL.md)与[下载清单](../docs/zh-CN/DOWNLOADS.md)。回退时成对恢复原程序与备份，不要删除记忆来切换版本。
 
 上一稳定配对 **AIChat 1.16.23 + SPP 5.8.26** 仍保留在[本库 packages](../packages/AIChat_v1.16.23_SPP_v5.8.26) 与其 Release 中，可随时回退。
 
 ## 附带工具：SatoneStateCatalog（外观采集器，F10）
 
-这次一起放进发布库：一个独立的小插件，用 **F10** 打开窗口，读取当前生效的窗景、服装、眼镜与摆件的内部编号，让你把"编号"和"实际看到的样子"一条条记录下来（写 `BepInEx/config/SatoneStateCatalog/`，不改存档、不解锁内容）。源码与预编译 DLL 见[工具目录](../tools/SatoneStateCatalog/README_中文.md)。
+这次一起放进发布库：一个独立的小插件，用 **F10** 打开窗口，读取当前生效的窗景、服装、眼镜与摆件的内部编号，让你把"编号"和"实际看到的样子"一条条记录下来（写 `BepInEx/config/SatoneStateCatalog/`，不改存档、不解锁内容）。源码与预编译 DLL 见[工具目录](../docs/zh-CN/tools/STATE_CATALOG.md)。
 
 ## 校验与范围
 

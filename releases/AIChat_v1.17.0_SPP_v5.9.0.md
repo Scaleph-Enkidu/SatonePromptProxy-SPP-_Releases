@@ -2,7 +2,7 @@
 
 # 🚀 从这里开始安装：四阶段教程
 
-**[打开安装教程](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/INSTALL.zh-CN.md)** · **[下载主程序配对包（文档修订 1，约 11 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0-docs-r1/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)** · [全部下载与校验清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/DOWNLOADS.zh-CN.md)
+**[打开安装教程](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/zh-CN/INSTALL.md)** · **[下载主程序配对包（文档修订 1，约 11 MB）](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.17.0_SPP-v5.9.0-docs-r1/SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip)** · [全部下载与校验清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/zh-CN/DOWNLOADS.md)
 
 **① 文字聊天 → ② ONNX 模型选装 → ③ 聪音发音（GPT-SoVITS） → ④ 玩家语音识别（Fun-ASR）。** 文字聊天完成后即可独立运行；各阶段不依赖后续阶段。② 可跳过，③／④ 都不依赖 ONNX。每阶段必需步骤在教程正文，进阶配置可折叠跳过。
 
@@ -32,9 +32,9 @@
 | `SatoneMod_AIChat_1.17.0_SPP_5.9.0_Windows_x64_docs_r1.zip` | 必需配对主程序：AIChat＋SPP、工具、说明、Neutral 参考音频 |
 | `Satone_Semantic_E5_small_int8_ORT_1.30.0_Windows_x64.zip` | 可选模型：E5 int8、tokenizer、ORT 与完整许可 |
 
-私有源码库的单组件包不是玩家必需额外下载。GitHub 自动生成的 Source code ZIP 不是安装包。修订 ZIP 的精确字节数、SHA-256、成员和来源见[文档修订 1 manifest](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/releases/AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json)及[下载清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/DOWNLOADS.zh-CN.md)；原 ZIP 与模型身份保留在[原配对 manifest](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.0_SPP-v5.9.0/releases/AIChat_v1.17.0_SPP_v5.9.0.json)。
+私有源码库的单组件包不是玩家必需额外下载。GitHub 自动生成的 Source code ZIP 不是安装包。修订 ZIP 的精确字节数、SHA-256、成员和来源见[文档修订 1 manifest](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/releases/AIChat_v1.17.0_SPP_v5.9.0_docs_r1.json)及[下载清单](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/zh-CN/DOWNLOADS.md)；原 ZIP 与模型身份保留在[原配对 manifest](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/AIChat-v1.17.0_SPP-v5.9.0/releases/AIChat_v1.17.0_SPP_v5.9.0.json)。
 
-GPT-SoVITS 环境、声线 GPT／SoVITS 权重、Fun-ASR 环境和模型不在上述两包内；Neutral 路径为 `SatonePromptProxy/mayuri-voice/refs/MAY_1158_Neutral.wav`。其余情绪音频可选，来源与许可见[语音页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/VOICE_SETUP.zh-CN.md)。
+GPT-SoVITS 环境、声线 GPT／SoVITS 权重、Fun-ASR 环境和模型不在上述两包内；Neutral 路径为 `SatonePromptProxy/mayuri-voice/refs/MAY_1158_Neutral.wav`。其余情绪音频可选，来源与许可见[语音页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/zh-CN/VOICE_SETUP.md)。
 
 ## 升级与回退
 
@@ -47,6 +47,6 @@ GPT-SoVITS 环境、声线 GPT／SoVITS 权重、Fun-ASR 环境和模型不在�
 - D 第二轮 14 项后端＋9 项客户端检查通过；分包实际解压与覆盖升级 **11 分支 PASS**。
 - 真实 ONNX worker 的合成语料测试：**12/12 正例 Top1、10/12 qualified、0/3 负例 qualified**。不代表真实玩家检索每次成功。
 - 20 ms working-set 采样下，5 万条合成真实格式 WAL 冷启动约 **495 秒**，整管线观察峰值 **943,693,824 B**。350 MB 门禁只包含 worker＋向量，观察最大 **332,283,904 B**；不能宣传整套 SPP ≤350 MB。
-- 大 WAL 启动仍慢。自动化与用户本机确认分开记录，不虚构全硬件、真实供应商／语音矩阵或干净机验证；来源和完整范围见[维护记录](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/MAINTAINER_STATUS.zh-CN.md)与[硬件页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/HARDWARE.zh-CN.md)。
+- 大 WAL 启动仍慢。自动化与用户本机确认分开记录，不虚构全硬件、真实供应商／语音矩阵或干净机验证；来源和完整范围见[维护记录](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/MAINTAINER_STATUS.zh-CN.md)与[硬件页](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/blob/main/docs/zh-CN/HARDWARE.md)。
 
 云端 API 用量按供应商实时价格和账单计费；安装包不附送额度。分享问题日志前移除 API Key 与私人聊天。
