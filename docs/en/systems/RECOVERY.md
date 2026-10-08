@@ -2,7 +2,7 @@
 
 # Reply validation and recovery
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 The system distinguishes a model's generated answer, the program's accepted answer and what the player actually saw or heard. This reduces the effect of malformed output, disconnection and interrupted playback on memory, relationships and repeated-question judgments.
 

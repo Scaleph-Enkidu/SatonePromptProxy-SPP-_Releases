@@ -2,7 +2,7 @@
 
 # Chat interface and history
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 Press **F9** to open AIChat. Settings and chat remain separate areas, and chat has distinct history, input, send and voice controls. The interface now supports Chinese, English and Japanese; use the language option appropriate to you. Older guides/screenshots may still show Chinese labels.
 

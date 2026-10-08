@@ -4,7 +4,7 @@
 
 [Install](INSTALL.md) · [Upgrade](UPGRADE.md) · [Backup scope](DATA_AND_PRIVACY.md)
 
-This current 5.10.8 guide replaces the package's mixed CP14/CP23-era deployment advice. Use a short path such as `D:\LofiMOD\SatonePromptProxy`, with external `FunASR-Runtime`, `Fun-ASR-Nano-2512` and `GPT-SoVITS` folders nearby. Keep the bundled `SatonePersona_v4.6.txt`: an omitted persona previously caused first-start `/persona` failure. Copying the EXE alone is insufficient for a new installation.
+This current 5.10.10 guide replaces the package's mixed CP14/CP23-era deployment advice. Use a short path such as `D:\LofiMOD\SatonePromptProxy`, with external `FunASR-Runtime`, `Fun-ASR-Nano-2512` and `GPT-SoVITS` folders nearby. Keep the bundled `SatonePersona_v4.6.txt`: an omitted persona previously caused first-start `/persona` failure. Copying the EXE alone is insufficient for a new installation.
 
 ## First startup and path resolution
 

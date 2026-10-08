@@ -4,7 +4,7 @@
 
 An unofficial mod for **Chill with You: Lo-Fi Story on Windows/Steam**. AIChat provides in-game chat, subtitles, playback and controls. SatonePromptProxy (SPP) handles model connections, persona, memory, relationships and voice forwarding. The program supports **Chinese, English and Japanese UI/subtitles**. Speech quality in each language still depends on the chosen voice/model; the documented setup uses Japanese speech.
 
-Current pair: **AIChat 1.18.28 + SPP 5.10.8 (N15)**. This `docs_r1` revision adds organized trilingual documentation and package guides without changing runtime binaries.
+**AIChat 1.18.30 + SPP 5.10.10**. This release combines nine fixes across memory import, voice echo filtering, exit cleanup and date-based recall. Update both AIChat and SPP. The three-language guides and package entry points are updated together.
 
 ![Installed chat interface](../images/install-success.png)
 
@@ -76,3 +76,6 @@ Improve speech and language-appropriate voices, build the appearance-description
 [Trilingual documentation revision](releases/DOCS_TRILINGUAL_20261006.md) · [N15 notes](releases/AIChat_v1.18.28_SPP_v5.10.8.md) · [History and verification archive](RELEASE_ARCHIVE.md)
 
 AIChat is based on [qzrs777/AIChat](https://github.com/qzrs777/AIChat) by Elysia777. Scaleph maintains this project with AI-assisted development. Licensable original content uses PolyForm Noncommercial 1.0.0; upstream, third-party and previously granted MIT rights remain. See [scope](LICENSE_SCOPE.md), [LICENSE](../../LICENSE) and [NOTICE](../../NOTICE). GPT-SoVITS, Fun-ASR, E5, ORT, voice models and recordings retain their own source conditions.
+
+
+[Nine fixes in this release](releases/AIChat_v1.18.30_SPP_v5.10.10.md)

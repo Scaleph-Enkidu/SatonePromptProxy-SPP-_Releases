@@ -4,7 +4,7 @@
 
 [Home](README.md) · [Downloads and checksums](DOWNLOADS.md) · [License scope](LICENSE_SCOPE.md)
 
-For **AIChat 1.18.28 + SPP 5.10.8**, documentation revision 2026-10-06. Existing users should read [upgrade and backup](UPGRADE.md) first. The documentation revision changes no DLL, EXE or model.
+For **AIChat 1.18.30 + SPP 5.10.10**, release 2026-10-08. Existing users should read [upgrade and backup](UPGRADE.md) first. This update replaces both AIChat and SPP; optional models are unchanged.
 
 Examples use `D:\LofiMOD`. If you use `C:\LofiMOD` or another location, change every corresponding path consistently. The F9 interface supports Chinese, English and Japanese. Control names below describe their function; older screenshots may show Chinese labels. Prefer short paths without non-ASCII characters when troubleshooting external tools.
 
@@ -17,7 +17,7 @@ Read [hardware and startup limits](HARDWARE.md) before adding voice. Text chat w
 
 1. Exit the game. In Steam, use Manage → Browse local files to open the game directory.
 2. Download [BepInEx 5.4.23.5 for Windows x64](https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.5/BepInEx_win_x64_5.4.23.5.zip). Extract `BepInEx` and `winhttp.dll` alongside the game executable. Launch the game once, then exit so configuration folders are created.
-3. Download the [paired program package](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.18.28_SPP-v5.10.8-docs-r1/SatoneMod_AIChat_1.18.28_SPP_5.10.8_Windows_x64_docs_r1.zip). Copy `AIChat/AIChat.dll` and `AIChat.pdb` to the game's `BepInEx\plugins`, replacing the old plugin without leaving duplicate DLLs. Existing users must refresh the old Relaxed animation whitelist as described in [UPGRADE](UPGRADE.md).
+3. Download the [paired program package](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.18.30_SPP-v5.10.10/SatoneMod_AIChat_1.18.30_SPP_5.10.10_Windows_x64.zip). Copy `AIChat/AIChat.dll` and `AIChat.pdb` to the game's `BepInEx\plugins`, replacing the old plugin without leaving duplicate DLLs. Existing users must refresh the old Relaxed animation whitelist as described in [UPGRADE](UPGRADE.md).
 4. Extract the entire `SatonePromptProxy` folder to `D:\LofiMOD\SatonePromptProxy`. Keep its data files and relative directories together. It does not belong inside the game's plugin folder.
 
 ### Start and connect SPP
@@ -221,7 +221,7 @@ Back up `config.json`. Edit these fields within its existing `asr` object, prese
 
 CPU users replace only `server_script` above with `D:/LofiMOD/FunASR-Runtime/satone_funasr_server_cpu_v1.py`. Adapt every path to your installation. Save valid JSON and start SPP; do not double-click the Python script separately.
 
-Check [SPP ASR status](http://127.0.0.1:11435/asr/status): `ready: true`, correct `python`, `server_script` and `model_path`. Check [backend health](http://127.0.0.1:9881/health): `ok: true`. Loading may take time. On failure, read the first Python error and `last_error` in `SatonePromptProxy_v5.10.8.log`. An existing manually launched service on 9881 may still be a GPU instance; stop that old service before restarting SPP on the CPU route.
+Check [SPP ASR status](http://127.0.0.1:11435/asr/status): `ready: true`, correct `python`, `server_script` and `model_path`. Check [backend health](http://127.0.0.1:9881/health): `ok: true`. Loading may take time. On failure, read the first Python error and `last_error` in `SatonePromptProxy_v5.10.10.log`. An existing manually launched service on 9881 may still be a GPU instance; stop that old service before restarting SPP on the CPU route.
 
 ### 4.6 Choose a microphone and speak
 

@@ -10,7 +10,7 @@
 <a id="stage-4"></a>
 [初回 ASR 導入：第 4 段階](INSTALL.md#stage-4)
 
-AIChat 1.18.28 + SPP 5.10.8 向けです。TTS と ASR は独立し、ONNX も不要です。主パッケージには Neutral WAV があり、GPT-SoVITS、声の重み、ASR 環境・モデルは別途導入します。TTS の機器は `tts_infer.yaml` の `device`／`is_half`、Fun-ASR の CPU は `asr.server_script` で専用コピーを指定します。SPP に `asr.device` はありません。
+AIChat 1.18.30 + SPP 5.10.10 向けです。TTS と ASR は独立し、ONNX も不要です。主パッケージには Neutral WAV があり、GPT-SoVITS、声の重み、ASR 環境・モデルは別途導入します。TTS の機器は `tts_infer.yaml` の `device`／`is_half`、Fun-ASR の CPU は `asr.server_script` で専用コピーを指定します。SPP に `asr.device` はありません。
 
 2026-10-01 の保守者のローカル確認は過去の記録であり、新規環境・機器・声・サービスの全組み合わせの合格ではありません。自分の PC で読み込み、発声、F8 認識を確認してください。
 
@@ -149,7 +149,7 @@ SPP を再起動し、[TTS 状態](http://127.0.0.1:11435/tts/status)の `mappin
 | WebUI の声変更がゲームに反映されない | `run_api.bat` が実際に読む YAML を編集して API 再起動 |
 | CPU 合成が遅い | 短文で合成確認後に待ち時間を評価。音量や ONNX 設定では高速化しない |
 
-SPP ログは `D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.10.8.log`、GPT-SoVITS のエラーは API ウィンドウで確認します。最初のエラーと完全なパスを残してください。
+SPP ログは `D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.10.10.log`、GPT-SoVITS のエラーは API ウィンドウで確認します。最初のエラーと完全なパスを残してください。
 
 連動起動では `Set_GPTSoVITS_RunApi_Path.bat` に `D:\LofiMOD\GPT-SoVITS\run_api.bat` を入力し、`[OK] Saved` を確認します。ゲームの TTS 起動先を `D:\LofiMOD\SatonePromptProxy\Start_AIChat_Services.bat` にして自動起動を有効化・保存し、次回確認します。`service_paths.ini` を読んで準備済みサービスを起動するだけで、環境や重みは導入しません。直接 `run_api.bat` を使っても構いません。
 

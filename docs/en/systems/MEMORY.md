@@ -2,7 +2,7 @@
 
 # Memory and profiles
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 Satone does not send every past conversation in every model request. Local records are retained; each turn combines recent exchanges, organized memory and relevant retrieved history.
 

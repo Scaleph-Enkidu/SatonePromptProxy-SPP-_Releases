@@ -4,7 +4,7 @@
 
 [返回四阶段安装](INSTALL.md) · [下载清单](DOWNLOADS.md) · [硬件参考](HARDWARE.md)
 
-**适用配对：AIChat 1.18.28 + SPP 5.10.8。** 第一次安装请按主教程逐步完成：
+**适用配对：AIChat 1.18.30 + SPP 5.10.10。** 第一次安装请按主教程逐步完成：
 
 <a id="stage-3"></a>
 
@@ -192,7 +192,7 @@ txt := strings.TrimSuffix(absWav, filepath.Ext(absWav)) + ".txt"
 | WebUI 已换声线，游戏仍读旧声线 | 编辑真正由 run_api.bat 读取的 tts_infer.yaml，重启 API；WebUI 模型选择不会改另一个进程 |
 | CPU 合成很慢 | 先用短句完成一次实际合成，再评估游戏等待时间；降低音量或修改 ONNX 设置不会加速 TTS |
 
-SPP 日志在 D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.10.8.log。GPT-SoVITS 的模型和合成异常则先看 run_api.bat 窗口。排错时保留**第一条错误及完整文件路径**，比只截最后一行更有用。
+SPP 日志在 D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.10.10.log。GPT-SoVITS 的模型和合成异常则先看 run_api.bat 窗口。排错时保留**第一条错误及完整文件路径**，比只截最后一行更有用。
 
 ### 可选：用包内脚本联动启动
 

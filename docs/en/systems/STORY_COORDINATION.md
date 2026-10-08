@@ -2,7 +2,7 @@
 
 # Coordinating AI chat with the original story
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 AI and original dialogue share the same character, subtitle and audio environment. The plugin reads game state to coordinate speaking and input, reducing overlapping subtitles, voices and actions.
 

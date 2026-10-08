@@ -2,13 +2,13 @@
 
 ## [简体中文](docs/zh-CN/README.md) · [English](docs/en/README.md) · [日本語](docs/ja/README.md)
 
-**AIChat 1.18.28 + SatonePromptProxy 5.10.8 · Windows / Steam · Chill with You: Lo-Fi Story**
+**AIChat 1.18.30 + SatonePromptProxy 5.10.10 · Windows / Steam · Chill with You: Lo-Fi Story**
 
-非官方 AI 对话模组，支持中英日界面与字幕。请选择上方语言，查看安装、升级、语音、系统说明和版本记录。`docs_r1` 文档修订包内也提供相同的三语入口。
+非官方 AI 对话模组，支持中英日界面与字幕。请选择上方语言，查看安装、升级、语音、系统说明和版本记录。新版程序包内也提供相同的三语入口。
 
-Unofficial AI conversation mod with Chinese, English and Japanese UI/subtitles. Choose a language above for installation, upgrades, voice, system guides and release notes. The `docs_r1` package includes the same three-language entry point.
+Unofficial AI conversation mod with Chinese, English and Japanese UI/subtitles. Choose a language above for installation, upgrades, voice, system guides and release notes. The latest program package includes the same three-language entry point.
 
-中国語・英語・日本語の UI／字幕に対応する非公式 AI 会話 Mod です。上の言語から導入、更新、音声、機能説明、更新履歴へ進めます。`docs_r1` パッケージ内にも同じ三言語の入口があります。
+中国語・英語・日本語の UI／字幕に対応する非公式 AI 会話 Mod です。上の言語から導入、更新、音声、機能説明、更新履歴へ進めます。最新版パッケージ内にも同じ三言語の入口があります。
 
 ### 运行负担 / Resource usage / 動作負荷
 

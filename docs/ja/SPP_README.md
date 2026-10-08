@@ -1,10 +1,10 @@
 [简体中文](../zh-CN/SPP_README.md) | [English](../en/SPP_README.md) | [日本語](SPP_README.md)
 
-# SatonePromptProxy 5.10.8：パッケージ README
+# SatonePromptProxy 5.10.10：パッケージ README
 
 [文書ホーム](README.md) · [導入](INSTALL.md) · [移設](PORTABLE_DEPLOYMENT.md)
 
-AIChat 1.18.28 と組み合わせ、モデル代理、人格、3 記憶、関係、キーワード・任意意味検索、TTS／ASR 転送を担当します。`D:\LofiMOD\SatonePromptProxy` などに完全な構成で置きます。
+AIChat 1.18.30 と組み合わせ、モデル代理、人格、3 記憶、関係、キーワード・任意意味検索、TTS／ASR 転送を担当します。`D:\LofiMOD\SatonePromptProxy` などに完全な構成で置きます。
 
 `SatonePromptProxy.exe` を実行し、`127.0.0.1:11435` の待ち受けを確認して開いたままにします。F9 で SPP パス、サービスのキー、モデルを設定して保存・適用します。初回は `config.example.json` から `config.json` を作るため、個人設定を例で上書きしないでください。`Start_Text_Chat.bat` も同じサービスを起動します。他のツールは[サービス管理](systems/SERVICES.md)を参照してください。
 
@@ -14,4 +14,4 @@ AIChat 1.18.28 と組み合わせ、モデル代理、人格、3 記憶、関係
 
 更新時は停止して旧実行フォルダー全体を残し、新しいフォルダーへ記憶を取り込みます。`local_v1` は消せるキャッシュではありません。`SatonePersona_v4.6.txt` は共有、長期関係は各プロファイルで独立します。大規模履歴の起動は遅いままです。[負荷](HARDWARE.md)と、キー・会話・ベクトルを守る[データ説明](DATA_AND_PRIVACY.md)を確認してください。
 
-`docs_r1` は EXE、BAT、標準設定、人格、ASR スクリプト、モデル、参考録音を変えません。[クレジットと許諾](LICENSE_SCOPE.md)、第三者の元ライセンスも保持します。
+今回のリリースは、記憶取り込み、音声エコー除去、終了時の後処理、日付による検索の計 9 件の修正をまとめています。AIChat と SPP の両方を更新してください。三言語の説明とパッケージ内の入口も更新しました。

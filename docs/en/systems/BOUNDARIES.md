@@ -2,7 +2,7 @@
 
 # Boundaries and relationship repair
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 Satone responds to respect, pressure and conflict. Refusal is not restricted to low-affection dialogue: she can retain her own opinions and boundaries even in a close relationship.
 

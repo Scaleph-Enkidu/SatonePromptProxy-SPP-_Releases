@@ -4,7 +4,7 @@
 
 [導入](INSTALL.md) · [更新](UPGRADE.md) · [バックアップ](DATA_AND_PRIVACY.md)
 
-5.10.8 向けの説明で、旧パッケージの CP14／CP23 が混在した案内を置き換えます。`D:\LofiMOD\SatonePromptProxy` のような短いパスと、隣接する `FunASR-Runtime`、`Fun-ASR-Nano-2512`、`GPT-SoVITS` を推奨します。付属の `SatonePersona_v4.6.txt` を保持してください。人格の欠落で初回 `/persona` が失敗した経緯があり、新規導入で EXE だけのコピーは不十分です。
+5.10.10 向けの説明で、旧パッケージの CP14／CP23 が混在した案内を置き換えます。`D:\LofiMOD\SatonePromptProxy` のような短いパスと、隣接する `FunASR-Runtime`、`Fun-ASR-Nano-2512`、`GPT-SoVITS` を推奨します。付属の `SatonePersona_v4.6.txt` を保持してください。人格の欠落で初回 `/persona` が失敗した経緯があり、新規導入で EXE だけのコピーは不十分です。
 
 ## 初回起動とパス
 

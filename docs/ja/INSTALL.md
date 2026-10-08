@@ -4,7 +4,7 @@
 
 [ホーム](README.md) · [ダウンロードとハッシュ](DOWNLOADS.md) · [ライセンスの範囲](LICENSE_SCOPE.md)
 
-対象は **AIChat 1.18.28 + SPP 5.10.8**、文書改訂日は 2026-10-06 です。既存ユーザーは先に[更新とバックアップ](UPGRADE.md)を読んでください。今回の文書改訂では DLL・EXE・モデルを変更していません。
+対象は **AIChat 1.18.30 + SPP 5.10.10**、更新日は 2026-10-08 です。既存ユーザーは先に[更新とバックアップ](UPGRADE.md)を読んでください。AIChat と SPP の両方を更新してください。任意モデルの変更はありません。
 
 例では `D:\LofiMOD` を使います。`C:\LofiMOD` などに置く場合は、対応するすべてのパスを統一して変更してください。F9 の UI は中国語・英語・日本語に対応しています。以下の操作名は機能を示し、古い画像では中国語表示の場合があります。外部ツールの問題を調べる際は、短い英数字のパスを推奨します。
 
@@ -17,7 +17,7 @@
 
 1. ゲームを終了します。Steam の管理 → ローカルファイルを閲覧でゲームフォルダーを開きます。
 2. [BepInEx 5.4.23.5 Windows x64](https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.5/BepInEx_win_x64_5.4.23.5.zip) をダウンロードし、`BepInEx` と `winhttp.dll` をゲーム EXE と同じ場所に展開します。一度起動して終了し、設定フォルダーを生成します。
-3. [対応するプログラムセット](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.18.28_SPP-v5.10.8-docs-r1/SatoneMod_AIChat_1.18.28_SPP_5.10.8_Windows_x64_docs_r1.zip)を取得します。`AIChat/AIChat.dll` と `AIChat.pdb` をゲームの `BepInEx\plugins` にコピーし、旧プラグインを置き換えます。重複 DLL を残さないでください。既存ユーザーは [UPGRADE](UPGRADE.md) の Relaxed アニメーション設定の更新も必要です。
+3. [対応するプログラムセット](https://github.com/Scaleph-Enkidu/SatonePromptProxy-SPP-_Releases/releases/download/AIChat-v1.18.30_SPP-v5.10.10/SatoneMod_AIChat_1.18.30_SPP_5.10.10_Windows_x64.zip)を取得します。`AIChat/AIChat.dll` と `AIChat.pdb` をゲームの `BepInEx\plugins` にコピーし、旧プラグインを置き換えます。重複 DLL を残さないでください。既存ユーザーは [UPGRADE](UPGRADE.md) の Relaxed アニメーション設定の更新も必要です。
 4. `SatonePromptProxy` フォルダー全体を `D:\LofiMOD\SatonePromptProxy` に展開します。付属データと相対配置を保ち、ゲームのプラグインフォルダーには入れません。
 
 ### SPP の起動と接続
@@ -221,7 +221,7 @@ model = AutoModel(model=model_dir, trust_remote_code=True, device="cpu")
 
 CPU では `server_script` だけを `D:/LofiMOD/FunASR-Runtime/satone_funasr_server_cpu_v1.py` にします。すべてのパスを実際の配置に合わせ、有効な JSON として保存して SPP を起動します。Python ファイルを別途ダブルクリックしません。
 
-[SPP ASR 状態](http://127.0.0.1:11435/asr/status)で `ready: true` と正しい `python`、`server_script`、`model_path` を確認し、[バックエンド](http://127.0.0.1:9881/health)で `ok: true` を確認します。読み込みには時間がかかる場合があります。失敗時は `SatonePromptProxy_v5.10.8.log` の最初の Python エラーと `last_error` を読みます。9881 に手動起動した旧 GPU サービスが残っている場合は、それを止めてから CPU 構成の SPP を再起動してください。
+[SPP ASR 状態](http://127.0.0.1:11435/asr/status)で `ready: true` と正しい `python`、`server_script`、`model_path` を確認し、[バックエンド](http://127.0.0.1:9881/health)で `ok: true` を確認します。読み込みには時間がかかる場合があります。失敗時は `SatonePromptProxy_v5.10.10.log` の最初の Python エラーと `last_error` を読みます。9881 に手動起動した旧 GPU サービスが残っている場合は、それを止めてから CPU 構成の SPP を再起動してください。
 
 ### 4.6 マイクを選んで話す
 

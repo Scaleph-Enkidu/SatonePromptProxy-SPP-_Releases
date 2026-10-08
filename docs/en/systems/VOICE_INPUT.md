@@ -2,7 +2,7 @@
 
 # Voice input and continuous conversation
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 The microphone records your voice, Fun-ASR converts it to text, then the chat model receives that text. ASR recognizes you; TTS speaks for Satone. They can be installed independently.
 

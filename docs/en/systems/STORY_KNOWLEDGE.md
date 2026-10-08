@@ -2,7 +2,7 @@
 
 # Story knowledge and shared experiences
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 Besides AI conversations, Satone can use confirmed game progress to understand important events that have already happened. Captured story lines, idle speech and click reactions retain their source and can connect later conversations with your experiences in the game.
 

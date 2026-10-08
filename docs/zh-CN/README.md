@@ -4,7 +4,7 @@
 
 这是为 Windows / Steam 版《Chill with You: Lo-Fi Story》制作的非官方 Mod。AIChat 负责游戏内聊天、字幕、播放与操作；SatonePromptProxy（SPP）负责模型连接、人格、记忆、关系和语音转发。当前程序提供**简体中文、English、日本語**界面与字幕支持。语音能否自然读出某种语言，仍取决于所选声线和模型；本教程采用日语语音。
 
-当前配对：**AIChat 1.18.28 + SPP 5.10.8（N15）**。本次 `docs_r1` 只更新三语文档与包内说明，程序二进制不变。
+**AIChat 1.18.30 + SPP 5.10.10**。 本次合并两批共 9 项修复，更新记忆导入、语音回声过滤、退出清理与日期召回。需要更新 AIChat 和 SPP 两端程序；三语说明与包内入口同步更新。
 
 ![安装后的聊天界面](../images/install-success.png)
 
@@ -73,6 +73,9 @@ N15 移除了 Relaxed 的端杯动作。旧用户必须刷新 `StablePoseOverrid
 
 ## 版本、署名和授权
 
-[本次三语文档修订](releases/DOCS_TRILINGUAL_20261006.md) · [N15 更新记录](releases/AIChat_v1.18.28_SPP_v5.10.8.md) · [历史与验证归档](RELEASE_ARCHIVE.md)
+[历史三语文档修订](releases/DOCS_TRILINGUAL_20261006.md) · [N15 更新记录](releases/AIChat_v1.18.28_SPP_v5.10.8.md) · [历史与验证归档](RELEASE_ARCHIVE.md)
 
 AIChat 基于 [qzrs777/AIChat](https://github.com/qzrs777/AIChat)，原作者 Elysia777；本项目由 Scaleph 维护，开发中使用 AI 辅助。可授权的自有内容采用 PolyForm Noncommercial 1.0.0，原作者、第三方资源和此前 MIT 授权的权利保留。见[授权范围](LICENSE_SCOPE.md)、[LICENSE](../../LICENSE) 与 [NOTICE](../../NOTICE)。GPT-SoVITS、Fun-ASR、E5、ORT、声线与录音各遵循其来源条件。
+
+
+[本次 9 项修复](releases/AIChat_v1.18.30_SPP_v5.10.10.md)

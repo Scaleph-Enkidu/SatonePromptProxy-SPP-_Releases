@@ -34,3 +34,6 @@
 | `AIChat-v1.16.14_SPP-v5.8.23` | 397273412 | 6 | [JSON](../../releases/AIChat_v1.16.14_SPP_v5.8.23.json) |
 
 当時 license-r1 を Latest とし、17 添付のバイト確認と匿名ダウンロードを検証しました。Latest は当時の状態です。元メタデータ・ローカル撤去証拠は保守者の `D:/SatoneDev/deliverables/License-Revision-20261001` にあり、プレイヤーの導入依存ではありません。開発 2 庫の元コンポーネントと証拠は保持されています。
+
+
+- [2026-10-08 · AIChat 1.18.30 + SPP 5.10.10](releases/AIChat_v1.18.30_SPP_v5.10.10.md)

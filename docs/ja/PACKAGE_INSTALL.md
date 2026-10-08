@@ -1,15 +1,13 @@
 [简体中文](../zh-CN/PACKAGE_INSTALL.md) | [English](../en/PACKAGE_INSTALL.md) | [日本語](PACKAGE_INSTALL.md)
 
-# N15 文書改訂パッケージ：導入と復元
+# 導入とロールバック
 
-**AIChat 1.18.28 + SPP 5.10.8**、文書改訂 **docs_r1、2026-10-06**。公開済み N15 の文書を三言語化したもので、新しい未公開実行候補ではありません。元 ZIP は残し、文書以外の実行ファイルはすべて同一です。
+**AIChat 1.18.30 + SPP 5.10.10 · 2026-10-08**
 
-ルート `README.md` が三言語入口、`AIChat/README.md` と `SatonePromptProxy/README.md` が各部の入口です。全文は `docs/zh-CN`、`docs/en`、`docs/ja` にあり、オフラインで読めます。外部ダウンロード、Web 状態、ソースのリンクには対応サービス・通信が必要です。
+今回のリリースは、記憶取り込み、音声エコー除去、終了時の後処理、日付による検索の計 9 件の修正をまとめています。AIChat と SPP の両方を更新してください。三言語の説明とパッケージ内の入口も更新しました。
 
-1. ゲーム・SPP を終了し、旧バイナリ、SPP 個人フォルダー全体、ゲームの `BepInEx/config` を保存します。
-2. AIChat DLL／PDB を `BepInEx/plugins` へ入れます。新規 SPP は全フォルダーが必要です。N9～N14 から同じ 5.10.8 を使っている場合、EXE 自体は同一です。
-3. 新しい SPP フォルダーに移す場合は[取り込み](UPGRADE.md)で旧絶対パスを指定し、先に旧データを消しません。
-4. Relaxed を `752,50,51` に更新するか、保存してプラグイン CFG だけを再生成します。再生成ではパス、API、しきい値、キー、感情表示などが初期化されます。
-5. ログの 1.18.28 と[確認項目](PACKAGE_CHECKLIST.md)を検証します。依存環境・音声は[完全手順](INSTALL.md)を参照してください。
+ゲームと SPP を終了し、旧 SPP フォルダー全体とプラグイン設定を保存してから AIChat DLL／PDB と SPP を更新します。SPP を移す場合は[更新手順](UPGRADE.md)に従って記憶を取り込んでください。修正済みの Relaxed 設定を再度初期化する必要はありません。GitHub 自動生成の Source code ZIP は導入用ではありません。TTS、ASR、意味検索モデルは任意の外部コンポーネントです。
 
-復元時は停止し、対応する旧 DLL／PDB、SPP、更新前の設定・データ全体を戻します。文書の閲覧・交換だけならセーブ移行は不要です。`BUILD_INFO.json` は元の N15 封存記録を保持し、`DOCUMENTATION_REVISION.json` に今回の文書変更、元 ZIP ハッシュ、未変更ファイルの証明を記録します。
+ルートと両コンポーネントの README に中国語・英語・日本語の入口があり、全文はそれぞれの `docs/zh-CN`、`docs/en`、`docs/ja` にあります。新規導入では SPP のフォルダー構成を保ってください。AIChat DLL／PDB をゲームの `BepInEx/plugins` へ置き、AIChat DLL は 1 つだけにしてバックアップを外に保存します。戻すときはサービスを止め、旧プログラムと更新前のデータ一式を復元します。`BUILD_INFO.json` に本版のソース、バイナリ、各ファイルのハッシュを記録しています。
+
+[Install](INSTALL.md) · [Upgrade](UPGRADE.md) · [Checks](PACKAGE_CHECKLIST.md)

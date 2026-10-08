@@ -2,7 +2,7 @@
 
 # Emotions
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 Emotions describe the tone of a current segment, not a permanent relationship score. The program supports 26 fixed tags. Their spelling is part of the protocol and must not be translated in configuration.
 

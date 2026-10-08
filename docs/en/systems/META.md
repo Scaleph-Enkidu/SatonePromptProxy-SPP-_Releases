@@ -2,7 +2,7 @@
 
 # Meta performance
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 This scene grew out of a concrete limitation: Satone cannot reliably read the current window view. Persistently asking why she will not look outside can turn ordinary evasive conversation into a special performance. The author's reaction was that even a text-only scene felt scarier than expected.
 

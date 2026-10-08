@@ -4,7 +4,7 @@
 
 [Home](README.md) · [Installation](INSTALL.md) · [Voice](VOICE_SETUP.md)
 
-The current pair is AIChat 1.18.28 + SPP 5.10.8. Measurements below retain their original dates and test scope; documentation updates are not new hardware validation.
+The current pair is AIChat 1.18.30 + SPP 5.10.10. Measurements below retain their original dates and test scope; documentation updates are not new hardware validation.
 
 ## VRAM observations
 

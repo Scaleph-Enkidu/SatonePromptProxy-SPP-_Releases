@@ -2,7 +2,7 @@
 
 # Affection and relationship scores
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 The displayed affection combines an **AI relationship score** with a **familiarity bonus from the original game**. They are stored separately; the game bonus does not rewrite the four AI relationship dimensions.
 

@@ -34,3 +34,6 @@ Historical versions are collected here; use the current guides for everyday inst
 | `AIChat-v1.16.14_SPP-v5.8.23` | 397273412 | 6 | [JSON](../../releases/AIChat_v1.16.14_SPP_v5.8.23.json) |
 
 At that time license-r1 was marked Latest and all 17 attachments passed byte checks plus an anonymous program download check; Latest here is a historical status. Original metadata/local withdrawal evidence resides in the maintainer's `D:/SatoneDev/deliverables/License-Revision-20261001`, not a player installation dependency. Original component releases/evidence in the two development repositories were retained.
+
+
+- [2026-10-08 · AIChat 1.18.30 + SPP 5.10.10](releases/AIChat_v1.18.30_SPP_v5.10.10.md)

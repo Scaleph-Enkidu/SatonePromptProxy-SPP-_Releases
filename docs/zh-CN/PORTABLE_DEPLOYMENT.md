@@ -4,7 +4,7 @@
 
 [安装](INSTALL.md) · [升级](UPGRADE.md) · [数据备份](DATA_AND_PRIVACY.md)
 
-本页以当前 5.10.8 为准，替换包内过时的 CP14/CP23 混合说明。推荐短路径，例如 `D:\LofiMOD\SatonePromptProxy`，外部环境放在相邻的 `FunASR-Runtime`、`Fun-ASR-Nano-2512`、`GPT-SoVITS`。整包包含默认人格 `SatonePersona_v4.6.txt`；遗漏人格会导致首次启动 `/persona` 不可用，不能只复制 EXE。
+本页以当前 5.10.10 为准，替换包内过时的 CP14/CP23 混合说明。推荐短路径，例如 `D:\LofiMOD\SatonePromptProxy`，外部环境放在相邻的 `FunASR-Runtime`、`Fun-ASR-Nano-2512`、`GPT-SoVITS`。整包包含默认人格 `SatonePersona_v4.6.txt`；遗漏人格会导致首次启动 `/persona` 不可用，不能只复制 EXE。
 
 ## 首次启动与路径
 

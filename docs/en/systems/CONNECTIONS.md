@@ -2,7 +2,7 @@
 
 # Model connections and switching
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 A connection includes provider type, endpoint, model and credentials. Chat uses one applied connection at a time; an edited draft is not automatically active.
 

@@ -4,7 +4,7 @@
 
 [Home](README.md) · [Installation](INSTALL.md) · [Backup scope](DATA_AND_PRIVACY.md)
 
-Current pair: **AIChat 1.18.28 + SPP 5.10.8 (N15)**. The `docs_r1` package only revises documentation; an existing N15 installation does not need new runtime binaries for this revision.
+**AIChat 1.18.30 + SPP 5.10.10**. This release combines nine fixes across memory import, voice echo filtering, exit cleanup and date-based recall. Update both AIChat and SPP. The three-language guides and package entry points are updated together.
 
 ## 1. Back up before changing files
 
@@ -38,6 +38,6 @@ Do not delete `BepInEx.cfg`, `BepInEx/core`, `AIChatSatoneUX.history`, `SatoneIn
 
 ## 4. Check and roll back
 
-Confirm `Loading [AIChat Remake 1.18.28]` in `BepInEx\LogOutput.log`, inspect F9 connection/path settings and the imported profile in Dashboard. Try several relaxed conversations; cup props should not remain on the fixed path. [Package checks](PACKAGE_CHECKLIST.md) distinguish the tested whitelist path from the standard pool that previously had static review only.
+Confirm `Loading [AIChat Remake 1.18.30]` in `BepInEx\LogOutput.log`, inspect F9 connection/path settings and the imported profile in Dashboard. Try several relaxed conversations; cup props should not remain on the fixed path. [Package checks](PACKAGE_CHECKLIST.md) distinguish the tested whitelist path from the standard pool that previously had static review only.
 
 For rollback, stop services and restore the matching old program **and full pre-upgrade data backup**. Newer records are not guaranteed to be understood by an older version. A documentation-only package requires no data migration by itself.

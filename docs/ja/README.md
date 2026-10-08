@@ -4,7 +4,7 @@
 
 Windows／Steam 版 **Chill with You: Lo-Fi Story** 向けの非公式 Mod です。AIChat がゲーム内チャット、字幕、再生、操作を担当し、SatonePromptProxy（SPP）がモデル接続、人格、記憶、関係、音声転送を扱います。**中国語・英語・日本語の UI／字幕**に対応しています。各言語の発音品質は声・モデルに依存し、導入例は日本語音声です。
 
-現在の組み合わせ：**AIChat 1.18.28 + SPP 5.10.8（N15）**。今回の `docs_r1` は三言語の文書とパッケージ説明の整理で、実行バイナリは変わりません。
+**AIChat 1.18.30 + SPP 5.10.10**。 今回のリリースは、記憶取り込み、音声エコー除去、終了時の後処理、日付による検索の計 9 件の修正をまとめています。AIChat と SPP の両方を更新してください。三言語の説明とパッケージ内の入口も更新しました。
 
 ![導入後のチャット画面](../images/install-success.png)
 
@@ -76,3 +76,6 @@ N15 で Relaxed のコップ動作を外しました。既存設定の `StablePo
 [三言語文書改訂](releases/DOCS_TRILINGUAL_20261006.md) · [N15 更新内容](releases/AIChat_v1.18.28_SPP_v5.10.8.md) · [履歴と検証資料](RELEASE_ARCHIVE.md)
 
 AIChat は Elysia777 による [qzrs777/AIChat](https://github.com/qzrs777/AIChat) に基づきます。Scaleph が AI の支援を使って開発・保守しています。許諾可能な独自内容は PolyForm Noncommercial 1.0.0 で、元作者、第三者、以前の MIT 許諾の権利は保持されます。[範囲](LICENSE_SCOPE.md)、[LICENSE](../../LICENSE)、[NOTICE](../../NOTICE)を参照してください。GPT-SoVITS、Fun-ASR、E5、ORT、声のモデル、録音は各出典の条件に従います。
+
+
+[今回の 9 件の修正](releases/AIChat_v1.18.30_SPP_v5.10.10.md)

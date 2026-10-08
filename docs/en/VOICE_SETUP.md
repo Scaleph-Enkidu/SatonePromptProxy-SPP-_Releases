@@ -10,7 +10,7 @@
 <a id="stage-4"></a>
 [First-time ASR installation: stage 4](INSTALL.md#stage-4)
 
-For AIChat 1.18.28 + SPP 5.10.8. TTS and ASR are independent; neither requires ONNX. The main package supplies a Neutral reference WAV, while GPT-SoVITS, voice weights and the ASR environment/model are external. Configure TTS devices in `tts_infer.yaml` with `device`/`is_half`; select the Fun-ASR CPU script through `asr.server_script`. There is no SPP `asr.device` field.
+For AIChat 1.18.30 + SPP 5.10.10. TTS and ASR are independent; neither requires ONNX. The main package supplies a Neutral reference WAV, while GPT-SoVITS, voice weights and the ASR environment/model are external. Configure TTS devices in `tts_infer.yaml` with `device`/`is_half`; select the Fun-ASR CPU script through `asr.server_script`. There is no SPP `asr.device` field.
 
 The maintainer's local test confirmation dated 2026-10-01 is historical evidence, not acceptance of every newly installed dependency/hardware/voice/provider combination. Actual loading, speech and F8 recognition remain the checks on your machine.
 
@@ -149,7 +149,7 @@ Restart SPP and inspect [TTS status](http://127.0.0.1:11435/tts/status): `mappin
 | WebUI voice changed but game did not | Edit the YAML actually read by `run_api.bat`; restart the API |
 | CPU synthesis slow | Test a short sentence, then assess latency; volume and ONNX settings do not speed up TTS |
 
-SPP log: `D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.10.8.log`. GPT-SoVITS errors are in its API window. Preserve the first error and full path.
+SPP log: `D:\LofiMOD\SatonePromptProxy\SatonePromptProxy_v5.10.10.log`. GPT-SoVITS errors are in its API window. Preserve the first error and full path.
 
 For linked startup, run `Set_GPTSoVITS_RunApi_Path.bat`, enter `D:\LofiMOD\GPT-SoVITS\run_api.bat` and confirm `[OK] Saved`. Set the game's TTS launch script to `D:\LofiMOD\SatonePromptProxy\Start_AIChat_Services.bat`, enable auto-start, save and verify next launch. It reads `service_paths.ini` and starts prepared services; it does not install environments/weights. Direct `run_api.bat` use is also valid.
 

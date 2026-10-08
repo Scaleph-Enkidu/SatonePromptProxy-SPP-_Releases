@@ -2,7 +2,7 @@
 
 # Speech and subtitles
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 AIChat presents subtitles and plays audio, SPP segments replies and forwards synthesis requests, and GPT-SoVITS generates speech from text, voice weights and reference audio. The program now has Chinese, English and Japanese UI/subtitle support. That does not imply every installed voice can pronounce all three languages well. The documented reference setup uses Japanese speech.
 

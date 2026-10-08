@@ -4,7 +4,7 @@
 
 [返回首页](README.md) · [四阶段安装](INSTALL.md)
 
-适用配对：**AIChat 1.18.28 + SPP 5.10.8**，更新于 **2026-10-01**。云端聊天需要自己的服务账户、API Key 与可用额度；游戏、插件下载和 ChatGPT 网页订阅不包含本 Mod 的 OpenAI／DeepSeek API 用量。
+适用配对：**AIChat 1.18.30 + SPP 5.10.10**，更新于 **2026-10-01**。云端聊天需要自己的服务账户、API Key 与可用额度；游戏、插件下载和 ChatGPT 网页订阅不包含本 Mod 的 OpenAI／DeepSeek API 用量。
 
 ## 价格和模型名称在哪里确认
 

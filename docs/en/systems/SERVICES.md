@@ -2,7 +2,7 @@
 
 # Starting and managing services
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 Text chat, semantic recall, speech synthesis and recognition are installed in stages. Missing later services should not block configured text chat. An open console does not mean every model is ready.
 

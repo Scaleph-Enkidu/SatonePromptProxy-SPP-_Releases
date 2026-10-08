@@ -2,7 +2,7 @@
 
 # History retrieval
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 Retrieval selects relevant exchanges from the active profile and provides them to the chat model when useful. It does not make the model read every past conversation on every turn.
 

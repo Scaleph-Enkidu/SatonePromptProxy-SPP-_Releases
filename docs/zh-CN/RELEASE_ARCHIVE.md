@@ -34,3 +34,6 @@
 | `AIChat-v1.16.14_SPP-v5.8.23` | 397273412 | 6 | [JSON](../../releases/AIChat_v1.16.14_SPP_v5.8.23.json) |
 
 当时的 license-r1 被设为 Latest，17 个附件逐字节回查及匿名下载核验通过；“Latest”是当时的状态。原元数据与本地下架证据保存在维护者的 `D:/SatoneDev/deliverables/License-Revision-20261001`，该本地路径不是玩家安装依赖。两个开发库的原组件 Release 与证据保留。
+
+
+- [2026-10-08 · AIChat 1.18.30 + SPP 5.10.10](releases/AIChat_v1.18.30_SPP_v5.10.10.md)

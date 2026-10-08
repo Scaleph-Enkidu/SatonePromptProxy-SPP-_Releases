@@ -2,7 +2,7 @@
 
 # Persona
 
-[Documentation](../README.md#systems) · AIChat 1.18.28 + SPP 5.10.8
+[Documentation](../README.md#systems) · AIChat 1.18.30 + SPP 5.10.10
 
 Satone's persona was developed with reference to more than 1,700 lines from the original game. It defines her identity, voice, autonomy, knowledge and boundaries. Relationship state describes affection, trust, comfort, openness and unresolved conflicts; memory supplies past facts; emotion describes her current response. These are related but distinct systems.
 
