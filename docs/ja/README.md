@@ -1,6 +1,6 @@
 [简体中文](../zh-CN/README.md) | [English](../en/README.md) | [日本語](README.md)
 
-# 聡音 Mod：続く会話、少しずつ育つ関係
+# さとね Mod：続く会話、少しずつ育つ関係
 
 Windows／Steam 版 **Chill with You: Lo-Fi Story** 向けの非公式 Mod です。AIChat がゲーム内チャット、字幕、再生、操作を担当し、SatonePromptProxy（SPP）がモデル接続、人格、記憶、関係、音声転送を扱います。**中国語・英語・日本語の UI／字幕**に対応しています。各言語の発音品質は声・モデルに依存し、導入例は日本語音声です。
 
