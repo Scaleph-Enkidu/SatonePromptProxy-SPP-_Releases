@@ -1,4 +1,4 @@
-# Satone Mod · 聪音 Mod · 聡音 Mod
+# Satone Mod · 聪音 Mod · さとね Mod
 
 ## [简体中文](docs/zh-CN/README.md) · [English](docs/en/README.md) · [日本語](docs/ja/README.md)
 
